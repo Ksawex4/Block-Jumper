@@ -1,0 +1,38 @@
+[gd_scene load_steps=6 format=3 uid="uid://cgr5yq0b3lq60"]
+
+[ext_resource type="Texture2D" uid="uid://b6wt7a2ttj22b" path="res://Assets/Sprites/Characters/NPCs/Bob.png" id="1_8eqm1"]
+[ext_resource type="Script" uid="uid://cprxa2mlq6llu" path="res://Scripts/Characters/NPCs/bob.gd" id="1_jdacs"]
+[ext_resource type="AudioStream" uid="uid://cw6f7wr0uds25" path="res://Assets/Audio/SFX/souBob.wav" id="3_uewa2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3gcl8"]
+size = Vector2(20, 30)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ou5hq"]
+size = Vector2(20, 30)
+
+[node name="Bob" type="CharacterBody2D"]
+process_mode = 3
+script = ExtResource("1_jdacs")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_8eqm1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(2, 3)
+shape = SubResource("RectangleShape2D_3gcl8")
+disabled = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_uewa2")
+volume_db = 3.28
+autoplay = true
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 31
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(2, 3)
+shape = SubResource("RectangleShape2D_ou5hq")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

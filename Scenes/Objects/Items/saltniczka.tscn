@@ -1,0 +1,40 @@
+[gd_scene load_steps=9 format=3 uid="uid://chihoo373bwy7"]
+
+[ext_resource type="Script" uid="uid://dddr0co05nm6b" path="res://Scenes/Objects/Items/saltniczka.gd" id="1_6gbhy"]
+[ext_resource type="Texture2D" uid="uid://busfbqah2sxym" path="res://Assets/Sprites/Objects/Items/saltniczka.png" id="1_gi8p6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6gbhy"]
+size = Vector2(17, 22)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_akbvv"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_w7fyn"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dvsyx"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ey5jb"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ixux0"]
+
+[node name="saltniczka" type="CharacterBody2D"]
+script = ExtResource("1_6gbhy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_6gbhy")
+disabled = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_gi8p6")
+
+[node name="Button" type="Button" parent="."]
+offset_left = -8.5
+offset_top = -11.0
+offset_right = 8.5
+offset_bottom = 11.0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_akbvv")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_w7fyn")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_dvsyx")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_ey5jb")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_ixux0")
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

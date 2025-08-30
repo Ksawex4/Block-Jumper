@@ -1,0 +1,48 @@
+[gd_scene load_steps=2 format=3 uid="uid://dict2vu23hgm2"]
+
+[ext_resource type="Script" uid="uid://ddddxhvo2bah4" path="res://Scripts/GUI/pause_menu.gd" id="1_cifqg"]
+
+[node name="PauseMenu" type="Window" groups=["pauseMenu"]]
+process_mode = 3
+title = "Pause Menu"
+initial_position = 1
+size = Vector2i(150, 220)
+visible = false
+unresizable = true
+always_on_top = true
+script = ExtResource("1_cifqg")
+
+[node name="ContinueGame" type="Button" parent="."]
+offset_left = 2.0
+offset_top = 2.0
+offset_right = 148.0
+offset_bottom = 54.0
+text = "Continue"
+
+[node name="Achievements" type="Button" parent="."]
+offset_left = 2.0
+offset_top = 56.0
+offset_right = 148.0
+offset_bottom = 108.0
+text = "Achievements"
+
+[node name="Settings" type="Button" parent="."]
+offset_left = 2.0
+offset_top = 111.0
+offset_right = 148.0
+offset_bottom = 163.0
+text = "Settings
+"
+
+[node name="QuitToTile" type="Button" parent="."]
+offset_left = 2.0
+offset_top = 166.0
+offset_right = 148.0
+offset_bottom = 218.0
+text = "Quit to Title"
+
+[connection signal="close_requested" from="." to="." method="_on_continue_game_pressed"]
+[connection signal="pressed" from="ContinueGame" to="." method="_on_continue_game_pressed"]
+[connection signal="pressed" from="Achievements" to="." method="_on_achievements_pressed"]
+[connection signal="pressed" from="Settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="QuitToTile" to="." method="_on_quit_to_title_pressed"]

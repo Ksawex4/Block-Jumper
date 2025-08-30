@@ -1,0 +1,94 @@
+[gd_scene load_steps=10 format=3 uid="uid://c0egin0l7hc2v"]
+
+[ext_resource type="Script" uid="uid://b1dycgqretdd5" path="res://Scripts/Objects/Others/smooth_camera.gd" id="1_eudxl"]
+[ext_resource type="Script" uid="uid://bpuwan8cjogfr" path="res://Scripts/label.gd" id="2_6oxvd"]
+[ext_resource type="AudioStream" uid="uid://btqjqrhgbcva" path="res://Assets/Audio/SFX/souAch.wav" id="3_yj5kq"]
+[ext_resource type="Script" uid="uid://fgcnjyxx7wsh" path="res://Scripts/GUI/joystick.gd" id="4_2c8rd"]
+[ext_resource type="Script" uid="uid://c32f4t1p3pdlb" path="res://Scripts/GUI/joyknob.gd" id="5_4chum"]
+[ext_resource type="Texture2D" uid="uid://du54mdekovu47" path="res://Assets/Sprites/GUI/MobileButtons/Pause.png" id="6_4chum"]
+[ext_resource type="Texture2D" uid="uid://cgmam0rrrv7f2" path="res://Assets/Sprites/GUI/MobileButtons/SwitchPlayer.png" id="7_mkhw6"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_yj5kq"]
+radius = 48.0
+height = 96.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_3f85x"]
+radius = 8.0
+height = 16.0
+
+[node name="SmoothCamera" type="Camera2D"]
+script = ExtResource("1_eudxl")
+
+[node name="Label" type="Label" parent="."]
+process_mode = 3
+offset_left = -19.0
+offset_top = -63.0
+offset_right = 21.0
+offset_bottom = -40.0
+script = ExtResource("2_6oxvd")
+
+[node name="Beans" type="Label" parent="."]
+offset_left = -347.0
+offset_top = -195.0
+offset_right = -262.0
+offset_bottom = -172.0
+text = "Beans: null"
+
+[node name="Achievement" type="RichTextLabel" parent="."]
+clip_contents = false
+offset_left = -355.0
+offset_top = -200.0
+offset_right = -259.0
+offset_bottom = -168.0
+bbcode_enabled = true
+text = "
+"
+autowrap_mode = 0
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_yj5kq")
+
+[node name="MobileControls" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = -336.0
+offset_top = 88.0
+offset_right = -240.0
+offset_bottom = 185.0
+grow_vertical = 0
+
+[node name="Joystick" type="Node2D" parent="MobileControls"]
+position = Vector2(48, 48)
+script = ExtResource("4_2c8rd")
+
+[node name="joyring" type="MeshInstance2D" parent="MobileControls/Joystick"]
+self_modulate = Color(0.133333, 0.168627, 0.270588, 0.14902)
+mesh = SubResource("SphereMesh_yj5kq")
+
+[node name="joyknob" type="MeshInstance2D" parent="MobileControls/Joystick"]
+mesh = SubResource("SphereMesh_3f85x")
+script = ExtResource("5_4chum")
+
+[node name="Button" type="Button" parent="MobileControls/Joystick"]
+self_modulate = Color(1, 1, 1, 0)
+offset_left = -48.0
+offset_top = -48.0
+offset_right = 48.0
+offset_bottom = 48.0
+
+[node name="Pause" type="TouchScreenButton" parent="MobileControls"]
+position = Vector2(648, -281)
+texture_normal = ExtResource("6_4chum")
+action = "Pause"
+visibility_mode = 1
+
+[node name="SwitchPlayer" type="TouchScreenButton" parent="MobileControls"]
+position = Vector2(512, -281)
+texture_normal = ExtResource("7_mkhw6")
+action = "SwitchPlayer"
+visibility_mode = 1
+
+[connection signal="button_down" from="MobileControls/Joystick/Button" to="MobileControls/Joystick/joyknob" method="_on_button_button_down"]
+[connection signal="button_up" from="MobileControls/Joystick/Button" to="MobileControls/Joystick/joyknob" method="_on_button_button_up"]

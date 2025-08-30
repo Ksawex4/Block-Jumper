@@ -1,0 +1,42 @@
+[gd_scene load_steps=6 format=3 uid="uid://cnapla1ydbe63"]
+
+[ext_resource type="Texture2D" uid="uid://bu5fh31ha7gy2" path="res://Assets/Sprites/Objects/Solids/Tiles.png" id="1_g0r5v"]
+[ext_resource type="Script" uid="uid://b33odpkqbkspw" path="res://Scripts/Objects/Solids/tiles.gd" id="2_mikbt"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_4djq1"]
+vertices = PackedVector2Array(16, 16, -16, 16, -16, -16, 16, -16)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)])
+agent_radius = 0.0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mikbt"]
+texture = ExtResource("1_g0r5v")
+texture_region_size = Vector2i(32, 32)
+1:0/animation_columns = 4
+1:0/animation_speed = 5.0
+1:0/animation_frame_0/duration = 1.0
+1:0/animation_frame_1/duration = 1.0
+1:0/animation_frame_2/duration = 1.0
+1:0/animation_frame_3/duration = 1.0
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+0:1/0 = 0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+1:1/0 = 0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+2:1/0 = 0
+2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+3:1/0 = 0
+3:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-1.18915, -10.4051, 16, 16, -16, 16)
+4:1/0 = 0
+4:1/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_4djq1")
+
+[sub_resource type="TileSet" id="TileSet_j5785"]
+tile_size = Vector2i(32, 32)
+physics_layer_0/collision_layer = 1
+navigation_layer_0/layers = 1
+sources/0 = SubResource("TileSetAtlasSource_mikbt")
+
+[node name="Tiles" type="TileMapLayer"]
+tile_set = SubResource("TileSet_j5785")
+script = ExtResource("2_mikbt")

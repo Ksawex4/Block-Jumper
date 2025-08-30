@@ -1,0 +1,42 @@
+[gd_scene load_steps=7 format=3 uid="uid://cqx8mt1calvhl"]
+
+[ext_resource type="Script" uid="uid://bh4apw6w7bmf6" path="res://Scripts/Characters/Enemies/spamguy.gd" id="1_crk3p"]
+[ext_resource type="Texture2D" uid="uid://badqcpmmkcbtc" path="res://Assets/Sprites/Characters/Enemies/Ksawton.png" id="2_1ti0o"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_crk3p"]
+size = Vector2(124, 123)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jrtis"]
+size = Vector2(32, 63)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hjtj8"]
+size = Vector2(42, 48)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w5le7"]
+size = Vector2(56, 110)
+
+[node name="Spamguy" type="CharacterBody2D" groups=["spamton"]]
+collision_layer = 4
+collision_mask = 5
+script = ExtResource("1_crk3p")
+metadata/damage = 50
+
+[node name="BDSpamguy" type="CollisionShape2D" parent="."]
+position = Vector2(2, -2.5)
+shape = SubResource("RectangleShape2D_crk3p")
+disabled = true
+
+[node name="Brunton1" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_jrtis")
+disabled = true
+
+[node name="Brunton2" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_hjtj8")
+disabled = true
+
+[node name="Ksawton" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_w5le7")
+disabled = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_1ti0o")

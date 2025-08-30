@@ -1,0 +1,111 @@
+[gd_scene load_steps=12 format=3 uid="uid://b37to0sdnfys5"]
+
+[ext_resource type="Script" uid="uid://b06luvv3xkhjf" path="res://Scripts/Characters/Players/player.gd" id="1_j1j6g"]
+[ext_resource type="Texture2D" uid="uid://co6u0el55quo6" path="res://Assets/Sprites/Characters/Quack.jpg" id="2_apm7n"]
+[ext_resource type="Texture2D" uid="uid://bh8dptg4s6jfu" path="res://Assets/Sprites/Characters/Players/sprFency.png" id="2_j1j6g"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_014rp"]
+size = Vector2(31.8, 31.8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yavni"]
+atlas = ExtResource("2_apm7n")
+region = Rect2(0, 0, 192, 151)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_apm7n"]
+atlas = ExtResource("2_j1j6g")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_014rp"]
+atlas = ExtResource("2_j1j6g")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_424lp"]
+atlas = ExtResource("2_j1j6g")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_stg6i"]
+atlas = ExtResource("2_j1j6g")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_l4cu0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yavni")
+}],
+"loop": true,
+"name": &"CurseOfADuck",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_apm7n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_014rp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_424lp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_stg6i")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j1j6g"]
+size = Vector2(31.8, 31.8)
+
+[node name="Fency" type="CharacterBody2D" groups=["players"]]
+collision_layer = 2
+script = ExtResource("1_j1j6g")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+texture_filter = 1
+shape = SubResource("RectangleShape2D_014rp")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-4.76837e-07, 0)
+sprite_frames = SubResource("SpriteFrames_l4cu0")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_j1j6g")
+
+[node name="HPBar" type="Control" parent="."]
+z_index = 1
+layout_mode = 3
+anchors_preset = 0
+offset_left = -26.0
+offset_top = -39.0
+offset_right = 26.0
+offset_bottom = -21.0
+
+[node name="Bar" type="ColorRect" parent="HPBar"]
+layout_mode = 0
+offset_right = 52.0
+offset_bottom = 18.0
+color = Color(0.0431373, 0.235294, 0.521569, 1)
+
+[node name="HP" type="ColorRect" parent="HPBar"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 2.0
+offset_right = 50.0
+offset_bottom = 16.0
+color = Color(0.215686, 0.368627, 0.592157, 1)
+
+[node name="Label" type="Label" parent="HPBar"]
+layout_mode = 0
+offset_left = 1.0
+offset_top = -3.0
+offset_right = 51.0
+offset_bottom = 20.0
+text = "10/20"
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

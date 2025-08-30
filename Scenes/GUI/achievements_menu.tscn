@@ -1,0 +1,26 @@
+[gd_scene load_steps=2 format=3 uid="uid://cvv0gpubt765j"]
+
+[ext_resource type="Script" uid="uid://sfm6lo2jtr1j" path="res://Scripts/GUI/achievements_menu.gd" id="1_ujtx3"]
+
+[node name="AchievementsMenu" type="Window"]
+process_mode = 3
+title = "Achievements"
+initial_position = 1
+size = Vector2i(250, 250)
+visible = false
+script = ExtResource("1_ujtx3")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+texture_filter = 1
+offset_top = 32.0
+offset_right = 250.0
+offset_bottom = 248.0
+bbcode_enabled = true
+
+[node name="ResetAchievements" type="Button" parent="."]
+offset_right = 250.0
+offset_bottom = 31.0
+text = "Reset ALL Achievements"
+
+[connection signal="close_requested" from="." to="." method="_on_close_requested"]
+[connection signal="pressed" from="ResetAchievements" to="." method="_on_reset_achievements_pressed"]

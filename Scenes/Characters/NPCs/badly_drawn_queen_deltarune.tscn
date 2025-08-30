@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=3 uid="uid://c63w3cme0mfpt"]
+
+[ext_resource type="Script" uid="uid://b2ruvv8adbswl" path="res://Scripts/Characters/NPCs/badly_drawn_queen_deltarune.gd" id="1_05l0v"]
+[ext_resource type="Texture2D" uid="uid://dvsfhukspkyvg" path="res://Assets/Sprites/Characters/NPCs/BadlyDrawnQueen.png" id="2_wvl3v"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_33tp5"]
+size = Vector2(83, 102)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y36py"]
+size = Vector2(83, 102)
+
+[node name="BadlyDrawnQueenDeltarune" type="CharacterBody2D" groups=["npcs"]]
+script = ExtResource("1_05l0v")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1.5, 5)
+shape = SubResource("RectangleShape2D_33tp5")
+disabled = true
+
+[node name="Sprite2D" type="Sprite2D" parent="." groups=["npcs"]]
+texture = ExtResource("2_wvl3v")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(1.5, 5)
+shape = SubResource("RectangleShape2D_y36py")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -40.0
+offset_top = -69.0
+offset_right = 43.0
+offset_bottom = -46.0
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

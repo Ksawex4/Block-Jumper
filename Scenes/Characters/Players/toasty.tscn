@@ -1,0 +1,90 @@
+[gd_scene load_steps=8 format=3 uid="uid://tk6vu5tms825"]
+
+[ext_resource type="Script" uid="uid://b06luvv3xkhjf" path="res://Scripts/Characters/Players/player.gd" id="1_3sgq3"]
+[ext_resource type="Texture2D" uid="uid://bavnratvhdd3r" path="res://Assets/Sprites/Characters/Players/Toasty.png" id="2_0yfl2"]
+[ext_resource type="Texture2D" uid="uid://co6u0el55quo6" path="res://Assets/Sprites/Characters/Quack.jpg" id="2_7jdxq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7jdxq"]
+size = Vector2(31.8, 28.8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rjyu4"]
+atlas = ExtResource("2_7jdxq")
+region = Rect2(0, 0, 192, 151)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rjyu4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rjyu4")
+}],
+"loop": true,
+"name": &"CurseOfADuck",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_0yfl2")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qbh40"]
+size = Vector2(32, 29)
+
+[node name="Toasty" type="CharacterBody2D" groups=["players"]]
+collision_layer = 2
+script = ExtResource("1_3sgq3")
+whoAmI = "Toasty"
+gravityDifference = 600.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+texture_filter = 1
+position = Vector2(0, 1.5)
+shape = SubResource("RectangleShape2D_7jdxq")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_rjyu4")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 1.5)
+shape = SubResource("RectangleShape2D_qbh40")
+
+[node name="HPBar" type="Control" parent="."]
+z_index = 1
+layout_mode = 3
+anchors_preset = 0
+offset_left = -26.0
+offset_top = -39.0
+offset_right = 26.0
+offset_bottom = -21.0
+
+[node name="Bar" type="ColorRect" parent="HPBar"]
+layout_mode = 0
+offset_right = 52.0
+offset_bottom = 18.0
+color = Color(0.54902, 0.54902, 0.54902, 1)
+
+[node name="HP" type="ColorRect" parent="HPBar"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 2.0
+offset_right = 50.0
+offset_bottom = 16.0
+color = Color(0.917647, 0.858824, 0.705882, 1)
+
+[node name="Label" type="Label" parent="HPBar"]
+layout_mode = 0
+offset_left = 1.0
+offset_top = -3.0
+offset_right = 51.0
+offset_bottom = 20.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "10/20"
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
