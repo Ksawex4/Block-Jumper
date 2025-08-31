@@ -20,6 +20,7 @@ func _ready() -> void:
 	SignalMan.connect("UpdateControls", Callable(self, "_update_controls"))
 	_update_bar()
 	checkIfDuck()
+	$AnimatedSprite2D.play("default")
 #func _ready():
 	#print("xSpeed: {speed}".format({"speed": xSpeed})) this is how to fuck a string, 2025-07-20 14:40
 
