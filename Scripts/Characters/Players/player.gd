@@ -31,10 +31,10 @@ func _spawn_bouncy():
 	instance.position = position
 
 func _physics_process(delta: float) -> void:
-	if Input.is_key_pressed(KEY_B) and !Input.is_key_pressed(KEY_CTRL) and PlayerStats.DebugMode:
+	if Input.is_action_pressed("SpawnBouncy_onurB") and PlayerStats.DebugMode:
 		_spawn_bouncy()
 	
-	if Input.is_key_pressed(KEY_CTRL) and Input.is_key_pressed(KEY_B) and PlayerStats.DebugMode:
+	if Input.is_action_pressed("DeleteAllBouncy_onurBs") and PlayerStats.DebugMode:
 		for child in get_tree().current_scene.get_children():
 			if child.scene_file_path.get_file().get_basename() == "bouncy_onurb":
 				child.queue_free()

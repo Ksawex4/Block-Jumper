@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://c0egin0l7hc2v"]
+[gd_scene load_steps=12 format=3 uid="uid://c0egin0l7hc2v"]
 
 [ext_resource type="Script" uid="uid://b1dycgqretdd5" path="res://Scripts/Objects/Others/smooth_camera.gd" id="1_eudxl"]
 [ext_resource type="Script" uid="uid://bpuwan8cjogfr" path="res://Scripts/label.gd" id="2_6oxvd"]
@@ -7,6 +7,8 @@
 [ext_resource type="Script" uid="uid://c32f4t1p3pdlb" path="res://Scripts/GUI/joyknob.gd" id="5_4chum"]
 [ext_resource type="Texture2D" uid="uid://du54mdekovu47" path="res://Assets/Sprites/GUI/MobileButtons/Pause.png" id="6_4chum"]
 [ext_resource type="Texture2D" uid="uid://cgmam0rrrv7f2" path="res://Assets/Sprites/GUI/MobileButtons/SwitchPlayer.png" id="7_mkhw6"]
+[ext_resource type="Texture2D" uid="uid://g7bsrts3djrh" path="res://Assets/Sprites/GUI/MobileButtons/SpawnBouncy_onurB.png" id="8_b7i7j"]
+[ext_resource type="Texture2D" uid="uid://f47t28vuhy2s" path="res://Assets/Sprites/GUI/MobileButtons/DeleteAllBouncy_onurBs.png" id="9_svihx"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_yj5kq"]
 radius = 48.0
@@ -88,6 +90,18 @@ visibility_mode = 1
 position = Vector2(512, -281)
 texture_normal = ExtResource("7_mkhw6")
 action = "SwitchPlayer"
+visibility_mode = 1
+
+[node name="SpawnBouncy" type="TouchScreenButton" parent="MobileControls"]
+position = Vector2(656, -146)
+texture_normal = ExtResource("8_b7i7j")
+action = "SpawnBouncy_onurB"
+visibility_mode = 1
+
+[node name="DeleteBouncy" type="TouchScreenButton" parent="MobileControls"]
+position = Vector2(656, -58)
+texture_normal = ExtResource("9_svihx")
+action = "DeleteAllBouncy_onurBs"
 visibility_mode = 1
 
 [connection signal="button_down" from="MobileControls/Joystick/Button" to="MobileControls/Joystick/joyknob" method="_on_button_button_down"]

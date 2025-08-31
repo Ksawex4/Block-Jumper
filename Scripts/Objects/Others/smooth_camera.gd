@@ -32,12 +32,19 @@ func _physics_process(delta: float) -> void:
 			PlayerStats.FollowWho = "Toasty"
 	elif Input.is_action_just_pressed("SwitchPlayer"):
 		var alivePlayers = get_tree().get_nodes_in_group("players")
-		print(":3")
 		if alivePlayers.size() > 1:
 			var currentPlayerIndex = alivePlayers.find(NovaFunc.GetPlayerFromGroup(PlayerStats.FollowWho))
 			if currentPlayerIndex != -1:
 				var nextPlayerIndex = (currentPlayerIndex + 1) % alivePlayers.size()
 				PlayerStats.FollowWho = alivePlayers[nextPlayerIndex].name
+	
+	if LevelMan.Os == "Android":
+		if !PlayerStats.DebugMode:
+			$MobileControls/SpawnBouncy.visible = false
+			$MobileControls/DeleteBouncy.visible = false
+		else:
+			$MobileControls/SpawnBouncy.visible = true
+			$MobileControls/DeleteBouncy.visible = true
 	
 	if $Achievement.position != targetAchievementPos:
 		$Achievement.position = lerp($Achievement.position, targetAchievementPos, 0.1)

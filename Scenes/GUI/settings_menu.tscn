@@ -42,12 +42,10 @@ label_settings = SubResource("LabelSettings_wlny4")
 [node name="Label2" type="Label" parent="DebugMode"]
 layout_mode = 0
 offset_top = 32.0
-offset_right = 105.0
-offset_bottom = 133.0
+offset_right = 271.0
+offset_bottom = 83.0
 text = "B - spawn bouncy onurb
-Ctrl + B - remove all bouncy onurbs
-(this doesn't work currently on mobile,
-but will probably work later)"
+Ctrl + B - remove all bouncy onurbs"
 
 [node name="MaxFPS" type="LineEdit" parent="."]
 offset_left = 245.0
