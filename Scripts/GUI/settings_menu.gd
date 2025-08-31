@@ -39,11 +39,11 @@ func _on_max_fps_text_submitted(new_text: String) -> void:
 		$MaxFPS.text = ""
 
 func _on_debug_mode_pressed() -> void:
-	if PlayerStats.DebugMode:
-		
-		get_tree().change_scene_to_file("res://Scenes/Levels/title_screen.tscn")
 	PlayerStats.DebugMode = not PlayerStats.DebugMode
 	$DebugMode.text = "DebugMode %s" % PlayerStats.DebugMode
+	if !PlayerStats.DebugMode:
+		get_tree().paused = false
+		get_tree().change_scene_to_file("res://Scenes/Levels/title_screen.tscn")
 
 func _on_controls_pressed() -> void:
 	$ControlsMenu.show()
