@@ -16,7 +16,7 @@ func _ready() -> void:
 			else:
 				print("Failed to create Block_Jumper folder in ", OS.get_system_dir(OS.SYSTEM_DIR_DOCUMENTS) + "/Nova-Games/")
 	$AnimatedSprite2D.play("default")
-	NovaFunc.ResetAllGlobalsToDefault(false, true, false, true)
+	NovaFunc.ResetAllGlobalsToDefault(false, true, false)
 
 func _physics_process(_delta: float) -> void:
 	$Camera2D.position = lerp($Camera2D.position, TargetCamPos, 0.05)

@@ -3,7 +3,7 @@ extends Control
 var targetPosForBatons = Vector2(-355.0, -42.5)
 
 func _on_new_game_pressed() -> void:
-	NovaFunc.ResetAllGlobalsToDefault(false, true, false, false)
+	NovaFunc.ResetAllGlobalsToDefault(false, true, false)
 	ToastEventMan.GetNewToastAndStartEvent()
 	LevelMan.ChangeLevel("res://Scenes/Levels/trash_room.tscn")
 
@@ -14,7 +14,7 @@ func _on_load_game_pressed() -> void:
 	if !LevelMan.CanPlayerSave:
 		$LoadGame.queue_free()
 	else:
-		NovaFunc.ResetAllGlobalsToDefault(false, true, false, false)
+		NovaFunc.ResetAllGlobalsToDefault(false, true, false)
 		SaveMan.LoadGame()
 
 func _on_achievements_pressed() -> void:

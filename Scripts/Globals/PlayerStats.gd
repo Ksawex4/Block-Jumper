@@ -37,7 +37,7 @@ func CheckIfAnyoneIsAlive():
 	if true in stats:
 		return
 	else:
-		NovaFunc.ResetAllGlobalsToDefault(false, true, false, false)
+		NovaFunc.ResetAllGlobalsToDefault(false, true, false)
 		SignalMan.emit_signal("ChangedLevel")
 		LevelMan.ChangeLevel("res://Scenes/Levels/title_screen.tscn")
 

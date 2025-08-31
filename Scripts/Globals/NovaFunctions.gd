@@ -10,9 +10,9 @@ func GetPlayerFromGroup(playerName: String):
 	else:
 		push_warning("players group does not exist in current scene")
 
-func ResetAllGlobalsToDefault(resetControls, resetPlayerStats, resetAchievements, resetSalt) -> void:
+func ResetAllGlobalsToDefault(resetControls, resetPlayerStats, resetAchievements) -> void:
 	AchievMan.ResetVariablesToDefault(resetAchievements)
 	InputMan.ResetVariablesToDefault(resetControls)
-	LevelMan.ResetVariablesToDefault(resetSalt)
+	LevelMan.ResetVariablesToDefault()
 	PlayerStats.ResetVariablesToDefault(resetPlayerStats)
 	ToastEventMan.ResetVariablesToDefault()

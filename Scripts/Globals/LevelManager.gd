@@ -4,7 +4,6 @@ var Gravity = 600.0
 var PersistenceKeys = []
 var BeansAreToasts = false
 var CanPlayerSave = true
-var SaltniczkaRandomNumber = randi_range(0,100)
 var FlyingThingAlive = false
 var Os = OS.get_name() # Android, Windows, Linux
 
@@ -14,14 +13,11 @@ func _ready() -> void:
 func ChangeLevel(path: String):
 	get_tree().call_deferred("change_scene_to_file", path)
 
-func ResetVariablesToDefault(ResetSol) -> void:
+func ResetVariablesToDefault() -> void:
 	Gravity = 600.0
 	PersistenceKeys = []
 	BeansAreToasts = false
 	CanPlayerSave = true
-	if ResetSol:
-		SaltniczkaRandomNumber = randi_range(0,100)
-		FlyingThingAlive = false
 
 func OnLevelChanged() -> void:
 	if FlyingThingAlive and get_tree().current_scene.scene_file_path.get_file() != "title_screen.tscn":
