@@ -153,7 +153,7 @@ position = Vector2(272, 144)
 [node name="Players" type="Node2D" parent="."]
 
 [node name="Fency" parent="Players" instance=ExtResource("5_6qss2")]
-position = Vector2(2137, 659)
+position = Vector2(466, 47)
 
 [node name="PanLoduwka" parent="Players" instance=ExtResource("6_i6uot")]
 position = Vector2(497, 5)

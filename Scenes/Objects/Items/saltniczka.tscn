@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://chihoo373bwy7"]
 
-[ext_resource type="Script" uid="uid://dddr0co05nm6b" path="res://Scenes/Objects/Items/saltniczka.gd" id="1_6gbhy"]
+[ext_resource type="Script" uid="uid://dddr0co05nm6b" path="res://Scripts/Objects/Items/saltniczka.gd" id="1_6gbhy"]
 [ext_resource type="Texture2D" uid="uid://busfbqah2sxym" path="res://Assets/Sprites/Objects/Items/saltniczka.png" id="1_gi8p6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6gbhy"]

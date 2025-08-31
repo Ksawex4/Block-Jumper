@@ -19,7 +19,6 @@ func GetNewToastAndStartEvent() -> void:
 func GetToastEvent() -> String:
 	match Toast:
 		4: return "ToastAchievementSound"
-		# 16: "RandomKeys" im not sure about this one
 		28: return "SpamQueen"
 		37: return "RandomDuckPlayer"
 		48: return "ToastyBeans"
