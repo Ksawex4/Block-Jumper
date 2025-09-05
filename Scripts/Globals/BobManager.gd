@@ -9,6 +9,7 @@ var Done = false
 var SpawnedBobs = false
 var FailToLoad = false
 var CanSpawnBouncy_onurB = false
+var CanBobsScale = false
 
 func _ready() -> void:
 	if LevelMan.Os != "Android" and FileAccess.file_exists("user://The Bobs have awoken.BOB") or LevelMan.Os == "Android" and SaveMan.AndroidFileExists("The Bobs have awoken.BOB"):
@@ -19,7 +20,6 @@ func _ready() -> void:
 			file = SaveMan.AndroidFileGet("The Bobs have awoken.BOB")
 		if file:
 			var data = SaveMan.DecodeAndParse(file.get_as_text())
-			print(data)
 			SavedBobs = data["Bob"]
 			file.close()
 			if SavedBobs == -999:
@@ -57,7 +57,9 @@ func _process(_delta: float) -> void:
 	if SavedBobs >= 8:
 		RemoveEveryPlayerExceptFency()
 		CanSpawnBouncy_onurB = true
-	if SavedBobs == 9:
+	if SavedBobs >= 9:
+		CanBobsScale = true
+	if SavedBobs == 10:
 		FailToLoad = true
 
 func ResetVariablesToDefault() -> void:

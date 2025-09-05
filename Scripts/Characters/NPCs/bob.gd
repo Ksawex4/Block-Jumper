@@ -5,6 +5,7 @@ var canGlitch: bool
 var canMoveThings: bool
 var canAddVelocity: bool
 var canSpawnBouncy: bool
+var canScale: bool
 @export var chillGuy := false
 
 func _ready() -> void:
@@ -42,8 +43,11 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		
 		if randi_range(1,100) == 37:
 			if canMoveThings != null and canMoveThings:
-				body.position += Vector2(randi_range(-1,1),randi_range(-1,1))
+				body.position += Vector2(randi_range(-5,5),randi_range(-5,5))
 				body.rotation += randf_range(-0.1,0.1)
+			
+			if canScale != null and canScale:
+				body.scale = Vector2(randf_range(0.5, 5), randf_range(0.5, 5))
 			
 			if canGlitch != null and canGlitch == true:
 				if body.has_node("Sprite2D") or body.has_node("AnimatedSprite2D") or body is TileMapLayer:
@@ -66,3 +70,4 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 				canMoveThings = BobMan.CanBobsMoveThings
 				canAddVelocity = BobMan.CanBobsAddVelocity
 				canSpawnBouncy = BobMan.CanSpawnBouncy_onurB
+				canScale = BobMan.CanBobsScale
