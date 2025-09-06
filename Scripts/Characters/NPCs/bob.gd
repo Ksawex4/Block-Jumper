@@ -7,6 +7,10 @@ var canAddVelocity: bool
 var canSpawnBouncy: bool
 var canScale: bool
 @export var chillGuy := false
+@export var isQuiet:= false
+@export var whichTexture := "Bob"
+@export var spin := false
+var spinSpeed = randf_range(0.01,0.1)
 
 func _ready() -> void:
 	players = get_tree().get_nodes_in_group("players")
@@ -15,8 +19,17 @@ func _ready() -> void:
 		var instance = bouncy.instantiate()
 		get_tree().current_scene.add_child(instance)
 		instance.position = position
+	if !isQuiet:
+		$AudioStreamPlayer.autoplay = true
+		$AudioStreamPlayer.play()
+		
+	var texture = load("res://Assets/Sprites/Characters/NPCs/BOBER.png".replace("BOBER", whichTexture))
+	if texture:
+		$Sprite2D.texture = load("res://Assets/Sprites/Characters/NPCs/BOBER.png".replace("BOBER", whichTexture))
 
 func _physics_process(_delta: float) -> void:
+	if spin:
+		global_rotation += spinSpeed
 	if !chillGuy:
 		if players:
 			var player = players.pick_random()
