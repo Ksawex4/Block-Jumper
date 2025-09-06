@@ -30,8 +30,10 @@ size = Vector2(32, 32)
 
 [node name="KillBlock" type="CharacterBody2D" groups=["enemies"]]
 collision_layer = 4
-collision_mask = 2
+collision_mask = 3
 script = ExtResource("1_e3at7")
+canMove = null
+canJump = null
 metadata/damage = 5
 metadata/instanceID = "kill_block_1270202106"
 

@@ -65,6 +65,8 @@ size = Vector2(59, 53)
 [node name="Bean" type="CharacterBody2D"]
 collision_layer = 8
 script = ExtResource("1_2xqpn")
+canMove = null
+canJump = null
 metadata/beans = 1
 metadata/instanceID = "bean_1154445053"
 
