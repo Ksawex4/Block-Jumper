@@ -101,10 +101,12 @@ func CheckIfShouldSpawnBob() -> void:
 	if players != null and len(players) != 0:
 		for player in players:
 			if player != null:
-				if player.position.y >= BobSpawnYPos:
+				if player.position.y >= BobSpawnYPos and SavedBobs >= 0:
 					BobSpawnYPos = 999999999999999
 					AddBobAndEnd()
 					break
+				elif player.position.y >= BobSpawnYPos * 1.5 and get_tree().current_scene.scene_file_path.get_file() != "the_void_lands.tscn":
+					LevelMan.ChangeLevel("res://Scenes/Levels/the_void_lands.tscn")
 
 func AddBobAndEnd() -> void:
 	SaveBobs()
@@ -124,7 +126,7 @@ func Bob6():
 	if !Done and get_tree().current_scene:
 		Done = true
 		print("worked 1")
-		var songs = ["souMainMenu.ogg", "souTrash.ogg", "souZworkaSong.ogg", "sOuZWOrkASOOOOOnG.ogg"]
+		var songs = ["souMainMenu.ogg", "souTrash.ogg", "souZworkaSong.ogg", "sOuZWOrkASOOOOOnG.ogg", "newbob.ogg"]
 		print(songs)
 		if len(songs) != 0:
 			for song in songs:

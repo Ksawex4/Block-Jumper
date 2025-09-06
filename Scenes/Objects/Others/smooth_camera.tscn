@@ -93,12 +93,14 @@ action = "SwitchPlayer"
 visibility_mode = 1
 
 [node name="SpawnBouncy" type="TouchScreenButton" parent="MobileControls"]
+visible = false
 position = Vector2(656, -146)
 texture_normal = ExtResource("8_b7i7j")
 action = "SpawnBouncy_onurB"
 visibility_mode = 1
 
 [node name="DeleteBouncy" type="TouchScreenButton" parent="MobileControls"]
+visible = false
 position = Vector2(656, -58)
 texture_normal = ExtResource("9_svihx")
 action = "DeleteAllBouncy_onurBs"

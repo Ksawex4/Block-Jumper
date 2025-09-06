@@ -75,6 +75,7 @@ position = Vector2(-657, 104)
 [node name="Bob" parent="NPCs" instance=ExtResource("10_otg74")]
 position = Vector2(-110, 238)
 chillGuy = true
+whichTexture = "NormalBob1"
 
 [node name="Interractables" type="Node2D" parent="."]
 
