@@ -1,6 +1,6 @@
 extends Window
 
-var text = "[color=yellow]Your current achievements ACH/7:[/color]\n"
+var text = "[color=yellow]Your current achievements ACH/8:[/color]\n"
 var achTemplate = "[img]res://Assets/Sprites/Achievements/ACHIEVEMENT.png[/img]\n"
 
 func _ready() -> void:

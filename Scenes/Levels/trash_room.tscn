@@ -43,14 +43,20 @@ tile_map_data = PackedByteArray("AAD//wEAAAABAAAAAAD+/wEAAAABAAAAAAD//wIAAAABAAA
 
 [node name="KillBlock" parent="Enemies" instance=ExtResource("6_kkbg5")]
 position = Vector2(176, 176)
+canMove = false
+canJump = false
 metadata/instanceID = "kill_block_2085878802"
 
 [node name="KillBlock2" parent="Enemies" instance=ExtResource("6_kkbg5")]
 position = Vector2(1201, -400)
+canMove = false
+canJump = false
 metadata/instanceID = "kill_block_2085878802"
 
 [node name="KillBlock3" parent="Enemies" instance=ExtResource("6_kkbg5")]
 position = Vector2(-1840, -272)
+canMove = false
+canJump = false
 metadata/instanceID = "kill_block_2085878802"
 
 [node name="Items" type="Node2D" parent="."]
