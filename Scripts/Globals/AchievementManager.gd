@@ -1,51 +1,56 @@
 extends Node
 
-var Achievements := []
-var AchievementsToShow := []
-var AchievementSound = "res://Assets/Audio/SFX/souAch.wav"
-var CanPlayerGetAchievements = true
+var Achievements: Array = []
+var AchievementsToShow: Array = []
+var AchievementSound: String = "res://Assets/Audio/SFX/souAch.wav"
+var CanPlayerGetAchievements: bool = true
 
 func _ready() -> void:
 	LoadAchievements()
+	print("[AchievementManager.gd] Loaded")
 
 func AddAchievement(Ach: String) -> void:
 	if !Achievements.has(Ach) and !PlayerStats.DebugMode and CanPlayerGetAchievements:
 		Achievements.append(Ach)
 		AchievementsToShow.append(Ach)
-		SaveAchievements()
+		print("[AchievementManager.gd] Added Achievement '", Ach, "'")
 		SignalMan.emit_signal("UpdateAchievements")
 
-func SaveAchievements():
-	var data = {
+func SaveAchievements() -> void:
+	var data: Dictionary = {
 		"Achievements": Achievements
 	}
-	var encodedString = SaveMan.Encode(data)
+	var encodedString: String = SaveMan.Encode(data)
 	if LevelMan.Os != "Android":
-		var file = FileAccess.open("user://Achievements.bj", FileAccess.WRITE)
+		var file: FileAccess = FileAccess.open("user://Achievements.bj", FileAccess.WRITE)
 		file.store_string(encodedString)
 		file.close()
+		print("[AchievementsManager.gd] Saved Achievements '", data, "' as Achievements.bj")
 	else:
 		SaveMan.AndroidSave(encodedString, "Achievements.bj")
 
-func LoadAchievements():
+func LoadAchievements() -> void:
 	if FileAccess.file_exists("user://Achievements.bj") and LevelMan.Os != "Android" or LevelMan.Os == "Android" and SaveMan.AndroidFileExists("Achievements.bj"):
-		var file
+		var file: FileAccess
 		if LevelMan.Os != "Android":
 			file = FileAccess.open("user://Achievements.bj", FileAccess.READ)
 		else:
 			file = SaveMan.AndroidFileGet("Achievements.bj")
 		if file != null:
-			var data = SaveMan.DecodeAndParse(file.get_as_text())
-			if data is Dictionary:
-				Achievements = data["Achievements"]
+			var data: Dictionary = SaveMan.DecodeAndParse(file.get_as_text())
+			Achievements = data["Achievements"]
+			print("[AchievementManager.gd] Loaded Achievements '", data, "' from Achievements.bj")
 		
 
-func ChangeAchievementSound(soundFilePath) -> void:
+func ChangeAchievementSound(soundFilePath: String) -> void:
 	AchievementSound = soundFilePath
+	print("[AchievementManager.gd] Changed achievement sound to '", soundFilePath, "'")
 
-func ResetVariablesToDefault(resetAchievements) -> void:
+func ResetVariablesToDefault(resetAchievements: bool=false) -> void:
 	if resetAchievements:
 		Achievements = []
 		AchievementsToShow = []
 		SignalMan.emit_signal("UpdateAchievements")
+		print("[AchievementManager.gd] Reseted Achievements")
 	AchievementSound = "res://Assets/Audio/SFX/souAch.wav"
+	print("[AchievementManager.gd] Reseted Achievement Sound")

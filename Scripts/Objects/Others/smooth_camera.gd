@@ -1,41 +1,40 @@
 extends Camera2D
 
-var maxSmoothSpeed = 1000
-var playerControls
-var isShowingAchievement := false
-var targetAchievementPos := Vector2(-452, -200)
-var targetBeansPos := Vector2(-347, -198)
-var achievementHidden = true
-var achTemplate = "[img]res://Assets/Sprites/Achievements/ACHIEVEMENT.png[/img]"
+var maxSmoothSpeed: int = 1000
+var isShowingAchievement: bool = false
+var targetAchievementPos: Vector2 = Vector2(-452, -200)
+var targetBeansPos: Vector2 = Vector2(-347, -198)
+var achievementHidden: bool = true
+var achTemplate: String = "[img]res://Assets/Sprites/Achievements/ACHIEVEMENT.png[/img]"
 
-func _ready() -> void:
-	playerControls = InputMan.AllPlayerControls
+#func _ready() -> void:
+	#playerControls = InputMan.AllPlayerControls
 
 func _physics_process(delta: float) -> void:
-	var node = NovaFunc.GetPlayerFromGroup(PlayerStats.FollowWho)
+	var node: Node2D = NovaFunc.GetPlayerFromGroup(PlayerStats.FollowWho)
 	if node != null:
 		if node.velocity.x > maxSmoothSpeed or node.velocity.y > maxSmoothSpeed:
 			position = node.position
 		else:
 			position = lerp(position, node.position, 6.0 * delta)
 	else:
-		var player = get_tree().get_first_node_in_group("players")
+		var player: Node2D = get_tree().get_first_node_in_group("players")
 		if player != null:
 			PlayerStats.FollowWho = player.name
 	
-	if LevelMan.Os != "Android":
-		if Input.is_key_pressed(playerControls["Fency"]["cam"]) and NovaFunc.GetPlayerFromGroup("Fency") != null:
-			PlayerStats.FollowWho = "Fency"
-		elif Input.is_key_pressed(playerControls["PanLoduwka"]["cam"]) and NovaFunc.GetPlayerFromGroup("PanLoduwka") != null:
-			PlayerStats.FollowWho = "PanLoduwka"
-		elif Input.is_key_pressed(playerControls["Toasty"]["cam"]) and NovaFunc.GetPlayerFromGroup("Toasty") != null:
-			PlayerStats.FollowWho = "Toasty"
+	
+	if Input.is_action_pressed("FencyCam") and NovaFunc.GetPlayerFromGroup("Fency") != null:
+		PlayerStats.FollowWho = "Fency"
+	elif Input.is_action_pressed("PanLoduwkaCam") and NovaFunc.GetPlayerFromGroup("PanLoduwka") != null:
+		PlayerStats.FollowWho = "PanLoduwka"
+	elif Input.is_action_just_pressed("ToastyCam") and NovaFunc.GetPlayerFromGroup("Toasty") != null:
+		PlayerStats.FollowWho = "Toasty"
 	elif Input.is_action_just_pressed("SwitchPlayer"):
-		var alivePlayers = get_tree().get_nodes_in_group("players")
+		var alivePlayers: Array = get_tree().get_nodes_in_group("players")
 		if alivePlayers.size() > 1:
-			var currentPlayerIndex = alivePlayers.find(NovaFunc.GetPlayerFromGroup(PlayerStats.FollowWho))
+			var currentPlayerIndex: int = alivePlayers.find(NovaFunc.GetPlayerFromGroup(PlayerStats.FollowWho))
 			if currentPlayerIndex != -1:
-				var nextPlayerIndex = (currentPlayerIndex + 1) % alivePlayers.size()
+				var nextPlayerIndex: int = (currentPlayerIndex + 1) % alivePlayers.size()
 				PlayerStats.FollowWho = alivePlayers[nextPlayerIndex].name
 	
 	if LevelMan.Os == "Android":
@@ -56,8 +55,8 @@ func _physics_process(delta: float) -> void:
 	if achievementHidden and AchievMan.AchievementsToShow != []:
 		_showAchievements(AchievMan.AchievementsToShow.pop_front())
 
-func _showAchievements(ach):
-	var achievement = achTemplate.replace("ACHIEVEMENT", ach)
+func _showAchievements(ach: String) -> void:
+	var achievement: String = achTemplate.replace("ACHIEVEMENT", ach)
 	achievementHidden = false
 	targetAchievementPos = Vector2(-355, -200)
 	targetBeansPos = Vector2(-347, -166)

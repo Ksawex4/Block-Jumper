@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://cgr5yq0b3lq60"]
+[gd_scene load_steps=7 format=3 uid="uid://cgr5yq0b3lq60"]
 
 [ext_resource type="Texture2D" uid="uid://b6wt7a2ttj22b" path="res://Assets/Sprites/Characters/NPCs/Bob.png" id="1_8eqm1"]
 [ext_resource type="Script" uid="uid://cprxa2mlq6llu" path="res://Scripts/Characters/NPCs/bob.gd" id="1_jdacs"]
+[ext_resource type="PackedScene" uid="uid://b83uowllfiji" path="res://Scenes/Characters/NPCs/bouncy_onurb.tscn" id="2_uewa2"]
 [ext_resource type="AudioStream" uid="uid://cw6f7wr0uds25" path="res://Assets/Audio/SFX/souBob.wav" id="3_uewa2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3gcl8"]
@@ -13,6 +14,7 @@ size = Vector2(20, 30)
 [node name="Bob" type="CharacterBody2D"]
 process_mode = 3
 script = ExtResource("1_jdacs")
+bouncy_onurb = ExtResource("2_uewa2")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_8eqm1")

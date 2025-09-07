@@ -1,8 +1,8 @@
 extends CharacterBody2D
 
-var Speed = 5400
-var direction = [1, -1].pick_random()
-var wallCooldown = 0.0
+var Speed: int = 5400
+var direction: int = [1, -1].pick_random()
+var wallCooldown: float = 0.0
 
 func _physics_process(delta: float) -> void:
 	if !is_on_floor():

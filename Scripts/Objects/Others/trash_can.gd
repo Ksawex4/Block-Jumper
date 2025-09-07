@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
-var isColliding := false
-@export var isInfinite := false
+var isColliding: bool = false
+@export var isInfinite: bool= false
 
 func _ready() -> void:
 	if isInfinite:
@@ -22,9 +22,10 @@ func _process(_delta: float) -> void:
 		if !isInfinite:
 			queue_free()
 
-func _spawn_spam_guy():
-	var shouldSpawn = randf_range(0.0, 10.0)
+func _spawn_spam_guy() -> void:
+	var shouldSpawn: float = randf_range(0.0, 10.0)
 	if shouldSpawn < 2.0:
-		var spam = preload("res://Scenes/Characters/Enemies/spamguy.tscn").instantiate()
+		print("[trash_can.gd] Spawned a spamguy")
+		var spam: Node2D = preload("res://Scenes/Characters/Enemies/spamguy.tscn").instantiate()
 		spam.position = Vector2(position.x + 100, position.y)
 		get_tree().current_scene.add_child(spam)

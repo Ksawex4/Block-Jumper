@@ -1,18 +1,23 @@
 extends Node
 
-func GetPlayerFromGroup(playerName: String):
-	var allPlayers = get_tree().get_nodes_in_group("players")
+func _ready() -> void:
+	print("[NovaFunctions.gd] Loaded")
+
+func GetPlayerFromGroup(playerName: String) -> Node2D:
+	var allPlayers: Array = get_tree().get_nodes_in_group("players")
 	if allPlayers:
-		for player in allPlayers:
+		for player: Node2D in allPlayers:
 			if player.name == playerName:
 				return player
-		return null
+		return
 	else:
-		push_warning("players group does not exist in current scene")
+		push_warning("[NovaFunctions.gd] Players group does not exist in current scene")
+		return
 
-func ResetAllGlobalsToDefault(resetControls, resetPlayerStats, resetAchievements) -> void:
+func ResetAllGlobalsToDefault(resetPlayerStats: bool=false, resetAchievements: bool=false) -> void:
+	print("[NovaFunctions.gd] Reseting all variables, PlayerStats: ", resetPlayerStats, ", Achievements: ", resetAchievements)
 	AchievMan.ResetVariablesToDefault(resetAchievements)
-	InputMan.ResetVariablesToDefault(resetControls)
+	InputMan.ResetVariablesToDefault()
 	LevelMan.ResetVariablesToDefault()
 	PlayerStats.ResetVariablesToDefault(resetPlayerStats)
 	ToastEventMan.ResetVariablesToDefault()

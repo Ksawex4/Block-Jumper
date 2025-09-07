@@ -1,19 +1,21 @@
 extends Node
 
-var GameVersion = ProjectSettings.get_setting("application/config/version")
-var AndroidSaveDirectory = OS.get_system_dir(OS.SYSTEM_DIR_DOCUMENTS) + "/Nova-Games/Block-Jumper/"
+var GameVersion: Variant = ProjectSettings.get_setting("application/config/version")
+var AndroidSaveDirectory: String = OS.get_system_dir(OS.SYSTEM_DIR_DOCUMENTS) + "/Nova-Games/Block-Jumper/"
 
-func Encode(data: Dictionary):
-	var jsonStr = JSON.stringify(data)
-	var encoded = Marshalls.utf8_to_base64(jsonStr) # yup, encoding in this game is pretty simple, so if you want to cheat, go on, im not stopping you, just there might be a possibility of some things breaking
-	return encoded
+func _ready() -> void:
+	print("[SaveManager.gd] Loaded")
 
-func DecodeAndParse(encodedString):
-	var decoded = Marshalls.base64_to_utf8(encodedString)
+func Encode(data: Dictionary) -> String:
+	var jsonStr: String = JSON.stringify(data) # yup, encoding in this game is pretty simple, so if you want to cheat, go on, im not stopping you, just there might be a possibility of some things breaking
+	return Marshalls.utf8_to_base64(jsonStr)
+
+func DecodeAndParse(encodedString: String) -> Variant:
+	var decoded: String = Marshalls.base64_to_utf8(encodedString)
 	return JSON.parse_string(decoded)
 
-func SaveGame(pos):
-	var data = {
+func SaveGame(pos: Vector2) -> void:
+	var data: Dictionary = {
 		"Version": GameVersion,
 		"xPos": pos.x,
 		"yPos": pos.y,
@@ -24,25 +26,26 @@ func SaveGame(pos):
 		"Chip": PlayerStats.Chip,
 		"Toast": ToastEventMan.Toast
 	}
-	var encodedStr = Encode(data)
+	var encodedStr: String = Encode(data)
 	if LevelMan.Os == "Android":
 		AndroidSave(encodedStr, "Save.bj")
 	else:
-		var file = FileAccess.open("user://Save.bj", FileAccess.WRITE)
+		var file: FileAccess = FileAccess.open("user://Save.bj", FileAccess.WRITE)
 		file.store_string(encodedStr)
 		file.close()
+		print("[SaveManager.gd] Saved the game, data: ", data)
 
-func LoadGame():
+func LoadGame() -> void:
 	if FileAccess.file_exists("user://Save.bj") and LevelMan.Os != "Android" or LevelMan.Os == "Android" and AndroidFileExists("Save.bj"):
-		var file
+		var file: FileAccess
 		if LevelMan.Os != "Android":
 			file = FileAccess.open("user://Save.bj", FileAccess.READ)
 		else:
 			file = AndroidFileGet("Save.bj")
 		if file:
-			var data = DecodeAndParse(file.get_as_text())
-			var level
-			var loadPos
+			var data: Dictionary = DecodeAndParse(file.get_as_text())
+			var level: String
+			var loadPos: Vector2
 			if data is Dictionary:
 				loadPos = Vector2(data["xPos"], data["yPos"])
 				PlayerStats.AllPlayerStats = data["AllPlayerStats"]
@@ -58,24 +61,24 @@ func LoadGame():
 				for x in get_tree().get_nodes_in_group("players"):
 					x.position = loadPos 
 
-func AndroidSave(data, fileName):
-	var fullPath = AndroidSaveDirectory + fileName
+func AndroidSave(data: String, fileName: String) -> void:
+	var fullPath: String = AndroidSaveDirectory + fileName
 	if !DirAccess.dir_exists_absolute(AndroidSaveDirectory):
-		var error = DirAccess.make_dir_recursive_absolute(AndroidSaveDirectory)
+		var error: Error = DirAccess.make_dir_recursive_absolute(AndroidSaveDirectory)
 		if error == OK:
-			print("created Block_Jumper folder in ", OS.get_system_dir(OS.SYSTEM_DIR_DOCUMENTS))
+			print("[SaveManager.gd] Created Block_Jumper folder in ", OS.get_system_dir(OS.SYSTEM_DIR_DOCUMENTS))
 		else:
-			print("Failed to create Block_Jumper folder in ", OS.get_system_dir(OS.SYSTEM_DIR_DOCUMENTS))
-	var file = FileAccess.open(fullPath, FileAccess.WRITE)
+			print("[SaveManager.gd] Failed to create Block_Jumper folder in ", OS.get_system_dir(OS.SYSTEM_DIR_DOCUMENTS))
+	var file: FileAccess = FileAccess.open(fullPath, FileAccess.WRITE)
 	if file:
 		file.store_string(data)
 		file.close()
-		print("Saved the game in ", AndroidSaveDirectory)
+		print("[SaveManager.gd] Saved the game in ", AndroidSaveDirectory, " data: ", data)
 
-func AndroidFileGet(FileName):
+func AndroidFileGet(FileName: String) -> FileAccess:
 	return FileAccess.open(AndroidSaveDirectory + FileName, FileAccess.READ_WRITE)
 
-func AndroidFileExists(FileName):
+func AndroidFileExists(FileName: String) -> bool:
 	if FileAccess.file_exists(AndroidSaveDirectory + FileName):
 		return true
 	return false

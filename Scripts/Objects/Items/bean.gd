@@ -1,38 +1,38 @@
 @tool
 extends CharacterBody2D
-var gaveBean = false
-var toast = false
-@export var canMove := false
-@export var canJump := false
-var speed = randi_range(7000, 10000)
-var jumpHeight = randf_range(-300, -450)
-var direction = [-1, 1].pick_random()
-var wallCooldown = 0.0
+var gaveBean: bool = false
+var toast: bool = false
+@export var canMove: bool = false
+@export var canJump: bool = false
+var speed: int = randi_range(7000, 10000)
+var jumpHeight: float = randf_range(-300, -450)
+var direction: int = [-1, 1].pick_random()
+var wallCooldown: float = 0.0
 
-func _ready():
+func _ready() -> void:
 	if Engine.is_editor_hint():
 		if !has_meta("instanceID"):
 			_generate_unique_id()
 	
 	if has_meta("instanceID") and !Engine.is_editor_hint():
-		var myUniqueId = get_meta("instanceID")
+		var myUniqueId: String = get_meta("instanceID")
 		if LevelMan.PersistenceKeys.has(myUniqueId):
 			queue_free()
 		$AnimatedSprite2D.play()
 	else:
 		push_error("NO INSTANCE ID")
 
-func _generate_unique_id():
-	var sceneName = ""
+func _generate_unique_id() -> void:
+	var sceneName: String = ""
 	if get_owner() and get_owner().get_scene_file_path():
 		sceneName = get_owner().get_scene_file_path().get_file().get_basename()
 	elif get_scene_file_path():
 		sceneName = get_scene_file_path().get_file().get_basename()
 	else:
-		sceneName = get_name() # Fallback if no scene path
+		sceneName = get_name()
 
-	var uniqueSuffix = str(hash(get_path())) # Stable unique hash based on node path
-	var generatedId = "%s_%s" % [sceneName, uniqueSuffix]
+	var uniqueSuffix: String = str(hash(get_path()))
+	var generatedId: String = "%s_%s" % [sceneName, uniqueSuffix]
 
 	set_meta("instanceID", generatedId)
 
@@ -59,4 +59,5 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 	if NovaFunc.GetPlayerFromGroup(body.name) and !gaveBean:
 		gaveBean = true
 		PlayerStats.AddBeans(1)
+		print("[bean.gd, ", self.name, "] Added 1 Bean, player now has: ", PlayerStats.GetBeans(), " Beans")
 		queue_free()

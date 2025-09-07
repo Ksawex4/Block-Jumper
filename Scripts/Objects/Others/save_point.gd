@@ -1,8 +1,8 @@
 extends CharacterBody2D
 
-var isColliding = false
-var save = false
-@export var alwaysFailToSave := false
+var isColliding: bool = false
+var save: bool = false
+@export var alwaysFailToSave: bool = false
 
 func _ready() -> void:
 	$AnimatedSprite2D.play("default")
@@ -17,6 +17,7 @@ func _process(_delta: float) -> void:
 	if save:
 		save = false
 		if LevelMan.CanPlayerSave and !alwaysFailToSave:
+			print("[save_point.gd] Saving the game")
 			SaveMan.SaveGame(global_position)
 		else:
 			$AudioStreamPlayer.stream = load("res://Assets/Audio/SFX/souSaveFail.wav")

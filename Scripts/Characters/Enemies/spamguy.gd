@@ -1,11 +1,11 @@
 extends CharacterBody2D
 
-var speed = 100
-var direction := 1
-var wallCooldown := 0.0
+var speed: int = 100
+var direction: int = 1
+var wallCooldown: float = 0.0
 
 func _ready() -> void:
-	var rand = randi_range(0,4)
+	var rand: int = randi_range(0,4)
 	AchievMan.AddAchievement("Trash")
 	match rand:
 		0:
@@ -28,6 +28,7 @@ func _ready() -> void:
 			$BDSpamQueen.disabled = false
 			$Sprite2D.texture = load("res://Assets/Sprites/Characters/Enemies/BadlyDrawnSpamQueen.png")
 			speed = 7000
+	print("[spamguy.gd] Spawned as: ", $Sprite2D.texture.resource_path)
 
 func _physics_process(delta: float) -> void:
 	if !is_on_floor():

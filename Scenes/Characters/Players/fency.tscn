@@ -1,6 +1,7 @@
-[gd_scene load_steps=12 format=3 uid="uid://b37to0sdnfys5"]
+[gd_scene load_steps=13 format=3 uid="uid://b37to0sdnfys5"]
 
 [ext_resource type="Script" uid="uid://b06luvv3xkhjf" path="res://Scripts/Characters/Players/player.gd" id="1_j1j6g"]
+[ext_resource type="PackedScene" uid="uid://b83uowllfiji" path="res://Scenes/Characters/NPCs/bouncy_onurb.tscn" id="2_014rp"]
 [ext_resource type="Texture2D" uid="uid://co6u0el55quo6" path="res://Assets/Sprites/Characters/Quack.jpg" id="2_apm7n"]
 [ext_resource type="Texture2D" uid="uid://bh8dptg4s6jfu" path="res://Assets/Sprites/Characters/Players/sprFency.png" id="2_j1j6g"]
 
@@ -61,6 +62,7 @@ size = Vector2(31.8, 31.8)
 [node name="Fency" type="CharacterBody2D" groups=["players"]]
 collision_layer = 2
 script = ExtResource("1_j1j6g")
+bouncy_onurb = ExtResource("2_014rp")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false

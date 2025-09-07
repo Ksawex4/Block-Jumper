@@ -1,6 +1,6 @@
 extends Window
 
-var vsync
+var vsync: bool
 
 func _ready() -> void:
 	if DisplayServer.window_get_vsync_mode() == 0:
@@ -29,7 +29,7 @@ func _on_close_requested() -> void:
 	hide()
 
 func _on_max_fps_text_submitted(new_text: String) -> void:
-	var FPS = int(new_text)
+	var FPS: int = int(new_text)
 	if FPS >= 0:
 		Engine.max_fps = FPS
 		if FPS != 0:
