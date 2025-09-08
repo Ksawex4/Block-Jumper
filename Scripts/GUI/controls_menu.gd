@@ -23,7 +23,7 @@ func _update_all_labels() -> void:
 	_update_label($PanLoduwkaCam, "PanLoduwkaCam", "Cam")
 	print("[controls_menu.gd] Updated all control labels")
 
-func _update_label(node: Node2D, actionName: String, keybind: String) -> void:
+func _update_label(node: Button, actionName: String, keybind: String) -> void:
 	node.text = keybind + ": " + str(OS.get_keycode_string(InputMan.GetInputKey(actionName).physical_keycode))
  
 func _input(event: InputEvent) -> void:

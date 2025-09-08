@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://xh68prap5akj"]
+[gd_scene load_steps=24 format=3 uid="uid://xh68prap5akj"]
 
 [ext_resource type="Texture2D" uid="uid://swlt67kvlp7u" path="res://Assets/Sprites/Backgrounds/MainMenu.png" id="1_kysdl"]
 [ext_resource type="Script" uid="uid://dsrlsr0niy3rt" path="res://Scripts/GUI/title_buttons.gd" id="1_roj86"]
@@ -22,6 +22,9 @@
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_w4sgk"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_sufyd"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_72p0a"]
+font_size = 14
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_72p0a"]
 
@@ -79,6 +82,18 @@ theme_override_styles/hover = SubResource("StyleBoxEmpty_kjbj0")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_w4sgk")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_sufyd")
 icon = ExtResource("3_h4qv3")
+
+[node name="Information" type="Label" parent="TitleButtons/LoadGame"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = -91.0
+offset_right = 191.0
+offset_bottom = -2.0
+text = "This save was made in a
+different version of this 
+game, there is a possibility 
+of some things breaking."
+label_settings = SubResource("LabelSettings_72p0a")
 
 [node name="Achievements" type="Button" parent="TitleButtons"]
 layout_mode = 0

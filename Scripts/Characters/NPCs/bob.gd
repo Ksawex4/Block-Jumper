@@ -32,7 +32,7 @@ func _physics_process(_delta: float) -> void:
 		global_rotation += spinSpeed
 	if !chillGuy:
 		if players:
-			var player: Node2D = players.pick_random()
+			var player = players.pick_random()
 			if player:
 				var playerx: float = player.position.x
 				var playery: float = player.position.y 

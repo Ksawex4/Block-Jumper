@@ -43,28 +43,28 @@ func _process(_delta: float) -> void:
 	if SavedBobs >= 2:
 		CanBobsGlitch = true
 	if SavedBobs >= 3:
+		CanBobsAddVelocity = true
+	if SavedBobs >= 4:
 		CanBobsMoveThings = true
-	if SavedBobs >= 4 and SavedBobs != 6 and SavedBobs != 8:
+	if SavedBobs >= 5 and SavedBobs != 7 and SavedBobs != 9:
 		if get_tree().current_scene != null:
 			if get_tree().current_scene.has_node("AudioStreamPlayer"):
 				var music: AudioStreamPlayer = get_tree().current_scene.get_node("AudioStreamPlayer")
 				if music.stream.resource_path != "res://Assets/Audio/Music/sOuZWOrkASOOOOOnG.ogg":
 					music.stream = load("res://Assets/Audio/Music/sOuZWOrkASOOOOOnG.ogg")
 					music.play()
-	if SavedBobs >= 5:
-		CanBobsAddVelocity = true
-	if SavedBobs == 6:
-		Bob6()
+	if SavedBobs >= 6:
+		CanBobsScale = true
 	if SavedBobs == 7:
+		Bob6()
+	if SavedBobs == 8:
 		AudioServer.set_bus_mute(AudioServer.get_bus_index("Master"), true)
 		RemoveEveryPlayerExceptFency()
 		RemoveEveryEnemy()
 		RemoveEveryNPC()
-	if SavedBobs >= 8:
+	if SavedBobs >= 9:
 		RemoveEveryPlayerExceptFency()
 		CanSpawnBouncy_onurB = true
-	if SavedBobs >= 9:
-		CanBobsScale = true
 	if SavedBobs == 10:
 		FailToLoad = true
 
@@ -143,7 +143,7 @@ func Bob6() -> void:
 		if len(songs) != 0:
 			for song: String in songs:
 				var path: String = "res://Assets/Audio/Music/" + song
-				var streamer: Resource = load(path)
+				var streamer = load(path)
 				if streamer:
 					var audiPlayer: AudioStreamPlayer = AudioStreamPlayer.new()
 					audiPlayer.stream = streamer
@@ -159,7 +159,7 @@ func Undone() -> void:
 
 func RemoveEveryPlayerExceptFency() -> void:
 	var players: Array = get_tree().get_nodes_in_group("players")
-	if players:
+	if players and players != []:
 		for player: Node2D in players:
 			if player.name != "Fency":
 				player.queue_free()
@@ -168,11 +168,11 @@ func RemoveEveryPlayerExceptFency() -> void:
 func RemoveEveryEnemy() -> void:
 	var enemies: Array =  get_tree().get_nodes_in_group("enemies")
 	var trashCans: Array = get_tree().get_nodes_in_group("trash_cans")
-	if enemies:
+	if enemies and enemies != []:
 		for enemy: Node2D in enemies:
 			enemy.queue_free()
 		print("[BobManager.gd] Deleted all Enemies")
-	if trashCans:
+	if trashCans and trashCans != []:
 		for trash: Node2D in trashCans:
 			trash.queue_free()
 		print("[BobManager.gd] Deleted all Trash Cans")
@@ -180,7 +180,7 @@ func RemoveEveryEnemy() -> void:
 
 func RemoveEveryNPC() -> void:
 	var npcs: Array = get_tree().get_nodes_in_group("npcs")
-	if npcs:
+	if npcs and npcs != []:
 		for npc: Node2D in npcs:
 			npc.queue_free()
 		print("[BobManager.gd] Deleted all NPCs")

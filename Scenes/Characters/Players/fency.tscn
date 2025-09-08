@@ -65,7 +65,6 @@ script = ExtResource("1_j1j6g")
 bouncy_onurb = ExtResource("2_014rp")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 texture_filter = 1
 shape = SubResource("RectangleShape2D_014rp")
 
@@ -74,7 +73,6 @@ position = Vector2(-4.76837e-07, 0)
 sprite_frames = SubResource("SpriteFrames_l4cu0")
 
 [node name="Area2D" type="Area2D" parent="."]
-visible = false
 collision_layer = 0
 collision_mask = 4
 

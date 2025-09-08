@@ -19,6 +19,7 @@ func _process(_delta: float) -> void:
 		if LevelMan.CanPlayerSave and !alwaysFailToSave:
 			print("[save_point.gd] Saving the game")
 			SaveMan.SaveGame(global_position)
+			AchievMan.SaveAchievements()
 		else:
 			$AudioStreamPlayer.stream = load("res://Assets/Audio/SFX/souSaveFail.wav")
 		$AudioStreamPlayer.play()

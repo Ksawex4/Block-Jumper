@@ -141,13 +141,13 @@ LevelPath = "res://Scenes/Levels/trash_room.tscn"
 [node name="Players" type="Node2D" parent="."]
 
 [node name="Fency" parent="Players" instance=ExtResource("1_evn5t")]
-position = Vector2(513, -63)
+position = Vector2(-400, 112)
 
 [node name="PanLoduwka" parent="Players" instance=ExtResource("7_dnb4f")]
-position = Vector2(-410, 64)
+position = Vector2(-201, 106)
 
 [node name="Toasty" parent="Players" instance=ExtResource("8_qf8mx")]
-position = Vector2(-497, 109)
+position = Vector2(-496, 112)
 
 [node name="SmoothCamera" parent="." instance=ExtResource("7_xam02")]
 

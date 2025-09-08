@@ -2,6 +2,18 @@ extends Control
 
 var targetPosForBatons: Vector2 = Vector2(-355.0, -42.5)
 
+func _ready() -> void:
+	if FileAccess.file_exists("user://Save.bj") or SaveMan.AndroidFileExists("Save.bj"):
+		var file: FileAccess
+		if LevelMan.Os == "Android":
+			file = SaveMan.AndroidFileGet("Save.bj")
+		else:
+			file = FileAccess.open("user://Save.bj", FileAccess.READ)
+			if file:
+				var data: Dictionary = SaveMan.DecodeAndParse(file.get_as_text())
+				if data["Version"] != SaveMan.GameVersion:
+					$LoadGame/Information.show()
+
 func _on_new_game_pressed() -> void:
 	NovaFunc.ResetAllGlobalsToDefault(true, false)
 	ToastEventMan.GetNewToastAndStartEvent()
