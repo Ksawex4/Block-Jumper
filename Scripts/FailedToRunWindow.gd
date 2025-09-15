@@ -12,4 +12,8 @@ func _on_button_pressed() -> void:
 			file.store_string(SaveMan.Encode(data))
 			file.close()
 			print("[FailedToRunWindow.gd] Saved Bobs, data: ", data)
-	get_tree().quit()
+		if !PlayerStats.SpeedrunMode:
+			get_tree().quit()
+		else:
+			get_tree().reload_current_scene()
+			BobMan.ResetVariablesToDefault()

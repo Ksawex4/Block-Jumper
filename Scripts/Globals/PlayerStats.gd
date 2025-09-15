@@ -11,6 +11,8 @@ var Chip: bool = false
 var DebugMode: bool = false
 var DuckPlayers: Array = []
 var JoystickPosVector: Vector2 = Vector2(0,0)
+var SpeedrunMode: bool = false
+var SpeedrunModeRandomSaltniczka: bool = true
 
 func _ready() -> void:
 	print("[PlayerStats.gd] Loaded")

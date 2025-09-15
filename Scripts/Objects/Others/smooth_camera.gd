@@ -52,6 +52,10 @@ func _physics_process(delta: float) -> void:
 	
 	$Beans.text = "Beans: " + str(PlayerStats.GetBeans())
 	
+	if PlayerStats.SpeedrunMode:
+		$SpeedrunTimer.show()
+		$SpeedrunTimer.text = str(LevelMan.SpeedrunTimer["Hours"]) + ":" + str(LevelMan.SpeedrunTimer["Minutes"]) + ":" + str(LevelMan.SpeedrunTimer["Seconds"]) + ":" + str(LevelMan.SpeedrunTimer["Frames"])
+	
 	if achievementHidden and AchievMan.AchievementsToShow != []:
 		_showAchievements(AchievMan.AchievementsToShow.pop_front())
 

@@ -6,7 +6,6 @@ const SpamtonSpritePath: String = "res://Assets/Sprites/Characters/Enemies/Badly
 
 func _ready() -> void:
 	SignalMan.connect("ChangedLevel", Callable(self, "ToastProcessing"))
-	GetNewToastAndStartEvent()
 	print("[ToastEventManager.gd] Loaded")
 
 func _process(_delta: float) -> void:
@@ -31,7 +30,9 @@ func ToastProcessing() -> void:
 	var event: String = GetToastEvent()
 	await get_tree().create_timer(0.1).timeout
 	match event:
-		"ToastAchievementSound": AchievMan.ChangeAchievementSound("res://Assets/Audio/SFX/souTOASTAch.wav")
+		"ToastAchievementSound": 
+			if AchievMan.AchievementSound != "res://Assets/Audio/SFX/souTOASTAch.wav":
+				AchievMan.ChangeAchievementSound("res://Assets/Audio/SFX/souTOASTAch.wav")
 		"SpamQueen": SpamQueens()
 		"RandomDuckPlayer": ThisRandomPlayerIsNowADUCK()
 		"ToastyBeans": LevelMan.BeansAreToasts = true

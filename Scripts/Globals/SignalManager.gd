@@ -19,3 +19,5 @@ signal UpdateBars() # achievements_menu.gd
 signal ShowSettings() # pause_menu.gd/title_buttons.gd -> settings_menu.gd
 @warning_ignore("unused_signal")
 signal ChangedLevel() # LevelManager.gd
+@warning_ignore("unused_signal")
+signal ShowSpeedrunModeWindow()

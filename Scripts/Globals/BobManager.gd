@@ -34,7 +34,7 @@ func _ready() -> void:
 
 func _process(_delta: float) -> void:
 	CheckIfShouldSpawnBob()
-	if !SpawnedBobs and SavedBobs != 7:
+	if !SpawnedBobs and SavedBobs != 8:
 		SpawnBobsFromSave()
 	if SavedBobs >= 1:
 		LevelMan.CanPlayerSave = false
@@ -43,9 +43,9 @@ func _process(_delta: float) -> void:
 	if SavedBobs >= 2:
 		CanBobsGlitch = true
 	if SavedBobs >= 3:
-		CanBobsAddVelocity = true
-	if SavedBobs >= 4:
 		CanBobsMoveThings = true
+	if SavedBobs >= 4:
+		CanBobsAddVelocity = true
 	if SavedBobs >= 5 and SavedBobs != 7 and SavedBobs != 9:
 		if get_tree().current_scene != null:
 			if get_tree().current_scene.has_node("AudioStreamPlayer"):
@@ -137,13 +137,13 @@ func AddBobAndEnd() -> void:
 
 func Bob6() -> void:
 	if !Done and get_tree().current_scene:
-		print("[BobManager.gd] Bob6 started successfully")
 		Done = true
+		print("[BobManager.gd] Bob6 started successfully")
 		var songs: Array = ["souMainMenu.ogg", "souTrash.ogg", "souZworkaSong.ogg", "sOuZWOrkASOOOOOnG.ogg", "newbob.ogg"]
 		if len(songs) != 0:
 			for song: String in songs:
 				var path: String = "res://Assets/Audio/Music/" + song
-				var streamer = load(path)
+				var streamer: Resource = load(path)
 				if streamer:
 					var audiPlayer: AudioStreamPlayer = AudioStreamPlayer.new()
 					audiPlayer.stream = streamer
@@ -159,7 +159,7 @@ func Undone() -> void:
 
 func RemoveEveryPlayerExceptFency() -> void:
 	var players: Array = get_tree().get_nodes_in_group("players")
-	if players and players != []:
+	if players and players.size() != 1:
 		for player: Node2D in players:
 			if player.name != "Fency":
 				player.queue_free()

@@ -4,6 +4,7 @@ var Achievements: Array = []
 var AchievementsToShow: Array = []
 var AchievementSound: String = "res://Assets/Audio/SFX/souAch.wav"
 var CanPlayerGetAchievements: bool = true
+var AmountOfAchievements: int = 8
 
 func _ready() -> void:
 	LoadAchievements()
@@ -30,7 +31,7 @@ func SaveAchievements() -> void:
 		SaveMan.AndroidSave(encodedString, "Achievements.bj")
 
 func LoadAchievements() -> void:
-	if FileAccess.file_exists("user://Achievements.bj") and LevelMan.Os != "Android" or LevelMan.Os == "Android" and SaveMan.AndroidFileExists("Achievements.bj"):
+	if !PlayerStats.SpeedrunMode and FileAccess.file_exists("user://Achievements.bj") and LevelMan.Os != "Android" or LevelMan.Os == "Android" and SaveMan.AndroidFileExists("Achievements.bj"):
 		var file: FileAccess
 		if LevelMan.Os != "Android":
 			file = FileAccess.open("user://Achievements.bj", FileAccess.READ)

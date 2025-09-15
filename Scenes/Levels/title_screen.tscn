@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://xh68prap5akj"]
+[gd_scene load_steps=26 format=3 uid="uid://xh68prap5akj"]
 
 [ext_resource type="Texture2D" uid="uid://swlt67kvlp7u" path="res://Assets/Sprites/Backgrounds/MainMenu.png" id="1_kysdl"]
 [ext_resource type="Script" uid="uid://dsrlsr0niy3rt" path="res://Scripts/GUI/title_buttons.gd" id="1_roj86"]
@@ -8,8 +8,10 @@
 [ext_resource type="Texture2D" uid="uid://bnvxv36jc6f8" path="res://Assets/Sprites/GUI/Buttons/Achievements.png" id="4_hgm2k"]
 [ext_resource type="PackedScene" uid="uid://cvv0gpubt765j" path="res://Scenes/GUI/achievements_menu.tscn" id="6_kysdl"]
 [ext_resource type="Texture2D" uid="uid://du7ro4la741i4" path="res://Assets/Sprites/GUI/Buttons/Settings.png" id="6_oxd3l"]
+[ext_resource type="Texture2D" uid="uid://pb1vfwgvjiml" path="res://Assets/Sprites/GUI/Buttons/SpeedrunMode.png" id="8_shcqs"]
 [ext_resource type="PackedScene" uid="uid://clkawf7n1yg00" path="res://Scenes/GUI/settings_menu.tscn" id="8_w4sgk"]
 [ext_resource type="AudioStream" uid="uid://dmjhlutkjeexy" path="res://Assets/Audio/Music/souMainMenu.ogg" id="10_oxd3l"]
+[ext_resource type="PackedScene" uid="uid://bwoda6al5nah2" path="res://Scenes/GUI/speedrun_mode_menu.tscn" id="11_p5jl7"]
 [ext_resource type="PackedScene" uid="uid://cnapla1ydbe63" path="res://Scenes/Objects/Solids/tiles.tscn" id="11_vtciy"]
 [ext_resource type="PackedScene" uid="uid://chihoo373bwy7" path="res://Scenes/Objects/Items/saltniczka.tscn" id="12_72p0a"]
 
@@ -140,9 +142,26 @@ theme_override_styles/pressed = SubResource("StyleBoxEmpty_oxd3l")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_hgm2k")
 icon = ExtResource("3_sufyd")
 
+[node name="SpeedrunMode" type="Button" parent="TitleButtons"]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 191.0
+offset_right = 164.0
+offset_bottom = 231.0
+theme_override_colors/icon_hover_color = Color(1, 1, 0, 1)
+theme_override_colors/icon_pressed_color = Color(1, 0.564706, 0, 1)
+theme_override_styles/focus = SubResource("StyleBoxEmpty_72p0a")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_dgnw3")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_h4qv3")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_oxd3l")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_hgm2k")
+icon = ExtResource("8_shcqs")
+
 [node name="AchievementsMenu" parent="." instance=ExtResource("6_kysdl")]
 
 [node name="SettingsMenu" parent="." instance=ExtResource("8_w4sgk")]
+
+[node name="SpeedrunModeMenu" parent="." instance=ExtResource("11_p5jl7")]
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 process_mode = 3
@@ -160,3 +179,4 @@ scale = Vector2(0.3, 0.3)
 [connection signal="pressed" from="TitleButtons/Achievements" to="TitleButtons" method="_on_achievements_pressed"]
 [connection signal="pressed" from="TitleButtons/Settings" to="TitleButtons" method="_on_settings_pressed"]
 [connection signal="pressed" from="TitleButtons/Quit" to="TitleButtons" method="_on_quit_pressed"]
+[connection signal="pressed" from="TitleButtons/SpeedrunMode" to="TitleButtons" method="_on_speedrun_mode_pressed"]

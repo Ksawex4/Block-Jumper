@@ -1,0 +1,51 @@
+[gd_scene load_steps=2 format=3 uid="uid://bwoda6al5nah2"]
+
+[ext_resource type="Script" uid="uid://calv5yro7hme7" path="res://Scripts/GUI/speedrun_mode_menu.gd" id="1_h0r61"]
+
+[node name="SpeedrunModeMenu" type="Window"]
+title = "Speedrun Mode Settings"
+initial_position = 1
+size = Vector2i(270, 160)
+visible = false
+script = ExtResource("1_h0r61")
+
+[node name="Toast" type="LineEdit" parent="."]
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 217.0
+offset_bottom = 45.0
+placeholder_text = "Toast 0-100, -1 for random"
+
+[node name="Label" type="Label" parent="Toast"]
+layout_mode = 0
+offset_left = 216.0
+offset_top = 8.0
+offset_right = 268.0
+offset_bottom = 52.0
+text = "-1"
+
+[node name="START" type="Button" parent="."]
+offset_left = 97.0
+offset_top = 111.0
+offset_right = 184.0
+offset_bottom = 159.0
+text = "START"
+
+[node name="Saltniczka" type="Button" parent="."]
+offset_top = 48.0
+offset_right = 155.0
+offset_bottom = 93.0
+text = "Random Saltniczka"
+
+[node name="Label" type="Label" parent="Saltniczka"]
+layout_mode = 0
+offset_left = 157.0
+offset_top = 8.0
+offset_right = 197.0
+offset_bottom = 31.0
+text = "true"
+
+[connection signal="close_requested" from="." to="." method="_on_close_requested"]
+[connection signal="text_submitted" from="Toast" to="." method="_on_toast_text_submitted"]
+[connection signal="pressed" from="START" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="Saltniczka" to="." method="_on_saltniczka_pressed"]

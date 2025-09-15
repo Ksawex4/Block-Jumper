@@ -41,3 +41,6 @@ func _on_settings_pressed() -> void:
 
 func _physics_process(_delta: float) -> void:
 	position = lerp(position, targetPosForBatons, 0.05)
+
+func _on_speedrun_mode_pressed() -> void:
+	SignalMan.emit_signal("ShowSpeedrunModeWindow")

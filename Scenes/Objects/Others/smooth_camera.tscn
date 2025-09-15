@@ -23,9 +23,9 @@ script = ExtResource("1_eudxl")
 
 [node name="Label" type="Label" parent="."]
 process_mode = 3
-offset_left = -19.0
+offset_left = -355.0
 offset_top = -63.0
-offset_right = 21.0
+offset_right = -315.0
 offset_bottom = -40.0
 script = ExtResource("2_6oxvd")
 
@@ -105,6 +105,13 @@ position = Vector2(656, -58)
 texture_normal = ExtResource("9_svihx")
 action = "DeleteAllBouncy_onurBs"
 visibility_mode = 1
+
+[node name="SpeedrunTimer" type="Label" parent="."]
+offset_left = -44.0
+offset_top = -200.0
+offset_right = 45.0
+offset_bottom = -177.0
+text = "Timer: x:x:x"
 
 [connection signal="button_down" from="MobileControls/Joystick/Button" to="MobileControls/Joystick/joyknob" method="_on_button_button_down"]
 [connection signal="button_up" from="MobileControls/Joystick/Button" to="MobileControls/Joystick/joyknob" method="_on_button_button_up"]

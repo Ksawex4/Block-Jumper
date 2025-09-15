@@ -1,6 +1,6 @@
 extends Window
 
-var text: String = "[color=yellow]Your current achievements ACH/8:[/color]\n"
+var text: String = "[color=yellow]Your current achievements ACH/" + str(AchievMan.AmountOfAchievements) + ":[/color]\n"
 var achTemplate: String = "[img]res://Assets/Sprites/Achievements/ACHIEVEMENT.png[/img]\n"
 
 func _ready() -> void:
