@@ -7,7 +7,8 @@ var CanPlayerSave: bool = true
 var FlyingThingAlive: bool = false
 var Os: String = OS.get_name() # Android, Windows, Linux
 var SpeedrunTimer: Dictionary = {"Hours": 0, "Minutes": 0, "Seconds": 0, "Frames": 0}
-
+var LevelPath: String = "res://Scenes/Levels/LEVELL.tscn"
+var flyingThing := preload("uid://bvptmfk8ofbv7")
 
 func _ready() -> void:
 	SignalMan.connect("ChangedLevel", Callable(self, "OnLevelChanged"))
@@ -27,10 +28,10 @@ func _physics_process(_delta: float) -> void:
 		SpeedrunTimer["Minutes"] -= 60
 		SpeedrunTimer["Hours"] += 1
 
-func ChangeLevel(path: String) -> void:
-	get_tree().call_deferred("change_scene_to_file", path)
-	print("[LevelManager.gd] Changed level to '", path, "'
-	===== LEVEL ", path.get_file().get_basename(), " =====")
+func ChangeLevel(levelName: String) -> void:
+	get_tree().call_deferred("change_scene_to_file", LevelPath.replace("LEVELL", levelName))
+	print("[LevelManager.gd] Changed level to '", LevelPath.replace("LEVELL", levelName), "'
+	===== LEVEL ", levelName, " =====")
 
 func ResetVariablesToDefault() -> void:
 	Gravity = 600.0
@@ -41,6 +42,6 @@ func ResetVariablesToDefault() -> void:
 
 func OnLevelChanged() -> void:
 	if FlyingThingAlive and get_tree().current_scene.scene_file_path.get_file() != "title_screen.tscn":
-		var FlyingThing: Node2D = load("res://Scenes/Characters/Enemies/flying_thing.tscn").instantiate()
+		var FlyingThing: Node2D = flyingThing.instantiate()
 		FlyingThing.position = Vector2(0,0)
 		get_tree().current_scene.call_deferred("add_child", FlyingThing)

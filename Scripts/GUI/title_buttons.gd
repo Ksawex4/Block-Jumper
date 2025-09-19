@@ -18,7 +18,7 @@ func _on_new_game_pressed() -> void:
 	NovaFunc.ResetAllGlobalsToDefault(true, false)
 	ToastEventMan.GetNewToastAndStartEvent()
 	print("[title_buttons, New] Started New game")
-	LevelMan.ChangeLevel("res://Scenes/Levels/trash_room.tscn")
+	LevelMan.ChangeLevel("trash_room")
 
 func _on_quit_pressed() -> void:
 	print("[title_buttons, Quit] Quitting")

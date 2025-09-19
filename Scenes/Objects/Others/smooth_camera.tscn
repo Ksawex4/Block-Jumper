@@ -107,6 +107,7 @@ action = "DeleteAllBouncy_onurBs"
 visibility_mode = 1
 
 [node name="SpeedrunTimer" type="Label" parent="."]
+visible = false
 offset_left = -44.0
 offset_top = -200.0
 offset_right = 45.0

@@ -133,3 +133,6 @@ func getJoystickAxis() -> Vector2:
 		if Input.is_action_pressed(controls["Jump"]):
 			axis.y = -1
 	return(axis)
+
+func hurt(damage: int) -> void:
+	PlayerStats.Hurt(whoAmI, damage)

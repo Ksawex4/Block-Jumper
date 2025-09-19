@@ -1,0 +1,33 @@
+[gd_scene load_steps=4 format=3 uid="uid://bhpncggoodwp6"]
+
+[ext_resource type="Script" uid="uid://cuswh1opk5622" path="res://Scripts/Characters/Enemies/rat.gd" id="1_vxr17"]
+[ext_resource type="Texture2D" uid="uid://dmqakg24p7wcm" path="res://Assets/Sprites/Characters/NPCs/rat.png" id="2_vxr17"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vxr17"]
+size = Vector2(26, 22)
+
+[node name="Rat" type="CharacterBody2D"]
+collision_layer = 0
+collision_mask = 64
+script = ExtResource("1_vxr17")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(3.7252903e-07, 0)
+texture = ExtResource("2_vxr17")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_vxr17")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 30.0
+one_shot = true
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_vxr17")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

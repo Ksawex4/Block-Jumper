@@ -7,7 +7,6 @@
 [ext_resource type="PackedScene" uid="uid://clkawf7n1yg00" path="res://Scenes/GUI/settings_menu.tscn" id="3_hlwee"]
 [ext_resource type="PackedScene" uid="uid://c2ldxhh8n667v" path="res://Scenes/Characters/Enemies/kill_block.tscn" id="3_rlh2b"]
 [ext_resource type="PackedScene" uid="uid://cnapla1ydbe63" path="res://Scenes/Objects/Solids/tiles.tscn" id="3_upqtf"]
-[ext_resource type="PackedScene" uid="uid://dpmvygjq4f1hk" path="res://Scenes/Objects/Items/chip.tscn" id="5_dnb4f"]
 [ext_resource type="PackedScene" uid="uid://bnl2k01fyg3fl" path="res://Scenes/Objects/Items/bean.tscn" id="5_ebf44"]
 [ext_resource type="PackedScene" uid="uid://vdjpm6gewqvf" path="res://Scenes/Characters/Players/pan_loduwka.tscn" id="7_dnb4f"]
 [ext_resource type="PackedScene" uid="uid://c63w3cme0mfpt" path="res://Scenes/Characters/NPCs/badly_drawn_queen_deltarune.tscn" id="7_qf8mx"]
@@ -17,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://cgr5yq0b3lq60" path="res://Scenes/Characters/NPCs/bob.tscn" id="10_otg74"]
 [ext_resource type="PackedScene" uid="uid://bu2l0f1ivopr7" path="res://Scenes/Objects/Others/save_point.tscn" id="11_pu2he"]
 [ext_resource type="PackedScene" uid="uid://cjnmjspdg62mw" path="res://Scenes/Objects/Others/level_changer.tscn" id="12_hyqok"]
+[ext_resource type="PackedScene" uid="uid://cjlo1s3x0n5gb" path="res://Scenes/Objects/Others/toilet.tscn" id="13_otg74"]
 [ext_resource type="AudioStream" uid="uid://cry5a8bmqtm47" path="res://Assets/Audio/Music/souZworkaSong.ogg" id="16_gpeh8"]
 
 [node name="TestRoom" type="Node2D"]
@@ -60,9 +60,6 @@ metadata/instanceID = "test_room_4097131731"
 
 [node name="Items" type="Node2D" parent="."]
 
-[node name="Chip" parent="Items" instance=ExtResource("5_dnb4f")]
-position = Vector2(-1243, 78)
-
 [node name="Bean" parent="Items" instance=ExtResource("5_ebf44")]
 position = Vector2(-82, -70)
 metadata/instanceID = "bean_1024225080"
@@ -105,7 +102,8 @@ metadata/InstanceID = "test_room_1298975373"
 [node name="NPCs" type="Node2D" parent="."]
 
 [node name="BadlyDrawnQueenDeltarune" parent="NPCs" instance=ExtResource("7_qf8mx")]
-position = Vector2(-657, 104)
+position = Vector2(-1263, 104)
+noChip = true
 
 [node name="Bob" parent="NPCs" instance=ExtResource("10_otg74")]
 position = Vector2(-110, 238)
@@ -136,7 +134,10 @@ position = Vector2(-452, 112)
 [node name="LevelChanger" parent="Interractables" instance=ExtResource("12_hyqok")]
 position = Vector2(-108, 241)
 scale = Vector2(0.63, 0.95)
-LevelPath = "res://Scenes/Levels/trash_room.tscn"
+LevelPath = "trash_room"
+
+[node name="Toilet" parent="Interractables" instance=ExtResource("13_otg74")]
+position = Vector2(-233, 112)
 
 [node name="Players" type="Node2D" parent="."]
 

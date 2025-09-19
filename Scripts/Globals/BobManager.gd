@@ -10,6 +10,7 @@ var SpawnedBobs: bool = false
 var FailToLoad: bool = false
 var CanSpawnBouncy_onurB: bool = false
 var CanBobsScale: bool = false
+var BobScene := preload("uid://cgr5yq0b3lq60")
 
 func _ready() -> void:
 	if LevelMan.Os != "Android" and FileAccess.file_exists("user://The Bobs have awoken.BOB") or LevelMan.Os == "Android" and SaveMan.AndroidFileExists("The Bobs have awoken.BOB"):
@@ -114,7 +115,7 @@ func CheckIfShouldSpawnBob() -> void:
 					AddBobAndEnd()
 					break
 				elif player.position.y >= BobSpawnYPos * 1.5 and get_tree().current_scene.scene_file_path.get_file() != "the_void_lands.tscn":
-					LevelMan.ChangeLevel("res://Scenes/Levels/the_void_lands.tscn")
+					LevelMan.ChangeLevel("the_void_lands")
 					AchievMan.AddAchievement("TheVoidLands")
 
 func AddBobAndEnd() -> void:
@@ -131,7 +132,7 @@ func AddBobAndEnd() -> void:
 	print("[BobManager.gd] Started Fake Game Freeze")
 	await get_tree().create_timer(1.2, true).timeout
 	get_tree().paused = false
-	get_tree().change_scene_to_file("res://Scenes/boot_screen.tscn")
+	get_tree().change_scene_to_file("res://Scenes/Levels/boot_screen.tscn")
 	print("[BobManager.gd] Finished Fake Game Freeze and changed scene to boot_screen.tscn")
 	ResetVariablesToDefault()
 
@@ -190,5 +191,5 @@ func SpawnBobsFromSave() -> void:
 	var spawnedBobs: int = 0
 	if get_tree().current_scene and get_tree().current_scene.scene_file_path.get_file() != "boot_screen.tscn":
 		while spawnedBobs < SavedBobs:
-			get_tree().current_scene.add_child(load("res://Scenes/Characters/NPCs/bob.tscn").instantiate())
+			get_tree().current_scene.add_child(BobScene.instantiate())
 			spawnedBobs += 1

@@ -3,6 +3,7 @@ extends CharacterBody2D
 var isColliding: bool = false
 var save: bool = false
 @export var alwaysFailToSave: bool = false
+var saveFailSFX := preload("uid://dneayfxwqines")
 
 func _ready() -> void:
 	$AnimatedSprite2D.play("default")
@@ -21,7 +22,7 @@ func _process(_delta: float) -> void:
 			SaveMan.SaveGame(global_position)
 			AchievMan.SaveAchievements()
 		else:
-			$AudioStreamPlayer.stream = load("res://Assets/Audio/SFX/souSaveFail.wav")
+			$AudioStreamPlayer.stream = saveFailSFX
 		$AudioStreamPlayer.play()
 
 func _on_animated_sprite_2d_animation_finished() -> void:

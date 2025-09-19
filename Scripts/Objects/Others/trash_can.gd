@@ -2,10 +2,11 @@ extends CharacterBody2D
 
 var isColliding: bool = false
 @export var isInfinite: bool= false
+var infiniteTrashCanTexture := preload("uid://tj0qpeprurae")
 
 func _ready() -> void:
 	if isInfinite:
-		$Sprite2D.texture = load("res://Assets/Sprites/Objects/Others/InfiniteTrashCan.png")
+		$Sprite2D.texture = infiniteTrashCanTexture
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if NovaFunc.GetPlayerFromGroup(body.name) != null:

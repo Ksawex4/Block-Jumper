@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://cjlo1s3x0n5gb"]
+
+[ext_resource type="Script" uid="uid://0rduv2ruxmrb" path="res://Scripts/Objects/Others/toilet.gd" id="1_kv5os"]
+[ext_resource type="Texture2D" uid="uid://dfvdnmevtskjx" path="res://Assets/Sprites/Objects/Others/toilet.png" id="1_u3lhj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kv5os"]
+size = Vector2(20, 29)
+
+[node name="Toilet" type="Area2D"]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_kv5os")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_u3lhj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-3, 1.5)
+shape = SubResource("RectangleShape2D_kv5os")
+
+[node name="Label" type="Label" parent="."]
+visible = false
+offset_left = -73.0
+offset_top = -36.0
+offset_right = 73.0
+offset_bottom = -13.0
+text = "Press z to interract"
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

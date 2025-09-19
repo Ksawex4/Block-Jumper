@@ -30,6 +30,9 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.has_meta("instanceID"):
 		var instanceId: String = body.get_meta("instanceID")
 		LevelMan.PersistenceKeys.append(instanceId)
-	body.queue_free()
+	if !bodyBaseName.begins_with("boss"):
+		body.queue_free()
+	else:
+		body.health -= 20
 	PlayerStats.AllPlayerStats[who]["Stick"] = false
 	queue_free()

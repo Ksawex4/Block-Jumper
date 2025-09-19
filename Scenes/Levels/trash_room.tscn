@@ -1,6 +1,7 @@
-[gd_scene load_steps=16 format=4 uid="uid://gva2opgxecvj"]
+[gd_scene load_steps=17 format=4 uid="uid://gva2opgxecvj"]
 
 [ext_resource type="PackedScene" uid="uid://c8jjqycyb5u8t" path="res://Scenes/Objects/Others/background.tscn" id="1_npb5y"]
+[ext_resource type="Texture2D" uid="uid://chikbsgddokpq" path="res://Assets/Sprites/Backgrounds/BackgroundTrash.png" id="2_lkdxe"]
 [ext_resource type="PackedScene" uid="uid://dict2vu23hgm2" path="res://Scenes/GUI/pause_menu.tscn" id="2_xogil"]
 [ext_resource type="PackedScene" uid="uid://cvv0gpubt765j" path="res://Scenes/GUI/achievements_menu.tscn" id="3_wrhd0"]
 [ext_resource type="PackedScene" uid="uid://clkawf7n1yg00" path="res://Scenes/GUI/settings_menu.tscn" id="4_0ys6h"]
@@ -19,7 +20,7 @@
 [node name="trash_room" type="Node2D"]
 
 [node name="Background" parent="." instance=ExtResource("1_npb5y")]
-sprite = "res://Assets/Sprites/Backgrounds/BackgroundTrash.png"
+sprite = ExtResource("2_lkdxe")
 spriteSize = Vector2i(711, 431)
 spriteScale = Vector2(1, 1)
 
@@ -137,7 +138,7 @@ rotation = -1.5708
 [node name="LevelChanger" parent="Interractables" instance=ExtResource("8_6qss2")]
 position = Vector2(225, 288)
 scale = Vector2(1, 2)
-LevelPath = "res://Scenes/Levels/test_room.tscn"
+LevelPath = "test_room"
 
 [node name="Label" type="Label" parent="Interractables/LevelChanger"]
 offset_left = -98.0

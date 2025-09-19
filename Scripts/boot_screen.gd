@@ -25,7 +25,7 @@ func _physics_process(_delta: float) -> void:
 		TargetCamPos.y = 888
 	if round($Camera2D.position.y) == 888:
 		if !BobMan.FailToLoad:
-			LevelMan.ChangeLevel("res://Scenes/Levels/title_screen.tscn")
+			LevelMan.ChangeLevel("title_screen")
 		else:
 			$FailedToLoad.show()
 
