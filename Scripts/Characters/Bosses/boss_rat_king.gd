@@ -2,24 +2,30 @@ extends CharacterBody2D
 
 var health: int = 100
 signal RatThrowCheese()
-signal RatRun()
+#signal RatRun()
 var action := ""
 var cheeseObject := preload("uid://2k45qt2g31y8")
 
+func startFight() -> void:
+	$Timer.start(0.1)
+	RatThrowCheese.emit()
+	LevelMan.BossFightOn = true
+
 func _on_timer_timeout() -> void:
-	action = "smash"
+	if LevelMan.BossFightOn:
+		chooseRandomAttack()
 
 func chooseRandomAttack() -> void:
-	match randi_range(1,4):
-		1:
-			RatThrowCheese.emit()
-			$Timer.start(15.0)
-		2:
-			RatRun.emit()
-			$Timer.start(15.0)
+	match randi_range(3,4):
+		#1:
+			#RatThrowCheese.emit()
+			#$Timer.start(15.0)
+		#2:
+			#RatRun.emit()
+			#$Timer.start(1)
 		3: 
 			action = "smash"
-			$Timer.start(10.0)
+			$Timer.start(5.0)
 		4:
 			bigCheese()
 			$Timer.start(5.0)
@@ -46,6 +52,7 @@ func _physics_process(delta: float) -> void:
 	
 	move_and_slide()
 
-
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	body.hurt(25)
+	if !PlayerStats.IsPlayerAlive(body.name):
+		LevelMan.BossFightOn = false

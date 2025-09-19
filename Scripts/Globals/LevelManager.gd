@@ -9,6 +9,7 @@ var Os: String = OS.get_name() # Android, Windows, Linux
 var SpeedrunTimer: Dictionary = {"Hours": 0, "Minutes": 0, "Seconds": 0, "Frames": 0}
 var LevelPath: String = "res://Scenes/Levels/LEVELL.tscn"
 var flyingThing := preload("uid://bvptmfk8ofbv7")
+var BossFightOn := false
 
 func _ready() -> void:
 	SignalMan.connect("ChangedLevel", Callable(self, "OnLevelChanged"))
@@ -32,6 +33,7 @@ func ChangeLevel(levelName: String) -> void:
 	get_tree().call_deferred("change_scene_to_file", LevelPath.replace("LEVELL", levelName))
 	print("[LevelManager.gd] Changed level to '", LevelPath.replace("LEVELL", levelName), "'
 	===== LEVEL ", levelName, " =====")
+	BossFightOn = false
 
 func ResetVariablesToDefault() -> void:
 	Gravity = 600.0
@@ -39,6 +41,7 @@ func ResetVariablesToDefault() -> void:
 	BeansAreToasts = false
 	CanPlayerSave = true
 	print("[LevelManager.gd] Reseted variables")
+	BossFightOn = false
 
 func OnLevelChanged() -> void:
 	if FlyingThingAlive and get_tree().current_scene.scene_file_path.get_file() != "title_screen.tscn":

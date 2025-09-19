@@ -13,18 +13,29 @@ var wallCooldown: float = 0.0
 func _ready() -> void:
 	if King:
 		King.connect("RatThrowCheese", Callable(self, "cheeseThrow"))
-		King.connect("RatRun", Callable(self, "run"))
+		#King.connect("RatRun", Callable(self, "run"))
 
-func run() -> void:
-	action = "run"
-	$Timer.start(15.0)
-
+#func run() -> void:
+	#action = "run"
+	#$Timer.start(15.0)
+#
 func cheeseThrow() -> void:
-	action = "throw"
-	$Timer.start(15.0)
+	#action = "throw"
+	#$Timer.start(15.0)
+	$Timer.start(0.3)
 
 func _on_timer_timeout() -> void:
-	action = ""
+	#action = ""
+	if LevelMan.BossFightOn:
+		match randi_range(1,2):
+			1:
+				action = "run"
+				$Timer.start(15.0)
+			2:
+				action = "throw"
+				$Timer.start(15.0)
+	else:
+		action = ""
 
 func _physics_process(delta: float) -> void:
 	if action != "run":
@@ -68,3 +79,5 @@ func throwCheeseAt(player: Node2D) -> void:
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	body.hurt(1)
+	if !PlayerStats.IsPlayerAlive(body.name):
+		LevelMan.BossFightOn = false

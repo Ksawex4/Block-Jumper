@@ -36,6 +36,8 @@ func _on_attack_box_body_entered(body: Node2D) -> void:
 		$BigCheese.play()
 	else:
 		body.hurt(1)
+	if !PlayerStats.IsPlayerAlive(body.name):
+		LevelMan.BossFightOn = false
 	velocity = Vector2.ZERO
 	$AudioStreamPlayer.play()
 

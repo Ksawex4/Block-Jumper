@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=4 uid="uid://trudkfge08j3"]
+[gd_scene load_steps=28 format=4 uid="uid://trudkfge08j3"]
 
 [ext_resource type="PackedScene" uid="uid://c8jjqycyb5u8t" path="res://Scenes/Objects/Others/background.tscn" id="1_so4p6"]
 [ext_resource type="Texture2D" uid="uid://chikbsgddokpq" path="res://Assets/Sprites/Backgrounds/BackgroundTrash.png" id="2_4tsbk"]
@@ -20,12 +20,21 @@
 [ext_resource type="PackedScene" uid="uid://dkasiow3t788s" path="res://Scenes/Objects/Others/trash_can.tscn" id="11_j1apm"]
 [ext_resource type="PackedScene" uid="uid://bnl2k01fyg3fl" path="res://Scenes/Objects/Items/bean.tscn" id="12_rxrux"]
 [ext_resource type="PackedScene" uid="uid://khf6venocxir" path="res://Scenes/Characters/Bosses/boss_rat_king.tscn" id="18_j1apm"]
+[ext_resource type="Script" uid="uid://i8nws1laodyg" path="res://Scripts/Objects/Others/boss_room_entry.gd" id="19_claet"]
+[ext_resource type="Texture2D" uid="uid://buq2hue05v4d2" path="res://Assets/Sprites/Objects/Solids/sewerBlock.png" id="22_claet"]
+[ext_resource type="AudioStream" uid="uid://ctnd4mg8hrwb4" path="res://Assets/Audio/Music/thekingbelow.ogg" id="23_2pliy"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p7ck8"]
+size = Vector2(32, 288)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4tsbk"]
 size = Vector2(1306.125, 96)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3wx2x"]
 size = Vector2(41.5, 608)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2pliy"]
+size = Vector2(32, 192)
 
 [node name="Sewers" type="Node2D"]
 
@@ -196,7 +205,7 @@ isInfinite = true
 [node name="Players" type="Node2D" parent="."]
 
 [node name="Fency" parent="Players" instance=ExtResource("6_3k464")]
-position = Vector2(-2858, -92)
+position = Vector2(-1961, -86)
 
 [node name="PanLoduwka" parent="Players" instance=ExtResource("7_4gmyg")]
 position = Vector2(-34, 0)
@@ -216,6 +225,22 @@ stream = ExtResource("10_c3jp4")
 autoplay = true
 
 [node name="Boss-RatKing" type="Node2D" parent="."]
+
+[node name="RoomEntry" type="Area2D" parent="Boss-RatKing" node_paths=PackedStringArray("door", "mainLevelMusicPlayer", "bossMusicPlayer", "boss")]
+position = Vector2(-304, 0)
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+script = ExtResource("19_claet")
+door = NodePath("../Door")
+moveDoorHowMuch = Vector2(0, 192)
+mainLevelMusicPlayer = NodePath("../../AudioStreamPlayer")
+bossMusicPlayer = NodePath("../AudioStreamPlayer")
+boss = NodePath("../Boss-RatKing")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boss-RatKing/RoomEntry"]
+position = Vector2(-1951, -176)
+shape = SubResource("RectangleShape2D_p7ck8")
 
 [node name="Boss-RatKing" parent="Boss-RatKing" instance=ExtResource("18_j1apm")]
 position = Vector2(-2736, -196)
@@ -280,3 +305,39 @@ shape = SubResource("RectangleShape2D_3wx2x")
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="Boss-RatKing/BossBoundaries"]
 position = Vector2(-2059, -336)
 shape = SubResource("RectangleShape2D_3wx2x")
+
+[node name="Door" type="CharacterBody2D" parent="Boss-RatKing"]
+position = Vector2(-2128, -304)
+collision_mask = 0
+
+[node name="Sprite2D" type="Sprite2D" parent="Boss-RatKing/Door"]
+position = Vector2(0, -64)
+texture = ExtResource("22_claet")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Boss-RatKing/Door"]
+position = Vector2(0, 32)
+texture = ExtResource("22_claet")
+
+[node name="Sprite2D3" type="Sprite2D" parent="Boss-RatKing/Door"]
+position = Vector2(0, 64)
+texture = ExtResource("22_claet")
+
+[node name="Sprite2D4" type="Sprite2D" parent="Boss-RatKing/Door"]
+position = Vector2(0, -96)
+texture = ExtResource("22_claet")
+
+[node name="Sprite2D5" type="Sprite2D" parent="Boss-RatKing/Door"]
+texture = ExtResource("22_claet")
+
+[node name="Sprite2D6" type="Sprite2D" parent="Boss-RatKing/Door"]
+position = Vector2(0, -32)
+texture = ExtResource("22_claet")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boss-RatKing/Door"]
+position = Vector2(0, -16)
+shape = SubResource("RectangleShape2D_2pliy")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Boss-RatKing"]
+stream = ExtResource("23_2pliy")
+
+[connection signal="body_entered" from="Boss-RatKing/RoomEntry" to="Boss-RatKing/RoomEntry" method="_on_body_entered"]
