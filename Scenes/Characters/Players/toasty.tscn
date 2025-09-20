@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://tk6vu5tms825"]
+[gd_scene load_steps=11 format=3 uid="uid://tk6vu5tms825"]
 
 [ext_resource type="Script" uid="uid://b06luvv3xkhjf" path="res://Scripts/Characters/Players/player.gd" id="1_3sgq3"]
 [ext_resource type="Texture2D" uid="uid://bavnratvhdd3r" path="res://Assets/Sprites/Characters/Players/Toasty.png" id="2_0yfl2"]
@@ -33,6 +33,12 @@ animations = [{
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qbh40"]
 size = Vector2(32, 29)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7jdxq"]
+bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rjyu4"]
+bg_color = Color(0.91764706, 0.85882354, 0.7058824, 1)
 
 [node name="Toasty" type="CharacterBody2D" groups=["players"]]
 collision_layer = 2
@@ -77,13 +83,18 @@ offset_right = 52.0
 offset_bottom = 18.0
 color = Color(0.54902, 0.54902, 0.54902, 1)
 
-[node name="HP" type="ColorRect" parent="HPBar"]
+[node name="ProgressBar" type="ProgressBar" parent="HPBar"]
 layout_mode = 0
-offset_left = 2.0
-offset_top = 2.0
-offset_right = 50.0
-offset_bottom = 16.0
-color = Color(0.917647, 0.858824, 0.705882, 1)
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 51.0
+offset_bottom = 23.857145
+scale = Vector2(1, 0.7)
+theme_override_styles/background = SubResource("StyleBoxFlat_7jdxq")
+theme_override_styles/fill = SubResource("StyleBoxFlat_rjyu4")
+max_value = 120.0
+value = 120.0
+show_percentage = false
 
 [node name="Label" type="Label" parent="HPBar"]
 layout_mode = 0

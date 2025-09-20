@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://vdjpm6gewqvf"]
+[gd_scene load_steps=25 format=3 uid="uid://vdjpm6gewqvf"]
 
 [ext_resource type="Script" uid="uid://b06luvv3xkhjf" path="res://Scripts/Characters/Players/player.gd" id="1_6i6db"]
 [ext_resource type="PackedScene" uid="uid://b83uowllfiji" path="res://Scenes/Characters/NPCs/bouncy_onurb.tscn" id="2_ghqpk"]
@@ -127,6 +127,12 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ijean"]
 size = Vector2(26.8, 41.8)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s0i4f"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ghqpk"]
+bg_color = Color(0.21568628, 0.36862746, 0.5921569, 1)
+
 [node name="PanLoduwka" type="CharacterBody2D" groups=["players"]]
 collision_layer = 2
 script = ExtResource("1_6i6db")
@@ -169,13 +175,18 @@ offset_right = 52.0
 offset_bottom = 18.0
 color = Color(0, 0, 0, 1)
 
-[node name="HP" type="ColorRect" parent="HPBar"]
+[node name="ProgressBar" type="ProgressBar" parent="HPBar"]
 layout_mode = 0
-offset_left = 2.0
-offset_top = 2.0
-offset_right = 50.0
-offset_bottom = 16.0
-color = Color(0.215686, 0.368627, 0.592157, 1)
+offset_left = 1.0
+offset_top = 1.0000002
+offset_right = 51.0
+offset_bottom = 23.857145
+scale = Vector2(1, 0.7)
+theme_override_styles/background = SubResource("StyleBoxFlat_s0i4f")
+theme_override_styles/fill = SubResource("StyleBoxFlat_ghqpk")
+max_value = 120.0
+value = 120.0
+show_percentage = false
 
 [node name="Label" type="Label" parent="HPBar"]
 layout_mode = 0

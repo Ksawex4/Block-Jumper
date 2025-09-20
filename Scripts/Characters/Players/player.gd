@@ -102,6 +102,8 @@ func _spawn_stick() -> void:
 func _update_bar() -> void:
 	var Stats: Dictionary = PlayerStats.GetPlayerStats(whoAmI)
 	$HPBar/Label.text = "%s/%s" % [int(Stats["HP"]), int(Stats["MaxHP"])]
+	$HPBar/ProgressBar.value = int(Stats["HP"])
+	$HPBar/ProgressBar.max_value = int(Stats["MaxHP"])
 	if !PlayerStats.IsPlayerAlive(whoAmI):
 		print("[player.gd, ", self.name, "] I died")
 		queue_free()
