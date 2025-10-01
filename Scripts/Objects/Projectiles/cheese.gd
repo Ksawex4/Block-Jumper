@@ -24,6 +24,12 @@ func _on_free_box_body_entered(_body: Node2D) -> void:
 			cheestance.velocity = cheeseVelocity
 		queue_free()
 	else:
+		if randi_range(1, 40) == 14:
+			var cheestancetick = preload("uid://b335udwa3qnb").instantiate()
+			cheestancetick.noPlayer = true
+			cheestancetick.stickType = "Cheese"
+			get_tree().current_scene.call_deferred("add_child", cheestancetick)
+			cheestancetick.position = global_position
 		queue_free()
 
 func _on_attack_box_body_entered(body: Node2D) -> void:

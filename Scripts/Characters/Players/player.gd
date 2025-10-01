@@ -19,6 +19,7 @@ func _ready() -> void:
 	_update_bar()
 	checkIfDuck()
 	$AnimatedSprite2D.play("default")
+	_spawn_stick()
 #func _ready():
 	#print("xSpeed: {speed}".format({"speed": xSpeed})) this is how to fuck a string, 2025-07-20 14:40
 
@@ -52,12 +53,6 @@ func _physics_process(delta: float) -> void:
 			$AnimatedSprite2D.play("left")
 		else:
 			$AnimatedSprite2D.play("default")
-	
-	if PlayerStats.AllPlayerStats[whoAmI]["Stick"] and stickSpawnCooldown <= 0 and stickInstance == null:
-		stickSpawnCooldown = 3
-		_spawn_stick()
-	if stickSpawnCooldown > 0:
-		stickSpawnCooldown -= 1
 	
 	checkIfDuck()
 	move_and_slide()

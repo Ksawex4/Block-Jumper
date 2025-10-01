@@ -1,9 +1,9 @@
 extends Node
 
 var AllPlayerStats: Dictionary = {
-	"Fency": {"HP": 80, "MaxHP": 80, "Stick": true, "xSpeed": 9000.0, "JumpHeight": -430.0},
-	"PanLoduwka": {"HP": 100, "MaxHP": 100, "Stick": true, "xSpeed": 9000.0, "JumpHeight": -380.0},
-	"Toasty": {"HP": 80, "MaxHP": 80, "Stick": true, "xSpeed": 9000.0, "JumpHeight": -530.0}
+	"Fency": {"HP": 80, "MaxHP": 80, "Stick": true, "StickType": "Normal", "xSpeed": 9000.0, "JumpHeight": -430.0},
+	"PanLoduwka": {"HP": 100, "MaxHP": 100, "Stick": true, "StickType": "Normal", "xSpeed": 9000.0, "JumpHeight": -380.0},
+	"Toasty": {"HP": 80, "MaxHP": 80, "Stick": true, "StickType": "Normal", "xSpeed": 9000.0, "JumpHeight": -530.0}
 }
 var Beans: int = 0
 var FollowWho: String = "Fency"

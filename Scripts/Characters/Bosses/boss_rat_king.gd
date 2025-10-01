@@ -51,10 +51,11 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	body.hurt(25)
+	body.hurt(15)
 	if !PlayerStats.IsPlayerAlive(body.name):
 		LevelMan.BossFightOn = false
 		LevelMan.CamZoom = Vector2(1, 1)
+		RatStop.emit()
 
 func _on_audio_stream_player_finished() -> void:
 	LevelMan.BossFightOn = false
@@ -66,3 +67,9 @@ func takeDamage(damage: int):
 	health -= damage
 	$HealthBar/ProgressBar.value = health
 	$HealthBar/Label.text = str(health)
+	if health <= 0:
+		LevelMan.BossFightOn = false
+		RatStop.emit()
+		LevelMan.CamZoom = Vector2(1, 1)
+		AchievMan.AddAchievement("TheRatKing")
+		queue_free()
