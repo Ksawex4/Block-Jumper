@@ -36,10 +36,12 @@ polygon = PackedVector2Array(1, 18.5, 19.5, -6.5, 19.5, -18.5, -19.5, -13.5, -19
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_0cpfa")
+bus = &"SFX"
 
 [node name="BigCheese" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_35ksc")
 volume_db = 9.533
+bus = &"SFX"
 
 [connection signal="body_entered" from="AttackBox" to="." method="_on_attack_box_body_entered"]
 [connection signal="body_entered" from="FreeBox" to="." method="_on_free_box_body_entered"]

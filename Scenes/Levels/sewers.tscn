@@ -224,6 +224,7 @@ zoom = Vector2(0.55, 0.55)
 process_mode = 3
 stream = ExtResource("10_c3jp4")
 autoplay = true
+bus = &"Music"
 
 [node name="Boss-RatKing" type="Node2D" parent="."]
 
@@ -346,6 +347,7 @@ shape = SubResource("RectangleShape2D_2pliy")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Boss-RatKing"]
 stream = ExtResource("23_2pliy")
+bus = &"Music"
 
 [connection signal="body_entered" from="Boss-RatKing/RoomEntry" to="Boss-RatKing/RoomEntry" method="_on_body_entered"]
 [connection signal="finished" from="Boss-RatKing/AudioStreamPlayer" to="Boss-RatKing/Boss-RatKing" method="_on_audio_stream_player_finished"]

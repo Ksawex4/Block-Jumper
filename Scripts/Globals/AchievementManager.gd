@@ -2,7 +2,7 @@ extends Node
 
 var Achievements: Array = []
 var AchievementsToShow: Array = []
-var AchievementSound: String = "res://Assets/Audio/SFX/souAch.wav"
+var AchievementSound: String = "res://Assets/Audio/SFX/sfxAch.wav"
 var CanPlayerGetAchievements: bool = true
 var AmountOfAchievements: int = 8
 
@@ -53,5 +53,5 @@ func ResetVariablesToDefault(resetAchievements: bool=false) -> void:
 		AchievementsToShow = []
 		SignalMan.emit_signal("UpdateAchievements")
 		print("[AchievementManager.gd] Reseted Achievements")
-	AchievementSound = "res://Assets/Audio/SFX/souAch.wav"
+	AchievementSound = "res://Assets/Audio/SFX/sfxAch.wav"
 	print("[AchievementManager.gd] Reseted Achievement Sound")

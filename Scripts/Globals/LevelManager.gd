@@ -11,6 +11,8 @@ var LevelPath: String = "res://Scenes/Levels/LEVELL.tscn"
 var BossFightOn := false
 var BossCamPos := Vector2(0,0)
 var CamZoom := Vector2(1,1)
+var MusicVolume := 0.0
+var SFXVolume := 0.0
 
 func _ready() -> void:
 	SignalMan.connect("ChangedLevel", Callable(self, "OnLevelChanged"))

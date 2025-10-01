@@ -15,6 +15,19 @@ func _ready() -> void:
 	if LevelMan.Os == "Android":
 		$Controls.queue_free()
 		$ControlsMenu.queue_free()
+	
+	AudioServer.set_bus_volume_db(1, LevelMan.SFXVolume)
+	AudioServer.set_bus_volume_db(2, LevelMan.MusicVolume)
+	$SFX/HSlider.value = LevelMan.SFXVolume
+	$Music/HSlider.value = LevelMan.MusicVolume
+
+func _process(_delta: float) -> void:
+	$Music.text = "Music: " + str($Music/HSlider.value) + "DB"
+	$SFX.text = "SFX: " + str($SFX/HSlider.value) + "DB"
+	LevelMan.SFXVolume = $SFX/HSlider.value
+	LevelMan.MusicVolume = $Music/HSlider.value
+	AudioServer.set_bus_volume_db(1, LevelMan.SFXVolume)
+	AudioServer.set_bus_volume_db(2, LevelMan.MusicVolume)
 
 func _on_vsync_pressed() -> void:
 	if vsync:

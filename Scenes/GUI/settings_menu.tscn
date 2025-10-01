@@ -8,6 +8,7 @@ font_color = Color(1, 0.196078, 0, 1)
 
 [node name="SettingsMenu" type="Window"]
 process_mode = 3
+oversampling_override = 1.0
 title = "Settings"
 initial_position = 1
 size = Vector2i(400, 300)
@@ -173,6 +174,35 @@ offset_right = 398.0
 offset_bottom = 159.0
 text = "Controls
 "
+
+[node name="SFX" type="Label" parent="."]
+offset_top = 232.0
+offset_right = 40.0
+offset_bottom = 255.0
+text = "SFX"
+
+[node name="HSlider" type="HSlider" parent="SFX"]
+layout_mode = 0
+offset_top = 25.0
+offset_right = 110.0
+offset_bottom = 61.0
+min_value = -80.0
+max_value = 20.0
+
+[node name="Music" type="Label" parent="."]
+offset_left = 248.0
+offset_top = 232.0
+offset_right = 288.0
+offset_bottom = 255.0
+text = "Music"
+
+[node name="HSlider" type="HSlider" parent="Music"]
+layout_mode = 0
+offset_top = 22.0
+offset_right = 110.0
+offset_bottom = 58.0
+min_value = -80.0
+max_value = 20.0
 
 [connection signal="close_requested" from="." to="." method="_on_close_requested"]
 [connection signal="pressed" from="VSync" to="." method="_on_vsync_pressed"]

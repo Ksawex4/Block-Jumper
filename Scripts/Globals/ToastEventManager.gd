@@ -31,8 +31,8 @@ func ToastProcessing() -> void:
 	await get_tree().create_timer(0.1).timeout
 	match event:
 		"ToastAchievementSound": 
-			if AchievMan.AchievementSound != "res://Assets/Audio/SFX/souTOASTAch.wav":
-				AchievMan.ChangeAchievementSound("res://Assets/Audio/SFX/souTOASTAch.wav")
+			if AchievMan.AchievementSound != "res://Assets/Audio/SFX/sfxTOASTAch.wav":
+				AchievMan.ChangeAchievementSound("res://Assets/Audio/SFX/sfxTOASTAch.wav")
 		"SpamQueen": SpamQueens()
 		"RandomDuckPlayer": ThisRandomPlayerIsNowADUCK()
 		"ToastyBeans": LevelMan.BeansAreToasts = true

@@ -168,3 +168,4 @@ position = Vector2(517, 46)
 process_mode = 3
 stream = ExtResource("9_8dmrm")
 autoplay = true
+bus = &"Music"

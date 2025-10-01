@@ -15,28 +15,28 @@
 [ext_resource type="PackedScene" uid="uid://cnapla1ydbe63" path="res://Scenes/Objects/Solids/tiles.tscn" id="11_vtciy"]
 [ext_resource type="PackedScene" uid="uid://chihoo373bwy7" path="res://Scenes/Objects/Items/saltniczka.tscn" id="12_72p0a"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vtciy"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kysdl"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kjbj0"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_sufyd"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_w4sgk"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_sufyd"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kjbj0"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kysdl"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vtciy"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_72p0a"]
 font_size = 14
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_72p0a"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dgnw3"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_h4qv3"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hgm2k"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_oxd3l"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hgm2k"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_h4qv3"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dgnw3"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_72p0a"]
 
 [node name="TitleScreen" type="Node2D"]
 metadata/Music = "souMainMenu.wav"
@@ -61,13 +61,13 @@ offset_left = 4.0
 offset_top = -1.0
 offset_right = 108.0
 offset_bottom = 39.0
-theme_override_colors/icon_hover_color = Color(1, 1, 0, 1)
 theme_override_colors/icon_pressed_color = Color(1, 0.564706, 0, 1)
-theme_override_styles/focus = SubResource("StyleBoxEmpty_vtciy")
-theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_kysdl")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_kjbj0")
-theme_override_styles/pressed = SubResource("StyleBoxEmpty_w4sgk")
+theme_override_colors/icon_hover_color = Color(1, 1, 0, 1)
 theme_override_styles/normal = SubResource("StyleBoxEmpty_sufyd")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_w4sgk")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_kjbj0")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_kysdl")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_vtciy")
 icon = ExtResource("2_kjbj0")
 
 [node name="LoadGame" type="Button" parent="TitleButtons"]
@@ -76,13 +76,13 @@ offset_left = 4.0
 offset_top = -44.0
 offset_right = 108.0
 offset_bottom = -4.0
-theme_override_colors/icon_hover_color = Color(1, 1, 0, 1)
 theme_override_colors/icon_pressed_color = Color(1, 0.564706, 0, 1)
-theme_override_styles/focus = SubResource("StyleBoxEmpty_vtciy")
-theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_kysdl")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_kjbj0")
-theme_override_styles/pressed = SubResource("StyleBoxEmpty_w4sgk")
+theme_override_colors/icon_hover_color = Color(1, 1, 0, 1)
 theme_override_styles/normal = SubResource("StyleBoxEmpty_sufyd")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_w4sgk")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_kjbj0")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_kysdl")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_vtciy")
 icon = ExtResource("3_h4qv3")
 
 [node name="Information" type="Label" parent="TitleButtons/LoadGame"]
@@ -103,13 +103,13 @@ offset_left = 4.0
 offset_top = 42.0
 offset_right = 186.0
 offset_bottom = 82.0
-theme_override_colors/icon_hover_color = Color(1, 1, 0, 1)
 theme_override_colors/icon_pressed_color = Color(1, 0.564706, 0, 1)
-theme_override_styles/focus = SubResource("StyleBoxEmpty_72p0a")
-theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_dgnw3")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_h4qv3")
-theme_override_styles/pressed = SubResource("StyleBoxEmpty_oxd3l")
+theme_override_colors/icon_hover_color = Color(1, 1, 0, 1)
 theme_override_styles/normal = SubResource("StyleBoxEmpty_hgm2k")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_oxd3l")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_h4qv3")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_dgnw3")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_72p0a")
 icon = ExtResource("4_hgm2k")
 
 [node name="Settings" type="Button" parent="TitleButtons"]
@@ -118,13 +118,13 @@ offset_left = 4.0
 offset_top = 82.0
 offset_right = 151.0
 offset_bottom = 122.0
-theme_override_colors/icon_hover_color = Color(1, 1, 0, 1)
 theme_override_colors/icon_pressed_color = Color(1, 0.564706, 0, 1)
-theme_override_styles/focus = SubResource("StyleBoxEmpty_72p0a")
-theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_dgnw3")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_h4qv3")
-theme_override_styles/pressed = SubResource("StyleBoxEmpty_oxd3l")
+theme_override_colors/icon_hover_color = Color(1, 1, 0, 1)
 theme_override_styles/normal = SubResource("StyleBoxEmpty_hgm2k")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_oxd3l")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_h4qv3")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_dgnw3")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_72p0a")
 icon = ExtResource("6_oxd3l")
 
 [node name="Quit" type="Button" parent="TitleButtons"]
@@ -133,13 +133,13 @@ offset_left = 4.0
 offset_top = 127.0
 offset_right = 108.0
 offset_bottom = 167.0
-theme_override_colors/icon_hover_color = Color(1, 1, 0, 1)
 theme_override_colors/icon_pressed_color = Color(1, 0.564706, 0, 1)
-theme_override_styles/focus = SubResource("StyleBoxEmpty_72p0a")
-theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_dgnw3")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_h4qv3")
-theme_override_styles/pressed = SubResource("StyleBoxEmpty_oxd3l")
+theme_override_colors/icon_hover_color = Color(1, 1, 0, 1)
 theme_override_styles/normal = SubResource("StyleBoxEmpty_hgm2k")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_oxd3l")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_h4qv3")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_dgnw3")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_72p0a")
 icon = ExtResource("3_sufyd")
 
 [node name="SpeedrunMode" type="Button" parent="TitleButtons"]
@@ -148,13 +148,13 @@ offset_left = 4.0
 offset_top = 191.0
 offset_right = 164.0
 offset_bottom = 231.0
-theme_override_colors/icon_hover_color = Color(1, 1, 0, 1)
 theme_override_colors/icon_pressed_color = Color(1, 0.564706, 0, 1)
-theme_override_styles/focus = SubResource("StyleBoxEmpty_72p0a")
-theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_dgnw3")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_h4qv3")
-theme_override_styles/pressed = SubResource("StyleBoxEmpty_oxd3l")
+theme_override_colors/icon_hover_color = Color(1, 1, 0, 1)
 theme_override_styles/normal = SubResource("StyleBoxEmpty_hgm2k")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_oxd3l")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_h4qv3")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_dgnw3")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_72p0a")
 icon = ExtResource("8_shcqs")
 
 [node name="AchievementsMenu" parent="." instance=ExtResource("6_kysdl")]
@@ -167,6 +167,7 @@ icon = ExtResource("8_shcqs")
 process_mode = 3
 stream = ExtResource("10_oxd3l")
 autoplay = true
+bus = &"Music"
 
 [node name="Tiles" parent="." instance=ExtResource("11_vtciy")]
 

@@ -49,6 +49,7 @@ autowrap_mode = 0
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_yj5kq")
+bus = &"SFX"
 
 [node name="MobileControls" type="Control" parent="."]
 layout_mode = 3

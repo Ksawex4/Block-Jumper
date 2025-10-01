@@ -156,3 +156,4 @@ position = Vector2(-496, 112)
 process_mode = 3
 stream = ExtResource("16_gpeh8")
 autoplay = true
+bus = &"Music"

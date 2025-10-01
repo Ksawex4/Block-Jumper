@@ -17,7 +17,6 @@
 [node name="TheVoidLands" type="Node2D"]
 
 [node name="Background" parent="." instance=ExtResource("1_j7b5o")]
-sprite = "res://Assets/Sprites/Backgrounds/BackgroundTrash.png"
 spriteSize = Vector2i(715, 435)
 
 [node name="Windows" type="Node2D" parent="."]
@@ -176,3 +175,4 @@ alwaysFailToSave = true
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("12_4a7u7")
 autoplay = true
+bus = &"Music"
