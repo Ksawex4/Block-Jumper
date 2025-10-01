@@ -2,13 +2,13 @@
 
 importer="wav"
 type="AudioStreamWAV"
-uid="uid://btqjqrhgbcva"
-path="res://.godot/imported/souAch.wav-e72fa675c44440d8a8e65632869324ad.sample"
+uid="uid://la1lof170xpm"
+path="res://.godot/imported/sfxCrash.wav-cb87ab2d9820bb83c183071911128103.sample"
 
 [deps]
 
-source_file="res://Assets/Audio/SFX/souAch.wav"
-dest_files=["res://.godot/imported/souAch.wav-e72fa675c44440d8a8e65632869324ad.sample"]
+source_file="res://Assets/Audio/SFX/sfxCrash.wav"
+dest_files=["res://.godot/imported/sfxCrash.wav-cb87ab2d9820bb83c183071911128103.sample"]
 
 [params]
 

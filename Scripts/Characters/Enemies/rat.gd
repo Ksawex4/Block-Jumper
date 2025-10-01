@@ -2,7 +2,6 @@ extends CharacterBody2D
 
 @export var King: Node2D
 @export var floorRunHeight: float = 0.0
-var cheese := preload("uid://2k45qt2g31y8")
 var action: String = ""
 var throwDelay: float = 0.0
 var speed: float = 30000.0
@@ -12,35 +11,34 @@ var wallCooldown: float = 0.0
 
 func _ready() -> void:
 	if King:
-		King.connect("RatThrowCheese", Callable(self, "cheeseThrow"))
-		#King.connect("RatRun", Callable(self, "run"))
+		King.connect("RatStart", Callable(self, "start"))
+		King.connect("RatStop", Callable(self, "stop"))
 
-#func run() -> void:
-	#action = "run"
-	#$Timer.start(15.0)
-#
-func cheeseThrow() -> void:
-	#action = "throw"
-	#$Timer.start(15.0)
+func start() -> void:
 	$Timer.start(0.3)
 
+func stop() -> void:
+	$Timer.stop()
+	action = ""
+
 func _on_timer_timeout() -> void:
-	#action = ""
 	if LevelMan.BossFightOn:
 		match randi_range(1,2):
 			1:
+				velocity = Vector2.ZERO
 				action = "run"
 				$Timer.start(15.0)
+				$Area2D/CollisionShape2D2.disabled = false
 			2:
 				action = "throw"
 				$Timer.start(15.0)
+				$Area2D/CollisionShape2D2.disabled = true
 	else:
 		action = ""
 
 func _physics_process(delta: float) -> void:
 	if action != "run":
 		position = lerp(position, startPos, 0.05)
-		velocity = Vector2.ZERO
 	if throwDelay > 0.0:
 		throwDelay -= 0.1
 	match action:
@@ -49,7 +47,7 @@ func _physics_process(delta: float) -> void:
 			var nearestDistance: float = -1
 			var nearestPlayer: Node2D
 			if throwDelay <= 0.0 and players:
-				throwDelay = randf_range(5.5, 8.8)
+				throwDelay = randf_range(8.5, 15.5)
 				for player in players:
 					var d: float = player.position.distance_squared_to(position)
 					if d < nearestDistance or nearestDistance == -1:
@@ -72,7 +70,7 @@ func _physics_process(delta: float) -> void:
 func throwCheeseAt(player: Node2D) -> void:
 	var distanceVector = player.global_position - global_position + Vector2(randf_range(-50.0, 50.0), randf_range(-50.0, 50.0))
 	var cheeseVelocity = distanceVector.normalized() * 250
-	var cheeseObject = cheese.instantiate()
+	var cheeseObject = preload("uid://2k45qt2g31y8").instantiate()
 	get_tree().current_scene.add_child(cheeseObject)
 	cheeseObject.velocity = cheeseVelocity
 	cheeseObject.position = global_position

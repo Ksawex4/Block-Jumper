@@ -14,7 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://tk6vu5tms825" path="res://Scenes/Characters/Players/toasty.tscn" id="7_kkbg5"]
 [ext_resource type="PackedScene" uid="uid://cjnmjspdg62mw" path="res://Scenes/Objects/Others/level_changer.tscn" id="8_6qss2"]
 [ext_resource type="PackedScene" uid="uid://c0egin0l7hc2v" path="res://Scenes/Objects/Others/smooth_camera.tscn" id="8_lkdxe"]
-[ext_resource type="AudioStream" uid="uid://iyxig0wvh166" path="res://Assets/Audio/Music/souTrash.ogg" id="9_8dmrm"]
+[ext_resource type="AudioStream" uid="uid://iyxig0wvh166" path="res://Assets/Audio/Music/musTrash.ogg" id="9_8dmrm"]
 [ext_resource type="PackedScene" uid="uid://bu2l0f1ivopr7" path="res://Scenes/Objects/Others/save_point.tscn" id="10_kkbg5"]
 
 [node name="trash_room" type="Node2D"]

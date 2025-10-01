@@ -12,7 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://bu2l0f1ivopr7" path="res://Scenes/Objects/Others/save_point.tscn" id="8_s2rw3"]
 [ext_resource type="PackedScene" uid="uid://tk6vu5tms825" path="res://Scenes/Characters/Players/toasty.tscn" id="9_ccf7p"]
 [ext_resource type="PackedScene" uid="uid://c0egin0l7hc2v" path="res://Scenes/Objects/Others/smooth_camera.tscn" id="10_jjbce"]
-[ext_resource type="AudioStream" uid="uid://cyf37ii0agxwk" path="res://Assets/Audio/Music/newbob.ogg" id="12_4a7u7"]
+[ext_resource type="AudioStream" uid="uid://cyf37ii0agxwk" path="res://Assets/Audio/Music/musNewbob.ogg" id="12_4a7u7"]
 
 [node name="TheVoidLands" type="Node2D"]
 

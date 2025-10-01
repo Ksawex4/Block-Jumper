@@ -7,12 +7,9 @@ var targetBeansPos: Vector2 = Vector2(-347, -198)
 var achievementHidden: bool = true
 var achTemplate: String = "[img]res://Assets/Sprites/Achievements/ACHIEVEMENT.png[/img]"
 
-#func _ready() -> void:
-	#playerControls = InputMan.AllPlayerControls
-
 func _physics_process(delta: float) -> void:
 	var node: Node2D = NovaFunc.GetPlayerFromGroup(PlayerStats.FollowWho)
-	if node != null:
+	if node != null and !LevelMan.BossFightOn:
 		if node.velocity.x > maxSmoothSpeed or node.velocity.y > maxSmoothSpeed:
 			position = node.position
 		else:
@@ -21,7 +18,7 @@ func _physics_process(delta: float) -> void:
 		var player: Node2D = get_tree().get_first_node_in_group("players")
 		if player != null:
 			PlayerStats.FollowWho = player.name
-	
+	zoom = lerp(zoom, LevelMan.CamZoom, 6.0 * delta)
 	
 	if Input.is_action_pressed("FencyCam") and NovaFunc.GetPlayerFromGroup("Fency") != null:
 		PlayerStats.FollowWho = "Fency"
@@ -55,6 +52,9 @@ func _physics_process(delta: float) -> void:
 	if PlayerStats.SpeedrunMode:
 		$SpeedrunTimer.show()
 		$SpeedrunTimer.text = str(LevelMan.SpeedrunTimer["Hours"]) + ":" + str(LevelMan.SpeedrunTimer["Minutes"]) + ":" + str(LevelMan.SpeedrunTimer["Seconds"]) + ":" + str(LevelMan.SpeedrunTimer["Frames"])
+	
+	if LevelMan.BossFightOn:
+		position = lerp(position, LevelMan.BossCamPos, 9.0 * delta)
 	
 	if achievementHidden and AchievMan.AchievementsToShow != []:
 		_showAchievements(AchievMan.AchievementsToShow.pop_front())

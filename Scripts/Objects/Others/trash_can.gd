@@ -27,6 +27,6 @@ func _spawn_spam_guy() -> void:
 	var shouldSpawn: float = randf_range(0.0, 10.0)
 	if shouldSpawn < 2.0:
 		print("[trash_can.gd] Spawned a spamguy")
-		var spam: Node2D = preload("res://Scenes/Characters/Enemies/spamguy.tscn").instantiate()
+		var spam: Node2D = preload("uid://cqx8mt1calvhl").instantiate()
 		spam.position = Vector2(position.x + 100, position.y)
 		get_tree().current_scene.add_child(spam)

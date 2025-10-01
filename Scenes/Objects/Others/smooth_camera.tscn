@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://b1dycgqretdd5" path="res://Scripts/Objects/Others/smooth_camera.gd" id="1_eudxl"]
 [ext_resource type="Script" uid="uid://bpuwan8cjogfr" path="res://Scripts/label.gd" id="2_6oxvd"]
-[ext_resource type="AudioStream" uid="uid://btqjqrhgbcva" path="res://Assets/Audio/SFX/souAch.wav" id="3_yj5kq"]
+[ext_resource type="AudioStream" uid="uid://btqjqrhgbcva" path="res://Assets/Audio/SFX/sfxAch.wav" id="3_yj5kq"]
 [ext_resource type="Script" uid="uid://fgcnjyxx7wsh" path="res://Scripts/GUI/joystick.gd" id="4_2c8rd"]
 [ext_resource type="Script" uid="uid://c32f4t1p3pdlb" path="res://Scripts/GUI/joyknob.gd" id="5_4chum"]
 [ext_resource type="Texture2D" uid="uid://du54mdekovu47" path="res://Assets/Sprites/GUI/MobileButtons/Pause.png" id="6_4chum"]

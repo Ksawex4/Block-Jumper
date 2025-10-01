@@ -8,8 +8,9 @@ var FlyingThingAlive: bool = false
 var Os: String = OS.get_name() # Android, Windows, Linux
 var SpeedrunTimer: Dictionary = {"Hours": 0, "Minutes": 0, "Seconds": 0, "Frames": 0}
 var LevelPath: String = "res://Scenes/Levels/LEVELL.tscn"
-var flyingThing := preload("uid://bvptmfk8ofbv7")
 var BossFightOn := false
+var BossCamPos := Vector2(0,0)
+var CamZoom := Vector2(1,1)
 
 func _ready() -> void:
 	SignalMan.connect("ChangedLevel", Callable(self, "OnLevelChanged"))
@@ -45,6 +46,6 @@ func ResetVariablesToDefault() -> void:
 
 func OnLevelChanged() -> void:
 	if FlyingThingAlive and get_tree().current_scene.scene_file_path.get_file() != "title_screen.tscn":
-		var FlyingThing: Node2D = flyingThing.instantiate()
+		var FlyingThing: Node2D = preload("uid://bvptmfk8ofbv7").instantiate()
 		FlyingThing.position = Vector2(0,0)
 		get_tree().current_scene.call_deferred("add_child", FlyingThing)

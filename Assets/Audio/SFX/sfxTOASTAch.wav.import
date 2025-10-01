@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://b5ocjft1xvugj"
-path="res://.godot/imported/souTOASTAch.wav-a6de5bd65e55596d94238ba1953d9a3f.sample"
+path="res://.godot/imported/sfxTOASTAch.wav-0003301e70041ae26ea498e73bc4aa53.sample"
 
 [deps]
 
-source_file="res://Assets/Audio/SFX/souTOASTAch.wav"
-dest_files=["res://.godot/imported/souTOASTAch.wav-a6de5bd65e55596d94238ba1953d9a3f.sample"]
+source_file="res://Assets/Audio/SFX/sfxTOASTAch.wav"
+dest_files=["res://.godot/imported/sfxTOASTAch.wav-0003301e70041ae26ea498e73bc4aa53.sample"]
 
 [params]
 

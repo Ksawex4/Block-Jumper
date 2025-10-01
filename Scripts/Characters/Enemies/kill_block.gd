@@ -46,3 +46,8 @@ func _physics_process(delta: float) -> void:
 		move_and_slide()
 		if wallCooldown > 0.0:
 			wallCooldown -= 0.1
+
+func takeDamage(_damage: int) -> void:
+	AchievMan.AddAchievement("BlockKiller")
+	LevelMan.PersistenceKeys.append(get_meta("instanceID"))
+	queue_free()

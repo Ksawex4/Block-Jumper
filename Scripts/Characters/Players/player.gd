@@ -7,7 +7,6 @@ var jumpHeight: float # This too
 var stickInstance: Node2D
 var stickSpawnCooldown: int = 0
 @export var controls: Dictionary = {"Left": "FencyLeft", "Right": "FencyRight", "Jump": "FencyJump"}
-@export var bouncy_onurb: PackedScene
 
 func _ready() -> void:
 	if !PlayerStats.IsPlayerAlive(whoAmI):
@@ -64,7 +63,7 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 func _spawn_bouncy() -> void:
-	var instance: Node2D = bouncy_onurb.instantiate()
+	var instance: Node2D = preload("uid://b83uowllfiji").instantiate()
 	get_tree().current_scene.add_child(instance)
 	instance.position = position
 
@@ -84,17 +83,20 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.has_meta("beans"):
 		PlayerStats.AddBeans(body.get_meta("beans"))
 		print("[player.gd, ", self.name, "] Collected ", body.get_meta("beans"), " Beans")
+	
 	if body.scene_file_path.get_file() == "flying_thing.tscn":
 		LevelMan.FlyingThingAlive = false
 		print("[player.gd, ", self.name, "] Salt will not appear in next level")
 	
-	body.queue_free()
+	if !body.scene_file_path.get_file().get_basename().begins_with("boss"):
+		body.queue_free()
+
 
 func _spawn_stick() -> void:
 	var scene: Node2D = get_tree().current_scene
 	if stickInstance:
 		stickInstance.queue_free()
-	stickInstance = preload("res://Scenes/Objects/Items/stick.tscn").instantiate()
+	stickInstance = preload("uid://b335udwa3qnb").instantiate()
 	scene.add_child.call_deferred(stickInstance)
 	stickInstance.who = whoAmI
 	print("[player.gd, ", self.name, "] Spawned my stick")

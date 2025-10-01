@@ -1,7 +1,6 @@
 extends CharacterBody2D
 
 var bigCheese: bool = false
-var cheese := preload("uid://2k45qt2g31y8")
 
 func _ready() -> void:
 	if bigCheese:
@@ -19,7 +18,7 @@ func _on_free_box_body_entered(_body: Node2D) -> void:
 		for numbers in [Vector2(100, -20), Vector2(100, -80), Vector2(-100, -80), Vector2(-100, -20)]:
 			var distanceVector = (global_position + numbers ) - global_position + Vector2(randf_range(-50.0, 50.0), randf_range(-50.0, 50.0))
 			var cheeseVelocity = distanceVector.normalized() * 250
-			var cheestance = cheese.instantiate()
+			var cheestance = preload("uid://2k45qt2g31y8").instantiate()
 			get_tree().current_scene.call_deferred("add_child", cheestance)
 			cheestance.position = global_position
 			cheestance.velocity = cheeseVelocity

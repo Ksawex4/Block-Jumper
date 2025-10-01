@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://nxjjgryjmpma"
-path="res://.godot/imported/BlockKiller.png-bdda07e2a74323e7edfbd619861b29ef.ctex"
+uid="uid://uq0jcuol0lbe"
+path="res://.godot/imported/RatKingHealthBar.png-d42b6ceb6e680745b61c6a692823813d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/Achievements/BlockKiller.png"
-dest_files=["res://.godot/imported/BlockKiller.png-bdda07e2a74323e7edfbd619861b29ef.ctex"]
+source_file="res://Assets/Sprites/Objects/Others/RatKingHealthBar.png"
+dest_files=["res://.godot/imported/RatKingHealthBar.png-d42b6ceb6e680745b61c6a692823813d.ctex"]
 
 [params]
 

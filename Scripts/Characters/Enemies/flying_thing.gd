@@ -34,3 +34,7 @@ func _on_timer_timeout() -> void:
 		if players:
 			goal = players.pick_random()
 	$Timer.start(0.2)
+
+func takeDamage(_damage: int) -> void:
+	AchievMan.AddAchievement("Saltiest")
+	queue_free()

@@ -1,14 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://2k45qt2g31y8"]
+[gd_scene load_steps=6 format=3 uid="uid://2k45qt2g31y8"]
 
 [ext_resource type="Script" uid="uid://dtxprkvrf5bb1" path="res://Scripts/Objects/Projectiles/cheese.gd" id="1_dm2rf"]
 [ext_resource type="Texture2D" uid="uid://bl4e0s11fkgnp" path="res://Assets/Sprites/Objects/Items/cheese.png" id="2_0cpfa"]
-[ext_resource type="AudioStream" uid="uid://di14je3q31uqd" path="res://Assets/Audio/SFX/cheese.ogg" id="3_0cpfa"]
-[ext_resource type="AudioStream" uid="uid://bhrk07k4b4611" path="res://Assets/Audio/SFX/bigCheese.ogg" id="4_35ksc"]
+[ext_resource type="AudioStream" uid="uid://di14je3q31uqd" path="res://Assets/Audio/SFX/sfxCheese.ogg" id="3_0cpfa"]
+[ext_resource type="AudioStream" uid="uid://bhrk07k4b4611" path="res://Assets/Audio/SFX/sfxBigCheese.ogg" id="4_35ksc"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_l1qi8"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_dm2rf"]
-size = Vector2(39, 37)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_35ksc"]
 
 [node name="cheese" type="CharacterBody2D"]
 collision_layer = 128
@@ -20,22 +17,22 @@ position = Vector2(4.7683716e-07, 4.7683716e-07)
 texture = ExtResource("2_0cpfa")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_l1qi8")
+shape = SubResource("RectangleShape2D_35ksc")
 disabled = true
 
 [node name="AttackBox" type="Area2D" parent="."]
 collision_layer = 0
 collision_mask = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackBox"]
-shape = SubResource("RectangleShape2D_dm2rf")
+[node name="CollisionShape2D2" type="CollisionPolygon2D" parent="AttackBox"]
+polygon = PackedVector2Array(1, 18.5, 19.5, -6.5, 19.5, -18.5, -19.5, -13.5, -19.5, -0.5)
 
 [node name="FreeBox" type="Area2D" parent="."]
 collision_layer = 0
 collision_mask = 64
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="FreeBox"]
-shape = SubResource("RectangleShape2D_dm2rf")
+[node name="CollisionShape2D3" type="CollisionPolygon2D" parent="FreeBox"]
+polygon = PackedVector2Array(1, 18.5, 19.5, -6.5, 19.5, -18.5, -19.5, -13.5, -19.5, -0.5)
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_0cpfa")

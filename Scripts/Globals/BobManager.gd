@@ -10,7 +10,6 @@ var SpawnedBobs: bool = false
 var FailToLoad: bool = false
 var CanSpawnBouncy_onurB: bool = false
 var CanBobsScale: bool = false
-var BobScene := preload("uid://cgr5yq0b3lq60")
 
 func _ready() -> void:
 	if LevelMan.Os != "Android" and FileAccess.file_exists("user://The Bobs have awoken.BOB") or LevelMan.Os == "Android" and SaveMan.AndroidFileExists("The Bobs have awoken.BOB"):
@@ -191,5 +190,5 @@ func SpawnBobsFromSave() -> void:
 	var spawnedBobs: int = 0
 	if get_tree().current_scene and get_tree().current_scene.scene_file_path.get_file() != "boot_screen.tscn":
 		while spawnedBobs < SavedBobs:
-			get_tree().current_scene.add_child(BobScene.instantiate())
+			get_tree().current_scene.add_child(preload("uid://cgr5yq0b3lq60").instantiate())
 			spawnedBobs += 1

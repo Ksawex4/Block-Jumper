@@ -10,7 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://du7ro4la741i4" path="res://Assets/Sprites/GUI/Buttons/Settings.png" id="6_oxd3l"]
 [ext_resource type="Texture2D" uid="uid://pb1vfwgvjiml" path="res://Assets/Sprites/GUI/Buttons/SpeedrunMode.png" id="8_shcqs"]
 [ext_resource type="PackedScene" uid="uid://clkawf7n1yg00" path="res://Scenes/GUI/settings_menu.tscn" id="8_w4sgk"]
-[ext_resource type="AudioStream" uid="uid://dmjhlutkjeexy" path="res://Assets/Audio/Music/souMainMenu.ogg" id="10_oxd3l"]
+[ext_resource type="AudioStream" uid="uid://dmjhlutkjeexy" path="res://Assets/Audio/Music/musMainMenu.ogg" id="10_oxd3l"]
 [ext_resource type="PackedScene" uid="uid://bwoda6al5nah2" path="res://Scenes/GUI/speedrun_mode_menu.tscn" id="11_p5jl7"]
 [ext_resource type="PackedScene" uid="uid://cnapla1ydbe63" path="res://Scenes/Objects/Solids/tiles.tscn" id="11_vtciy"]
 [ext_resource type="PackedScene" uid="uid://chihoo373bwy7" path="res://Scenes/Objects/Items/saltniczka.tscn" id="12_72p0a"]

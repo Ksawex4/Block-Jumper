@@ -17,7 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://bu2l0f1ivopr7" path="res://Scenes/Objects/Others/save_point.tscn" id="11_pu2he"]
 [ext_resource type="PackedScene" uid="uid://cjnmjspdg62mw" path="res://Scenes/Objects/Others/level_changer.tscn" id="12_hyqok"]
 [ext_resource type="PackedScene" uid="uid://cjlo1s3x0n5gb" path="res://Scenes/Objects/Others/toilet.tscn" id="13_otg74"]
-[ext_resource type="AudioStream" uid="uid://cry5a8bmqtm47" path="res://Assets/Audio/Music/souZworkaSong.ogg" id="16_gpeh8"]
+[ext_resource type="AudioStream" uid="uid://cry5a8bmqtm47" path="res://Assets/Audio/Music/musZworkaSong.ogg" id="16_gpeh8"]
 
 [node name="TestRoom" type="Node2D"]
 
