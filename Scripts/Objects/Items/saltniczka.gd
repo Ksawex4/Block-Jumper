@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 func _ready() -> void:
-	if randi_range(0,100) == 6 and PlayerStats.SpeedrunModeRandomSaltniczka:
+	if randi_range(0,100) != 6 and PlayerStats.SpeedrunModeRandomSaltniczka:
 		print("[saltniczka.gd] Byeeeeeee, the random number is not 6")
 		queue_free()
 
