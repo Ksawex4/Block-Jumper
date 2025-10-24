@@ -31,5 +31,6 @@ func _on_body_entered(_body: Node2D) -> void:
 func _physics_process(_delta: float) -> void:
 	if moveDoor and door:
 		door.position = lerp(door.position, targetPos, 0.2)
-	elif !LevelMan.BossFightOn:
-		door.position = lerp(door.position, doorStartPos, 0.2)
+
+func fightEnded() -> void:
+	targetPos = doorStartPos

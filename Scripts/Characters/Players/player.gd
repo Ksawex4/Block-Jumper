@@ -120,7 +120,7 @@ func checkIfDuck() -> void:
 
 func getJoystickAxis() -> Vector2:
 	var axis: Vector2 = Vector2(0,0)
-	if LevelMan.Os == "Android":
+	if LevelMan.Os == "Android" and PlayerStats.FollowWho == whoAmI:
 		if PlayerStats.JoystickPosVector.x > 0.2: # right
 			axis.x = 1
 		elif PlayerStats.JoystickPosVector.x < -0.2: # left
