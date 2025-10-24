@@ -186,6 +186,15 @@ stream = ExtResource("4_nnqdd")
 volume_db = 20.0
 bus = &"SFX"
 
+[node name="Label" type="Label" parent="."]
+z_index = 2
+offset_left = -65.0
+offset_top = -88.0
+offset_right = 64.0
+offset_bottom = -65.0
+text = "Press Z to reload"
+
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
 [connection signal="finished" from="AudioStreamPlayer" to="." method="_on_audio_stream_player_2d_finished"]
