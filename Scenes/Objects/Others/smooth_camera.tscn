@@ -59,8 +59,6 @@ anchor_left = -0.1392405
 anchor_right = -0.004219409
 anchor_bottom = 0.08
 bbcode_enabled = true
-text = "[img]res://Assets/Sprites/Achievements/Stick.png[/img]
-"
 autowrap_mode = 0
 metadata/_edit_use_anchors_ = true
 
@@ -134,6 +132,7 @@ texture_normal = ExtResource("12_1uv7s")
 action = "Interract"
 
 [node name="SpeedrunTimer" type="Label" parent="CanvasLayer"]
+visible = false
 anchors_preset = -1
 anchor_left = 0.4416315
 anchor_top = 0.0375

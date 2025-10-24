@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-var movementSpeed: int = 5
+var movementSpeed: int = 3
 var goal: Node
 var rotating: bool = false
 var moving: bool = true
@@ -25,7 +25,7 @@ func _ready() -> void:
 			movementSpeed = 50
 			slideeee = false
 		2: 
-			movementSpeed = 1
+			movementSpeed = 3
 			slideeee = true
 	
 	match randi_range(1,2):
