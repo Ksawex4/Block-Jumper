@@ -248,10 +248,11 @@ cameraSettings = {
 position = Vector2(-1951, -176)
 shape = SubResource("RectangleShape2D_p7ck8")
 
-[node name="Boss-RatKing" parent="Boss-RatKing" node_paths=PackedStringArray("bossMusicPlayer", "levelMusicPlayer") instance=ExtResource("18_j1apm")]
+[node name="Boss-RatKing" parent="Boss-RatKing" node_paths=PackedStringArray("bossMusicPlayer", "levelMusicPlayer", "entryThing") instance=ExtResource("18_j1apm")]
 position = Vector2(-2736, -196)
 bossMusicPlayer = NodePath("../AudioStreamPlayer")
 levelMusicPlayer = NodePath("../../AudioStreamPlayer")
+entryThing = NodePath("../RoomEntry")
 
 [node name="Rat" parent="Boss-RatKing" node_paths=PackedStringArray("King") instance=ExtResource("6_rxrux")]
 position = Vector2(-2253, -565)

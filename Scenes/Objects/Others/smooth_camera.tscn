@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://c0egin0l7hc2v"]
+[gd_scene load_steps=15 format=3 uid="uid://c0egin0l7hc2v"]
 
 [ext_resource type="Script" uid="uid://b1dycgqretdd5" path="res://Scripts/Objects/Others/smooth_camera.gd" id="1_eudxl"]
 [ext_resource type="Script" uid="uid://bpuwan8cjogfr" path="res://Scripts/label.gd" id="2_6oxvd"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://g7bsrts3djrh" path="res://Assets/Sprites/GUI/MobileButtons/SpawnBouncy_onurB.png" id="8_b7i7j"]
 [ext_resource type="Texture2D" uid="uid://f47t28vuhy2s" path="res://Assets/Sprites/GUI/MobileButtons/DeleteAllBouncy_onurBs.png" id="9_svihx"]
 [ext_resource type="Texture2D" uid="uid://b0lo4bxyommtu" path="res://Assets/Sprites/GUI/MobileButtons/Jump.png" id="11_osi1y"]
+[ext_resource type="Texture2D" uid="uid://b386q33dhx135" path="res://Assets/Sprites/GUI/MobileButtons/Z.png" id="12_1uv7s"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_yj5kq"]
 radius = 48.0
@@ -91,12 +92,14 @@ scale = Vector2(3.28125, 3)
 texture_normal = ExtResource("6_svihx")
 
 [node name="Pause" type="TouchScreenButton" parent="CanvasLayer/MobileControls"]
+self_modulate = Color(1, 1, 1, 0.7647059)
 position = Vector2(648, -281)
 texture_normal = ExtResource("6_4chum")
 action = "Pause"
 visibility_mode = 1
 
 [node name="SwitchPlayer" type="TouchScreenButton" parent="CanvasLayer/MobileControls"]
+self_modulate = Color(1, 1, 1, 0.7647059)
 position = Vector2(512, -281)
 texture_normal = ExtResource("7_mkhw6")
 action = "SwitchPlayer"
@@ -104,6 +107,7 @@ visibility_mode = 1
 
 [node name="SpawnBouncy" type="TouchScreenButton" parent="CanvasLayer/MobileControls"]
 visible = false
+self_modulate = Color(1, 1, 1, 0.7647059)
 position = Vector2(656, -146)
 texture_normal = ExtResource("8_b7i7j")
 action = "SpawnBouncy_onurB"
@@ -111,15 +115,23 @@ visibility_mode = 1
 
 [node name="DeleteBouncy" type="TouchScreenButton" parent="CanvasLayer/MobileControls"]
 visible = false
+self_modulate = Color(1, 1, 1, 0.7647059)
 position = Vector2(656, -58)
 texture_normal = ExtResource("9_svihx")
 action = "DeleteAllBouncy_onurBs"
 visibility_mode = 1
 
 [node name="JumpButton" type="TouchScreenButton" parent="CanvasLayer/MobileControls"]
+self_modulate = Color(1, 1, 1, 0.7647059)
 position = Vector2(576, 8)
 scale = Vector2(1.5, 1.5)
 texture_normal = ExtResource("11_osi1y")
+
+[node name="InterractButton" type="TouchScreenButton" parent="CanvasLayer/MobileControls"]
+self_modulate = Color(1, 1, 1, 0.7647059)
+position = Vector2(515, 56)
+texture_normal = ExtResource("12_1uv7s")
+action = "Interract"
 
 [node name="SpeedrunTimer" type="Label" parent="CanvasLayer"]
 anchors_preset = -1
