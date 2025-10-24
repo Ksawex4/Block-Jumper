@@ -1,4 +1,4 @@
-@tool
+#@tool # disabled beacuse doesnt work good and breaks some 0.2 things
 extends CharacterBody2D
 var gaveBean: bool = false
 var toast: bool = false
@@ -10,34 +10,34 @@ var direction: int = [-1, 1].pick_random()
 var wallCooldown: float = 0.0
 
 func _ready() -> void:
-	if Engine.is_editor_hint():
-		if !has_meta("instanceID"):
-			_generate_unique_id()
+	#if Engine.is_editor_hint():
+		#if !has_meta("instanceID"):
+			#_generate_unique_id()
 	
-	if has_meta("instanceID") and !Engine.is_editor_hint():
-		var myUniqueId: String = get_meta("instanceID")
-		if LevelMan.PersistenceKeys.has(myUniqueId):
-			queue_free()
+	#if has_meta("instanceID") and !Engine.is_editor_hint():
+		#var myUniqueId: String = get_meta("instanceID")
+		#if LevelMan.PersistenceKeys.has(myUniqueId):
+			#queue_free()
 		$AnimatedSprite2D.play()
-	else:
-		push_error("NO INSTANCE ID")
+	#else:
+		#push_error("NO INSTANCE ID")
 
-func _generate_unique_id() -> void:
-	var sceneName: String = ""
-	if get_owner() and get_owner().get_scene_file_path():
-		sceneName = get_owner().get_scene_file_path().get_file().get_basename()
-	elif get_scene_file_path():
-		sceneName = get_scene_file_path().get_file().get_basename()
-	else:
-		sceneName = get_name()
-
-	var uniqueSuffix: String = str(hash(get_path()))
-	var generatedId: String = "%s_%s" % [sceneName, uniqueSuffix]
-
-	set_meta("instanceID", generatedId)
+#func _generate_unique_id() -> void:
+	#var sceneName: String = ""
+	#if get_owner() and get_owner().get_scene_file_path():
+		#sceneName = get_owner().get_scene_file_path().get_file().get_basename()
+	#elif get_scene_file_path():
+		#sceneName = get_scene_file_path().get_file().get_basename()
+	#else:
+		#sceneName = get_name()
+#
+	#var uniqueSuffix: String = str(hash(get_path()))
+	#var generatedId: String = "%s_%s" % [sceneName, uniqueSuffix]
+#
+	#set_meta("instanceID", generatedId)
 
 func _physics_process(delta: float) -> void:
-	if not Engine.is_editor_hint():
+	#if not Engine.is_editor_hint():
 		if !is_on_floor():
 			velocity.y += LevelMan.Gravity * delta
 		if canJump and is_on_floor() and randi_range(1,25) == 6:

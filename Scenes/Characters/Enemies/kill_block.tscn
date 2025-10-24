@@ -53,7 +53,6 @@ collision_layer = 4
 collision_mask = 3
 script = ExtResource("1_e3at7")
 metadata/damage = 5
-metadata/instanceID = "kill_block_1270202106"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.5, 0.5)
