@@ -2,10 +2,12 @@ extends Camera2D
 
 var maxSmoothSpeed: int = 1000
 var isShowingAchievement: bool = false
-var targetAchievementPos: Vector2 = Vector2(-452, -200)
-var targetBeansPos: Vector2 = Vector2(-347, -198)
+var targetAchievementPos: Vector2 = Vector2(-99.0, 0.0) #-452 -200
+var targetBeansPos: Vector2 = Vector2(13.0, 13.0) #-347 -198
 var achievementHidden: bool = true
 var achTemplate: String = "[img]res://Assets/Sprites/Achievements/ACHIEVEMENT.png[/img]"
+@export var spawnBouncy: TouchScreenButton
+@export var deleteBouncy: TouchScreenButton
 
 func _physics_process(delta: float) -> void:
 	var node: Node2D = NovaFunc.GetPlayerFromGroup(PlayerStats.FollowWho)
@@ -36,22 +38,22 @@ func _physics_process(delta: float) -> void:
 	
 	if LevelMan.Os == "Android":
 		if !PlayerStats.DebugMode:
-			$MobileControls/SpawnBouncy.visible = false
-			$MobileControls/DeleteBouncy.visible = false
+			spawnBouncy.visible = false
+			deleteBouncy.visible = false
 		else:
-			$MobileControls/SpawnBouncy.visible = true
-			$MobileControls/DeleteBouncy.visible = true
+			spawnBouncy.visible = true
+			deleteBouncy.visible = true
 	
-	if $Achievement.position != targetAchievementPos:
-		$Achievement.position = lerp($Achievement.position, targetAchievementPos, 0.1)
-	if $Beans.position != targetBeansPos:
-		$Beans.position = lerp($Beans.position, targetBeansPos, 0.1)
+	if $CanvasLayer/Achievement.position != targetAchievementPos:
+		$CanvasLayer/Achievement.position = lerp($CanvasLayer/Achievement.position, targetAchievementPos, 0.1)
+	if $CanvasLayer/Beans.position != targetBeansPos:
+		$CanvasLayer/Beans.position = lerp($CanvasLayer/Beans.position, targetBeansPos, 0.1)
 	
-	$Beans.text = "Beans: " + str(PlayerStats.GetBeans())
+	$CanvasLayer/Beans.text = "Beans: " + str(PlayerStats.GetBeans())
 	
 	if PlayerStats.SpeedrunMode:
-		$SpeedrunTimer.show()
-		$SpeedrunTimer.text = str(LevelMan.SpeedrunTimer["Hours"]) + ":" + str(LevelMan.SpeedrunTimer["Minutes"]) + ":" + str(LevelMan.SpeedrunTimer["Seconds"]) + ":" + str(LevelMan.SpeedrunTimer["Frames"])
+		$CanvasLayer/SpeedrunTimer.show()
+		$CanvasLayer/SpeedrunTimer.text = str(LevelMan.SpeedrunTimer["Hours"]) + ":" + str(LevelMan.SpeedrunTimer["Minutes"]) + ":" + str(LevelMan.SpeedrunTimer["Seconds"]) + ":" + str(LevelMan.SpeedrunTimer["Frames"])
 	
 	if LevelMan.BossFightOn:
 		position = lerp(position, LevelMan.BossCamPos, 9.0 * delta)
@@ -62,16 +64,16 @@ func _physics_process(delta: float) -> void:
 func _showAchievements(ach: String) -> void:
 	var achievement: String = achTemplate.replace("ACHIEVEMENT", ach)
 	achievementHidden = false
-	targetAchievementPos = Vector2(-355, -200)
-	targetBeansPos = Vector2(-347, -166)
-	$Achievement.text = achievement
+	targetAchievementPos = Vector2(0.0, 0.0)
+	targetBeansPos = Vector2(13.0, 45.0)
+	$CanvasLayer/Achievement.text = achievement
 	$AudioStreamPlayer.stream = load(AchievMan.AchievementSound)
 	if AchievMan.AchievementSound == "res://Assets/Audio/SFX/souTOASTAch.wav":
 		$AudioStreamPlayer.volume_db = 30
 	$AudioStreamPlayer.play()
 	await get_tree().create_timer(4.0).timeout
-	targetAchievementPos = Vector2(-452, -200)
-	targetBeansPos = Vector2(-347, -198)
+	targetAchievementPos = Vector2(-99.0, 0.0)
+	targetBeansPos = Vector2(13.0, 13.0)
 	await get_tree().create_timer(1.0).timeout
-	$Achievement.text = ""
+	$CanvasLayer/Achievement.text = ""
 	achievementHidden = true

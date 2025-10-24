@@ -125,7 +125,7 @@ func getJoystickAxis() -> Vector2:
 			axis.x = 1
 		elif PlayerStats.JoystickPosVector.x < -0.2: # left
 			axis.x = -1
-		if PlayerStats.JoystickPosVector.y < -0.5: # jump
+		if PlayerStats.MobileJump == 1: # jump
 			axis.y = -1
 	else:
 		axis.x = Input.get_axis(controls["Left"], controls["Right"])

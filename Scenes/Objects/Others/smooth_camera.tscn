@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://c0egin0l7hc2v"]
+[gd_scene load_steps=14 format=3 uid="uid://c0egin0l7hc2v"]
 
 [ext_resource type="Script" uid="uid://b1dycgqretdd5" path="res://Scripts/Objects/Others/smooth_camera.gd" id="1_eudxl"]
 [ext_resource type="Script" uid="uid://bpuwan8cjogfr" path="res://Scripts/label.gd" id="2_6oxvd"]
@@ -6,9 +6,11 @@
 [ext_resource type="Script" uid="uid://fgcnjyxx7wsh" path="res://Scripts/GUI/joystick.gd" id="4_2c8rd"]
 [ext_resource type="Script" uid="uid://c32f4t1p3pdlb" path="res://Scripts/GUI/joyknob.gd" id="5_4chum"]
 [ext_resource type="Texture2D" uid="uid://du54mdekovu47" path="res://Assets/Sprites/GUI/MobileButtons/Pause.png" id="6_4chum"]
+[ext_resource type="Texture2D" uid="uid://m8mvttomh8ys" path="res://Assets/FencyIcon.svg" id="6_svihx"]
 [ext_resource type="Texture2D" uid="uid://cgmam0rrrv7f2" path="res://Assets/Sprites/GUI/MobileButtons/SwitchPlayer.png" id="7_mkhw6"]
 [ext_resource type="Texture2D" uid="uid://g7bsrts3djrh" path="res://Assets/Sprites/GUI/MobileButtons/SpawnBouncy_onurB.png" id="8_b7i7j"]
 [ext_resource type="Texture2D" uid="uid://f47t28vuhy2s" path="res://Assets/Sprites/GUI/MobileButtons/DeleteAllBouncy_onurBs.png" id="9_svihx"]
+[ext_resource type="Texture2D" uid="uid://b0lo4bxyommtu" path="res://Assets/Sprites/GUI/MobileButtons/Jump.png" id="11_osi1y"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_yj5kq"]
 radius = 48.0
@@ -18,102 +20,117 @@ height = 96.0
 radius = 8.0
 height = 16.0
 
-[node name="SmoothCamera" type="Camera2D"]
+[node name="SmoothCamera" type="Camera2D" node_paths=PackedStringArray("spawnBouncy", "deleteBouncy")]
 script = ExtResource("1_eudxl")
-
-[node name="Label" type="Label" parent="."]
-process_mode = 3
-offset_left = -355.0
-offset_top = -63.0
-offset_right = -315.0
-offset_bottom = -40.0
-script = ExtResource("2_6oxvd")
-
-[node name="Beans" type="Label" parent="."]
-offset_left = -347.0
-offset_top = -195.0
-offset_right = -262.0
-offset_bottom = -172.0
-text = "Beans: null"
-
-[node name="Achievement" type="RichTextLabel" parent="."]
-clip_contents = false
-offset_left = -355.0
-offset_top = -200.0
-offset_right = -259.0
-offset_bottom = -168.0
-bbcode_enabled = true
-text = "
-"
-autowrap_mode = 0
+spawnBouncy = NodePath("CanvasLayer/MobileControls/SpawnBouncy")
+deleteBouncy = NodePath("CanvasLayer/MobileControls/DeleteBouncy")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_yj5kq")
 bus = &"SFX"
 
-[node name="MobileControls" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = -336.0
-offset_top = 88.0
-offset_right = -240.0
-offset_bottom = 185.0
-grow_vertical = 0
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="Joystick" type="Node2D" parent="MobileControls"]
+[node name="Label" type="Label" parent="CanvasLayer"]
+process_mode = 3
+visible = false
+anchors_preset = -1
+anchor_left = 0.007032349
+anchor_top = 0.3625
+anchor_right = 0.06329114
+anchor_bottom = 0.42
+script = ExtResource("2_6oxvd")
+metadata/_edit_use_anchors_ = true
+
+[node name="Beans" type="Label" parent="CanvasLayer"]
+anchors_preset = -1
+anchor_left = 0.018284107
+anchor_top = 0.0325
+anchor_right = 0.13783404
+anchor_bottom = 0.09
+text = "Beans: null"
+metadata/_edit_use_anchors_ = true
+
+[node name="Achievement" type="RichTextLabel" parent="CanvasLayer"]
+clip_contents = false
+anchors_preset = -1
+anchor_left = -0.1392405
+anchor_right = -0.004219409
+anchor_bottom = 0.08
+bbcode_enabled = true
+text = "[img]res://Assets/Sprites/Achievements/Stick.png[/img]
+"
+autowrap_mode = 0
+metadata/_edit_use_anchors_ = true
+
+[node name="MobileControls" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchor_left = 0.033755273
+anchor_top = 0.74
+anchor_right = 0.16877638
+anchor_bottom = 0.9825
+grow_vertical = 0
+metadata/_edit_use_anchors_ = true
+
+[node name="Joystick" type="Node2D" parent="CanvasLayer/MobileControls"]
 position = Vector2(48, 48)
 script = ExtResource("4_2c8rd")
 
-[node name="joyring" type="MeshInstance2D" parent="MobileControls/Joystick"]
+[node name="joyring" type="MeshInstance2D" parent="CanvasLayer/MobileControls/Joystick"]
 self_modulate = Color(0.133333, 0.168627, 0.270588, 0.14902)
 mesh = SubResource("SphereMesh_yj5kq")
 
-[node name="joyknob" type="MeshInstance2D" parent="MobileControls/Joystick"]
+[node name="joyknob" type="MeshInstance2D" parent="CanvasLayer/MobileControls/Joystick"]
 mesh = SubResource("SphereMesh_3f85x")
 script = ExtResource("5_4chum")
 
-[node name="Button" type="Button" parent="MobileControls/Joystick"]
+[node name="Button" type="TouchScreenButton" parent="CanvasLayer/MobileControls/Joystick"]
 self_modulate = Color(1, 1, 1, 0)
-offset_left = -48.0
-offset_top = -48.0
-offset_right = 48.0
-offset_bottom = 48.0
+position = Vector2(-48, -48)
+scale = Vector2(3.28125, 3)
+texture_normal = ExtResource("6_svihx")
 
-[node name="Pause" type="TouchScreenButton" parent="MobileControls"]
+[node name="Pause" type="TouchScreenButton" parent="CanvasLayer/MobileControls"]
 position = Vector2(648, -281)
 texture_normal = ExtResource("6_4chum")
 action = "Pause"
 visibility_mode = 1
 
-[node name="SwitchPlayer" type="TouchScreenButton" parent="MobileControls"]
+[node name="SwitchPlayer" type="TouchScreenButton" parent="CanvasLayer/MobileControls"]
 position = Vector2(512, -281)
 texture_normal = ExtResource("7_mkhw6")
 action = "SwitchPlayer"
 visibility_mode = 1
 
-[node name="SpawnBouncy" type="TouchScreenButton" parent="MobileControls"]
+[node name="SpawnBouncy" type="TouchScreenButton" parent="CanvasLayer/MobileControls"]
 visible = false
 position = Vector2(656, -146)
 texture_normal = ExtResource("8_b7i7j")
 action = "SpawnBouncy_onurB"
 visibility_mode = 1
 
-[node name="DeleteBouncy" type="TouchScreenButton" parent="MobileControls"]
+[node name="DeleteBouncy" type="TouchScreenButton" parent="CanvasLayer/MobileControls"]
 visible = false
 position = Vector2(656, -58)
 texture_normal = ExtResource("9_svihx")
 action = "DeleteAllBouncy_onurBs"
 visibility_mode = 1
 
-[node name="SpeedrunTimer" type="Label" parent="."]
-visible = false
-offset_left = -44.0
-offset_top = -200.0
-offset_right = 45.0
-offset_bottom = -177.0
-text = "Timer: x:x:x"
+[node name="JumpButton" type="TouchScreenButton" parent="CanvasLayer/MobileControls"]
+position = Vector2(576, 8)
+scale = Vector2(1.5, 1.5)
+texture_normal = ExtResource("11_osi1y")
 
-[connection signal="button_down" from="MobileControls/Joystick/Button" to="MobileControls/Joystick/joyknob" method="_on_button_button_down"]
-[connection signal="button_up" from="MobileControls/Joystick/Button" to="MobileControls/Joystick/joyknob" method="_on_button_button_up"]
+[node name="SpeedrunTimer" type="Label" parent="CanvasLayer"]
+anchors_preset = -1
+anchor_left = 0.4416315
+anchor_top = 0.0375
+anchor_right = 0.5668073
+anchor_bottom = 0.095
+text = "Timer: x:x:x"
+metadata/_edit_use_anchors_ = true
+
+[connection signal="pressed" from="CanvasLayer/MobileControls/Joystick/Button" to="CanvasLayer/MobileControls/Joystick/joyknob" method="_on_button_button_down"]
+[connection signal="released" from="CanvasLayer/MobileControls/Joystick/Button" to="CanvasLayer/MobileControls/Joystick/joyknob" method="_on_button_button_up"]
+[connection signal="pressed" from="CanvasLayer/MobileControls/JumpButton" to="CanvasLayer/MobileControls/Joystick" method="_on_jump_button_pressed"]
+[connection signal="released" from="CanvasLayer/MobileControls/JumpButton" to="CanvasLayer/MobileControls/Joystick" method="_on_jump_button_released"]

@@ -10,9 +10,10 @@ var FollowWho: String = "Fency"
 var Chip: bool = false
 var DebugMode: bool = false
 var DuckPlayers: Array = []
-var JoystickPosVector: Vector2 = Vector2(0,0)
+var JoystickPosVector: Vector2 = Vector2.ZERO
 var SpeedrunMode: bool = false
 var SpeedrunModeRandomSaltniczka: bool = true
+var MobileJump: int = 0
 
 func _ready() -> void:
 	print("[PlayerStats.gd] Loaded")

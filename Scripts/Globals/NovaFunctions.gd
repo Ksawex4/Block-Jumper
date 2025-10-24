@@ -11,7 +11,6 @@ func GetPlayerFromGroup(playerName: String) -> Node2D:
 				return player
 		return
 	else:
-		push_warning("[NovaFunctions.gd] Players group does not exist in current scene")
 		return
 
 func ResetAllGlobalsToDefault(resetPlayerStats: bool=false, resetAchievements: bool=false) -> void:
