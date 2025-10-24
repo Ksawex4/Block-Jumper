@@ -1,7 +1,16 @@
-[gd_scene load_steps=7 format=3 uid="uid://c2ldxhh8n667v"]
+[gd_scene load_steps=10 format=3 uid="uid://c2ldxhh8n667v"]
 
 [ext_resource type="Script" uid="uid://c38r0id6iexga" path="res://Scripts/Characters/Enemies/kill_block.gd" id="1_e3at7"]
 [ext_resource type="Texture2D" uid="uid://bncx76kmfmqr4" path="res://Assets/Sprites/Characters/Enemies/sprKillBlock.png" id="1_plcyi"]
+[ext_resource type="Texture2D" uid="uid://btp4u43gbqkkw" path="res://Assets/Sprites/Characters/Enemies/sprDeadlyKillBlock.png" id="2_q5rk0"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a0lch"]
+atlas = ExtResource("2_q5rk0")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0ji0f"]
+atlas = ExtResource("2_q5rk0")
+region = Rect2(64, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_e3at7"]
 atlas = ExtResource("1_plcyi")
@@ -13,6 +22,17 @@ region = Rect2(64, 0, 64, 64)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_a0lch"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a0lch")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0ji0f")
+}],
+"loop": true,
+"name": &"deadly",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_e3at7")
@@ -38,7 +58,7 @@ metadata/instanceID = "kill_block_1270202106"
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_a0lch")
-frame_progress = 0.445157
+frame_progress = 0.6833974
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_0ji0f")

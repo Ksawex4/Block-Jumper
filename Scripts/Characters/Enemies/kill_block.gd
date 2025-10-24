@@ -13,6 +13,10 @@ func _ready() -> void:
 			_generate_unique_id()
 	
 	if has_meta("instanceID") and !Engine.is_editor_hint():
+		if get_meta("damage") <= 120:
+			$AnimatedSprite2D.play("default")
+		else:
+			$AnimatedSprite2D.play("deadly")
 		var myUniqueId: String = get_meta("instanceID")
 		if LevelMan.PersistenceKeys.has(myUniqueId):
 			queue_free()
