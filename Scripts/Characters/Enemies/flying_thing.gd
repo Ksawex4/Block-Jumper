@@ -17,6 +17,13 @@ func _ready() -> void:
 	$CollisionShape2D.disabled = false
 	$Timer.start(0.2)
 	print("[flying_thing.gd] Spawned, goal: ", goal.name)
+	match randi_range(1,2):
+		1: 
+			$Sprite2D.scale = Vector2(0.044, 0.055)
+			$Sprite2D.texture = preload("uid://cacwgynrspxgf")
+		2: 
+			$Sprite2D.scale = Vector2(0.07, 0.074)
+			$Sprite2D.texture = preload("uid://bearliq6xur6b")
 
 func _physics_process(_delta: float) -> void:
 	if !$NavigationAgent2D.is_target_reached():
