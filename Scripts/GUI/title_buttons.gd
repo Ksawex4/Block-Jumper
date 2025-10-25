@@ -21,6 +21,7 @@ func _on_new_game_pressed() -> void:
 	LevelMan.ChangeLevel("trash_room")
 
 func _on_quit_pressed() -> void:
+	SaveMan.SaveSettings()
 	print("[title_buttons, Quit] Quitting")
 	AchievMan.SaveAchievements()
 	get_tree().quit()

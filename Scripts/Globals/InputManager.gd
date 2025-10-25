@@ -1,11 +1,6 @@
 extends Node
 
 var Paused: bool = false
-#var AllPlayerControls = {
-	#"Fency": {"left": KEY_A, "right": KEY_D, "up": KEY_W, "down": KEY_S, "cam": KEY_1},
-	#"Toasty": {"left": KEY_J, "right": KEY_L, "up": KEY_I, "down": KEY_K, "cam": KEY_3},
-	#"PanLoduwka": {"left": KEY_F, "right": KEY_H, "up": KEY_T, "down": KEY_G, "cam": KEY_2}
-#}
 
 func _ready() -> void:
 	SignalMan.connect("Continue", Callable(self, "_on_continue"))

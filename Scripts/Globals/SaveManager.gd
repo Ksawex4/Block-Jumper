@@ -82,3 +82,30 @@ func AndroidFileExists(FileName: String) -> bool:
 	if FileAccess.file_exists(AndroidSaveDirectory + FileName):
 		return true
 	return false
+
+func SaveSettings() -> void:
+	var data := {
+		"MusicVolume": LevelMan.MusicVolume,
+		"SFXVolume": LevelMan.SFXVolume,
+	}  # Controls are not saved beacuse I don't currently know how to do that
+	if LevelMan.Os == "Android":
+		AndroidSave(JSON.stringify(data), "Settings.bj")
+	else:
+		var file: FileAccess = FileAccess.open("user://Settings.bj", FileAccess.WRITE)
+		file.store_string(JSON.stringify(data))
+		file.close()
+		print("[SaveManager.gd] Saved Settings, data: ", data)
+
+func LoadSettings() -> void:
+	if FileAccess.file_exists("user://Save.bj") and LevelMan.Os != "Android" or LevelMan.Os == "Android" and AndroidFileExists("Save.bj"):
+		var file: FileAccess
+		if LevelMan.Os != "Android":
+			file = FileAccess.open("user://Settings.bj", FileAccess.READ)
+		else:
+			file = AndroidFileGet("Settings.bj")
+		if file:
+			var data: Dictionary = JSON.parse_string(file.get_as_text())
+			if data:
+				LevelMan.MusicVolume = data["MusicVolume"]
+				LevelMan.SFXVolume = data["SFXVolume"]
+			file.close()

@@ -1,0 +1,36 @@
+[gd_scene load_steps=7 format=3 uid="uid://dbq5oi34weef4"]
+
+[ext_resource type="Script" uid="uid://fgcnjyxx7wsh" path="res://Scripts/GUI/joystick.gd" id="1_n0kqx"]
+[ext_resource type="Script" uid="uid://c32f4t1p3pdlb" path="res://Scripts/GUI/joyknob.gd" id="2_ks6qg"]
+[ext_resource type="Texture2D" uid="uid://m8mvttomh8ys" path="res://Assets/FencyIcon.svg" id="3_rl1dc"]
+[ext_resource type="Script" uid="uid://bqp344b80ur5b" path="res://Scripts/GUI/JoystickButton.gd" id="4_4igtr"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_di8tg"]
+radius = 48.0
+height = 96.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_imx7t"]
+radius = 8.0
+height = 16.0
+
+[node name="Joystick" type="Node2D"]
+position = Vector2(48, 48)
+script = ExtResource("1_n0kqx")
+
+[node name="joyring" type="MeshInstance2D" parent="."]
+self_modulate = Color(0.133333, 0.168627, 0.270588, 0.14902)
+mesh = SubResource("SphereMesh_di8tg")
+
+[node name="joyknob" type="MeshInstance2D" parent="."]
+mesh = SubResource("SphereMesh_imx7t")
+script = ExtResource("2_ks6qg")
+
+[node name="Button" type="TouchScreenButton" parent="."]
+self_modulate = Color(1, 1, 1, 0)
+position = Vector2(-48, -48)
+scale = Vector2(3.0000002, 3)
+texture_normal = ExtResource("3_rl1dc")
+script = ExtResource("4_4igtr")
+
+[connection signal="pressed" from="Button" to="joyknob" method="_on_button_button_down"]
+[connection signal="released" from="Button" to="joyknob" method="_on_button_button_up"]

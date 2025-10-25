@@ -37,7 +37,7 @@ func _physics_process(delta: float) -> void:
 		elif LevelMan.Gravity < 0:
 			velocity.y += (LevelMan.Gravity + gravityDifference) * delta
 	
-	var axis: Vector2 = Vector2(0, 0)
+	var axis: Vector2 = Vector2.ZERO
 	axis = getJoystickAxis()
 	if !BobMan.CanBobsAddVelocity:
 		velocity.x = xSpeed * delta * axis.x
@@ -121,11 +121,16 @@ func checkIfDuck() -> void:
 func getJoystickAxis() -> Vector2:
 	var axis: Vector2 = Vector2(0,0)
 	if LevelMan.Os == "Android" and PlayerStats.FollowWho == whoAmI:
-		if PlayerStats.JoystickPosVector.x > 0.2: # right
+		var controller_axis := Input.get_axis("ControllerLeft", "ControllerRight")
+		if PlayerStats.JoystickPosVector.x > 0.2 or controller_axis == 1: # right
 			axis.x = 1
-		elif PlayerStats.JoystickPosVector.x < -0.2: # left
+		elif PlayerStats.JoystickPosVector.x < -0.2 or controller_axis == -1: # left
 			axis.x = -1
-		if PlayerStats.MobileJump == 1: # jump
+		if PlayerStats.MobileJump == 1 or Input.is_action_just_pressed("ControllerJump"): # jump
+			axis.y = -1
+	elif Input.get_connected_joypads().size() != 0 and PlayerStats.FollowWho == whoAmI:
+		axis.x = Input.get_axis("ControllerLeft", "ControllerRight")
+		if Input.is_action_pressed("ControllerJump"):
 			axis.y = -1
 	else:
 		axis.x = Input.get_axis(controls["Left"], controls["Right"])

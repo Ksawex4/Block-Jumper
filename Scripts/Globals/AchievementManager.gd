@@ -4,7 +4,7 @@ var Achievements: Array = []
 var AchievementsToShow: Array = []
 var AchievementSound: String = "res://Assets/Audio/SFX/sfxAch.wav"
 var CanPlayerGetAchievements: bool = true
-var AmountOfAchievements: int = 9                                   
+var AmountOfAchievements: int = 10
 
 func _ready() -> void:
 	LoadAchievements()

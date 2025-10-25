@@ -5,9 +5,10 @@ var TargetBlockPos: Vector2 = Vector2(550.0, -28.0)
 var TargetJumperPos: Vector2 = Vector2(-417.0, 52.0)
 
 func _ready() -> void:
+	SaveMan.LoadSettings()
 	if LevelMan.Os == "Android" and !DirAccess.dir_exists_absolute(SaveMan.AndroidSaveDirectory):
 		$Information.visible = true
-		await get_tree().create_timer(15).timeout
+		await get_tree().create_timer(7).timeout
 		if !DirAccess.dir_exists_absolute(SaveMan.AndroidSaveDirectory):
 			var error: Error = DirAccess.make_dir_recursive_absolute(SaveMan.AndroidSaveDirectory)
 			if error == OK:
