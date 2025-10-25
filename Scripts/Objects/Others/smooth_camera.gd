@@ -9,6 +9,11 @@ var achTemplate: String = "[img]res://Assets/Sprites/Achievements/ACHIEVEMENT.pn
 @export var spawnBouncy: TouchScreenButton
 @export var deleteBouncy: TouchScreenButton
 
+func _ready() -> void:
+	if LevelMan.Os != "Android":
+		$CanvasLayer/MobileControls.queue_free()
+
+
 func _physics_process(delta: float) -> void:
 	var node: Node2D = NovaFunc.GetPlayerFromGroup(PlayerStats.FollowWho)
 	if node != null and !LevelMan.BossFightOn:

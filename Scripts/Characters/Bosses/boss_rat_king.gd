@@ -74,7 +74,7 @@ func _physics_process(delta: float) -> void:
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	body.hurt(15)
-	if !PlayerStats.IsPlayerAlive(body.name):
+	if PlayerStats.AllPlayerStats[body.whoAmI]["HP"] - 15 <= 0:
 		endBattle()
 
 func _on_audio_stream_player_finished() -> void:
