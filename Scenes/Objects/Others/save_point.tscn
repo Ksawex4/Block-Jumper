@@ -187,6 +187,7 @@ volume_db = 20.0
 bus = &"SFX"
 
 [node name="Label" type="Label" parent="."]
+visible = false
 z_index = 2
 offset_left = -65.0
 offset_top = -88.0
