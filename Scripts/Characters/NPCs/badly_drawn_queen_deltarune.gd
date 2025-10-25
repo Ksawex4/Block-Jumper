@@ -24,14 +24,13 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 	if NovaFunc.GetPlayerFromGroup(body.name) and !interractDelay:
 		interractDelay = true
 		$Label.text = ""
-		if texter < text.size() - 1 and secretQueen or texter < text.size() and noChip:
+		if texter < text.size() - 1 and secretQueen or texter < text.size() - 1 and noChip:
 			texter += 1
 		elif texter == -1 or texter == 0 and PlayerStats.Chip:
 			texter += 1
 			if PlayerStats.Chip:
 				print("yesChip")
 				AchievMan.AddAchievement("Chip")
-		
 		var currentText: String = text[texter].replace("PLAYER", body.name)
 		if currentText == "I am spinning right now" and !spin:
 			spin = true
