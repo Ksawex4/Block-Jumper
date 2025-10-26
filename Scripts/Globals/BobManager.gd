@@ -116,6 +116,8 @@ func CheckIfShouldSpawnBob() -> void:
 				elif player.position.y >= BobSpawnYPos * 1.5 and get_tree().current_scene.scene_file_path.get_file() != "the_void_lands.tscn":
 					LevelMan.ChangeLevel("the_void_lands")
 					AchievMan.AddAchievement("TheVoidLands")
+				elif player.position.y >= BobSpawnYPos * 0.5 and get_tree().current_scene.scene_file_path.get_file() == "the_void_lands.tscn":
+					LevelMan.ChangeLevel("title_screen")
 
 func AddBobAndEnd() -> void:
 	if SavedBobs == 0:

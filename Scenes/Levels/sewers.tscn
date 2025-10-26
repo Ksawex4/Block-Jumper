@@ -1,7 +1,7 @@
 [gd_scene load_steps=30 format=4 uid="uid://trudkfge08j3"]
 
 [ext_resource type="PackedScene" uid="uid://c8jjqycyb5u8t" path="res://Scenes/Objects/Others/background.tscn" id="1_so4p6"]
-[ext_resource type="Texture2D" uid="uid://chikbsgddokpq" path="res://Assets/Sprites/Backgrounds/BackgroundTrash.png" id="2_4tsbk"]
+[ext_resource type="Texture2D" uid="uid://cdo8gxcamy4u7" path="res://Assets/Sprites/Backgrounds/SewersBackground.png" id="2_dnweb"]
 [ext_resource type="PackedScene" uid="uid://dict2vu23hgm2" path="res://Scenes/GUI/pause_menu.tscn" id="2_spwqa"]
 [ext_resource type="PackedScene" uid="uid://cvv0gpubt765j" path="res://Scenes/GUI/achievements_menu.tscn" id="3_7davq"]
 [ext_resource type="PackedScene" uid="uid://clkawf7n1yg00" path="res://Scenes/GUI/settings_menu.tscn" id="4_c3jp4"]
@@ -41,8 +41,8 @@ size = Vector2(32, 192)
 [node name="Sewers" type="Node2D"]
 
 [node name="Background" parent="." instance=ExtResource("1_so4p6")]
-sprite = ExtResource("2_4tsbk")
-spriteSize = Vector2i(711, 431)
+sprite = ExtResource("2_dnweb")
+spriteSize = Vector2i(711, 400)
 spriteScale = Vector2(1, 1)
 
 [node name="Windows" type="Node2D" parent="."]
