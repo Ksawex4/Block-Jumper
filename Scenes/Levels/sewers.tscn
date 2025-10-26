@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=4 uid="uid://trudkfge08j3"]
+[gd_scene load_steps=31 format=4 uid="uid://trudkfge08j3"]
 
 [ext_resource type="PackedScene" uid="uid://c8jjqycyb5u8t" path="res://Scenes/Objects/Others/background.tscn" id="1_so4p6"]
 [ext_resource type="Texture2D" uid="uid://cdo8gxcamy4u7" path="res://Assets/Sprites/Backgrounds/SewersBackground.png" id="2_dnweb"]
@@ -19,6 +19,7 @@
 [ext_resource type="AudioStream" uid="uid://cgkd71qbg4cx2" path="res://Assets/Audio/Music/musSewerSong.ogg" id="10_c3jp4"]
 [ext_resource type="PackedScene" uid="uid://drxk8bs36lex7" path="res://Scenes/Characters/NPCs/breabit.tscn" id="10_p7ck8"]
 [ext_resource type="PackedScene" uid="uid://dkasiow3t788s" path="res://Scenes/Objects/Others/trash_can.tscn" id="11_j1apm"]
+[ext_resource type="Texture2D" uid="uid://draum5svmhkwr" path="res://Assets/Sprites/Characters/NPCs/callRat.png" id="11_tc42j"]
 [ext_resource type="PackedScene" uid="uid://bnl2k01fyg3fl" path="res://Scenes/Objects/Items/bean.tscn" id="12_rxrux"]
 [ext_resource type="PackedScene" uid="uid://bu2l0f1ivopr7" path="res://Scenes/Objects/Others/save_point.tscn" id="15_dnweb"]
 [ext_resource type="PackedScene" uid="uid://khf6venocxir" path="res://Scenes/Characters/Bosses/boss_rat_king.tscn" id="18_j1apm"]
@@ -228,6 +229,10 @@ whichTexture = "NormalBob2"
 
 [node name="Breabit" parent="NPCs" instance=ExtResource("10_p7ck8")]
 position = Vector2(1566, 1536)
+
+[node name="CallRat" type="Sprite2D" parent="NPCs"]
+position = Vector2(1432, -619)
+texture = ExtResource("11_tc42j")
 
 [node name="Interractables" type="Node2D" parent="."]
 
