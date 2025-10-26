@@ -45,6 +45,8 @@ func ResetVariablesToDefault() -> void:
 	CanPlayerSave = true
 	print("[LevelManager.gd] Reseted variables")
 	BossFightOn = false
+	BossCamPos = Vector2(0,0)
+	CamZoom = Vector2(1,1)
 
 func OnLevelChanged() -> void:
 	if FlyingThingAlive and get_tree().current_scene.scene_file_path.get_file() != "title_screen.tscn":

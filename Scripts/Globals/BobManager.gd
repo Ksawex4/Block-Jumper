@@ -50,8 +50,8 @@ func _process(_delta: float) -> void:
 		if get_tree().current_scene != null:
 			if get_tree().current_scene.has_node("AudioStreamPlayer"):
 				var music: AudioStreamPlayer = get_tree().current_scene.get_node("AudioStreamPlayer")
-				if music.stream.resource_path != "res://Assets/Audio/Music/sOuZWOrkASOOOOOnG.ogg":
-					music.stream = load("res://Assets/Audio/Music/sOuZWOrkASOOOOOnG.ogg")
+				if music.stream.resource_path != "res://Assets/Audio/Music/mUsZWOrkASOOOOOnG.ogg":
+					music.stream = load("res://Assets/Audio/Music/mUsZWOrkASOOOOOnG.ogg")
 					music.play()
 	if SavedBobs >= 6:
 		CanBobsScale = true
@@ -124,7 +124,7 @@ func AddBobAndEnd() -> void:
 		AchievMan.SaveAchievements()
 	SaveBobs()
 	get_tree().paused = true
-	var sound: Resource = load("res://Assets/Audio/SFX/souCrash.wav")
+	var sound: Resource = preload("uid://la1lof170xpm")
 	var audioPlayer: AudioStreamPlayer = AudioStreamPlayer.new()
 	audioPlayer.stream = sound
 	audioPlayer.process_mode = Node.PROCESS_MODE_ALWAYS
@@ -141,7 +141,7 @@ func Bob6() -> void:
 	if !Done and get_tree().current_scene:
 		Done = true
 		print("[BobManager.gd] Bob6 started successfully")
-		var songs: Array = ["souMainMenu.ogg", "souTrash.ogg", "souZworkaSong.ogg", "sOuZWOrkASOOOOOnG.ogg", "newbob.ogg"]
+		var songs: Array = ["musMainMenu.ogg", "musTrash.ogg", "musZworkaSong.ogg", "musZWOrkASOOOOOnG.ogg", "musNewbob.ogg", "musSewerSong.ogg", "musTheKingBelow.ogg"]
 		if len(songs) != 0:
 			for song: String in songs:
 				var path: String = "res://Assets/Audio/Music/" + song
