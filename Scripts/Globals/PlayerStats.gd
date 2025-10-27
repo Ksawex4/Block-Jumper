@@ -26,6 +26,13 @@ func Hurt(player: String, damage: int) -> bool:
 	else:
 		return false
 
+func Heal(player: String, amount: int) -> void:
+	if AllPlayerStats.has(player):
+		AllPlayerStats[player]["HP"] += amount
+		if AllPlayerStats[player]["HP"] > AllPlayerStats[player]["MaxHP"]:
+			AllPlayerStats[player]["HP"] = AllPlayerStats[player]["MaxHP"]
+		SignalMan.emit_signal("UpdateBars")
+
 func IsPlayerAlive(player: String, checkIfOtherAlive: bool=true) -> bool:
 	if AllPlayerStats.has(player):
 		var alive: bool = AllPlayerStats[player]["HP"] > 0

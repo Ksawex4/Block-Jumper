@@ -16,7 +16,7 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	var node: Node2D = NovaFunc.GetPlayerFromGroup(PlayerStats.FollowWho)
-	if node != null or !LevelMan.BossFightOn:
+	if node != null and !LevelMan.BossFightOn:
 		if node.velocity.x > maxSmoothSpeed or node.velocity.y > maxSmoothSpeed:
 			position = node.position
 		else:
@@ -65,6 +65,9 @@ func _physics_process(delta: float) -> void:
 	
 	if achievementHidden and AchievMan.AchievementsToShow != []:
 		_showAchievements(AchievMan.AchievementsToShow.pop_front())
+	
+	if Input.is_action_just_pressed("HealMenu"):
+		$HealMenu.show()
 
 func _showAchievements(ach: String) -> void:
 	var achievement: String = achTemplate.replace("ACHIEVEMENT", ach)
