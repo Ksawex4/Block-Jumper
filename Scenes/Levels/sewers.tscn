@@ -25,7 +25,7 @@
 [ext_resource type="PackedScene" uid="uid://khf6venocxir" path="res://Scenes/Characters/Bosses/boss_rat_king.tscn" id="18_j1apm"]
 [ext_resource type="Script" uid="uid://i8nws1laodyg" path="res://Scripts/Objects/Others/boss_room_entry.gd" id="19_claet"]
 [ext_resource type="Texture2D" uid="uid://buq2hue05v4d2" path="res://Assets/Sprites/Objects/Solids/sewerBlock.png" id="22_claet"]
-[ext_resource type="AudioStream" uid="uid://ctnd4mg8hrwb4" path="res://Assets/Audio/Music/musTheKingBelow.ogg" id="23_2pliy"]
+[ext_resource type="AudioStream" uid="uid://bhrdck8esi86b" path="res://Assets/Audio/Music/musBigcheese.ogg" id="26_tc42j"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p7ck8"]
 size = Vector2(32, 288)
@@ -488,7 +488,7 @@ position = Vector2(0, -16)
 shape = SubResource("RectangleShape2D_2pliy")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Boss-RatKing"]
-stream = ExtResource("23_2pliy")
+stream = ExtResource("26_tc42j")
 bus = &"Music"
 
 [connection signal="body_entered" from="Boss-RatKing/RoomEntry" to="Boss-RatKing/RoomEntry" method="_on_body_entered"]
