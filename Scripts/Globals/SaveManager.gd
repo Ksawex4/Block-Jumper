@@ -106,8 +106,8 @@ func LoadSettings() -> void:
 		else:
 			file = AndroidFileGet("Settings.bj")
 		if file:
-			var data: Dictionary = JSON.parse_string(file.get_as_text())
-			if data:
+			var data = JSON.parse_string(file.get_as_text())
+			if data is Dictionary:
 				LevelMan.MusicVolume = data["MusicVolume"]
 				LevelMan.SFXVolume = data["SFXVolume"]
 				DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_DISABLED if data["VSync"] == 1 else DisplayServer.VSYNC_ENABLED)
