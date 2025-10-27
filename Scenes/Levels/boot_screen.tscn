@@ -1,4 +1,4 @@
-[gd_scene load_steps=95 format=3 uid="uid://bdw0vwua1oy14"]
+[gd_scene load_steps=96 format=3 uid="uid://bdw0vwua1oy14"]
 
 [ext_resource type="Script" uid="uid://d0hpuult3e2w5" path="res://Scripts/BootSplash/boot_screen.gd" id="1_6acqa"]
 [ext_resource type="Texture2D" uid="uid://dvd1xf4dji7vx" path="res://Assets/Sprites/BootSplash/BootSplashFency.png" id="1_e05bb"]
@@ -582,6 +582,9 @@ animations = [{
 "speed": 12.0
 }]
 
+[sub_resource type="Theme" id="Theme_m0s4q"]
+default_font_size = 64
+
 [node name="BootScreen" type="Node2D"]
 script = ExtResource("1_6acqa")
 
@@ -716,7 +719,27 @@ sprite_frames = SubResource("SpriteFrames_unuhr")
 frame = 16
 frame_progress = 1.0
 
+[node name="Desktop" type="Button" parent="."]
+visible = false
+offset_left = 48.0
+offset_top = -142.0
+offset_right = 312.0
+offset_bottom = 142.0
+theme = SubResource("Theme_m0s4q")
+text = "Desktop"
+
+[node name="Mobile" type="Button" parent="."]
+visible = false
+offset_left = -312.0
+offset_top = -142.0
+offset_right = -48.0
+offset_bottom = 142.0
+theme = SubResource("Theme_m0s4q")
+text = "Mobile"
+
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="close_requested" from="FailedToLoad" to="FailedToLoad" method="_on_button_pressed"]
 [connection signal="pressed" from="FailedToLoad/Button" to="FailedToLoad" method="_on_button_pressed"]
 [connection signal="animation_finished" from="Explosion" to="." method="_on_explosion_animation_finished"]
+[connection signal="pressed" from="Desktop" to="." method="_on_desktop_pressed"]
+[connection signal="pressed" from="Mobile" to="." method="_on_mobile_pressed"]

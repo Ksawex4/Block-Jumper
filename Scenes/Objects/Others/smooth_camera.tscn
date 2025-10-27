@@ -97,7 +97,6 @@ self_modulate = Color(1, 1, 1, 0.7647059)
 position = Vector2(576, 8)
 scale = Vector2(1.5, 1.5)
 texture_normal = ExtResource("11_osi1y")
-action = "ControllerJump"
 
 [node name="InterractButton" type="TouchScreenButton" parent="CanvasLayer/MobileControls"]
 self_modulate = Color(1, 1, 1, 0.7647059)
@@ -107,16 +106,18 @@ action = "Interract"
 
 [node name="LeftButton" type="TouchScreenButton" parent="CanvasLayer/MobileControls"]
 self_modulate = Color(1, 1, 1, 0.7647059)
-position = Vector2(-11.999998, 13)
+position = Vector2(12, 13)
 scale = Vector2(2.5, 2.5)
 texture_normal = ExtResource("10_osi1y")
+passby_press = true
 action = "ControllerLeft"
 
 [node name="RightButton" type="TouchScreenButton" parent="CanvasLayer/MobileControls"]
 self_modulate = Color(1, 1, 1, 0.7647059)
-position = Vector2(123.99998, 13)
+position = Vector2(97.99998, 13)
 scale = Vector2(2.5, 2.5)
 texture_normal = ExtResource("11_1uv7s")
+passby_press = true
 action = "ControllerRight"
 
 [node name="SpeedrunTimer" type="Label" parent="CanvasLayer"]
@@ -128,3 +129,6 @@ anchor_right = 0.5668073
 anchor_bottom = 0.095
 text = "Timer: x:x:x"
 metadata/_edit_use_anchors_ = true
+
+[connection signal="pressed" from="CanvasLayer/MobileControls/JumpButton" to="." method="_on_jump_button_pressed"]
+[connection signal="released" from="CanvasLayer/MobileControls/JumpButton" to="." method="_on_jump_button_released"]

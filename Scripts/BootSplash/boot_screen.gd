@@ -19,7 +19,11 @@ func _ready() -> void:
 				print("[boot_screen.gd] Created Block_Jumper folder in ", OS.get_system_dir(OS.SYSTEM_DIR_DOCUMENTS) + "/Nova-Games/")
 			else:
 				print("[boot_screen.gd] Failed to create Block_Jumper folder in ", OS.get_system_dir(OS.SYSTEM_DIR_DOCUMENTS) + "/Nova-Games/")
-	$AnimatedSprite2D.play("default")
+	if LevelMan.Os != "Web":
+		$AnimatedSprite2D.play("default")
+	else:
+		$Desktop.show()
+		$Mobile.show()
 	NovaFunc.ResetAllGlobalsToDefault(true, false)
 
 func _physics_process(_delta: float) -> void:
@@ -50,3 +54,17 @@ func _on_explosion_animation_finished() -> void:
 	$Explosion.queue_free()
 	await get_tree().create_timer(0.5).timeout
 	TargetCamPos.y = 888
+
+
+func _on_desktop_pressed() -> void:
+	LevelMan.Os = "Linux" # doesnt matter if its set to Windows or Linux
+	$Mobile.hide()
+	$Desktop.hide()
+	$AnimatedSprite2D.play("default")
+
+
+func _on_mobile_pressed() -> void:
+	LevelMan.Os = "Android" # has to be Android beacuse all the things use Android that are for mobile
+	$Desktop.hide()
+	$Mobile.hide()
+	$AnimatedSprite2D.play("default")
