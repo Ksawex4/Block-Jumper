@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-@export var who: String = "Fency"
+@export var who: String = ""
 @export var noPlayer := false
 var stickType = "Normal"
 var player: Node2D
@@ -34,13 +34,14 @@ func _physics_process(delta: float) -> void:
 		move_and_slide()
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	if body.has_method("takeDamage"):
-		body.takeDamage(damage)
-	PlayerStats.AllPlayerStats[who]["Stick"] = false
-	queue_free()
+	if not noPlayer:
+		if body.has_method("takeDamage"):
+			body.takeDamage(damage)
+		PlayerStats.AllPlayerStats[who]["Stick"] = false
+		queue_free()
 
 func _on_pick_up_area_body_entered(body: Node2D) -> void:
-	if !PlayerStats.AllPlayerStats[body.name]["Stick"]:
+	if !PlayerStats.AllPlayerStats[body.name]["Stick"] and who == "":
 		player = body
 		set_collision_mask_value(1, false)
 		PlayerStats.AllPlayerStats[body.name]["Stick"] = true
