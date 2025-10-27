@@ -16,7 +16,7 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	var node: Node2D = NovaFunc.GetPlayerFromGroup(PlayerStats.FollowWho)
-	if node != null or !LevelMan.BossFightOn and BobMan.SavedBobs < 5:
+	if node != null or !LevelMan.BossFightOn:
 		if node.velocity.x > maxSmoothSpeed or node.velocity.y > maxSmoothSpeed:
 			position = node.position
 		else:
@@ -82,3 +82,11 @@ func _showAchievements(ach: String) -> void:
 	await get_tree().create_timer(1.0).timeout
 	$CanvasLayer/Achievement.text = ""
 	achievementHidden = true
+
+
+func _on_jump_button_pressed() -> void:
+	PlayerStats.MobileJump = 1
+
+
+func _on_jump_button_released() -> void:
+	PlayerStats.MobileJump = 0
