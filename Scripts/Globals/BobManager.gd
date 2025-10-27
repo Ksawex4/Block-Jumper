@@ -48,7 +48,7 @@ func _process(_delta: float) -> void:
 	if SavedBobs >= 4:
 		CanBobsAddVelocity = true
 	if SavedBobs >= 5 and RandomizeCamZoomTimer <= 0.0:
-		RandomizeCamZoomTimer = randf_range(2.0, 8.0)
+		RandomizeCamZoomTimer = randf_range(8.0, 15.0)
 		LevelMan.CamZoom = Vector2(randf_range(0.2, 5.0), randf_range(0.2, 5.0))
 	if RandomizeCamZoomTimer > 0.0:
 		RandomizeCamZoomTimer -= 0.1
