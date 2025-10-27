@@ -42,6 +42,7 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 
 func _on_pick_up_area_body_entered(body: Node2D) -> void:
 	if !PlayerStats.AllPlayerStats[body.name]["Stick"] and who == "":
+		who = body.whoAmI
 		player = body
 		set_collision_mask_value(1, false)
 		PlayerStats.AllPlayerStats[body.name]["Stick"] = true
