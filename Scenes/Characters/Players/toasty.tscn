@@ -101,6 +101,6 @@ offset_top = -3.0
 offset_right = 51.0
 offset_bottom = 20.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "10/20"
+text = "80/80"
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

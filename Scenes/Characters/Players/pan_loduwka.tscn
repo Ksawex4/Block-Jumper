@@ -169,15 +169,16 @@ offset_bottom = -21.0
 
 [node name="Bar" type="ColorRect" parent="HPBar"]
 layout_mode = 0
-offset_right = 52.0
+offset_left = -6.0
+offset_right = 59.0
 offset_bottom = 18.0
 color = Color(0, 0, 0, 1)
 
 [node name="ProgressBar" type="ProgressBar" parent="HPBar"]
 layout_mode = 0
-offset_left = 1.0
-offset_top = 1.0000002
-offset_right = 51.0
+offset_left = -5.0
+offset_top = 1.0
+offset_right = 58.0
 offset_bottom = 23.857145
 scale = Vector2(1, 0.7)
 theme_override_styles/background = SubResource("StyleBoxFlat_s0i4f")
@@ -188,10 +189,10 @@ show_percentage = false
 
 [node name="Label" type="Label" parent="HPBar"]
 layout_mode = 0
-offset_left = 1.0
+offset_left = -5.0
 offset_top = -3.0
-offset_right = 51.0
+offset_right = 57.0
 offset_bottom = 20.0
-text = "10/20"
+text = "100/100"
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
