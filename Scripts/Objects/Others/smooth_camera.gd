@@ -16,7 +16,7 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	var node: Node2D = NovaFunc.GetPlayerFromGroup(PlayerStats.FollowWho)
-	if node != null and !LevelMan.BossFightOn:
+	if node != null or !LevelMan.BossFightOn and BobMan.SavedBobs < 5:
 		if node.velocity.x > maxSmoothSpeed or node.velocity.y > maxSmoothSpeed:
 			position = node.position
 		else:

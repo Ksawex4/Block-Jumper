@@ -10,6 +10,7 @@ var SpawnedBobs: bool = false
 var FailToLoad: bool = false
 var CanSpawnBouncy_onurB: bool = false
 var CanBobsScale: bool = false
+var RandomizeCamZoomTimer := 0.0
 
 func _ready() -> void:
 	if LevelMan.Os != "Android" and FileAccess.file_exists("user://The Bobs have awoken.BOB") or LevelMan.Os == "Android" and SaveMan.AndroidFileExists("The Bobs have awoken.BOB"):
@@ -46,26 +47,31 @@ func _process(_delta: float) -> void:
 		CanBobsMoveThings = true
 	if SavedBobs >= 4:
 		CanBobsAddVelocity = true
-	if SavedBobs >= 5 and SavedBobs != 7 and SavedBobs != 9:
+	if SavedBobs >= 5 and RandomizeCamZoomTimer <= 0.0:
+		RandomizeCamZoomTimer = randf_range(2.0, 8.0)
+		LevelMan.CamZoom = Vector2(randf_range(0.2, 5.0), randf_range(0.2, 5.0))
+	if RandomizeCamZoomTimer > 0.0:
+		RandomizeCamZoomTimer -= 0.1
+	if SavedBobs >= 6 and SavedBobs != 8 and SavedBobs != 9:
 		if get_tree().current_scene != null:
 			if get_tree().current_scene.has_node("AudioStreamPlayer"):
 				var music: AudioStreamPlayer = get_tree().current_scene.get_node("AudioStreamPlayer")
 				if music.stream.resource_path != "res://Assets/Audio/Music/mUsZWOrkASOOOOOnG.ogg":
 					music.stream = load("res://Assets/Audio/Music/mUsZWOrkASOOOOOnG.ogg")
 					music.play()
-	if SavedBobs >= 6:
+	if SavedBobs >= 7:
 		CanBobsScale = true
-	if SavedBobs == 7:
-		Bob6()
 	if SavedBobs == 8:
+		Bob8()
+	if SavedBobs == 9:
 		AudioServer.set_bus_mute(AudioServer.get_bus_index("Master"), true)
 		RemoveEveryPlayerExceptFency()
 		RemoveEveryEnemy()
 		RemoveEveryNPC()
-	if SavedBobs >= 9:
+	if SavedBobs >= 10:
 		RemoveEveryPlayerExceptFency()
 		CanSpawnBouncy_onurB = true
-	if SavedBobs == 10:
+	if SavedBobs == 11:
 		FailToLoad = true
 
 func ResetVariablesToDefault() -> void:
@@ -137,11 +143,11 @@ func AddBobAndEnd() -> void:
 	print("[BobManager.gd] Finished Fake Game Freeze and changed scene to boot_screen.tscn")
 	ResetVariablesToDefault()
 
-func Bob6() -> void:
+func Bob8() -> void:
 	if !Done and get_tree().current_scene:
 		Done = true
 		print("[BobManager.gd] Bob6 started successfully")
-		var songs: Array = ["musMainMenu.ogg", "musTrash.ogg", "musZworkaSong.ogg", "musZWOrkASOOOOOnG.ogg", "musNewbob.ogg", "musSewerSong.ogg", "musTheKingBelow.ogg"]
+		var songs: Array = ["musMainMenu.ogg", "musTrash.ogg", "musZworkaSong.ogg", "musZWOrkASOOOOOnG.ogg", "musNewbob.ogg", "musSewerSong.ogg", "musBigCheese.ogg"]
 		if len(songs) != 0:
 			for song: String in songs:
 				var path: String = "res://Assets/Audio/Music/" + song
