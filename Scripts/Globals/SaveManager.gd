@@ -87,6 +87,8 @@ func SaveSettings() -> void:
 	var data := {
 		"MusicVolume": LevelMan.MusicVolume,
 		"SFXVolume": LevelMan.SFXVolume,
+		"VSync": DisplayServer.window_get_vsync_mode(),
+		"MaxFPS": Engine.max_fps,
 	}  # Controls are not saved beacuse I don't currently know how to do that
 	if LevelMan.Os == "Android":
 		AndroidSave(JSON.stringify(data), "Settings.bj")
@@ -108,4 +110,6 @@ func LoadSettings() -> void:
 			if data:
 				LevelMan.MusicVolume = data["MusicVolume"]
 				LevelMan.SFXVolume = data["SFXVolume"]
+				DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_DISABLED if data["VSync"] == 1 else DisplayServer.VSYNC_ENABLED)
+				Engine.max_fps = data["MaxFPS"]
 			file.close()

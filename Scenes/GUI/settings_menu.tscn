@@ -56,6 +56,7 @@ offset_bottom = 32.0
 placeholder_text = "MaxFPS: FUCK"
 
 [node name="ControlsMenu" type="Window" parent="."]
+oversampling_override = 1.0
 title = "Controls"
 initial_position = 1
 size = Vector2i(500, 300)
