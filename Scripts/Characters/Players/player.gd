@@ -45,6 +45,8 @@ func _physics_process(delta: float) -> void:
 		velocity.x += (xSpeed/8) * delta * axis.x
 	if is_on_floor() and axis.y < 0:
 		velocity.y = jumpHeight
+	if not is_on_floor() and axis.y >= 0 and velocity.y < 0.0:
+		velocity.y = 80
 	
 	if whoAmI == "PanLoduwka" and !PlayerStats.IsPlayerDuck("PanLoduwka"):
 		if velocity.x > 0:

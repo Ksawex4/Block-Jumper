@@ -1,7 +1,6 @@
-[gd_scene load_steps=25 format=3 uid="uid://vdjpm6gewqvf"]
+[gd_scene load_steps=24 format=3 uid="uid://vdjpm6gewqvf"]
 
-[ext_resource type="Script" uid="uid://b06luvv3xkhjf" path="res://Scripts/Characters/Players/player.gd" id="1_6i6db"]
-[ext_resource type="PackedScene" uid="uid://b83uowllfiji" path="res://Scenes/Characters/NPCs/bouncy_onurb.tscn" id="2_ghqpk"]
+[ext_resource type="Script" uid="uid://d0m8thsya0hd0" path="res://Scripts/Characters/Players/player.gd" id="1_6i6db"]
 [ext_resource type="Texture2D" uid="uid://dotqfisudchml" path="res://Assets/Sprites/Characters/Players/sprPanLoduwka.png" id="2_mdoun"]
 [ext_resource type="Texture2D" uid="uid://co6u0el55quo6" path="res://Assets/Sprites/Characters/Quack.jpg" id="2_s0i4f"]
 [ext_resource type="Texture2D" uid="uid://31jehernh81s" path="res://Assets/Sprites/Characters/Players/sprPanLoduwkaLeft.png" id="3_s0i4f"]
@@ -142,7 +141,6 @@ controls = {
 "Left": "PanLoduwkaLeft",
 "Right": "PanLoduwkaRight"
 }
-bouncy_onurb = ExtResource("2_ghqpk")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 texture_filter = 1

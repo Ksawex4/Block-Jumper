@@ -1,6 +1,6 @@
 [gd_scene load_steps=14 format=3 uid="uid://b37to0sdnfys5"]
 
-[ext_resource type="Script" uid="uid://b06luvv3xkhjf" path="res://Scripts/Characters/Players/player.gd" id="1_j1j6g"]
+[ext_resource type="Script" uid="uid://d0m8thsya0hd0" path="res://Scripts/Characters/Players/player.gd" id="1_apm7n"]
 [ext_resource type="Texture2D" uid="uid://co6u0el55quo6" path="res://Assets/Sprites/Characters/Quack.jpg" id="2_apm7n"]
 [ext_resource type="Texture2D" uid="uid://bh8dptg4s6jfu" path="res://Assets/Sprites/Characters/Players/sprFency.png" id="2_j1j6g"]
 
@@ -66,7 +66,7 @@ bg_color = Color(0.21568628, 0.36862746, 0.5921569, 1)
 
 [node name="Fency" type="CharacterBody2D" groups=["players"]]
 collision_layer = 2
-script = ExtResource("1_j1j6g")
+script = ExtResource("1_apm7n")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 texture_filter = 1
