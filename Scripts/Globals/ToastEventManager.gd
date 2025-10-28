@@ -56,7 +56,6 @@ func ThisRandomPlayerIsNowADUCK() -> void:
 		elif randomNumber == 4:
 			for player: Node2D in players:
 				PlayerStats.DuckPlayers.append(player.name)
-	print(PlayerStats.DuckPlayers, Toast)
 
 func ResetVariablesToDefault() -> void:
 	Toast = -1

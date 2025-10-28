@@ -26,7 +26,7 @@ func _process(_delta: float) -> void:
 			$AudioStreamPlayer.stream = saveFailSFX
 		$AudioStreamPlayer.play()
 	
-	if isColliding and Input.is_action_just_pressed("Interract"):
+	if isColliding and Input.is_action_just_pressed("Interract") and BobMan.SavedBobs <= 0 and not alwaysFailToSave:
 		NovaFunc.ResetAllGlobalsToDefault(true, false)
 		SaveMan.LoadGame()
 
@@ -36,7 +36,8 @@ func _on_animated_sprite_2d_animation_finished() -> void:
 func _on_area_2d_body_entered(_body: Node2D) -> void:
 	isColliding = true
 	saved = false
-	$Label.visible = true
+	if not alwaysFailToSave and BobMan.SavedBobs <= 0:
+		$Label.visible = true
 
 func _on_audio_stream_player_2d_finished() -> void:
 	$AnimatedSprite2D.play("default")

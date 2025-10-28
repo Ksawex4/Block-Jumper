@@ -53,12 +53,7 @@ func _process(_delta: float) -> void:
 	if RandomizeCamZoomTimer > 0.0:
 		RandomizeCamZoomTimer -= 0.1
 	if SavedBobs >= 6 and SavedBobs != 8 and SavedBobs != 9:
-		if get_tree().current_scene != null:
-			if get_tree().current_scene.has_node("AudioStreamPlayer"):
-				var music: AudioStreamPlayer = get_tree().current_scene.get_node("AudioStreamPlayer")
-				if music.stream.resource_path != "res://Assets/Audio/Music/mUsZWOrkASOOOOOnG.ogg":
-					music.stream = load("res://Assets/Audio/Music/mUsZWOrkASOOOOOnG.ogg")
-					music.play()
+		AudioServer.set_bus_effect_enabled(0, 0, true)
 	if SavedBobs >= 7:
 		CanBobsScale = true
 	if SavedBobs == 8:
