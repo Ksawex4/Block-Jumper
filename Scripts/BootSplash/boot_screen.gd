@@ -7,6 +7,7 @@ var BobsSpin := false
 var FadeAway := false
 var PlayersWalk := false
 var Continue := false
+var explodedPlayers := 0
 
 func _ready() -> void:
 	SaveMan.LoadSettings()
@@ -33,7 +34,7 @@ func _physics_process(_delta: float) -> void:
 	if FadeAway:
 		if $AnimatedSprite2D.modulate.a != 0.0:
 			$AnimatedSprite2D.modulate.a -= 0.05
-	if Continue:
+	if Continue or explodedPlayers >= 3:
 		if has_node("Explosion"):
 			$Explosion.play("default")
 		TargetBlockPos.x = 0.0

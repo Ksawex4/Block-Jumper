@@ -1,4 +1,4 @@
-[gd_scene load_steps=96 format=3 uid="uid://bdw0vwua1oy14"]
+[gd_scene load_steps=114 format=3 uid="uid://bdw0vwua1oy14"]
 
 [ext_resource type="Script" uid="uid://d0hpuult3e2w5" path="res://Scripts/BootSplash/boot_screen.gd" id="1_6acqa"]
 [ext_resource type="Texture2D" uid="uid://dvd1xf4dji7vx" path="res://Assets/Sprites/BootSplash/BootSplashFency.png" id="1_e05bb"]
@@ -304,6 +304,133 @@ animations = [{
 "loop": true,
 "name": &"default",
 "speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_unuhr"]
+atlas = ExtResource("16_m0s4q")
+region = Rect2(0, 0, 71, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sc3we"]
+atlas = ExtResource("16_m0s4q")
+region = Rect2(71, 0, 71, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qlujr"]
+atlas = ExtResource("16_m0s4q")
+region = Rect2(142, 0, 71, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b134f"]
+atlas = ExtResource("16_m0s4q")
+region = Rect2(213, 0, 71, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0ve1c"]
+atlas = ExtResource("16_m0s4q")
+region = Rect2(284, 0, 71, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_88xsp"]
+atlas = ExtResource("16_m0s4q")
+region = Rect2(355, 0, 71, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mibvy"]
+atlas = ExtResource("16_m0s4q")
+region = Rect2(0, 100, 71, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1d3nu"]
+atlas = ExtResource("16_m0s4q")
+region = Rect2(71, 100, 71, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rqj31"]
+atlas = ExtResource("16_m0s4q")
+region = Rect2(142, 100, 71, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cuy4m"]
+atlas = ExtResource("16_m0s4q")
+region = Rect2(213, 100, 71, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2lpn1"]
+atlas = ExtResource("16_m0s4q")
+region = Rect2(284, 100, 71, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_06gfd"]
+atlas = ExtResource("16_m0s4q")
+region = Rect2(355, 100, 71, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_22fwq"]
+atlas = ExtResource("16_m0s4q")
+region = Rect2(0, 200, 71, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5qije"]
+atlas = ExtResource("16_m0s4q")
+region = Rect2(71, 200, 71, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e2wvk"]
+atlas = ExtResource("16_m0s4q")
+region = Rect2(142, 200, 71, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5571k"]
+atlas = ExtResource("16_m0s4q")
+region = Rect2(213, 200, 71, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1fhej"]
+atlas = ExtResource("16_m0s4q")
+region = Rect2(284, 200, 71, 100)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4hrd0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_unuhr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sc3we")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qlujr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b134f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0ve1c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_88xsp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mibvy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1d3nu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rqj31")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cuy4m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2lpn1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_06gfd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_22fwq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5qije")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e2wvk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5571k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1fhej")
+}],
+"loop": false,
+"name": &"default",
+"speed": 12.0
 }]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nk3qw"]
@@ -667,6 +794,18 @@ sprite_frames = SubResource("SpriteFrames_sufts")
 script = ExtResource("10_k7nhw")
 targetPos = [Vector2(403, -170), Vector2(-389, 182)]
 
+[node name="Button" type="Button" parent="Fency"]
+self_modulate = Color(1, 1, 1, 0)
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
+
+[node name="Explosion" type="AnimatedSprite2D" parent="Fency"]
+visible = false
+position = Vector2(0, 1)
+sprite_frames = SubResource("SpriteFrames_4hrd0")
+
 [node name="PanLoduwka" type="AnimatedSprite2D" parent="."]
 position = Vector2(-389, -176)
 sprite_frames = SubResource("SpriteFrames_j7a52")
@@ -674,17 +813,43 @@ script = ExtResource("10_k7nhw")
 targetPos = [Vector2(403, -176), Vector2(-389, 176)]
 hasLeftRightAnim = true
 
+[node name="Button" type="Button" parent="PanLoduwka"]
+self_modulate = Color(1, 1, 1, 0)
+offset_left = -14.0
+offset_top = -18.0
+offset_right = 13.0
+offset_bottom = 22.0
+metadata/_edit_use_anchors_ = true
+
+[node name="Explosion" type="AnimatedSprite2D" parent="PanLoduwka"]
+visible = false
+position = Vector2(0, 2)
+sprite_frames = SubResource("SpriteFrames_4hrd0")
+
 [node name="Toasty" type="AnimatedSprite2D" parent="."]
 position = Vector2(-637, -170)
 sprite_frames = SubResource("SpriteFrames_f4kdb")
 script = ExtResource("10_k7nhw")
 targetPos = [Vector2(409, -170), Vector2(-389, 182)]
 
+[node name="Button" type="Button" parent="Toasty"]
+self_modulate = Color(1, 1, 1, 0)
+offset_left = -16.0
+offset_top = -13.0
+offset_right = 16.0
+offset_bottom = 16.0
+
+[node name="Explosion" type="AnimatedSprite2D" parent="Toasty"]
+visible = false
+position = Vector2(2, 4)
+sprite_frames = SubResource("SpriteFrames_4hrd0")
+
 [node name="Toasty2" type="AnimatedSprite2D" parent="."]
 position = Vector2(-853, -170)
 sprite_frames = SubResource("SpriteFrames_6q6bn")
 script = ExtResource("10_k7nhw")
 targetPos = [Vector2(409, -170), Vector2(-389, 182)]
+isPlayer = false
 
 [node name="Block" type="Sprite2D" parent="."]
 texture_filter = 1
@@ -740,6 +905,12 @@ text = "Mobile"
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="close_requested" from="FailedToLoad" to="FailedToLoad" method="_on_button_pressed"]
 [connection signal="pressed" from="FailedToLoad/Button" to="FailedToLoad" method="_on_button_pressed"]
+[connection signal="pressed" from="Fency/Button" to="Fency" method="_on_button_pressed"]
+[connection signal="animation_finished" from="Fency/Explosion" to="Fency" method="_on_explosion_animation_finished"]
+[connection signal="pressed" from="PanLoduwka/Button" to="PanLoduwka" method="_on_button_pressed"]
+[connection signal="animation_finished" from="PanLoduwka/Explosion" to="PanLoduwka" method="_on_explosion_animation_finished"]
+[connection signal="pressed" from="Toasty/Button" to="Toasty" method="_on_button_pressed"]
+[connection signal="animation_finished" from="Toasty/Explosion" to="Toasty" method="_on_explosion_animation_finished"]
 [connection signal="animation_finished" from="Explosion" to="." method="_on_explosion_animation_finished"]
 [connection signal="pressed" from="Desktop" to="." method="_on_desktop_pressed"]
 [connection signal="pressed" from="Mobile" to="." method="_on_mobile_pressed"]

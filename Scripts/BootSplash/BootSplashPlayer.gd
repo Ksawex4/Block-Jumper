@@ -3,6 +3,7 @@ extends AnimatedSprite2D
 @onready var parent := $".."
 @export var targetPos := [Vector2(0.0, 0.0), Vector2(0.0, 0.0)]
 @export var hasLeftRightAnim := false
+@export var isPlayer := true
 var currentIndex := 0
 var laps := 0
 
@@ -26,3 +27,14 @@ func _physics_process(_delta: float) -> void:
 					play("left")
 		else:
 			parent.Continue = true
+
+
+func _on_button_pressed() -> void:
+	$Explosion.show()
+	$Explosion.play("default")
+	self_modulate.a = 0.0
+
+
+func _on_explosion_animation_finished() -> void:
+	parent.explodedPlayers += 1
+	queue_free()
