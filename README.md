@@ -10,3 +10,5 @@
 ## Credits
 
 - “BadlyDrawnSpamton” and "BadlyDrawnQueen" are a fan art based on Spamton and Queen from Deltarune Chapter 2 by Toby Fox.
+
+[Itch.io](https://ksawex4.itch.io/block-jumper)
