@@ -86,6 +86,7 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_vtciy")
 icon = ExtResource("3_h4qv3")
 
 [node name="Information" type="Label" parent="TitleButtons/LoadGame"]
+visible = false
 layout_mode = 0
 offset_left = 8.0
 offset_top = -91.0

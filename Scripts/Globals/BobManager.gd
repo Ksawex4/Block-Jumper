@@ -40,7 +40,7 @@ func _process(_delta: float) -> void:
 	if SavedBobs >= 1:
 		LevelMan.CanPlayerSave = false
 		AchievMan.CanPlayerGetAchievements = false
-		BobSpawnYPos = 385597
+		BobSpawnYPos *= 0.4
 	if SavedBobs >= 2:
 		CanBobsGlitch = true
 	if SavedBobs >= 3:
@@ -142,7 +142,7 @@ func Bob8() -> void:
 	if !Done and get_tree().current_scene:
 		Done = true
 		print("[BobManager.gd] Bob6 started successfully")
-		var songs: Array = ["musMainMenu.ogg", "musTrash.ogg", "musZworkaSong.ogg", "musZWOrkASOOOOOnG.ogg", "musNewbob.ogg", "musSewerSong.ogg", "musBigCheese.ogg"]
+		var songs: Array = ["musMainMenu.ogg", "musTrash.ogg", "musZworkaSong.ogg", "musNewbob.ogg", "musSewerSong.ogg", "musBigcheese.ogg"]
 		if len(songs) != 0:
 			for song: String in songs:
 				var path: String = "res://Assets/Audio/Music/" + song
