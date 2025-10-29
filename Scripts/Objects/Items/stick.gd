@@ -35,10 +35,10 @@ func _physics_process(delta: float) -> void:
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if not noPlayer:
-		if body.has_method("takeDamage"):
+		if body.has_method("takeDamage") and not body.name.begins_with("Boss") or body.name.begins_with("Boss") and LevelMan.BossFightOn:
 			body.takeDamage(damage)
-		PlayerStats.AllPlayerStats[who]["Stick"] = false
-		queue_free()
+			PlayerStats.AllPlayerStats[who]["Stick"] = false
+			queue_free()
 
 func _on_pick_up_area_body_entered(body: Node2D) -> void:
 	if !PlayerStats.AllPlayerStats[body.name]["Stick"] and who == "":

@@ -82,7 +82,8 @@ func _on_audio_stream_player_finished() -> void:
 	AchievMan.AddAchievement("TheRatKing")
 
 func takeDamage(damage: int):
-	health -= damage
+	if LevelMan.BossFightOn:
+		health -= damage
 	$HealthBar/ProgressBar.value = health
 	$HealthBar/Label.text = str(health)
 	if health <= 0:
