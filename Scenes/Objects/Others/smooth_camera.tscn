@@ -100,13 +100,13 @@ position = Vector2(536, -32)
 scale = Vector2(2.5, 2.5)
 texture_normal = ExtResource("11_osi1y")
 
-[node name="InterractButton" type="TouchScreenButton" parent="CanvasLayer/MobileControls"]
+[node name="InteractButton" type="TouchScreenButton" parent="CanvasLayer/MobileControls"]
 self_modulate = Color(1, 1, 1, 0.7647059)
 position = Vector2(515, 56)
 texture_normal = ExtResource("12_1uv7s")
-action = "Interract"
+action = "Interact"
 
-[node name="InterractButton2" type="TouchScreenButton" parent="CanvasLayer/MobileControls"]
+[node name="HealMenuButton" type="TouchScreenButton" parent="CanvasLayer/MobileControls"]
 self_modulate = Color(1, 1, 1, 0.7647059)
 position = Vector2(611, 56)
 texture_normal = ExtResource("10_y6tnf")

@@ -11,5 +11,5 @@ func _on_body_exited(_body: Node2D) -> void:
 	colliding = false
 
 func _process(_delta: float) -> void:
-	if Input.is_action_just_pressed("Interract"):
+	if Input.is_action_just_pressed("Interact"):
 		LevelMan.ChangeLevel("sewers")
