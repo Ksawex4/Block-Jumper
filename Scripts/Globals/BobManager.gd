@@ -35,12 +35,12 @@ func _ready() -> void:
 
 func _process(_delta: float) -> void:
 	CheckIfShouldSpawnBob()
-	if !SpawnedBobs and SavedBobs != 8:
+	if !SpawnedBobs and SavedBobs != 9:
 		SpawnBobsFromSave()
 	if SavedBobs >= 1:
 		LevelMan.CanPlayerSave = false
 		AchievMan.CanPlayerGetAchievements = false
-		BobSpawnYPos *= 0.4
+		BobSpawnYPos = 385597
 	if SavedBobs >= 2:
 		CanBobsGlitch = true
 	if SavedBobs >= 3:
@@ -49,7 +49,7 @@ func _process(_delta: float) -> void:
 		CanBobsAddVelocity = true
 	if SavedBobs >= 5 and RandomizeCamZoomTimer <= 0.0:
 		RandomizeCamZoomTimer = randf_range(8.0, 15.0)
-		LevelMan.CamZoom = Vector2(randf_range(0.2, 5.0), randf_range(0.2, 5.0))
+		LevelMan.CamZoom = Vector2(randf_range(0.8, 7.0), randf_range(0.8, 7.0))
 	if RandomizeCamZoomTimer > 0.0:
 		RandomizeCamZoomTimer -= 0.1
 	if SavedBobs >= 6 and SavedBobs != 8 and SavedBobs != 9:
@@ -73,7 +73,13 @@ func ResetVariablesToDefault() -> void:
 	CanBobsGlitch = false
 	CanBobsMoveThings = false
 	CanBobsAddVelocity = false
+	CanBobsScale = false
+	CanSpawnBouncy_onurB = false
+	Done = false
+	BobSpawnYPos = 3855977.0
+	
 	SavedBobs = 0
+	FailToLoad = false
 	if (LevelMan.Os != "Android" or LevelMan.IsWeb) and FileAccess.file_exists("user://The Bobs have awoken.BOB") or LevelMan.Os == "Android" and not LevelMan.IsWeb and SaveMan.AndroidFileExists("The Bobs have awoken.BOB"):
 		var file: FileAccess
 		if (LevelMan.Os != "Android" or LevelMan.IsWeb):
@@ -84,20 +90,18 @@ func ResetVariablesToDefault() -> void:
 			var data: Dictionary = SaveMan.DecodeAndParse(file.get_as_text())
 			SavedBobs = data["Bob"]
 			file.close()
-			if SavedBobs == -999:
+			if SavedBobs < 0:
 				AchievMan.AddAchievement("BOB")
-	BobSpawnYPos = 3855977
-	Done = false
-	SpawnedBobs = false
-	FailToLoad = false
-	CanSpawnBouncy_onurB = false
 	AudioServer.set_bus_mute(AudioServer.get_bus_index("Master"), false)
+	AudioServer.set_bus_effect_enabled(0, 0, false)
 	print("[BobManager.gd] Reseted variables and unmutted AudioServer")
 
 func SaveBobs() -> void:
 	var data: Dictionary = {"Bob": SavedBobs + 1}
 	var encodedData: String = SaveMan.Encode(data)
-	if (LevelMan.Os != "Android" or LevelMan.IsWeb):
+	if SavedBobs + 1 > 11:
+		data["Bob"] = -999
+	if LevelMan.Os != "Android" or LevelMan.IsWeb:
 		var file: FileAccess = FileAccess.open("user://The Bobs have awoken.BOB", FileAccess.WRITE)
 		file.store_string(encodedData)
 		file.close()

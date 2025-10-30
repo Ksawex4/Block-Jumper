@@ -8,6 +8,7 @@ var fall = true
 @export var bossMusicPlayer: AudioStreamPlayer
 @export var levelMusicPlayer: AudioStreamPlayer
 @export var entryThing: Area2D
+var battlePlayerName := ""
 
 
 func _ready() -> void:
@@ -24,7 +25,8 @@ func startFight() -> void:
 
 func _on_timer_timeout() -> void:
 	if LevelMan.BossFightOn:
-		chooseRandomAttack()
+		if PlayerStats.IsPlayerAlive(battlePlayerName):
+			chooseRandomAttack()
 	else:
 		bossMusicPlayer.stop()
 		levelMusicPlayer.play()
@@ -74,6 +76,7 @@ func _physics_process(delta: float) -> void:
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	body.hurt(15)
+	battlePlayerName = body.whoAmI
 	if PlayerStats.AllPlayerStats[body.whoAmI]["HP"] - 15 <= 0:
 		endBattle()
 
