@@ -13,9 +13,9 @@ var CanBobsScale: bool = false
 var RandomizeCamZoomTimer := 0.0
 
 func _ready() -> void:
-	if LevelMan.Os != "Android" and FileAccess.file_exists("user://The Bobs have awoken.BOB") or LevelMan.Os == "Android" and SaveMan.AndroidFileExists("The Bobs have awoken.BOB"):
+	if (LevelMan.Os != "Android" or LevelMan.IsWeb) and FileAccess.file_exists("user://The Bobs have awoken.BOB") or LevelMan.Os == "Android" and not LevelMan.IsWeb and SaveMan.AndroidFileExists("The Bobs have awoken.BOB"):
 		var file: FileAccess
-		if LevelMan.Os != "Android":
+		if (LevelMan.Os != "Android" or LevelMan.IsWeb):
 			file = FileAccess.open("user://The Bobs have awoken.BOB", FileAccess.READ_WRITE)
 		else:
 			file = SaveMan.AndroidFileGet("The Bobs have awoken.BOB")
@@ -74,9 +74,9 @@ func ResetVariablesToDefault() -> void:
 	CanBobsMoveThings = false
 	CanBobsAddVelocity = false
 	SavedBobs = 0
-	if LevelMan.Os != "Android" and FileAccess.file_exists("user://The Bobs have awoken.BOB") or LevelMan.Os == "Android" and SaveMan.AndroidFileExists("The Bobs have awoken.BOB"):
+	if (LevelMan.Os != "Android" or LevelMan.IsWeb) and FileAccess.file_exists("user://The Bobs have awoken.BOB") or LevelMan.Os == "Android" and not LevelMan.IsWeb and SaveMan.AndroidFileExists("The Bobs have awoken.BOB"):
 		var file: FileAccess
-		if LevelMan.Os != "Android":
+		if (LevelMan.Os != "Android" or LevelMan.IsWeb):
 			file = FileAccess.open("user://The Bobs have awoken.BOB", FileAccess.READ)
 		else:
 			file = SaveMan.AndroidFileGet("The Bobs have awoken.BOB")
@@ -97,7 +97,7 @@ func ResetVariablesToDefault() -> void:
 func SaveBobs() -> void:
 	var data: Dictionary = {"Bob": SavedBobs + 1}
 	var encodedData: String = SaveMan.Encode(data)
-	if LevelMan.Os != "Android":
+	if (LevelMan.Os != "Android" or LevelMan.IsWeb):
 		var file: FileAccess = FileAccess.open("user://The Bobs have awoken.BOB", FileAccess.WRITE)
 		file.store_string(encodedData)
 		file.close()

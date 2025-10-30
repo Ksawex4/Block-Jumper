@@ -6,6 +6,7 @@ var BeansAreToasts: bool = false
 var CanPlayerSave: bool = true
 var FlyingThingAlive: bool = false
 var Os: String = OS.get_name() # Android, Windows, Linux, Web
+var IsWeb := false
 var SpeedrunTimer: Dictionary = {"Hours": 0, "Minutes": 0, "Seconds": 0, "Frames": 0}
 var LevelPath: String = "res://Scenes/Levels/LEVELL.tscn"
 var BossFightOn := false
@@ -15,6 +16,9 @@ var MusicVolume := 0.0
 var SFXVolume := 0.0
 
 func _ready() -> void:
+	IsWeb = true if OS.get_name() == "Web" else false
+	if IsWeb:
+		Os = "Android" if OS.has_feature("web_android") or OS.has_feature("web_ios") else "Linux"
 	SignalMan.connect("ChangedLevel", Callable(self, "OnLevelChanged"))
 	print("[LevelManager.gd] Loaded")
 	process_mode = Node.PROCESS_MODE_ALWAYS

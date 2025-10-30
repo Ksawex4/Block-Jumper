@@ -22,7 +22,7 @@ func SaveAchievements() -> void:
 		"Achievements": Achievements
 	}
 	var encodedString: String = SaveMan.Encode(data)
-	if LevelMan.Os != "Android":
+	if (LevelMan.Os != "Android" or LevelMan.IsWeb):
 		var file: FileAccess = FileAccess.open("user://Achievements.bj", FileAccess.WRITE)
 		file.store_string(encodedString)
 		file.close()
@@ -31,9 +31,9 @@ func SaveAchievements() -> void:
 		SaveMan.AndroidSave(encodedString, "Achievements.bj")
 
 func LoadAchievements() -> void:
-	if !PlayerStats.SpeedrunMode and FileAccess.file_exists("user://Achievements.bj") and LevelMan.Os != "Android" or LevelMan.Os == "Android" and SaveMan.AndroidFileExists("Achievements.bj"):
+	if !PlayerStats.SpeedrunMode and FileAccess.file_exists("user://Achievements.bj") and (LevelMan.Os != "Android" or LevelMan.IsWeb) or LevelMan.Os == "Android" and not LevelMan.IsWeb and SaveMan.AndroidFileExists("Achievements.bj"):
 		var file: FileAccess
-		if LevelMan.Os != "Android":
+		if (LevelMan.Os != "Android" or LevelMan.IsWeb):
 			file = FileAccess.open("user://Achievements.bj", FileAccess.READ)
 		else:
 			file = SaveMan.AndroidFileGet("Achievements.bj")

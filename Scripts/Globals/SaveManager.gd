@@ -27,7 +27,7 @@ func SaveGame(pos: Vector2) -> void:
 		"Toast": ToastEventMan.Toast
 	}
 	var encodedStr: String = Encode(data)
-	if LevelMan.Os == "Android":
+	if LevelMan.Os == "Android" and not LevelMan.IsWeb:
 		AndroidSave(encodedStr, "Save.bj")
 	else:
 		var file: FileAccess = FileAccess.open("user://Save.bj", FileAccess.WRITE)
@@ -36,9 +36,9 @@ func SaveGame(pos: Vector2) -> void:
 		print("[SaveManager.gd] Saved the game, data: ", data)
 
 func LoadGame() -> void:
-	if FileAccess.file_exists("user://Save.bj") and LevelMan.Os != "Android" or LevelMan.Os == "Android" and AndroidFileExists("Save.bj"):
+	if FileAccess.file_exists("user://Save.bj") and (LevelMan.Os != "Android" or LevelMan.IsWeb) or LevelMan.Os == "Android" and not LevelMan.IsWeb and AndroidFileExists("Save.bj"):
 		var file: FileAccess
-		if LevelMan.Os != "Android":
+		if (LevelMan.Os != "Android" or LevelMan.IsWeb):
 			file = FileAccess.open("user://Save.bj", FileAccess.READ)
 		else:
 			file = AndroidFileGet("Save.bj")
@@ -90,7 +90,7 @@ func SaveSettings() -> void:
 		"VSync": DisplayServer.window_get_vsync_mode(),
 		"MaxFPS": Engine.max_fps,
 	}  # Controls are not saved beacuse I don't currently know how to do that
-	if LevelMan.Os == "Android":
+	if LevelMan.Os == "Android" and not LevelMan.IsWeb:
 		AndroidSave(JSON.stringify(data), "Settings.bj")
 	else:
 		var file: FileAccess = FileAccess.open("user://Settings.bj", FileAccess.WRITE)
@@ -99,9 +99,9 @@ func SaveSettings() -> void:
 		print("[SaveManager.gd] Saved Settings, data: ", data)
 
 func LoadSettings() -> void:
-	if FileAccess.file_exists("user://Save.bj") and LevelMan.Os != "Android" or LevelMan.Os == "Android" and AndroidFileExists("Save.bj"):
+	if FileAccess.file_exists("user://Save.bj") and (LevelMan.Os != "Android" or LevelMan.IsWeb) or LevelMan.Os == "Android" and not LevelMan.IsWeb and AndroidFileExists("Save.bj"):
 		var file: FileAccess
-		if LevelMan.Os != "Android":
+		if LevelMan.Os != "Android" or LevelMan.IsWeb:
 			file = FileAccess.open("user://Settings.bj", FileAccess.READ)
 		else:
 			file = AndroidFileGet("Settings.bj")

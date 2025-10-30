@@ -5,7 +5,7 @@ var targetPosForBatons: Vector2 = Vector2(-355.0, -42.5)
 func _ready() -> void:
 	if FileAccess.file_exists("user://Save.bj") or SaveMan.AndroidFileExists("Save.bj"):
 		var file: FileAccess
-		if LevelMan.Os == "Android":
+		if LevelMan.Os == "Android" and not LevelMan.IsWeb:
 			file = SaveMan.AndroidFileGet("Save.bj")
 		else:
 			file = FileAccess.open("user://Save.bj", FileAccess.READ)

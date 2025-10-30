@@ -26,7 +26,7 @@ func _process(_delta: float) -> void:
 			$AudioStreamPlayer.stream = saveFailSFX
 		$AudioStreamPlayer.play()
 	
-	if isColliding and Input.is_action_just_pressed("Interract") and BobMan.SavedBobs <= 0 and not alwaysFailToSave:
+	if isColliding and Input.is_action_just_pressed("Interact") and BobMan.SavedBobs <= 0 and not alwaysFailToSave:
 		NovaFunc.ResetAllGlobalsToDefault(true, false)
 		SaveMan.LoadGame()
 
