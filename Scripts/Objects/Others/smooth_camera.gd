@@ -2,8 +2,8 @@ extends Camera2D
 
 var maxSmoothSpeed: int = 1000
 var isShowingAchievement: bool = false
-var targetAchievementPos: Vector2 = Vector2(-99.0, 0.0) #-452 -200
-var targetBeansPos: Vector2 = Vector2(13.0, 13.0) #-347 -198
+var targetAchievementPos: Vector2 = Vector2(-99.0, 0.0)
+var targetBeansPos: Vector2 = Vector2(13.0, 13.0)
 var achievementHidden: bool = true
 var achTemplate: String = "[img]res://Assets/Sprites/Achievements/ACHIEVEMENT.png[/img]"
 @export var spawnBouncy: TouchScreenButton
