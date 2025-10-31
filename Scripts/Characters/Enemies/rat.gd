@@ -43,18 +43,9 @@ func _physics_process(delta: float) -> void:
 		throwDelay -= 0.1
 	match action:
 		"throw":
-			var players = get_tree().get_nodes_in_group("players")
-			var nearestDistance: float = -1
-			var nearestPlayer: Node2D
-			if throwDelay <= 0.0 and players:
-				throwDelay = randf_range(8.5, 15.5)
-				for player in players:
-					var d: float = player.position.distance_squared_to(position)
-					if d < nearestDistance or nearestDistance == -1:
-						nearestDistance = d
-						nearestPlayer = player
-			if nearestPlayer:
-				throwCheeseAt(nearestPlayer)
+			var nearest = getNearestPlayer()
+			if nearest:
+				throwCheeseAt(nearest)
 		"run":
 			if wallCooldown > 0.0:
 				wallCooldown -= 0.1
@@ -79,3 +70,16 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 	body.hurt(1)
 	if !PlayerStats.IsPlayerAlive(body.name):
 		LevelMan.BossFightOn = false
+
+func getNearestPlayer():
+	var players = get_tree().get_nodes_in_group("players")
+	var nearestDistance: float = -1
+	var nearestPlayer: Node2D
+	if throwDelay <= 0.0 and players:
+		throwDelay = randf_range(8.5, 15.5)
+		for player in players:
+			var d: float = player.position.distance_squared_to(position)
+			if d < nearestDistance or nearestDistance == -1:
+				nearestDistance = d
+				nearestPlayer = player
+	return nearestPlayer

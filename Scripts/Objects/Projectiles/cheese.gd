@@ -1,14 +1,11 @@
 extends CharacterBody2D
 
 var bigCheese: bool = false
-var kingRat
 
 func _ready() -> void:
 	if bigCheese:
 		scale = Vector2(3,3)
 		$BigCheese.play()
-	if $"Boss-RatKing/Boss-RatKing":
-		kingRat = $"Boss-RatKing/Boss-RatKing"
 
 func _physics_process(delta: float) -> void:
 	if bigCheese:
@@ -44,8 +41,6 @@ func _on_attack_box_body_entered(body: Node2D) -> void:
 		$BigCheese.play()
 	else:
 		body.hurt(1)
-	if !PlayerStats.IsPlayerAlive(body.name):
-		kingRat.endBattle()
 	velocity = Vector2.ZERO
 	$AudioStreamPlayer.play()
 

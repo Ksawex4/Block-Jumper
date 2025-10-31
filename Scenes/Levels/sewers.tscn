@@ -43,7 +43,7 @@ size = Vector2(32, 192)
 
 [node name="Background" parent="." instance=ExtResource("1_so4p6")]
 sprite = ExtResource("2_dnweb")
-spriteSize = Vector2i(711, 400)
+spriteSize = Vector2i(1422, 800)
 spriteScale = Vector2(1, 1)
 
 [node name="Windows" type="Node2D" parent="."]

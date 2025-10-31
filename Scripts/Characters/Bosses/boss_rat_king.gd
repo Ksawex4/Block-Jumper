@@ -22,11 +22,14 @@ func startFight() -> void:
 	LevelMan.BossCamPos = Vector2(-2747.0, -324.0)
 	LevelMan.CamZoom = Vector2(0.55, 0.55)
 	RatStart.emit()
+	battlePlayerName = getNearestPlayer().whoAmI
 
 func _on_timer_timeout() -> void:
 	if LevelMan.BossFightOn:
 		if PlayerStats.IsPlayerAlive(battlePlayerName):
 			chooseRandomAttack()
+		else:
+			endBattle()
 	else:
 		bossMusicPlayer.stop()
 		levelMusicPlayer.play()
@@ -76,7 +79,6 @@ func _physics_process(delta: float) -> void:
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	body.hurt(15)
-	battlePlayerName = body.whoAmI
 	if PlayerStats.AllPlayerStats[body.whoAmI]["HP"] - 15 <= 0:
 		endBattle()
 
@@ -101,3 +103,15 @@ func endBattle() -> void:
 	bossMusicPlayer.stop()
 	levelMusicPlayer.play()
 	entryThing.fightEnded()
+
+func getNearestPlayer():
+	var players = get_tree().get_nodes_in_group("players")
+	var nearestDistance: float = -1
+	var nearestPlayer: Node2D
+	if players:
+		for player in players:
+			var d: float = player.position.distance_squared_to(position)
+			if d < nearestDistance or nearestDistance == -1:
+				nearestDistance = d
+				nearestPlayer = player
+	return nearestPlayer
