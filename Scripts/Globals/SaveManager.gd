@@ -24,7 +24,8 @@ func SaveGame(pos: Vector2) -> void:
 		"Level": get_tree().current_scene.scene_file_path,
 		"PKeys": LevelMan.PersistenceKeys,
 		"Chip": PlayerStats.Chip,
-		"Toast": ToastEventMan.Toast
+		"Toast": ToastEventMan.Toast,
+		"FollowingWho": PlayerStats.FollowWho,
 	}
 	var encodedStr: String = Encode(data)
 	if LevelMan.Os == "Android" and not LevelMan.IsWeb:
@@ -54,6 +55,7 @@ func LoadGame() -> void:
 				LevelMan.PersistenceKeys = data["PKeys"]
 				PlayerStats.Chip = data["Chip"]
 				ToastEventMan.Toast = data["Toast"]
+				PlayerStats.FollowWho = data["FollowingWho"]
 			file.close()
 			if level and ResourceLoader.exists(level):
 				get_tree().change_scene_to_file(level)
