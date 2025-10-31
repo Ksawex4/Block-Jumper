@@ -40,6 +40,7 @@ func _on_vsync_pressed() -> void:
 
 func _on_close_requested() -> void:
 	hide()
+	SaveMan.SaveSettings()
 
 func _on_max_fps_text_submitted(new_text: String) -> void:
 	var FPS: int = int(new_text)
