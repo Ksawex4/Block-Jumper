@@ -24,6 +24,7 @@ func startFight() -> void:
 	LevelMan.CamZoom = Vector2(0.55, 0.55)
 	RatStart.emit()
 	battlePlayerName = getNearestPlayer().whoAmI
+	PlayerStats.FollowWho = battlePlayerName
 
 func _on_timer_timeout() -> void:
 	if LevelMan.BossFightOn:
@@ -51,6 +52,8 @@ func bigCheese() -> void:
 	cheeseInstance.velocity = Vector2(0, -600)
 
 func _physics_process(delta: float) -> void:
+	if LevelMan.BossFightOn:
+		PlayerStats.FollowWho = battlePlayerName
 	if !is_on_floor() and fall:
 		velocity.y += LevelMan.Gravity * delta
 	

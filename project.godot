@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Block Jumper"
-config/version="0.2.2"
+config/version="0.2.2b"
 config/tags=PackedStringArray("big", "game", "rewrite")
 run/main_scene="uid://bdw0vwua1oy14"
 config/features=PackedStringArray("4.5", "GL Compatibility")
