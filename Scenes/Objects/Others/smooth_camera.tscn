@@ -147,27 +147,50 @@ visible = false
 script = ExtResource("12_y6tnf")
 
 [node name="Fency" type="Button" parent="HealMenu"]
+offset_top = 32.0
 offset_right = 87.0
-offset_bottom = 47.0
+offset_bottom = 79.0
 text = "Fency"
 
 [node name="Toasty" type="Button" parent="HealMenu"]
 offset_left = 199.0
+offset_top = 32.0
 offset_right = 286.0
-offset_bottom = 47.0
+offset_bottom = 79.0
 text = "Toasty"
 
 [node name="PanLoduwka" type="Button" parent="HealMenu"]
 offset_left = 89.0
+offset_top = 32.0
 offset_right = 197.0
-offset_bottom = 47.0
+offset_bottom = 79.0
 text = "PanLoduwka"
 
-[node name="Label" type="Label" parent="HealMenu"]
-offset_top = 48.0
+[node name="Info" type="Label" parent="HealMenu"]
+offset_top = 77.0
 offset_right = 286.0
 offset_bottom = 100.0
 text = "-1 Bean -> +20 HP"
+
+[node name="FencyHP" type="Label" parent="HealMenu"]
+offset_top = 5.0
+offset_right = 86.0
+offset_bottom = 28.0
+text = "100/100"
+
+[node name="PanLoduwkaHP" type="Label" parent="HealMenu"]
+offset_left = 96.0
+offset_top = 5.0
+offset_right = 182.0
+offset_bottom = 28.0
+text = "100/100"
+
+[node name="ToastyHP" type="Label" parent="HealMenu"]
+offset_left = 200.0
+offset_top = 5.0
+offset_right = 286.0
+offset_bottom = 28.0
+text = "100/100"
 
 [connection signal="pressed" from="CanvasLayer/MobileControls/JumpButton" to="." method="_on_jump_button_pressed"]
 [connection signal="released" from="CanvasLayer/MobileControls/JumpButton" to="." method="_on_jump_button_released"]

@@ -8,6 +8,7 @@ var fall = true
 @export var bossMusicPlayer: AudioStreamPlayer
 @export var levelMusicPlayer: AudioStreamPlayer
 @export var entryThing: Area2D
+@export var playerCounter: Area2D
 var battlePlayerName := ""
 
 

@@ -67,6 +67,7 @@ func _physics_process(delta: float) -> void:
 		_showAchievements(AchievMan.AchievementsToShow.pop_front())
 	
 	if Input.is_action_just_pressed("HealMenu"):
+		$HealMenu.update_hp_labels()
 		$HealMenu.show()
 
 func _showAchievements(ach: String) -> void:

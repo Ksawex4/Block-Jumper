@@ -6,6 +6,7 @@ extends Area2D
 @export var bossMusicPlayer: AudioStreamPlayer
 @export var boss: Node2D
 @export var cameraSettings := {"Pos": Vector2(0.0 ,0.0), "Zoom": Vector2(1.0, 1.0)}
+@export var playerCounter: Area2D
 var doorStartPos := Vector2(0.0, 0.0)
 var moveDoor: bool = false
 var targetPos: Vector2
@@ -16,17 +17,18 @@ func _ready() -> void:
 		targetPos = door.position + moveDoorHowMuch
 
 func _on_body_entered(_body: Node2D) -> void:
-	LevelMan.BossCamPos = cameraSettings["Pos"]
-	LevelMan.CamZoom = cameraSettings["Zoom"]
-	LevelMan.BossFightOn = true
-	set_deferred("monitoring", false)
-	moveDoor = true
-	await get_tree().create_timer(0.5).timeout
-	if mainLevelMusicPlayer:
-		mainLevelMusicPlayer.stop()
-	if bossMusicPlayer:
-		bossMusicPlayer.play()
-	boss.startFight()
+	if playerCounter and playerCounter.get("playerCount") == 1:
+		LevelMan.BossCamPos = cameraSettings["Pos"]
+		LevelMan.CamZoom = cameraSettings["Zoom"]
+		LevelMan.BossFightOn = true
+		set_deferred("monitoring", false)
+		moveDoor = true
+		await get_tree().create_timer(0.5).timeout
+		if mainLevelMusicPlayer:
+			mainLevelMusicPlayer.stop()
+		if bossMusicPlayer:
+			bossMusicPlayer.play()
+		boss.startFight()
 
 func _physics_process(_delta: float) -> void:
 	if moveDoor and door:
