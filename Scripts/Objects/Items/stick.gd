@@ -18,7 +18,7 @@ func _ready() -> void:
 			$Sprite2D.texture = load("res://Assets/Sprites/Objects/Items/CheeseStick.png")
 
 func _process(_delta: float) -> void:
-	if !noPlayer:
+	if !noPlayer and who != "":
 		if player != null:
 			position = player.position
 		else:
