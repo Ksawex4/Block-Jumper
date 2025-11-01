@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://xh68prap5akj"]
+[gd_scene load_steps=28 format=3 uid="uid://xh68prap5akj"]
 
 [ext_resource type="Texture2D" uid="uid://swlt67kvlp7u" path="res://Assets/Sprites/Backgrounds/MainMenu.png" id="1_kysdl"]
 [ext_resource type="Script" uid="uid://dsrlsr0niy3rt" path="res://Scripts/GUI/title_buttons.gd" id="1_roj86"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://bwoda6al5nah2" path="res://Scenes/GUI/speedrun_mode_menu.tscn" id="11_p5jl7"]
 [ext_resource type="PackedScene" uid="uid://cnapla1ydbe63" path="res://Scenes/Objects/Solids/tiles.tscn" id="11_vtciy"]
 [ext_resource type="PackedScene" uid="uid://chihoo373bwy7" path="res://Scenes/Objects/Items/saltniczka.tscn" id="12_72p0a"]
+[ext_resource type="Script" uid="uid://cs3y0l70wwyyc" path="res://Scripts/GUI/version_label.gd" id="15_p5jl7"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_sufyd"]
 
@@ -37,6 +38,9 @@ font_size = 14
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dgnw3"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_72p0a"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_shcqs"]
+font_size = 10
 
 [node name="TitleScreen" type="Node2D"]
 metadata/Music = "souMainMenu.wav"
@@ -175,6 +179,15 @@ bus = &"Music"
 [node name="saltniczka" parent="." instance=ExtResource("12_72p0a")]
 position = Vector2(277, -140)
 scale = Vector2(0.5, 0.5)
+
+[node name="Version" type="Label" parent="."]
+offset_left = 318.0
+offset_top = 186.0
+offset_right = 470.0
+offset_bottom = 209.0
+text = "v?.?.?"
+label_settings = SubResource("LabelSettings_shcqs")
+script = ExtResource("15_p5jl7")
 
 [connection signal="pressed" from="TitleButtons/NewGame" to="TitleButtons" method="_on_new_game_pressed"]
 [connection signal="pressed" from="TitleButtons/LoadGame" to="TitleButtons" method="_on_load_game_pressed"]
