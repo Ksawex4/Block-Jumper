@@ -11,9 +11,9 @@ func _ready() -> void:
 	#if Engine.is_editor_hint():
 		#if !has_meta("instanceID") and get_meta("instanceID") != "re":
 			#_generate_unique_id()
-	
 	#if has_meta("instanceID") and get_meta("instanceID") != "" and !Engine.is_editor_hint():
 		if get_meta("damage") <= 120:
+			set_meta("damage", randi_range(19,27))
 			$AnimatedSprite2D.play("default")
 		else:
 			$AnimatedSprite2D.play("deadly")
