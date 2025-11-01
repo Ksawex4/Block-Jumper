@@ -142,6 +142,7 @@ script = ExtResource("1_eiwj6")
 texture = ExtResource("1_gar4v")
 
 [node name="Boom" type="AnimatedSprite2D" parent="."]
+visible = false
 position = Vector2(0, -3)
 sprite_frames = SubResource("SpriteFrames_2n47g")
 
