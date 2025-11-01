@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://clkawf7n1yg00"]
+[gd_scene load_steps=5 format=3 uid="uid://clkawf7n1yg00"]
 
 [ext_resource type="Script" uid="uid://b5nwg3t2jg7hg" path="res://Scripts/GUI/settings_menu.gd" id="1_wlny4"]
 [ext_resource type="Script" uid="uid://dmv4rk7w3kfvj" path="res://Scripts/GUI/controls_menu.gd" id="2_l3qjt"]
+[ext_resource type="Script" uid="uid://drrgih27ydn85" path="res://Scripts/GUI/controls_button.gd" id="3_04xhd"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_wlny4"]
 font_color = Color(1, 0.196078, 0, 1)
@@ -60,7 +61,6 @@ oversampling_override = 1.0
 title = "Controls"
 initial_position = 1
 size = Vector2i(500, 300)
-visible = false
 script = ExtResource("2_l3qjt")
 
 [node name="FencyUp" type="Button" parent="ControlsMenu"]
@@ -69,6 +69,7 @@ offset_top = 27.0
 offset_right = 54.0
 offset_bottom = 73.0
 text = "Up: "
+script = ExtResource("3_04xhd")
 
 [node name="FencyLeft" type="Button" parent="ControlsMenu"]
 offset_left = 1.0
@@ -76,6 +77,8 @@ offset_top = 74.0
 offset_right = 54.0
 offset_bottom = 120.0
 text = "Left: "
+script = ExtResource("3_04xhd")
+keybind = "FencyLeft"
 
 [node name="FencyRight" type="Button" parent="ControlsMenu"]
 offset_left = 1.0
@@ -83,6 +86,8 @@ offset_top = 121.0
 offset_right = 54.0
 offset_bottom = 167.0
 text = "Right:"
+script = ExtResource("3_04xhd")
+keybind = "FencyRight"
 
 [node name="FencyCam" type="Button" parent="ControlsMenu"]
 offset_left = 1.0
@@ -90,13 +95,17 @@ offset_top = 168.0
 offset_right = 54.0
 offset_bottom = 214.0
 text = "Cam:"
+script = ExtResource("3_04xhd")
+keybind = "FencyCam"
 
-[node name="ToastyUp" type="Button" parent="ControlsMenu"]
+[node name="ToastyJump" type="Button" parent="ControlsMenu"]
 offset_left = 155.0
 offset_top = 27.0
 offset_right = 208.0
 offset_bottom = 73.0
 text = "Up:"
+script = ExtResource("3_04xhd")
+keybind = "ToastyJump"
 
 [node name="ToastyLeft" type="Button" parent="ControlsMenu"]
 offset_left = 155.0
@@ -104,6 +113,8 @@ offset_top = 74.0
 offset_right = 208.0
 offset_bottom = 120.0
 text = "Left:"
+script = ExtResource("3_04xhd")
+keybind = "ToastyLeft"
 
 [node name="ToastyRight" type="Button" parent="ControlsMenu"]
 offset_left = 155.0
@@ -111,6 +122,8 @@ offset_top = 121.0
 offset_right = 208.0
 offset_bottom = 167.0
 text = "Right:"
+script = ExtResource("3_04xhd")
+keybind = "ToastyRight"
 
 [node name="ToastyCam" type="Button" parent="ControlsMenu"]
 offset_left = 155.0
@@ -118,13 +131,17 @@ offset_top = 168.0
 offset_right = 208.0
 offset_bottom = 214.0
 text = "Cam:"
+script = ExtResource("3_04xhd")
+keybind = "ToastyCam"
 
-[node name="PanLoduwkaUp" type="Button" parent="ControlsMenu"]
+[node name="PanLoduwkaJump" type="Button" parent="ControlsMenu"]
 offset_left = 316.0
 offset_top = 27.0
 offset_right = 369.0
 offset_bottom = 73.0
 text = "Up:"
+script = ExtResource("3_04xhd")
+keybind = "PanLoduwkaJump"
 
 [node name="PanLoduwkaLeft" type="Button" parent="ControlsMenu"]
 offset_left = 316.0
@@ -132,6 +149,8 @@ offset_top = 74.0
 offset_right = 369.0
 offset_bottom = 120.0
 text = "Left:"
+script = ExtResource("3_04xhd")
+keybind = "PanLoduwkaLeft"
 
 [node name="PanLoduwkaRight" type="Button" parent="ControlsMenu"]
 offset_left = 316.0
@@ -139,6 +158,8 @@ offset_top = 121.0
 offset_right = 369.0
 offset_bottom = 167.0
 text = "Right:"
+script = ExtResource("3_04xhd")
+keybind = "PanLoduwkaRight"
 
 [node name="PanLoduwkaCam" type="Button" parent="ControlsMenu"]
 offset_left = 316.0
@@ -146,6 +167,8 @@ offset_top = 168.0
 offset_right = 369.0
 offset_bottom = 214.0
 text = "Cam:"
+script = ExtResource("3_04xhd")
+keybind = "PanLoduwkaCam"
 
 [node name="Fency" type="Label" parent="ControlsMenu"]
 offset_left = 1.0
@@ -210,16 +233,16 @@ max_value = 20.0
 [connection signal="pressed" from="DebugMode" to="." method="_on_debug_mode_pressed"]
 [connection signal="text_submitted" from="MaxFPS" to="." method="_on_max_fps_text_submitted"]
 [connection signal="close_requested" from="ControlsMenu" to="ControlsMenu" method="_on_close_requested"]
-[connection signal="pressed" from="ControlsMenu/FencyUp" to="ControlsMenu" method="_on_fency_up_pressed"]
-[connection signal="pressed" from="ControlsMenu/FencyLeft" to="ControlsMenu" method="_on_fency_left_pressed"]
-[connection signal="pressed" from="ControlsMenu/FencyRight" to="ControlsMenu" method="_on_fency_right_pressed"]
-[connection signal="pressed" from="ControlsMenu/FencyCam" to="ControlsMenu" method="_on_fency_cam_pressed"]
-[connection signal="pressed" from="ControlsMenu/ToastyUp" to="ControlsMenu" method="_on_toasty_up_pressed"]
-[connection signal="pressed" from="ControlsMenu/ToastyLeft" to="ControlsMenu" method="_on_toasty_left_pressed"]
-[connection signal="pressed" from="ControlsMenu/ToastyRight" to="ControlsMenu" method="_on_toasty_right_pressed"]
-[connection signal="pressed" from="ControlsMenu/ToastyCam" to="ControlsMenu" method="_on_toasty_cam_pressed"]
-[connection signal="pressed" from="ControlsMenu/PanLoduwkaUp" to="ControlsMenu" method="_on_pan_loduwka_up_pressed"]
-[connection signal="pressed" from="ControlsMenu/PanLoduwkaLeft" to="ControlsMenu" method="_on_pan_loduwka_left_pressed"]
-[connection signal="pressed" from="ControlsMenu/PanLoduwkaRight" to="ControlsMenu" method="_on_pan_loduwka_right_pressed"]
-[connection signal="pressed" from="ControlsMenu/PanLoduwkaCam" to="ControlsMenu" method="_on_pan_loduwka_cam_pressed"]
+[connection signal="pressed" from="ControlsMenu/FencyUp" to="ControlsMenu/FencyUp" method="_on_pressed"]
+[connection signal="pressed" from="ControlsMenu/FencyLeft" to="ControlsMenu/FencyLeft" method="_on_pressed"]
+[connection signal="pressed" from="ControlsMenu/FencyRight" to="ControlsMenu/FencyRight" method="_on_pressed"]
+[connection signal="pressed" from="ControlsMenu/FencyCam" to="ControlsMenu/FencyCam" method="_on_pressed"]
+[connection signal="pressed" from="ControlsMenu/ToastyJump" to="ControlsMenu/ToastyJump" method="_on_pressed"]
+[connection signal="pressed" from="ControlsMenu/ToastyLeft" to="ControlsMenu/ToastyLeft" method="_on_pressed"]
+[connection signal="pressed" from="ControlsMenu/ToastyRight" to="ControlsMenu/ToastyRight" method="_on_pressed"]
+[connection signal="pressed" from="ControlsMenu/ToastyCam" to="ControlsMenu/ToastyCam" method="_on_pressed"]
+[connection signal="pressed" from="ControlsMenu/PanLoduwkaJump" to="ControlsMenu/PanLoduwkaJump" method="_on_pressed"]
+[connection signal="pressed" from="ControlsMenu/PanLoduwkaLeft" to="ControlsMenu/PanLoduwkaLeft" method="_on_pressed"]
+[connection signal="pressed" from="ControlsMenu/PanLoduwkaRight" to="ControlsMenu/PanLoduwkaRight" method="_on_pressed"]
+[connection signal="pressed" from="ControlsMenu/PanLoduwkaCam" to="ControlsMenu/PanLoduwkaCam" method="_on_pressed"]
 [connection signal="pressed" from="Controls" to="." method="_on_controls_pressed"]
