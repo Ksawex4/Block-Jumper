@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=4 uid="uid://trudkfge08j3"]
+[gd_scene load_steps=32 format=4 uid="uid://trudkfge08j3"]
 
 [ext_resource type="PackedScene" uid="uid://c8jjqycyb5u8t" path="res://Scenes/Objects/Others/background.tscn" id="1_so4p6"]
 [ext_resource type="Texture2D" uid="uid://cdo8gxcamy4u7" path="res://Assets/Sprites/Backgrounds/SewersBackground.png" id="2_dnweb"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://vdjpm6gewqvf" path="res://Scenes/Characters/Players/pan_loduwka.tscn" id="7_4gmyg"]
 [ext_resource type="PackedScene" uid="uid://cgr5yq0b3lq60" path="res://Scenes/Characters/NPCs/bob.tscn" id="7_426ph"]
 [ext_resource type="PackedScene" uid="uid://tk6vu5tms825" path="res://Scenes/Characters/Players/toasty.tscn" id="8_426ph"]
+[ext_resource type="PackedScene" uid="uid://b335udwa3qnb" path="res://Scenes/Objects/Items/stick.tscn" id="8_p3gds"]
 [ext_resource type="PackedScene" uid="uid://cjnmjspdg62mw" path="res://Scenes/Objects/Others/level_changer.tscn" id="9_4gmyg"]
 [ext_resource type="PackedScene" uid="uid://c0egin0l7hc2v" path="res://Scenes/Objects/Others/smooth_camera.tscn" id="9_7davq"]
 [ext_resource type="AudioStream" uid="uid://cgkd71qbg4cx2" path="res://Assets/Audio/Music/musSewerSong.ogg" id="10_c3jp4"]
@@ -196,6 +197,17 @@ metadata/instanceID = "re"
 [node name="KillBlock8" parent="Enemies" instance=ExtResource("6_lo6kq")]
 position = Vector2(2045, -16)
 metadata/instanceID = "re"
+
+[node name="Items" type="Node2D" parent="."]
+
+[node name="Stick" parent="Items" instance=ExtResource("8_p3gds")]
+position = Vector2(1481, -617)
+
+[node name="Stick2" parent="Items" instance=ExtResource("8_p3gds")]
+position = Vector2(1157, 715)
+
+[node name="Stick3" parent="Items" instance=ExtResource("8_p3gds")]
+position = Vector2(1620, 1533)
 
 [node name="NPCs" type="Node2D" parent="."]
 

@@ -7,7 +7,6 @@ var player: Node2D
 var damage := 40
 
 func _ready() -> void:
-	AchievMan.AddAchievement("Stick")
 	player = NovaFunc.GetPlayerFromGroup(who)
 	if noPlayer:
 		set_collision_mask_value(1, true)
@@ -42,6 +41,7 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 
 func _on_pick_up_area_body_entered(body: Node2D) -> void:
 	if !PlayerStats.AllPlayerStats[body.name]["Stick"] and who == "":
+		AchievMan.AddAchievement("Stick")
 		who = body.whoAmI
 		player = body
 		set_collision_mask_value(1, false)

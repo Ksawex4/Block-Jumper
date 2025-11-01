@@ -61,6 +61,7 @@ oversampling_override = 1.0
 title = "Controls"
 initial_position = 1
 size = Vector2i(500, 300)
+visible = false
 script = ExtResource("2_l3qjt")
 
 [node name="FencyUp" type="Button" parent="ControlsMenu"]

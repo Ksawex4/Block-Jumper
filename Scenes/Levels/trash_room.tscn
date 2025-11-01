@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=4 uid="uid://gva2opgxecvj"]
+[gd_scene load_steps=18 format=4 uid="uid://gva2opgxecvj"]
 
 [ext_resource type="PackedScene" uid="uid://c8jjqycyb5u8t" path="res://Scenes/Objects/Others/background.tscn" id="1_npb5y"]
 [ext_resource type="Texture2D" uid="uid://chikbsgddokpq" path="res://Assets/Sprites/Backgrounds/BackgroundTrash.png" id="2_lkdxe"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://dkasiow3t788s" path="res://Scenes/Objects/Others/trash_can.tscn" id="7_0ys6h"]
 [ext_resource type="PackedScene" uid="uid://tk6vu5tms825" path="res://Scenes/Characters/Players/toasty.tscn" id="7_kkbg5"]
 [ext_resource type="PackedScene" uid="uid://cjnmjspdg62mw" path="res://Scenes/Objects/Others/level_changer.tscn" id="8_6qss2"]
+[ext_resource type="PackedScene" uid="uid://b335udwa3qnb" path="res://Scenes/Objects/Items/stick.tscn" id="8_8dmrm"]
 [ext_resource type="PackedScene" uid="uid://c0egin0l7hc2v" path="res://Scenes/Objects/Others/smooth_camera.tscn" id="8_lkdxe"]
 [ext_resource type="AudioStream" uid="uid://iyxig0wvh166" path="res://Assets/Audio/Music/musTrash.ogg" id="9_8dmrm"]
 [ext_resource type="PackedScene" uid="uid://bu2l0f1ivopr7" path="res://Scenes/Objects/Others/save_point.tscn" id="10_kkbg5"]
@@ -56,6 +57,21 @@ metadata/instanceID = "kill_block_2085878802"
 
 [node name="Items" type="Node2D" parent="."]
 
+[node name="Stick" parent="Items" instance=ExtResource("8_8dmrm")]
+z_index = 1
+position = Vector2(-175, 702)
+noPlayer = true
+
+[node name="Stick2" parent="Items" instance=ExtResource("8_8dmrm")]
+z_index = 1
+position = Vector2(1191, 227)
+noPlayer = true
+
+[node name="Stick3" parent="Items" instance=ExtResource("8_8dmrm")]
+z_index = 1
+position = Vector2(1570, 821)
+noPlayer = true
+
 [node name="NPCs" type="Node2D" parent="."]
 
 [node name="BadlyDrawnQueenDeltarune" parent="NPCs" instance=ExtResource("6_wrhd0")]
@@ -81,9 +97,6 @@ position = Vector2(1560, 448)
 
 [node name="TrashCan6" parent="Interractables" instance=ExtResource("7_0ys6h")]
 position = Vector2(1448, 480)
-
-[node name="TrashCan7" parent="Interractables" instance=ExtResource("7_0ys6h")]
-position = Vector2(1568, 800)
 
 [node name="TrashCan8" parent="Interractables" instance=ExtResource("7_0ys6h")]
 position = Vector2(1664, 864)
@@ -111,9 +124,6 @@ position = Vector2(20, 704)
 
 [node name="TrashCan16" parent="Interractables" instance=ExtResource("7_0ys6h")]
 position = Vector2(-60, 704)
-
-[node name="TrashCan17" parent="Interractables" instance=ExtResource("7_0ys6h")]
-position = Vector2(-196, 704)
 
 [node name="TrashCan18" parent="Interractables" instance=ExtResource("7_0ys6h")]
 position = Vector2(-255, 600)
