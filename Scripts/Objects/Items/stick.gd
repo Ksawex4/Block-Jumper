@@ -33,7 +33,7 @@ func _physics_process(delta: float) -> void:
 		move_and_slide()
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	if not noPlayer:
+	if not noPlayer and who != "":
 		if body.has_method("takeDamage") and not body.name.begins_with("Boss") or body.name.begins_with("Boss") and LevelMan.BossFightOn:
 			body.takeDamage(damage)
 			PlayerStats.AllPlayerStats[who]["Stick"] = false
