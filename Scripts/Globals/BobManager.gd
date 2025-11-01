@@ -13,85 +13,55 @@ var CanBobsScale: bool = false
 var RandomizeCamZoomTimer := 0.0
 
 func _ready() -> void:
-	if (LevelMan.Os != "Android" or LevelMan.IsWeb) and FileAccess.file_exists("user://The Bobs have awoken.BOB") or LevelMan.Os == "Android" and not LevelMan.IsWeb and SaveMan.AndroidFileExists("The Bobs have awoken.BOB"):
-		var file: FileAccess
-		if (LevelMan.Os != "Android" or LevelMan.IsWeb):
-			file = FileAccess.open("user://The Bobs have awoken.BOB", FileAccess.READ_WRITE)
-		else:
-			file = SaveMan.AndroidFileGet("The Bobs have awoken.BOB")
-		if file:
-			var data: Dictionary = SaveMan.DecodeAndParse(file.get_as_text())
-			SavedBobs = data["Bob"]
-			if data["Bob"] < -1:
-				data = {"Bob": -1}
-				var encodedData: String = SaveMan.Encode(data)
-				file.store_string(encodedData)
-			file.close()
-			print("[BobManager.gd] Loaded bobs from file, data: ", data)
-			if SavedBobs < 0:
-				AchievMan.AddAchievement("BOB")
+	Load_bobs_file()
 	SignalMan.connect("ChangedLevel", Callable(self, "Undone"))
 	print("[BobManager.gd] Loaded")
 
 func _process(_delta: float) -> void:
-	CheckIfShouldSpawnBob()
-	if !SpawnedBobs and SavedBobs != 9:
-		SpawnBobsFromSave()
+	Check_if_should_spawn_bob()
+	if not SpawnedBobs and SavedBobs != 9:
+		Spawn_bobs_from_save()
 	if SavedBobs >= 1:
 		LevelMan.CanPlayerSave = false
 		AchievMan.CanPlayerGetAchievements = false
-		BobSpawnYPos = 385597
-	if SavedBobs >= 2:
-		CanBobsGlitch = true
-	if SavedBobs >= 3:
-		CanBobsMoveThings = true
-	if SavedBobs >= 4:
-		CanBobsAddVelocity = true
+		BobSpawnYPos = 385597.0
+	
+	CanBobsGlitch = true if SavedBobs >= 2 else false
+	CanBobsMoveThings = true if SavedBobs >= 3 else false
+	CanBobsAddVelocity = true if SavedBobs >= 4 else false
+	CanBobsScale = true if SavedBobs >= 7 else false
+	CanSpawnBouncy_onurB = true if SavedBobs >= 10 else false
+	FailToLoad = true if SavedBobs == 11 else false
+	
 	if SavedBobs >= 5 and RandomizeCamZoomTimer <= 0.0:
 		RandomizeCamZoomTimer = randf_range(8.0, 15.0)
-		LevelMan.CamZoom = Vector2(randf_range(0.8, 7.0), randf_range(0.8, 7.0))
+		LevelMan.CamZoom = Vector2(randf_range(1.0, 7.0), randf_range(1.0, 7.0))
 	if RandomizeCamZoomTimer > 0.0:
 		RandomizeCamZoomTimer -= 0.1
+	
 	if SavedBobs >= 6 and SavedBobs != 8 and SavedBobs != 9:
-		AudioServer.set_bus_effect_enabled(0, 0, true)
-	if SavedBobs >= 7:
-		CanBobsScale = true
+		AudioServer.set_bus_effect_enabled(AudioServer.get_bus_index("Master"), 0, true)
+	
 	if SavedBobs == 8:
 		Bob8()
+	
 	if SavedBobs == 9:
 		AudioServer.set_bus_mute(AudioServer.get_bus_index("Master"), true)
 		RemoveEveryPlayerExceptFency()
 		RemoveEveryEnemy()
 		RemoveEveryNPC()
+	
 	if SavedBobs >= 10:
 		RemoveEveryPlayerExceptFency()
-		CanSpawnBouncy_onurB = true
-	if SavedBobs == 11:
-		FailToLoad = true
+	
 
 func ResetVariablesToDefault() -> void:
-	CanBobsGlitch = false
-	CanBobsMoveThings = false
-	CanBobsAddVelocity = false
-	CanBobsScale = false
-	CanSpawnBouncy_onurB = false
 	Done = false
 	BobSpawnYPos = 3855977.0
-	
 	SavedBobs = 0
-	FailToLoad = false
-	if (LevelMan.Os != "Android" or LevelMan.IsWeb) and FileAccess.file_exists("user://The Bobs have awoken.BOB") or LevelMan.Os == "Android" and not LevelMan.IsWeb and SaveMan.AndroidFileExists("The Bobs have awoken.BOB"):
-		var file: FileAccess
-		if (LevelMan.Os != "Android" or LevelMan.IsWeb):
-			file = FileAccess.open("user://The Bobs have awoken.BOB", FileAccess.READ)
-		else:
-			file = SaveMan.AndroidFileGet("The Bobs have awoken.BOB")
-		if file:
-			var data: Dictionary = SaveMan.DecodeAndParse(file.get_as_text())
-			SavedBobs = data["Bob"]
-			file.close()
-			if SavedBobs < 0:
-				AchievMan.AddAchievement("BOB")
+	AchievMan.CanPlayerGetAchievements = true
+	LevelMan.CanPlayerSave = true
+	Load_bobs_file()
 	AudioServer.set_bus_mute(AudioServer.get_bus_index("Master"), false)
 	AudioServer.set_bus_effect_enabled(0, 0, false)
 	print("[BobManager.gd] Reseted variables and unmutted AudioServer")
@@ -109,20 +79,24 @@ func SaveBobs() -> void:
 		SaveMan.AndroidSave(encodedData, "The Bobs have awoken.BOB")
 	print("[BobManager.gd] Saved Bobs, data: ", data)
 
-func CheckIfShouldSpawnBob() -> void:
+func Check_if_should_spawn_bob() -> void:
 	var players: Array = get_tree().get_nodes_in_group("players")
-	if players != null and len(players) != 0:
-		for player: Node2D in players:
+	
+	if players and len(players) != 0:
+		for player: CharacterBody2D in players:
 			if player != null:
+				var current_level_scene_path = get_tree().current_scene.scene_file_path.get_file()
 				if player.position.y >= BobSpawnYPos and SavedBobs >= 0:
-					BobSpawnYPos = 999999999999999
+					BobSpawnYPos = INF
 					AddBobAndEnd()
 					break
-				elif player.position.y >= BobSpawnYPos * 1.5 and get_tree().current_scene.scene_file_path.get_file() != "the_void_lands.tscn":
+				elif player.position.y >= BobSpawnYPos * 1.5 and current_level_scene_path != "the_void_lands.tscn":
 					LevelMan.ChangeLevel("the_void_lands")
 					AchievMan.AddAchievement("TheVoidLands")
-				elif player.position.y >= BobSpawnYPos * 0.5 and get_tree().current_scene.scene_file_path.get_file() == "the_void_lands.tscn":
+					break
+				elif player.position.y >= BobSpawnYPos * 0.5 and current_level_scene_path == "the_void_lands.tscn":
 					LevelMan.ChangeLevel("title_screen")
+					break
 
 func AddBobAndEnd() -> void:
 	if SavedBobs == 0:
@@ -192,10 +166,33 @@ func RemoveEveryNPC() -> void:
 			npc.queue_free()
 		print("[BobManager.gd] Deleted all NPCs")
 
-func SpawnBobsFromSave() -> void:
+func Spawn_bobs_from_save() -> void:
 	SpawnedBobs = true
-	var spawnedBobs: int = 0
+	var spawned_bobs := 0
+	var bob := preload("uid://cgr5yq0b3lq60")
 	if get_tree().current_scene and get_tree().current_scene.scene_file_path.get_file() != "boot_screen.tscn":
-		while spawnedBobs < SavedBobs:
-			get_tree().current_scene.add_child(preload("uid://cgr5yq0b3lq60").instantiate())
-			spawnedBobs += 1
+		while spawned_bobs < SavedBobs:
+			get_tree().current_scene.add_child(bob.instantiate())
+			spawned_bobs += 1
+
+
+func Load_bobs_file() -> void:
+	if (LevelMan.Os != "Android" or LevelMan.IsWeb) and FileAccess.file_exists("user://The Bobs have awoken.BOB") or LevelMan.Os == "Android" and not LevelMan.IsWeb and SaveMan.AndroidFileExists("The Bobs have awoken.BOB"):
+		var file: FileAccess
+		if (LevelMan.Os != "Android" or LevelMan.IsWeb):
+			file = FileAccess.open("user://The Bobs have awoken.BOB", FileAccess.READ_WRITE)
+		else:
+			file = SaveMan.AndroidFileGet("The Bobs have awoken.BOB")
+		
+		if file:
+			var data: Dictionary = SaveMan.DecodeAndParse(file.get_as_text())
+			SavedBobs = data["Bob"]
+			
+			if data["Bob"] < -1:
+				data = {"Bob": -1}
+				var encodedData: String = SaveMan.Encode(data)
+				file.store_string(encodedData)
+			file.close()
+			print("[BobManager.gd] Loaded bobs from file, data: ", data)
+			if SavedBobs < 0:
+				AchievMan.AddAchievement("BOB")
