@@ -1,6 +1,8 @@
 extends Node
 
 var Paused: bool = false
+var Saved_controls: Dictionary = {}
+
 
 func _ready() -> void:
 	SignalMan.connect("Continue", Callable(self, "_on_continue"))
@@ -35,6 +37,7 @@ func ChangeKeybind(actionName: String, newKey: Key) -> void:
 				var newEventKey: InputEventKey = InputEventKey.new()
 				newEventKey.physical_keycode = newKey
 				InputMap.action_add_event(actionName, newEventKey)
+				Saved_controls.set(actionName, newKey)
 				break 
 
 func GetInputKey(actionName: String) -> InputEventKey: 
@@ -44,3 +47,9 @@ func GetInputKey(actionName: String) -> InputEventKey:
 			if event is InputEventKey:
 				return event
 	return null
+
+func Load_keys_from_save(Keys: Dictionary) -> void:
+	Saved_controls = Keys
+	for key in Saved_controls.keys():
+		if int(Saved_controls[key]) is Key:
+			ChangeKeybind(key, Saved_controls[key])

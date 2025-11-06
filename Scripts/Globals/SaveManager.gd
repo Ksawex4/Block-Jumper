@@ -65,7 +65,7 @@ func LoadGame() -> void:
 
 func AndroidSave(data: String, fileName: String) -> void:
 	var fullPath: String = AndroidSaveDirectory + fileName
-	if !DirAccess.dir_exists_absolute(AndroidSaveDirectory):
+	if not DirAccess.dir_exists_absolute(AndroidSaveDirectory):
 		var error: Error = DirAccess.make_dir_recursive_absolute(AndroidSaveDirectory)
 		if error == OK:
 			print("[SaveManager.gd] Created Block_Jumper folder in ", OS.get_system_dir(OS.SYSTEM_DIR_DOCUMENTS))
@@ -91,7 +91,8 @@ func SaveSettings() -> void:
 		"SFXVolume": LevelMan.SFXVolume,
 		"VSync": DisplayServer.window_get_vsync_mode(),
 		"MaxFPS": Engine.max_fps,
-	}  # Controls are not saved beacuse I don't currently know how to do that
+		"Controls": InputMan.Saved_controls,
+	}
 	if LevelMan.Os == "Android" and not LevelMan.IsWeb:
 		AndroidSave(JSON.stringify(data), "Settings.bj")
 	else:
@@ -110,8 +111,9 @@ func LoadSettings() -> void:
 		if file:
 			var data = JSON.parse_string(file.get_as_text())
 			if data is Dictionary:
-				LevelMan.MusicVolume = data["MusicVolume"]
-				LevelMan.SFXVolume = data["SFXVolume"]
+				LevelMan.MusicVolume = data["MusicVolume"] if data["MusicVolume"] is float else 0.0
+				LevelMan.SFXVolume = data["SFXVolume"] if data["SFXVolume"] is float else 0.0
 				DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_DISABLED if data["VSync"] == 1 else DisplayServer.VSYNC_ENABLED)
-				Engine.max_fps = data["MaxFPS"]
+				Engine.max_fps = data["MaxFPS"] if data["MaxFPS"] is int else Engine.max_fps
+				InputMan.Load_keys_from_save(data["Controls"])
 			file.close()
