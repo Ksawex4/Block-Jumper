@@ -2,9 +2,9 @@
 
 > I'm still learning to program, so you might find some bad or messy code.
 
-- All textures are made by me and my friend.
-- All songs are made by my friend.
-- All sound effect are made by me and my friend.
+- All textures are made by me and [qStarRat](https://www.youtube.com/@qStarRat).
+- All songs are made by [qStarRat](https://www.youtube.com/@qStarRat).
+- All sound effect are made by me and [qStarRat](https://www.youtube.com/@qStarRat).
 
 
 ## Credits
