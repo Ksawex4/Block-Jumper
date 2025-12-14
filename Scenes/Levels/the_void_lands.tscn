@@ -27,7 +27,7 @@
 script = ExtResource("1_nhuim")
 
 [node name="Background" parent="." instance=ExtResource("1_j7b5o")]
-Mirroring = Vector2i(708, 428)
+Mirroring = Vector2i(715, 436)
 
 [node name="Windows" type="Node2D" parent="."]
 

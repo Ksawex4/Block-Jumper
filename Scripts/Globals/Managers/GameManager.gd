@@ -86,7 +86,7 @@ func load_game() -> void:
 					player.position = Load_position
 
 
-func _load_bosses(killed: Dictionary[String, bool], spared: Dictionary[String, bool]) -> void:
+func _load_bosses(killed: Dictionary, spared: Dictionary) -> void:
 	if killed != null:
 		for x in killed.keys():
 			Killed_bosses.set(x, killed[x])
