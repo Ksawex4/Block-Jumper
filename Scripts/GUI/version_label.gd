@@ -1,4 +1,4 @@
 extends Label
 
 func _ready() -> void:
-	text = "v" + SaveMan.GameVersion
+	text = "v" + ProjectSettings.get_setting("application/config/version")

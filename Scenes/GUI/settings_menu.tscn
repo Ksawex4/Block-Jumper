@@ -1,60 +1,96 @@
-[gd_scene load_steps=5 format=3 uid="uid://clkawf7n1yg00"]
+[gd_scene load_steps=9 format=3 uid="uid://clkawf7n1yg00"]
 
-[ext_resource type="Script" uid="uid://b5nwg3t2jg7hg" path="res://Scripts/GUI/settings_menu.gd" id="1_wlny4"]
-[ext_resource type="Script" uid="uid://dmv4rk7w3kfvj" path="res://Scripts/GUI/controls_menu.gd" id="2_l3qjt"]
-[ext_resource type="Script" uid="uid://drrgih27ydn85" path="res://Scripts/GUI/controls_button.gd" id="3_04xhd"]
+[ext_resource type="Script" uid="uid://bueajuw4tfq1u" path="res://Scripts/GUI/Menus/settings_menu.gd" id="1_wlny4"]
+[ext_resource type="FontFile" uid="uid://cfp7imnsoqkrp" path="res://Assets/Fonts/VCR_OSD_MONO_1.001.ttf" id="2_56h7t"]
+[ext_resource type="Script" uid="uid://dtbdlksnki47v" path="res://Scripts/GUI/Menus/controls_menu.gd" id="2_l3qjt"]
+[ext_resource type="Script" uid="uid://c4doibhs1bd7t" path="res://Scripts/GUI/controls_button.gd" id="3_04xhd"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_wlny4"]
+font = ExtResource("2_56h7t")
 font_color = Color(1, 0.196078, 0, 1)
+outline_size = 4
+outline_color = Color(0, 0, 0, 1)
 
-[node name="SettingsMenu" type="Window"]
+[sub_resource type="LabelSettings" id="LabelSettings_04xhd"]
+font = ExtResource("2_56h7t")
+font_size = 17
+outline_size = 4
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_ll5tk"]
+font = ExtResource("2_56h7t")
+outline_size = 4
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_740wm"]
+font = ExtResource("2_56h7t")
+font_size = 14
+outline_size = 4
+outline_color = Color(0, 0, 0, 1)
+
+[node name="SettingsMenu" type="Window" node_paths=PackedStringArray("VSyncNode", "DebugMode", "BasicDebugNode", "MaxFPS", "Controls", "SFX", "SFXLabel", "Music", "MusicLabel")]
 process_mode = 3
 oversampling_override = 1.0
 title = "Settings"
 initial_position = 1
-size = Vector2i(400, 300)
-visible = false
+size = Vector2i(380, 250)
+min_size = Vector2i(380, 200)
+max_size = Vector2i(612, 322)
 script = ExtResource("1_wlny4")
+VSyncNode = NodePath("VSync")
+DebugMode = NodePath("DebugMode")
+BasicDebugNode = NodePath("BasicDebug")
+MaxFPS = NodePath("")
+Controls = NodePath("Controls")
+SFX = NodePath("SFX")
+SFXLabel = NodePath("SFX/SFX")
+Music = NodePath("Music")
+MusicLabel = NodePath("Music/Music")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
 
 [node name="VSync" type="Button" parent="."]
 offset_left = 1.0
-offset_top = 1.0
-offset_right = 99.0
-offset_bottom = 32.0
-text = "vsync: STAT"
+offset_right = 83.0
+offset_bottom = 28.0
+theme_override_fonts/font = ExtResource("2_56h7t")
+theme_override_font_sizes/font_size = 18
+text = "VSYNC: "
 
 [node name="DebugMode" type="Button" parent="."]
-offset_left = 1.0
-offset_top = 128.0
-offset_right = 151.0
-offset_bottom = 159.0
+anchors_preset = -1
+anchor_top = 0.5467298
+anchor_right = 0.39473686
+anchor_bottom = 0.6707298
+grow_vertical = 2
 text = "DebugMode: False"
+metadata/_edit_use_anchors_ = true
 
 [node name="Label" type="Label" parent="DebugMode"]
-layout_mode = 0
-offset_top = -100.0
-offset_right = 407.0
-offset_bottom = 1.0
-text = "WARNING!! Turning on Debug Mode disables
-achievements and stops you from saving, make
-sure to SAVE before turning on this mode if you
-dont want to lose progress!"
+layout_mode = 1
+anchors_preset = -1
+anchor_top = -2.2799165
+anchor_right = 2.5666666
+anchor_bottom = 0.026534788
+text = "WARNING!! Turning on Debug Mode disables achievements and stops you from saving, make sure to SAVE before turning on this mode if you dont want to lose progress!"
 label_settings = SubResource("LabelSettings_wlny4")
+autowrap_mode = 3
+metadata/_edit_use_anchors_ = true
 
 [node name="Label2" type="Label" parent="DebugMode"]
 layout_mode = 0
-offset_top = 32.0
-offset_right = 271.0
-offset_bottom = 83.0
+anchor_top = 1.032258
+anchor_right = 2.3266666
+anchor_bottom = 2.3225806
+offset_right = -129.0
 text = "B - spawn bouncy onurb
 Ctrl + B - remove all bouncy onurbs"
-
-[node name="MaxFPS" type="LineEdit" parent="."]
-offset_left = 245.0
-offset_top = 1.0
-offset_right = 398.0
-offset_bottom = 32.0
-placeholder_text = "MaxFPS: FUCK"
+label_settings = SubResource("LabelSettings_04xhd")
+metadata/_edit_use_anchors_ = true
 
 [node name="ControlsMenu" type="Window" parent="."]
 oversampling_override = 1.0
@@ -64,7 +100,7 @@ size = Vector2i(500, 300)
 visible = false
 script = ExtResource("2_l3qjt")
 
-[node name="FencyUp" type="Button" parent="ControlsMenu"]
+[node name="FencyJump" type="Button" parent="ControlsMenu"]
 offset_left = 1.0
 offset_top = 27.0
 offset_right = 54.0
@@ -79,7 +115,6 @@ offset_right = 54.0
 offset_bottom = 120.0
 text = "Left: "
 script = ExtResource("3_04xhd")
-keybind = "FencyLeft"
 
 [node name="FencyRight" type="Button" parent="ControlsMenu"]
 offset_left = 1.0
@@ -88,7 +123,6 @@ offset_right = 54.0
 offset_bottom = 167.0
 text = "Right:"
 script = ExtResource("3_04xhd")
-keybind = "FencyRight"
 
 [node name="FencyCam" type="Button" parent="ControlsMenu"]
 offset_left = 1.0
@@ -97,7 +131,6 @@ offset_right = 54.0
 offset_bottom = 214.0
 text = "Cam:"
 script = ExtResource("3_04xhd")
-keybind = "FencyCam"
 
 [node name="ToastyJump" type="Button" parent="ControlsMenu"]
 offset_left = 155.0
@@ -106,7 +139,6 @@ offset_right = 208.0
 offset_bottom = 73.0
 text = "Up:"
 script = ExtResource("3_04xhd")
-keybind = "ToastyJump"
 
 [node name="ToastyLeft" type="Button" parent="ControlsMenu"]
 offset_left = 155.0
@@ -115,7 +147,6 @@ offset_right = 208.0
 offset_bottom = 120.0
 text = "Left:"
 script = ExtResource("3_04xhd")
-keybind = "ToastyLeft"
 
 [node name="ToastyRight" type="Button" parent="ControlsMenu"]
 offset_left = 155.0
@@ -124,7 +155,6 @@ offset_right = 208.0
 offset_bottom = 167.0
 text = "Right:"
 script = ExtResource("3_04xhd")
-keybind = "ToastyRight"
 
 [node name="ToastyCam" type="Button" parent="ControlsMenu"]
 offset_left = 155.0
@@ -133,7 +163,6 @@ offset_right = 208.0
 offset_bottom = 214.0
 text = "Cam:"
 script = ExtResource("3_04xhd")
-keybind = "ToastyCam"
 
 [node name="PanLoduwkaJump" type="Button" parent="ControlsMenu"]
 offset_left = 316.0
@@ -142,7 +171,6 @@ offset_right = 369.0
 offset_bottom = 73.0
 text = "Up:"
 script = ExtResource("3_04xhd")
-keybind = "PanLoduwkaJump"
 
 [node name="PanLoduwkaLeft" type="Button" parent="ControlsMenu"]
 offset_left = 316.0
@@ -151,7 +179,6 @@ offset_right = 369.0
 offset_bottom = 120.0
 text = "Left:"
 script = ExtResource("3_04xhd")
-keybind = "PanLoduwkaLeft"
 
 [node name="PanLoduwkaRight" type="Button" parent="ControlsMenu"]
 offset_left = 316.0
@@ -160,7 +187,6 @@ offset_right = 369.0
 offset_bottom = 167.0
 text = "Right:"
 script = ExtResource("3_04xhd")
-keybind = "PanLoduwkaRight"
 
 [node name="PanLoduwkaCam" type="Button" parent="ControlsMenu"]
 offset_left = 316.0
@@ -169,7 +195,22 @@ offset_right = 369.0
 offset_bottom = 214.0
 text = "Cam:"
 script = ExtResource("3_04xhd")
-keybind = "PanLoduwkaCam"
+
+[node name="Interact" type="Button" parent="ControlsMenu"]
+offset_left = 60.0
+offset_top = 252.0
+offset_right = 113.0
+offset_bottom = 298.0
+text = "Interact:"
+script = ExtResource("3_04xhd")
+
+[node name="HealMenu" type="Button" parent="ControlsMenu"]
+offset_left = 296.0
+offset_top = 252.0
+offset_right = 370.0
+offset_bottom = 298.0
+text = "HealMenu:"
+script = ExtResource("3_04xhd")
 
 [node name="Fency" type="Label" parent="ControlsMenu"]
 offset_left = 1.0
@@ -193,48 +234,98 @@ offset_bottom = 24.0
 text = "Pan Loduwka"
 
 [node name="Controls" type="Button" parent="."]
-offset_left = 304.0
-offset_top = 124.0
-offset_right = 398.0
-offset_bottom = 159.0
+anchors_preset = -1
+anchor_left = 0.7026316
+anchor_top = 0.5963416
+anchor_right = 1.0
+anchor_bottom = 0.7203416
+offset_top = 8.0
+offset_bottom = 8.0
+grow_horizontal = 2
+grow_vertical = 2
 text = "Controls
 "
+metadata/_edit_use_anchors_ = true
 
-[node name="SFX" type="Label" parent="."]
-offset_top = 232.0
+[node name="SFX" type="HSlider" parent="."]
+anchors_preset = -1
+anchor_top = 0.9145239
+anchor_right = 0.28423774
+anchor_bottom = 1.034524
+offset_top = -2.0
+offset_bottom = -2.0
+grow_vertical = 0
+min_value = -80.0
+max_value = 20.0
+step = 0.25
+metadata/_edit_use_anchors_ = true
+
+[node name="SFX" type="Label" parent="SFX"]
+layout_mode = 0
+offset_top = -14.0
 offset_right = 40.0
-offset_bottom = 255.0
+offset_bottom = 9.0
 text = "SFX"
+label_settings = SubResource("LabelSettings_ll5tk")
 
-[node name="HSlider" type="HSlider" parent="SFX"]
-layout_mode = 0
-offset_top = 25.0
-offset_right = 110.0
-offset_bottom = 61.0
+[node name="Music" type="HSlider" parent="."]
+anchors_preset = -1
+anchor_left = 0.33338094
+anchor_top = 0.9061906
+anchor_right = 0.6176186
+anchor_bottom = 1.0261905
+offset_right = 1.5258789e-05
+offset_bottom = 1.5258789e-05
+grow_vertical = 0
 min_value = -80.0
 max_value = 20.0
+step = 0.25
+metadata/_edit_use_anchors_ = true
 
-[node name="Music" type="Label" parent="."]
-offset_left = 248.0
-offset_top = 232.0
-offset_right = 288.0
-offset_bottom = 255.0
+[node name="Music" type="Label" parent="Music"]
+layout_mode = 0
+offset_top = -15.0
+offset_right = 47.0
+offset_bottom = 8.0
 text = "Music"
+label_settings = SubResource("LabelSettings_ll5tk")
 
-[node name="HSlider" type="HSlider" parent="Music"]
-layout_mode = 0
-offset_top = 22.0
-offset_right = 110.0
-offset_bottom = 58.0
-min_value = -80.0
-max_value = 20.0
+[node name="MaxFPS" type="HSlider" parent="."]
+anchors_preset = -1
+anchor_left = 0.70789474
+anchor_top = 0.83
+anchor_right = 0.9973684
+anchor_bottom = 0.91
+max_value = 240.0
+value = 60.0
+rounded = true
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="MaxFPS"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.07272727
+anchor_top = 1.0
+anchor_right = 0.5272727
+anchor_bottom = 2.4375
+text = "FPS: 240"
+label_settings = SubResource("LabelSettings_740wm")
+metadata/_edit_use_anchors_ = true
+
+[node name="BasicDebug" type="Button" parent="."]
+anchors_preset = -1
+anchor_left = 0.002631579
+anchor_top = 0.112
+anchor_right = 0.29473683
+anchor_bottom = 0.236
+text = "Debug Info: "
+metadata/_edit_use_anchors_ = true
 
 [connection signal="close_requested" from="." to="." method="_on_close_requested"]
-[connection signal="pressed" from="VSync" to="." method="_on_vsync_pressed"]
+[connection signal="pressed" from="VSync" to="." method="_on_v_sync_pressed"]
 [connection signal="pressed" from="DebugMode" to="." method="_on_debug_mode_pressed"]
-[connection signal="text_submitted" from="MaxFPS" to="." method="_on_max_fps_text_submitted"]
 [connection signal="close_requested" from="ControlsMenu" to="ControlsMenu" method="_on_close_requested"]
-[connection signal="pressed" from="ControlsMenu/FencyUp" to="ControlsMenu/FencyUp" method="_on_pressed"]
+[connection signal="pressed" from="ControlsMenu/FencyJump" to="ControlsMenu/FencyJump" method="_on_pressed"]
 [connection signal="pressed" from="ControlsMenu/FencyLeft" to="ControlsMenu/FencyLeft" method="_on_pressed"]
 [connection signal="pressed" from="ControlsMenu/FencyRight" to="ControlsMenu/FencyRight" method="_on_pressed"]
 [connection signal="pressed" from="ControlsMenu/FencyCam" to="ControlsMenu/FencyCam" method="_on_pressed"]
@@ -246,4 +337,8 @@ max_value = 20.0
 [connection signal="pressed" from="ControlsMenu/PanLoduwkaLeft" to="ControlsMenu/PanLoduwkaLeft" method="_on_pressed"]
 [connection signal="pressed" from="ControlsMenu/PanLoduwkaRight" to="ControlsMenu/PanLoduwkaRight" method="_on_pressed"]
 [connection signal="pressed" from="ControlsMenu/PanLoduwkaCam" to="ControlsMenu/PanLoduwkaCam" method="_on_pressed"]
+[connection signal="pressed" from="ControlsMenu/Interact" to="ControlsMenu/Interact" method="_on_pressed"]
+[connection signal="pressed" from="ControlsMenu/HealMenu" to="ControlsMenu/HealMenu" method="_on_pressed"]
 [connection signal="pressed" from="Controls" to="." method="_on_controls_pressed"]
+[connection signal="drag_ended" from="MaxFPS" to="." method="_on_max_fps_drag_ended"]
+[connection signal="pressed" from="BasicDebug" to="." method="_on_basic_debug_pressed"]

@@ -1,7 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://cnapla1ydbe63"]
+[gd_scene load_steps=5 format=3 uid="uid://cnapla1ydbe63"]
 
-[ext_resource type="Texture2D" uid="uid://bu5fh31ha7gy2" path="res://Assets/Sprites/Objects/Solids/Tiles.png" id="1_g0r5v"]
-[ext_resource type="Script" uid="uid://b33odpkqbkspw" path="res://Scripts/Objects/Solids/tiles.gd" id="2_mikbt"]
+[ext_resource type="Texture2D" uid="uid://bu5fh31ha7gy2" path="res://Assets/Sprites/Objects/Blocks/Tiles.png" id="1_g0r5v"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_4djq1"]
 vertices = PackedVector2Array(16, 16, -16, 16, -16, -16, 16, -16)
@@ -45,4 +44,3 @@ sources/0 = SubResource("TileSetAtlasSource_mikbt")
 
 [node name="Tiles" type="TileMapLayer"]
 tile_set = SubResource("TileSet_j5785")
-script = ExtResource("2_mikbt")

@@ -1,0 +1,55 @@
+[gd_scene load_steps=7 format=3 uid="uid://wjvjhu8rs6q8"]
+
+[ext_resource type="Script" uid="uid://hcq1p8514tty" path="res://Scripts/Characters/NPCs/bit_rat.gd" id="1_7utok"]
+[ext_resource type="AudioStream" uid="uid://dyhqdmbvf2y5r" path="res://Assets/Audio/SFX/sfxBitRat.mp3" id="2_d4tlk"]
+[ext_resource type="Texture2D" uid="uid://bfpwl8r32o6wl" path="res://Assets/Sprites/Characters/NPCs/bitrat.png" id="3_w5rrf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_15fdn"]
+size = Vector2(26, 22)
+
+[sub_resource type="FontFile" id="FontFile_7utok"]
+subpixel_positioning = 0
+msdf_pixel_range = 14
+msdf_size = 128
+cache/0/10/0/ascent = 0.0
+cache/0/10/0/descent = 0.0
+cache/0/10/0/underline_position = 0.0
+cache/0/10/0/underline_thickness = 0.0
+cache/0/10/0/scale = 1.0
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_d4tlk"]
+font = SubResource("FontFile_7utok")
+font_size = 10
+
+[node name="BitRat" type="Area2D"]
+process_mode = 3
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_7utok")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_15fdn")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_d4tlk")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("3_w5rrf")
+
+[node name="Label" type="Label" parent="."]
+visible = false
+offset_left = -45.0
+offset_top = -27.0
+offset_right = 46.0
+offset_bottom = -13.0
+text = "Press Z to interact"
+label_settings = SubResource("LabelSettings_d4tlk")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
+[connection signal="finished" from="AudioStreamPlayer" to="." method="_on_audio_stream_player_finished"]

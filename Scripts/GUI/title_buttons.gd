@@ -1,47 +1,48 @@
 extends Control
 
-var targetPosForBatons: Vector2 = Vector2(-355.0, -42.5)
+@export var Target_pos: Vector2 = Vector2.ZERO
+@onready var Speedrun_mode_menu: Window = $"../SpeedrunModeMenu"
+
 
 func _ready() -> void:
-	if FileAccess.file_exists("user://Save.bj") or SaveMan.AndroidFileExists("Save.bj"):
-		var file: FileAccess
-		if LevelMan.Os == "Android" and not LevelMan.IsWeb:
-			file = SaveMan.AndroidFileGet("Save.bj")
-		else:
-			file = FileAccess.open("user://Save.bj", FileAccess.READ)
-			if file:
-				var data: Dictionary = SaveMan.DecodeAndParse(file.get_as_text())
-				if data["Version"] != SaveMan.GameVersion:
-					$LoadGame/Information.show()
+	if SaveMan.get_data_from_file("Save.bj").get("Version") != SaveMan.Game_version:
+		$LoadGame/Information.show()
+
+
+func _physics_process(delta: float) -> void:
+	position = lerp(position, Target_pos, 3 * delta)
+
 
 func _on_new_game_pressed() -> void:
-	NovaFunc.ResetAllGlobalsToDefault(true, false)
-	ToastEventMan.GetNewToastAndStartEvent()
-	print("[title_buttons, New] Started New game")
-	LevelMan.ChangeLevel("trash_room")
+	NovaFunc.reset_all_variables_to_default(false, false, true)
+	LevelMan.change_level("trash_room.tscn")
 
-func _on_quit_pressed() -> void:
-	SaveMan.SaveSettings()
-	print("[title_buttons, Quit] Quitting")
-	AchievMan.SaveAchievements()
-	get_tree().quit()
 
 func _on_load_game_pressed() -> void:
-	if !LevelMan.CanPlayerSave:
+	if FileAccess.file_exists("user://Save.bj") and BobMan.Saved_bobs <= 0:
+		NovaFunc.reset_all_variables_to_default(false, false, true)
+		GameMan.load_game()
+	elif BobMan.Saved_bobs > 0:
 		$LoadGame.queue_free()
-	else:
-		print("[title_buttons, Load] Loading the Saved game")
-		NovaFunc.ResetAllGlobalsToDefault(true, false)
-		SaveMan.LoadGame()
+
 
 func _on_achievements_pressed() -> void:
-	SignalMan.emit_signal("ShowAchievements")
+	AchievMan.emit_signal("ShowAchievements")
+
 
 func _on_settings_pressed() -> void:
-	SignalMan.emit_signal("ShowSettings")
+	SettingsMan.emit_signal("ShowSettings")
 
-func _physics_process(_delta: float) -> void:
-	position = lerp(position, targetPosForBatons, 0.05)
+
+func _on_quit_pressed() -> void:
+	AchievMan.save_achievements()
+	SettingsMan.save_settings()
+	get_tree().quit() # maybe add a quit cutscene?
+
 
 func _on_speedrun_mode_pressed() -> void:
-	SignalMan.emit_signal("ShowSpeedrunModeWindow")
+	Speedrun_mode_menu.show()
+
+
+func _on_file_manager_pressed() -> void:
+	$"../FileManager".show()

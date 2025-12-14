@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://dpmvygjq4f1hk"]
 
-[ext_resource type="Script" uid="uid://cwusnci44svjg" path="res://Scripts/Objects/Items/chip.gd" id="1_7hpdk"]
+[ext_resource type="Script" uid="uid://dp26f35j14x0d" path="res://Scripts/Objects/Items/chip.gd" id="1_7hpdk"]
 [ext_resource type="Texture2D" uid="uid://dmk7meeqlnp4o" path="res://Assets/Sprites/Objects/Items/Chip.png" id="2_lr2q4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c6n64"]

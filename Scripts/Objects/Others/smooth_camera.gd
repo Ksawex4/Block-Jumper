@@ -1,96 +1,107 @@
 extends Camera2D
 
-var maxSmoothSpeed: int = 1000
-var isShowingAchievement: bool = false
-var targetAchievementPos: Vector2 = Vector2(-99.0, 0.0)
-var targetBeansPos: Vector2 = Vector2(13.0, 13.0)
-var achievementHidden: bool = true
-var achTemplate: String = "[img]res://Assets/Sprites/Achievements/ACHIEVEMENT.png[/img]"
-@export var spawnBouncy: TouchScreenButton
-@export var deleteBouncy: TouchScreenButton
+var Max_smooth_speed: int = 800
+var Achievement_start_pos: Vector2
+var Achievement_show_pos := Vector2.ZERO
+var Achievement_show := false
+var Achievement_hidden := true
+var Achievement_template := "[img]res://Assets/Sprites/Achievements/ACHIEVEMENT.png[/img]"
+var Beans_start_pos := Vector2.ZERO
+var Beans_second_pos := Vector2(0.0, 32.0)
+@export var HealMenu: Window
+@export var AchievementLabel: RichTextLabel
+@export var BeansLabel: Label
+signal ShowHealMenu()
+
 
 func _ready() -> void:
-	if LevelMan.Os != "Android":
+	Achievement_start_pos = AchievementLabel.position
+	$AudioStreamPlayer.stream = load(AchievMan.Achievement_sound)
+	if AchievMan.Achievement_sound == "res://Assets/Audio/SFX/souTOASTAch.wav":
+		$AudioStreamPlayer.volume_db = 10
+	if GameMan.is_mobile():
+		$CanvasLayer/MobileControls.show()
+	else:
 		$CanvasLayer/MobileControls.queue_free()
 
 
 func _physics_process(delta: float) -> void:
-	var node: Node2D = NovaFunc.GetPlayerFromGroup(PlayerStats.FollowWho)
-	if node != null and !LevelMan.BossFightOn:
-		if node.velocity.x > maxSmoothSpeed or node.velocity.y > maxSmoothSpeed:
+	# Camera position and zoom
+	var node: CharacterBody2D = NovaFunc.get_node_from_group(PlayerStats.Follow_who)
+	if node:
+		if node.velocity.x > Max_smooth_speed or node.velocity.y > Max_smooth_speed:
 			position = node.position
 		else:
 			position = lerp(position, node.position, 6.0 * delta)
 	else:
-		var player: Node2D = get_tree().get_first_node_in_group("players")
-		if player != null:
-			PlayerStats.FollowWho = player.name
-	zoom = lerp(zoom, LevelMan.CamZoom, 6.0 * delta)
+		var player: CharacterBody2D = get_tree().get_first_node_in_group("players")
+		if player:
+			PlayerStats.Follow_who = player.name
+	zoom = lerp(zoom, LevelMan.Cam_zoom, 6.0 * delta)
 	
-	if Input.is_action_pressed("FencyCam") and NovaFunc.GetPlayerFromGroup("Fency") != null:
-		PlayerStats.FollowWho = "Fency"
-	elif Input.is_action_pressed("PanLoduwkaCam") and NovaFunc.GetPlayerFromGroup("PanLoduwka") != null:
-		PlayerStats.FollowWho = "PanLoduwka"
-	elif Input.is_action_just_pressed("ToastyCam") and NovaFunc.GetPlayerFromGroup("Toasty") != null:
-		PlayerStats.FollowWho = "Toasty"
+	# Camera player changing
+	if Input.is_action_just_pressed("FencyCam") and NovaFunc.get_node_from_group("Fency"):
+		PlayerStats.Follow_who = "Fency"
+	elif Input.is_action_pressed("PanLoduwkaCam") and NovaFunc.get_node_from_group("PanLoduwka") != null:
+		PlayerStats.Follow_who = "PanLoduwka"
+	elif Input.is_action_just_pressed("ToastyCam") and NovaFunc.get_node_from_group("Toasty") != null:
+		PlayerStats.Follow_who = "Toasty"
 	elif Input.is_action_just_pressed("SwitchPlayer"):
 		var alivePlayers: Array = get_tree().get_nodes_in_group("players")
 		if alivePlayers.size() > 1:
-			var currentPlayerIndex: int = alivePlayers.find(NovaFunc.GetPlayerFromGroup(PlayerStats.FollowWho))
+			var currentPlayerIndex: int = alivePlayers.find(NovaFunc.get_node_from_group(PlayerStats.Follow_who))
 			if currentPlayerIndex != -1:
 				var nextPlayerIndex: int = (currentPlayerIndex + 1) % alivePlayers.size()
-				PlayerStats.FollowWho = alivePlayers[nextPlayerIndex].name
+				PlayerStats.Follow_who = alivePlayers[nextPlayerIndex].name
 	
-	if LevelMan.Os == "Android":
-		if !PlayerStats.DebugMode:
-			spawnBouncy.visible = false
-			deleteBouncy.visible = false
-		else:
-			spawnBouncy.visible = true
-			deleteBouncy.visible = true
-	
-	if $CanvasLayer/Achievement.position != targetAchievementPos:
-		$CanvasLayer/Achievement.position = lerp($CanvasLayer/Achievement.position, targetAchievementPos, 0.1)
-	if $CanvasLayer/Beans.position != targetBeansPos:
-		$CanvasLayer/Beans.position = lerp($CanvasLayer/Beans.position, targetBeansPos, 0.1)
-	
-	$CanvasLayer/Beans.text = "Beans: " + str(PlayerStats.GetBeans())
-	
-	if PlayerStats.SpeedrunMode:
-		$CanvasLayer/SpeedrunTimer.show()
-		$CanvasLayer/SpeedrunTimer.text = str(LevelMan.SpeedrunTimer["Hours"]) + ":" + str(LevelMan.SpeedrunTimer["Minutes"]) + ":" + str(LevelMan.SpeedrunTimer["Seconds"]) + ":" + str(LevelMan.SpeedrunTimer["Frames"])
-	
-	if LevelMan.BossFightOn:
-		position = lerp(position, LevelMan.BossCamPos, 9.0 * delta)
-	
-	if achievementHidden and AchievMan.AchievementsToShow != []:
-		_showAchievements(AchievMan.AchievementsToShow.pop_front())
-	
+	# Other Input
 	if Input.is_action_just_pressed("HealMenu"):
-		$HealMenu.update_hp_labels()
-		$HealMenu.show()
+		emit_signal("ShowHealMenu")
+	
+	# Achievement and Beans labels positions
+	var target_pos_a := Achievement_start_pos if not Achievement_show else Achievement_show_pos
+	AchievementLabel.position = lerp(AchievementLabel.position, target_pos_a, 6.0 * delta)
+	var target_pos_b := Beans_start_pos if not Achievement_show else Beans_second_pos
+	BeansLabel.position = lerp(BeansLabel.position, target_pos_b, 6.0 * delta)
+	
+	if Achievement_hidden and AchievMan.Achievements_to_show.size() > 0:
+		_show_achievement(AchievMan.Achievements_to_show.pop_front())
+	
+	$CanvasLayer/Beans.text = "Beans: %s" % PlayerStats.Beans
+	
+	if GameMan.Speedrun_mode:
+		$CanvasLayer/SpeedrunTimer.show()
+		$CanvasLayer/SpeedrunTimer.text = (
+			str(GameMan.Speedrun_timer["Hours"]) + ":" 
+			+ str(GameMan.Speedrun_timer["Minutes"]) + ":" 
+			+ str(GameMan.Speedrun_timer["Seconds"]) + ":" 
+			+ str(GameMan.Speedrun_timer["Frames"])
+		)
 
-func _showAchievements(ach: String) -> void:
-	var achievement: String = achTemplate.replace("ACHIEVEMENT", ach)
-	achievementHidden = false
-	targetAchievementPos = Vector2(0.0, 0.0)
-	targetBeansPos = Vector2(13.0, 45.0)
-	$CanvasLayer/Achievement.text = achievement
-	$AudioStreamPlayer.stream = load(AchievMan.AchievementSound)
-	if AchievMan.AchievementSound == "res://Assets/Audio/SFX/souTOASTAch.wav":
-		$AudioStreamPlayer.volume_db = 30
+
+func _show_achievement(ach: String) -> void:
+	var achievement := AchievMan.Achievement_sprites[ach]
+	AchievementLabel.text = ""
+	if achievement:
+		AchievementLabel.add_image(achievement)
+	else:
+		AchievementLabel.text = "Everything is fucked," + ach
+	Achievement_show = true
+	Achievement_hidden = false
+	$AudioStreamPlayer.stream = load(AchievMan.Achievement_sound)
+	if AchievMan.Achievement_sound == "res://Assets/Audio/SFX/souTOASTAch.wav":
+		$AudioStreamPlayer.volume_db = 10
 	$AudioStreamPlayer.play()
 	await get_tree().create_timer(4.0).timeout
-	targetAchievementPos = Vector2(-99.0, 0.0)
-	targetBeansPos = Vector2(13.0, 13.0)
+	Achievement_show = false
 	await get_tree().create_timer(1.0).timeout
-	$CanvasLayer/Achievement.text = ""
-	achievementHidden = true
+	AchievementLabel.text = ""
+	Achievement_hidden = true
 
 
 func _on_jump_button_pressed() -> void:
-	PlayerStats.MobileJump = 1
+	InputMan.Mobile_jump = true
 
 
 func _on_jump_button_released() -> void:
-	PlayerStats.MobileJump = 0
+	InputMan.Mobile_jump = false

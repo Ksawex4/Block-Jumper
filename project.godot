@@ -11,43 +11,54 @@ config_version=5
 [application]
 
 config/name="Block Jumper"
-config/version="0.2.2b"
-config/tags=PackedStringArray("big", "game", "rewrite")
+config/version="0.2.3"
+config/tags=PackedStringArray("2d", "block_jumper", "game", "github", "indevelopment", "rewrite")
 run/main_scene="uid://bdw0vwua1oy14"
 config/features=PackedStringArray("4.5", "GL Compatibility")
-run/max_fps=60
-boot_splash/bg_color=Color(0.133333, 0.168627, 0.270588, 1)
-boot_splash/show_image=false
-config/icon="uid://m8mvttomh8ys"
+boot_splash/use_filter=false
+boot_splash/image="uid://c4lib2gse8ur"
+config/icon="res://icon.svg"
 config/windows_native_icon="res://Assets/icon.ico"
 
 [autoload]
 
-SignalMan="*res://Scripts/Globals/SignalManager.gd"
-InputMan="*res://Scripts/Globals/InputManager.gd"
-PlayerStats="*res://Scripts/Globals/PlayerStats.gd"
-SaveMan="*res://Scripts/Globals/SaveManager.gd"
-LevelMan="*res://Scripts/Globals/LevelManager.gd"
-NovaFunc="*res://Scripts/Globals/NovaFunctions.gd"
-AchievMan="*res://Scripts/Globals/AchievementManager.gd"
-ToastEventMan="*res://Scripts/Globals/ToastEventManager.gd"
-BobMan="*res://Scripts/Globals/BobManager.gd"
+GameMan="*res://Scripts/Globals/Managers/GameManager.gd"
+LevelMan="*res://Scripts/Globals/Managers/LevelManager.gd"
+DebugMan="*res://Scripts/Globals/Managers/DebugManager.gd"
+AchievMan="*res://Scripts/Globals/Managers/AchievementManager.gd"
+SettingsMan="*res://Scripts/Globals/Managers/SettingsManager.gd"
+SaveMan="*res://Scripts/Globals/Managers/SaveManager.gd"
+InputMan="*res://Scripts/Globals/Managers/InputManager.gd"
+PlayerStats="*res://Scripts/Globals/Managers/PlayerStats.gd"
+ToastEventMan="*res://Scripts/Globals/Managers/ToastEventManager.gd"
+NovaFunc="*res://Scripts/Globals/Other/NovaFunctions.gd"
+BobMan="*res://Scripts/Globals/Managers/BobManager.gd"
+AssetMan="*res://Scripts/Globals/Managers/AssetManager.gd"
+
+[debug]
+
+gdscript/warnings/unused_signal=0
 
 [display]
 
-window/size/viewport_width=711
-window/size/viewport_height=400
-window/size/mode=3
+window/size/viewport_width=640
+window/size/viewport_height=360
 window/stretch/mode="canvas_items"
-window/vsync/vsync_mode=0
-window/version="0.2.0"
+window/stretch/scale_mode="integer"
+
+[editor]
+
+movie_writer/movie_file="/home/nova/Godot/movie.avi"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/PaletteSwapShader/plugin.cfg")
 
 [file_customization]
 
 folder_colors={
 "res://Assets/": "orange",
-"res://Assets/Audio/": "orange",
-"res://Assets/Sprites/": "orange",
+"res://Resources/": "yellow",
 "res://Scenes/": "blue",
 "res://Scripts/": "red"
 }
@@ -57,22 +68,6 @@ folder_colors={
 Pause={
 "deadzone": 0.2,
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":4194305,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
-, Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"button_index":6,"pressure":0.0,"pressed":false,"script":null)
-]
-}
-SwitchPlayer={
-"deadzone": 0.2,
-"events": [Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"button_index":1,"pressure":0.0,"pressed":false,"script":null)
-]
-}
-SpawnBouncy_onurB={
-"deadzone": 0.2,
-"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":66,"key_label":0,"unicode":98,"location":0,"echo":false,"script":null)
-]
-}
-DeleteAllBouncy_onurBs={
-"deadzone": 0.2,
-"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":true,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":66,"key_label":0,"unicode":98,"location":0,"echo":false,"script":null)
 ]
 }
 FencyLeft={
@@ -120,35 +115,19 @@ ToastyJump={
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":73,"key_label":0,"unicode":105,"location":0,"echo":false,"script":null)
 ]
 }
-ControllerLeft={
-"deadzone": 0.2,
-"events": [Object(InputEventJoypadMotion,"resource_local_to_scene":false,"resource_name":"","device":-1,"axis":0,"axis_value":-1.0,"script":null)
-]
-}
-ControllerRight={
-"deadzone": 0.2,
-"events": [Object(InputEventJoypadMotion,"resource_local_to_scene":false,"resource_name":"","device":-1,"axis":0,"axis_value":1.0,"script":null)
-]
-}
-ControllerJump={
-"deadzone": 0.5,
-"events": [Object(InputEventJoypadMotion,"resource_local_to_scene":false,"resource_name":"","device":-1,"axis":1,"axis_value":-1.0,"script":null)
-, Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"button_index":0,"pressure":0.0,"pressed":false,"script":null)
-]
-}
 FencyCam={
 "deadzone": 0.2,
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":49,"key_label":0,"unicode":49,"location":0,"echo":false,"script":null)
 ]
 }
-ToastyCam={
-"deadzone": 0.2,
-"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":51,"key_label":0,"unicode":51,"location":0,"echo":false,"script":null)
-]
-}
 PanLoduwkaCam={
 "deadzone": 0.2,
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":50,"key_label":0,"unicode":50,"location":0,"echo":false,"script":null)
+]
+}
+ToastyCam={
+"deadzone": 0.2,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":51,"key_label":0,"unicode":51,"location":0,"echo":false,"script":null)
 ]
 }
 Interact={
@@ -162,20 +141,46 @@ HealMenu={
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":69,"key_label":0,"unicode":101,"location":0,"echo":false,"script":null)
 ]
 }
-
-[input_devices]
-
-pointing/emulate_touch_from_mouse=true
+SwitchPlayer={
+"deadzone": 0.2,
+"events": [Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"button_index":12,"pressure":0.0,"pressed":false,"script":null)
+]
+}
+ControllerLeft={
+"deadzone": 0.2,
+"events": [Object(InputEventJoypadMotion,"resource_local_to_scene":false,"resource_name":"","device":-1,"axis":0,"axis_value":-1.0,"script":null)
+]
+}
+ControllerRight={
+"deadzone": 0.2,
+"events": [Object(InputEventJoypadMotion,"resource_local_to_scene":false,"resource_name":"","device":-1,"axis":0,"axis_value":1.0,"script":null)
+]
+}
+ControllerJump={
+"deadzone": 0.2,
+"events": [Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"button_index":0,"pressure":0.0,"pressed":false,"script":null)
+]
+}
+SpawnBouncy_onurB={
+"deadzone": 0.2,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":66,"key_label":0,"unicode":98,"location":0,"echo":false,"script":null)
+]
+}
+DeleteAllBouncy_onurBs={
+"deadzone": 0.2,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":true,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":66,"key_label":0,"unicode":98,"location":0,"echo":false,"script":null)
+]
+}
 
 [layer_names]
 
-2d_physics/layer_1="Solids"
+2d_physics/layer_1="Blocks"
 2d_physics/layer_2="Players"
 2d_physics/layer_3="Enemies"
 2d_physics/layer_4="Collectables"
 2d_physics/layer_5="NPCs"
 2d_physics/layer_6="Things"
-2d_physics/layer_7="Boss Boundaries"
+2d_physics/layer_7="Boss Area Boundaries"
 2d_physics/layer_8="Projectiles"
 
 [rendering]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://b77gkoqrf2pbp"]
 
-[ext_resource type="Script" uid="uid://doi3fqre8nj71" path="res://Scripts/Objects/Items/rusty_key.gd" id="1_8nbrp"]
+[ext_resource type="Script" uid="uid://dlspgu7m46t4" path="res://Scripts/Objects/Items/rusty_key.gd" id="1_8nbrp"]
 [ext_resource type="Texture2D" uid="uid://3qigg2uy5wpg" path="res://Assets/Sprites/Objects/Items/RustyKey.png" id="1_l7ruq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8nbrp"]

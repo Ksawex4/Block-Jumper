@@ -1,6 +1,7 @@
-[gd_scene load_steps=19 format=4 uid="uid://cwikvlp5m7o4q"]
+[gd_scene load_steps=21 format=4 uid="uid://cwikvlp5m7o4q"]
 
 [ext_resource type="PackedScene" uid="uid://dict2vu23hgm2" path="res://Scenes/GUI/pause_menu.tscn" id="1_3gdhn"]
+[ext_resource type="Script" uid="uid://dsb563quiy52p" path="res://Scripts/level.gd" id="1_egxac"]
 [ext_resource type="PackedScene" uid="uid://b37to0sdnfys5" path="res://Scenes/Characters/Players/fency.tscn" id="1_evn5t"]
 [ext_resource type="PackedScene" uid="uid://c8jjqycyb5u8t" path="res://Scenes/Objects/Others/background.tscn" id="1_jlnfy"]
 [ext_resource type="PackedScene" uid="uid://cvv0gpubt765j" path="res://Scenes/GUI/achievements_menu.tscn" id="2_kawet"]
@@ -14,12 +15,14 @@
 [ext_resource type="PackedScene" uid="uid://dkasiow3t788s" path="res://Scenes/Objects/Others/trash_can.tscn" id="8_gauy6"]
 [ext_resource type="PackedScene" uid="uid://tk6vu5tms825" path="res://Scenes/Characters/Players/toasty.tscn" id="8_qf8mx"]
 [ext_resource type="PackedScene" uid="uid://cgr5yq0b3lq60" path="res://Scenes/Characters/NPCs/bob.tscn" id="10_otg74"]
+[ext_resource type="Material" uid="uid://cqxhv0p6s4vyq" path="res://Resources/Characters/NPCs/BobRed.tres" id="10_qo3hk"]
 [ext_resource type="PackedScene" uid="uid://bu2l0f1ivopr7" path="res://Scenes/Objects/Others/save_point.tscn" id="11_pu2he"]
 [ext_resource type="PackedScene" uid="uid://cjnmjspdg62mw" path="res://Scenes/Objects/Others/level_changer.tscn" id="12_hyqok"]
 [ext_resource type="PackedScene" uid="uid://cjlo1s3x0n5gb" path="res://Scenes/Objects/Others/toilet.tscn" id="13_otg74"]
 [ext_resource type="AudioStream" uid="uid://cry5a8bmqtm47" path="res://Assets/Audio/Music/musZworkaSong.ogg" id="16_gpeh8"]
 
 [node name="TestRoom" type="Node2D"]
+script = ExtResource("1_egxac")
 
 [node name="Background" parent="." instance=ExtResource("1_jlnfy")]
 
@@ -44,17 +47,17 @@ metadata/instanceID = "test_room_4097131731"
 
 [node name="KillBlock2" parent="Enemies" instance=ExtResource("3_rlh2b")]
 position = Vector2(674, -1)
-canJump = true
+canMove = true
 metadata/instanceID = "test_room_4097131731"
 
 [node name="KillBlock3" parent="Enemies" instance=ExtResource("3_rlh2b")]
 position = Vector2(672, -47)
 canMove = true
+canJump = true
 metadata/instanceID = "test_room_4097131731"
 
 [node name="KillBlock4" parent="Enemies" instance=ExtResource("3_rlh2b")]
 position = Vector2(619, -38)
-canMove = true
 canJump = true
 metadata/instanceID = "test_room_4097131731"
 
@@ -72,20 +75,20 @@ metadata/InstanceID = "test_room_1298975374"
 
 [node name="Bean5" parent="Items" instance=ExtResource("5_ebf44")]
 position = Vector2(823, 41)
-canJump = true
+Can_move = true
+Can_jump = true
 metadata/instanceID = "test_room_1298975374"
 metadata/InstanceID = "test_room_1298975374"
 
 [node name="Bean6" parent="Items" instance=ExtResource("5_ebf44")]
 position = Vector2(754, 41)
-canMove = true
+Can_move = true
 metadata/instanceID = "test_room_1298975374"
 metadata/InstanceID = "test_room_1298975374"
 
 [node name="Bean7" parent="Items" instance=ExtResource("5_ebf44")]
 position = Vector2(770, -36)
-canMove = true
-canJump = true
+Can_jump = true
 metadata/instanceID = "test_room_1298975374"
 metadata/InstanceID = "test_room_1298975374"
 
@@ -103,12 +106,12 @@ metadata/InstanceID = "test_room_1298975373"
 
 [node name="BadlyDrawnQueenDeltarune" parent="NPCs" instance=ExtResource("7_qf8mx")]
 position = Vector2(-1263, 104)
-noChip = true
+No_chip = true
 
 [node name="Bob" parent="NPCs" instance=ExtResource("10_otg74")]
+material = ExtResource("10_qo3hk")
 position = Vector2(-110, 238)
-chillGuy = true
-whichTexture = "NormalBob1"
+Bobert_idk_too = Array[int]([0])
 
 [node name="Interractables" type="Node2D" parent="."]
 
@@ -120,13 +123,12 @@ position = Vector2(48, 64)
 
 [node name="TrashCan5" parent="Interractables" instance=ExtResource("8_gauy6")]
 position = Vector2(108, 64)
-isInfinite = true
 
 [node name="TrashCan3" parent="Interractables" instance=ExtResource("8_gauy6")]
 position = Vector2(-26, 64)
 
 [node name="TrashCan4" parent="Interractables" instance=ExtResource("8_gauy6")]
-position = Vector2(272, 32)
+position = Vector2(277, 32)
 
 [node name="SavePoint" parent="Interractables" instance=ExtResource("11_pu2he")]
 position = Vector2(-452, 112)
@@ -134,7 +136,7 @@ position = Vector2(-452, 112)
 [node name="LevelChanger" parent="Interractables" instance=ExtResource("12_hyqok")]
 position = Vector2(-108, 241)
 scale = Vector2(0.63, 0.95)
-LevelPath = "trash_room"
+Level_name = "trash_room"
 
 [node name="Toilet" parent="Interractables" instance=ExtResource("13_otg74")]
 position = Vector2(-233, 112)

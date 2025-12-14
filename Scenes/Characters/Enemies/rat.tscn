@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://bhpncggoodwp6"]
 
-[ext_resource type="Script" uid="uid://cuswh1opk5622" path="res://Scripts/Characters/Enemies/rat.gd" id="1_vxr17"]
+[ext_resource type="Script" uid="uid://bqj2w3gob7ml2" path="res://Scripts/Characters/Enemies/rat.gd" id="1_vxr17"]
 [ext_resource type="Texture2D" uid="uid://dmqakg24p7wcm" path="res://Assets/Sprites/Characters/NPCs/rat.png" id="2_vxr17"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vxr17"]

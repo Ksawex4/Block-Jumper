@@ -1,14 +1,22 @@
-[gd_scene load_steps=6 format=3 uid="uid://khf6venocxir"]
+[gd_scene load_steps=9 format=3 uid="uid://khf6venocxir"]
 
-[ext_resource type="Script" uid="uid://cdw8qvttxysem" path="res://Scripts/Characters/Bosses/boss_rat_king.gd" id="1_u4xys"]
+[ext_resource type="Script" uid="uid://bappcv7ntgk32" path="res://Scripts/Characters/Bosses/boss_rat_king.gd" id="1_u4xys"]
 [ext_resource type="Texture2D" uid="uid://dh8i3y067k8de" path="res://Assets/Sprites/Characters/Bosses/TheRatKing.png" id="2_u84b3"]
 [ext_resource type="Texture2D" uid="uid://uq0jcuol0lbe" path="res://Assets/Sprites/Objects/Others/RatKingHealthBar.png" id="3_8djqo"]
+[ext_resource type="FontFile" uid="uid://cfp7imnsoqkrp" path="res://Assets/Fonts/VCR_OSD_MONO_1.001.ttf" id="4_rwp20"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8djqo"]
+size = Vector2(73, 98)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8djqo"]
 bg_color = Color(1, 1, 1, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rwp20"]
 bg_color = Color(1, 1, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_ce6u1"]
+font = ExtResource("4_rwp20")
+font_color = Color(0, 0, 0, 1)
 
 [node name="Boss-RatKing" type="CharacterBody2D"]
 collision_layer = 4
@@ -18,15 +26,15 @@ script = ExtResource("1_u4xys")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_u84b3")
 
-[node name="CollisionShape2D" type="CollisionPolygon2D" parent="."]
-polygon = PackedVector2Array(-46, -19, -48, -17, -48, -6, -42, -1, -13, -1, -22, 43, 31, 43, 17, -6, 17, -17, 25, -26, 25, -39, 19, -45, 14, -45, -2, -36, -2, -48, -16, -48, -16, -35, -25, -45, -32, -45, -36, -40, -36, -31, -30, -23, -35, -19)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_8djqo")
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 0
 collision_mask = 2
 
-[node name="CollisionShape2D2" type="CollisionPolygon2D" parent="Area2D"]
-polygon = PackedVector2Array(-46, -19, -48, -17, -48, -6, -42, -1, -13, -1, -23, 48.5, 32, 48.5, 17, -6, 17, -17, 25, -26, 25, -39, 19, -45, 14, -45, -2, -36, -2, -48, -16, -48, -16, -35, -25, -45, -32, -45, -36, -40, -36, -31, -30, -23, -35, -19)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_8djqo")
 
 [node name="Timer" type="Timer" parent="."]
 one_shot = true
@@ -58,12 +66,12 @@ show_percentage = false
 [node name="Label" type="Label" parent="HealthBar"]
 layout_mode = 0
 offset_left = -15.0
-offset_top = -75.0
-offset_right = 13.0
-offset_bottom = -26.0
+offset_top = -70.0
+offset_right = 14.0
+offset_bottom = -21.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "200
-"
+text = "200"
+label_settings = SubResource("LabelSettings_ce6u1")
 horizontal_alignment = 1
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

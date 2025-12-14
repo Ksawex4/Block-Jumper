@@ -1,8 +1,9 @@
 extends Area2D
 
-@export var door: StaticBody2D
+@export var Door: StaticBody2D
+
 
 func _on_body_entered(_body: Node2D) -> void:
-	if door:
-		door.explode()
+	if Door:
+		Door.explode()
 		queue_free()

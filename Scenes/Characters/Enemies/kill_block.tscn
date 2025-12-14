@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://c2ldxhh8n667v"]
 
-[ext_resource type="Script" uid="uid://c38r0id6iexga" path="res://Scripts/Characters/Enemies/kill_block.gd" id="1_e3at7"]
+[ext_resource type="Script" uid="uid://bkxk8qhkc4pkj" path="res://Scripts/Characters/Enemies/kill_block.gd" id="1_e3at7"]
 [ext_resource type="Texture2D" uid="uid://bncx76kmfmqr4" path="res://Assets/Sprites/Characters/Enemies/sprKillBlock.png" id="1_plcyi"]
 [ext_resource type="Texture2D" uid="uid://btp4u43gbqkkw" path="res://Assets/Sprites/Characters/Enemies/sprDeadlyKillBlock.png" id="2_q5rk0"]
 
@@ -52,12 +52,10 @@ size = Vector2(32, 32)
 collision_layer = 4
 collision_mask = 3
 script = ExtResource("1_e3at7")
-metadata/damage = 20
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_a0lch")
-frame_progress = 0.6833974
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_0ji0f")

@@ -1,53 +1,54 @@
 extends Node2D
 
-var TargetCamPos: Vector2 = Vector2(0,0)
-var TargetBlockPos: Vector2 = Vector2(550.0, -28.0)
-var TargetJumperPos: Vector2 = Vector2(-417.0, 52.0)
-var BobsSpin := false
-var FadeAway := false
-var PlayersWalk := false
+var Target_cam_pos: Vector2 = Vector2(0,0)
+var Target_block_pos: Vector2 = Vector2(550.0, -28.0)
+var Target_jumper_pos: Vector2 = Vector2(-417.0, 52.0)
+var Bobs_spin := false
+var Players_walk := false
 var Continue := false
-var explodedPlayers := 0
+var Exploded_players := 0
+
 
 func _ready() -> void:
-	SaveMan.LoadSettings()
-	if LevelMan.Os == "Android" and not LevelMan.IsWeb and !DirAccess.dir_exists_absolute(SaveMan.AndroidSaveDirectory):
-		$Information.visible = true
-		await get_tree().create_timer(7).timeout
-		if !DirAccess.dir_exists_absolute(SaveMan.AndroidSaveDirectory):
-			var error: Error = DirAccess.make_dir_recursive_absolute(SaveMan.AndroidSaveDirectory)
-			if error == OK:
-				print("[boot_screen.gd] Created Block_Jumper folder in ", OS.get_system_dir(OS.SYSTEM_DIR_DOCUMENTS) + "/Nova-Games/")
-			else:
-				print("[boot_screen.gd] Failed to create Block_Jumper folder in ", OS.get_system_dir(OS.SYSTEM_DIR_DOCUMENTS) + "/Nova-Games/")
 	$AnimatedSprite2D.play("default")
-	NovaFunc.ResetAllGlobalsToDefault(true, false)
+	NovaFunc.reset_all_variables_to_default()
+	SettingsMan.load_settings()
+	AchievMan.load_achievements()
+	BobMan.load_bobs_from_filah()
+	DebugMan.dprint("[boot_screen.gd, _ready] done")
+
 
 func _physics_process(_delta: float) -> void:
-	$Camera2D.position = lerp($Camera2D.position, TargetCamPos, 0.05)
-	$Block.position = lerp($Block.position, TargetBlockPos, 0.05)
-	$Jumper.position = lerp($Jumper.position, TargetJumperPos, 0.05)
-	if FadeAway:
-		if $AnimatedSprite2D.modulate.a != 0.0:
-			$AnimatedSprite2D.modulate.a -= 0.05
-	if Continue or explodedPlayers >= 3:
+	$Camera2D.position = lerp($Camera2D.position, Target_cam_pos, 0.05)
+	$Block.position = lerp($Block.position, Target_block_pos, 0.05)
+	$Jumper.position = lerp($Jumper.position, Target_jumper_pos, 0.05)
+	
+	if Bobs_spin and $AnimatedSprite2D.modulate.a != 0.0:
+		$AnimatedSprite2D.modulate.a -= 0.05
+	
+	if Continue or Exploded_players >= 3:
 		if has_node("Explosion"):
 			$Explosion.play("default")
-		TargetBlockPos.x = 0.0
-		TargetJumperPos.x = 0.0
+		Target_block_pos.x = 0.0
+		Target_jumper_pos.x = 0.0
+	
 	if round($Camera2D.position.y) == 888:
-		if !BobMan.FailToLoad:
-			LevelMan.ChangeLevel("title_screen")
+		if not BobMan.Fail_to_load:
+			LevelMan.change_level("title_screen.tscn")
 		else:
 			$FailedToLoad.show()
 
+
 func _on_animated_sprite_2d_animation_finished() -> void:
-	FadeAway = true
-	BobsSpin = true
+	Bobs_spin = true
+	DebugMan.dprint("[boot_screen.gd, _on_animated_sprite_2d_animation_finished] bobs spin")
 	await get_tree().create_timer(1.5).timeout
-	PlayersWalk = true
+	Players_walk = true
+	DebugMan.dprint("[boot_screen.gd, _on_animated_sprite_2d_animation_finished] players walk")
+
 
 func _on_explosion_animation_finished() -> void:
 	$Explosion.queue_free()
 	await get_tree().create_timer(0.5).timeout
-	TargetCamPos.y = 888
+	DebugMan.dprint("[boot_screen.gd, _on_explosion_animation_finished] Finished")
+	Target_cam_pos.y = 888

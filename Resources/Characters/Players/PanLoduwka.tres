@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="Player" load_steps=2 format=3 uid="uid://6upgvya1fwk0"]
+
+[ext_resource type="Script" uid="uid://denbsa5blgv1g" path="res://Scripts/Resources/Player.gd" id="1_mgs7d"]
+
+[resource]
+script = ExtResource("1_mgs7d")
+Health = 100
+Max_health = 100
+WhoAmI = "PanLoduwka"
+X_speed = 150.0
+Jump_height = -380.0
+Controls = {
+"Jump": "PanLoduwkaJump",
+"Left": "PanLoduwkaLeft",
+"Right": "PanLoduwkaRight"
+}
+metadata/_custom_type_script = "uid://denbsa5blgv1g"

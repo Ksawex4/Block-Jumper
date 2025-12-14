@@ -1,63 +1,36 @@
-#@tool # disabled beacuse doesnt work good and breaks some 0.2 things
 extends CharacterBody2D
-var gaveBean: bool = false
-var toast: bool = false
-@export var canMove: bool = false
-@export var canJump: bool = false
-var speed: int = randi_range(7000, 10000)
-var jumpHeight: float = randf_range(-300, -450)
-var direction: int = [-1, 1].pick_random()
-var wallCooldown: float = 0.0
+
+@export var Can_move: bool = false
+@export var Can_jump: bool = false
+@export var Beans: int = 1
+var Speed: float = randf_range(100.0 , 150.0)
+var Jump_height: float = randf_range(-300.0, -450.0)
+var Direction: int = [-1, 1].pick_random()
+var Wall_stop := false
 
 func _ready() -> void:
-	#if Engine.is_editor_hint():
-		#if !has_meta("instanceID"):
-			#_generate_unique_id()
+	$AnimatedSprite2D.play()
+
+
+func _physics_process(_delta: float) -> void:
+	if not is_on_floor():
+		velocity.y += LevelMan.Gravity
+	if Can_jump and is_on_floor() and randi_range(1, 25) == 6:
+		velocity.y = Jump_height
 	
-	#if has_meta("instanceID") and !Engine.is_editor_hint():
-		#var myUniqueId: String = get_meta("instanceID")
-		#if LevelMan.PersistenceKeys.has(myUniqueId):
-			#queue_free()
-		$AnimatedSprite2D.play()
-	#else:
-		#push_error("NO INSTANCE ID")
+	if not Wall_stop and is_on_wall():
+		Wall_stop = true
+		Direction *= -1
+	
+	if Can_move:
+		velocity.x = Speed * Direction
+	
+	if Wall_stop and not is_on_wall():
+		Wall_stop = false
+	
+	move_and_slide()
 
-#func _generate_unique_id() -> void:
-	#var sceneName: String = ""
-	#if get_owner() and get_owner().get_scene_file_path():
-		#sceneName = get_owner().get_scene_file_path().get_file().get_basename()
-	#elif get_scene_file_path():
-		#sceneName = get_scene_file_path().get_file().get_basename()
-	#else:
-		#sceneName = get_name()
-#
-	#var uniqueSuffix: String = str(hash(get_path()))
-	#var generatedId: String = "%s_%s" % [sceneName, uniqueSuffix]
-#
-	#set_meta("instanceID", generatedId)
 
-func _physics_process(delta: float) -> void:
-	#if not Engine.is_editor_hint():
-		if !is_on_floor():
-			velocity.y += LevelMan.Gravity * delta
-		if canJump and is_on_floor() and randi_range(1,25) == 6:
-			velocity.y = jumpHeight
-		if canMove:
-			velocity.x = speed * delta * direction
-		if is_on_wall() and wallCooldown <= 0.0:
-			wallCooldown = 0.2
-			direction *= -1
-		move_and_slide()
-		if wallCooldown > 0.0:
-			wallCooldown -= 0.1
-		
-		if LevelMan.BeansAreToasts and !toast:
-			$AnimatedSprite2D.play("Toast")
-			toast = true
-
-func _on_area_2d_body_entered(body: Node2D) -> void:
-	if NovaFunc.GetPlayerFromGroup(body.name) and !gaveBean:
-		gaveBean = true
-		PlayerStats.AddBeans(1)
-		print("[bean.gd, ", self.name, "] Added 1 Bean, player now has: ", PlayerStats.GetBeans(), " Beans")
-		queue_free()
+func _on_area_2d_body_entered(_body: Node2D) -> void:
+	PlayerStats.add_beans(Beans)
+	queue_free()

@@ -1,18 +1,25 @@
 extends CharacterBody2D
 
-var Speed: int = 5400
-var direction: int = [1, -1].pick_random()
-var wallCooldown: float = 0.0
+var Speed := 5400
+var Direction: int = [1,-1].pick_random()
+var Wall_stop := false
 
-func _physics_process(delta: float) -> void:
-	if !is_on_floor():
-		velocity.y += LevelMan.Gravity * delta
+
+func _physics_process(_delta: float) -> void:
+	#Velocity.y
 	if is_on_floor():
-		velocity.y = -randi_range(40, 450)
-	velocity.x = Speed * direction * delta
-	if is_on_wall() and wallCooldown <= 0.0:
-		wallCooldown = 0.2
-		direction *= -1
-	if wallCooldown > 0.0:
-		wallCooldown -= 0.1
+		velocity.y = -randi_range(40,450)
+	else:
+		velocity.y += LevelMan.Gravity
+	
+	#Velocity.x
+	if Wall_stop and not is_on_wall():
+		Wall_stop = false
+	if not Wall_stop and is_on_wall():
+		Wall_stop = true
+		Direction *= -1
+	velocity.x = Speed * Direction
+	
 	move_and_slide()
+	
+	

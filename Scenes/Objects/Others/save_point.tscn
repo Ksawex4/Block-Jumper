@@ -1,9 +1,9 @@
 [gd_scene load_steps=28 format=3 uid="uid://bu2l0f1ivopr7"]
 
-[ext_resource type="Script" uid="uid://d2hxvu1kb6r4g" path="res://Scripts/Objects/Others/save_point.gd" id="1_ayn6r"]
-[ext_resource type="Texture2D" uid="uid://m851ffnuo56w" path="res://Assets/Sprites/Objects/Others/SavePointIdle.png" id="2_w1w56"]
-[ext_resource type="Texture2D" uid="uid://bpx1nwtuaekvy" path="res://Assets/Sprites/Objects/Others/Save.png" id="3_8bsjg"]
-[ext_resource type="Texture2D" uid="uid://c80ej3bjqps3w" path="res://Assets/Sprites/Objects/Others/SaveBobFail.png" id="3_w1w56"]
+[ext_resource type="Script" uid="uid://bnpmrfg6sgho5" path="res://Scripts/Objects/Interactive/save_point.gd" id="1_ayn6r"]
+[ext_resource type="Texture2D" uid="uid://m851ffnuo56w" path="res://Assets/Sprites/Objects/Interactive/SavePointIdle.png" id="2_w1w56"]
+[ext_resource type="Texture2D" uid="uid://bpx1nwtuaekvy" path="res://Assets/Sprites/Objects/Interactive/Save.png" id="3_8bsjg"]
+[ext_resource type="Texture2D" uid="uid://c80ej3bjqps3w" path="res://Assets/Sprites/Objects/Interactive/SaveBobFail.png" id="3_w1w56"]
 [ext_resource type="AudioStream" uid="uid://br83xp3pqujcy" path="res://Assets/Audio/SFX/sfxSave.wav" id="4_nnqdd"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8bsjg"]

@@ -1,0 +1,54 @@
+[gd_scene load_steps=11 format=4 uid="uid://bpwkbk5f8upvl"]
+
+[ext_resource type="Script" uid="uid://dsb563quiy52p" path="res://Scripts/level.gd" id="1_iol1o"]
+[ext_resource type="PackedScene" uid="uid://c8jjqycyb5u8t" path="res://Scenes/Objects/Others/background.tscn" id="1_l2k66"]
+[ext_resource type="PackedScene" uid="uid://dict2vu23hgm2" path="res://Scenes/GUI/pause_menu.tscn" id="2_tospq"]
+[ext_resource type="PackedScene" uid="uid://cvv0gpubt765j" path="res://Scenes/GUI/achievements_menu.tscn" id="3_iol1o"]
+[ext_resource type="PackedScene" uid="uid://clkawf7n1yg00" path="res://Scenes/GUI/settings_menu.tscn" id="4_jovcd"]
+[ext_resource type="PackedScene" uid="uid://cnapla1ydbe63" path="res://Scenes/Objects/Solids/tiles.tscn" id="5_mnia5"]
+[ext_resource type="PackedScene" uid="uid://b37to0sdnfys5" path="res://Scenes/Characters/Players/fency.tscn" id="6_sghjv"]
+[ext_resource type="PackedScene" uid="uid://vdjpm6gewqvf" path="res://Scenes/Characters/Players/pan_loduwka.tscn" id="7_qvtqq"]
+[ext_resource type="PackedScene" uid="uid://tk6vu5tms825" path="res://Scenes/Characters/Players/toasty.tscn" id="8_i0v1t"]
+[ext_resource type="PackedScene" uid="uid://c0egin0l7hc2v" path="res://Scenes/Objects/Others/smooth_camera.tscn" id="9_tospq"]
+
+[node name="Tutorial" type="Node2D"]
+script = ExtResource("1_iol1o")
+
+[node name="Background" parent="." instance=ExtResource("1_l2k66")]
+
+[node name="Windows" type="Node2D" parent="."]
+
+[node name="PauseMenu" parent="Windows" instance=ExtResource("2_tospq")]
+auto_translate_mode = 1
+
+[node name="AchievementsMenu" parent="Windows" instance=ExtResource("3_iol1o")]
+auto_translate_mode = 1
+
+[node name="SettingsMenu" parent="Windows" instance=ExtResource("4_jovcd")]
+auto_translate_mode = 1
+
+[node name="SolidObjects" type="Node2D" parent="."]
+
+[node name="Tiles" parent="SolidObjects" instance=ExtResource("5_mnia5")]
+tile_map_data = PackedByteArray("AAADAAEAAAAAAAEAAAACAAEAAAAAAAEAAAABAAEAAAAAAAEAAAAAAAEAAAAAAAEAAAD//wEAAAAAAAEAAAD+/wEAAAAAAAEAAAD9/wEAAAAAAAEAAAD8/wEAAAAAAAEAAAAEAAEAAAAAAAEAAAAFAAEAAAAAAAEAAAAGAAEAAAAAAAEAAAAHAAEAAAAAAAEAAAAIAAEAAAAAAAEAAAAJAAEAAAAAAAEAAAAKAAEAAAAAAAEAAAD7/wEAAAABAAEAAAD7/wAAAAABAAEAAAD7////AAABAAEAAAD7//7/AAABAAEAAAD7//3/AAABAAEAAAD7//z/AAABAAEAAAD7//v/AAABAAEAAAD6//v/AAABAAEAAAD6//z/AAABAAEAAAD6//3/AAABAAEAAAD6//7/AAABAAEAAAD6////AAABAAEAAAD6/wAAAAABAAEAAAD6/wEAAAABAAEAAAD6//r/AAABAAEAAAD7//r/AAABAAEAAAD6//L/AAABAAEAAAD6//P/AAABAAEAAAD6//T/AAABAAEAAAD6//X/AAABAAEAAAD6//b/AAABAAEAAAD6//f/AAABAAEAAAD6//j/AAABAAEAAAD6//n/AAABAAEAAAD7//L/AAABAAEAAAD7//P/AAABAAEAAAD7//T/AAABAAEAAAD7//X/AAABAAEAAAD7//b/AAABAAEAAAD7//f/AAABAAEAAAD7//j/AAABAAEAAAD7//n/AAABAAEAAAA=")
+
+[node name="Enemies" type="Node2D" parent="."]
+
+[node name="Items" type="Node2D" parent="."]
+
+[node name="NPCs" type="Node2D" parent="."]
+
+[node name="Interactables" type="Node2D" parent="."]
+
+[node name="Players" type="Node2D" parent="."]
+
+[node name="Fency" parent="Players" instance=ExtResource("6_sghjv")]
+position = Vector2(0, 4)
+
+[node name="PanLoduwka" parent="Players" instance=ExtResource("7_qvtqq")]
+position = Vector2(-35, -2)
+
+[node name="Toasty" parent="Players" instance=ExtResource("8_i0v1t")]
+position = Vector2(37, 4)
+
+[node name="SmoothCamera" parent="." instance=ExtResource("9_tospq")]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://b83uowllfiji"]
 
-[ext_resource type="Script" uid="uid://qd41vrtv5bq" path="res://Scripts/Characters/NPCs/bouncy_onurb.gd" id="1_2kllr"]
+[ext_resource type="Script" uid="uid://c2q1ia078wm0b" path="res://Scripts/Characters/NPCs/bouncy_onurb.gd" id="1_2kllr"]
 [ext_resource type="Texture2D" uid="uid://mjikpwf1mcah" path="res://Assets/Sprites/Characters/NPCs/Bouncy_onurB.png" id="2_tcynl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u4b0i"]

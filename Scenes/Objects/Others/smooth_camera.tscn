@@ -1,8 +1,9 @@
-[gd_scene load_steps=14 format=3 uid="uid://c0egin0l7hc2v"]
+[gd_scene load_steps=16 format=3 uid="uid://c0egin0l7hc2v"]
 
-[ext_resource type="Script" uid="uid://b1dycgqretdd5" path="res://Scripts/Objects/Others/smooth_camera.gd" id="1_eudxl"]
-[ext_resource type="Script" uid="uid://bpuwan8cjogfr" path="res://Scripts/label.gd" id="2_6oxvd"]
+[ext_resource type="Script" uid="uid://k6mfh6qrhaew" path="res://Scripts/Objects/Others/smooth_camera.gd" id="1_eudxl"]
+[ext_resource type="Script" uid="uid://c4oym2vbadbjm" path="res://Scripts/Debug/fps_label.gd" id="2_6oxvd"]
 [ext_resource type="AudioStream" uid="uid://btqjqrhgbcva" path="res://Assets/Audio/SFX/sfxAch.wav" id="3_yj5kq"]
+[ext_resource type="LabelSettings" uid="uid://covmcdqm70qom" path="res://Resources/Fonts/DefaultFont.tres" id="4_j63ul"]
 [ext_resource type="Texture2D" uid="uid://du54mdekovu47" path="res://Assets/Sprites/GUI/MobileButtons/Pause.png" id="6_4chum"]
 [ext_resource type="Texture2D" uid="uid://cgmam0rrrv7f2" path="res://Assets/Sprites/GUI/MobileButtons/SwitchPlayer.png" id="7_mkhw6"]
 [ext_resource type="Texture2D" uid="uid://g7bsrts3djrh" path="res://Assets/Sprites/GUI/MobileButtons/SpawnBouncy_onurB.png" id="8_b7i7j"]
@@ -12,12 +13,14 @@
 [ext_resource type="Texture2D" uid="uid://doek8bdmw4qhs" path="res://Assets/Sprites/GUI/MobileButtons/Right.png" id="11_1uv7s"]
 [ext_resource type="Texture2D" uid="uid://b0lo4bxyommtu" path="res://Assets/Sprites/GUI/MobileButtons/Jump.png" id="11_osi1y"]
 [ext_resource type="Texture2D" uid="uid://b386q33dhx135" path="res://Assets/Sprites/GUI/MobileButtons/Z.png" id="12_1uv7s"]
-[ext_resource type="Script" uid="uid://ccrncq5kf2wgi" path="res://Scripts/GUI/heal_menu.gd" id="12_y6tnf"]
+[ext_resource type="Script" uid="uid://cpng626lloslg" path="res://Scripts/GUI/Menus/heal_menu.gd" id="12_y6tnf"]
+[ext_resource type="Script" uid="uid://cv27nchlxoj5w" path="res://Scripts/GUI/heal_button.gd" id="15_hl7lw"]
 
-[node name="SmoothCamera" type="Camera2D" node_paths=PackedStringArray("spawnBouncy", "deleteBouncy")]
+[node name="SmoothCamera" type="Camera2D" node_paths=PackedStringArray("HealMenu", "AchievementLabel", "BeansLabel")]
 script = ExtResource("1_eudxl")
-spawnBouncy = NodePath("CanvasLayer/MobileControls/SpawnBouncy")
-deleteBouncy = NodePath("CanvasLayer/MobileControls/DeleteBouncy")
+HealMenu = NodePath("HealMenu")
+AchievementLabel = NodePath("CanvasLayer/Achievement")
+BeansLabel = NodePath("CanvasLayer/Beans")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_yj5kq")
@@ -25,7 +28,7 @@ bus = &"SFX"
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="Label" type="Label" parent="CanvasLayer"]
+[node name="FpsLabel" type="Label" parent="CanvasLayer"]
 process_mode = 3
 visible = false
 anchors_preset = -1
@@ -38,24 +41,37 @@ metadata/_edit_use_anchors_ = true
 
 [node name="Beans" type="Label" parent="CanvasLayer"]
 anchors_preset = -1
-anchor_left = 0.018284107
-anchor_top = 0.0325
-anchor_right = 0.13783404
-anchor_bottom = 0.09
+anchor_right = 0.1625
+anchor_bottom = 0.08888889
 text = "Beans: "
+label_settings = ExtResource("4_j63ul")
 metadata/_edit_use_anchors_ = true
+
+[node name="SpeedrunTimer" type="Label" parent="CanvasLayer"]
+visible = false
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -44.5
+offset_right = 44.5
+offset_bottom = 23.0
+grow_horizontal = 2
+text = "Timer: x:x:x
+"
+label_settings = ExtResource("4_j63ul")
 
 [node name="Achievement" type="RichTextLabel" parent="CanvasLayer"]
 clip_contents = false
 anchors_preset = -1
-anchor_left = -0.1392405
-anchor_right = -0.004219409
-anchor_bottom = 0.08
+anchor_left = -0.15
+anchor_bottom = 0.08888889
 bbcode_enabled = true
+scroll_active = false
 autowrap_mode = 0
 metadata/_edit_use_anchors_ = true
 
 [node name="MobileControls" type="Control" parent="CanvasLayer"]
+visible = false
 layout_mode = 3
 anchor_left = 0.033755273
 anchor_top = 0.74
@@ -66,55 +82,53 @@ metadata/_edit_use_anchors_ = true
 
 [node name="Pause" type="TouchScreenButton" parent="CanvasLayer/MobileControls"]
 self_modulate = Color(1, 1, 1, 0.7647059)
-position = Vector2(648, -281)
+position = Vector2(584, -265)
 texture_normal = ExtResource("6_4chum")
 action = "Pause"
 visibility_mode = 1
 
 [node name="SwitchPlayer" type="TouchScreenButton" parent="CanvasLayer/MobileControls"]
 self_modulate = Color(1, 1, 1, 0.7647059)
-position = Vector2(512, -281)
+position = Vector2(480, -265)
 texture_normal = ExtResource("7_mkhw6")
 action = "SwitchPlayer"
 visibility_mode = 1
 
 [node name="SpawnBouncy" type="TouchScreenButton" parent="CanvasLayer/MobileControls"]
-visible = false
 self_modulate = Color(1, 1, 1, 0.7647059)
-position = Vector2(656, -146)
+position = Vector2(584, -162)
 texture_normal = ExtResource("8_b7i7j")
 action = "SpawnBouncy_onurB"
 visibility_mode = 1
 
 [node name="DeleteBouncy" type="TouchScreenButton" parent="CanvasLayer/MobileControls"]
-visible = false
 self_modulate = Color(1, 1, 1, 0.7647059)
-position = Vector2(656, -58)
+position = Vector2(584, -74)
 texture_normal = ExtResource("9_svihx")
 action = "DeleteAllBouncy_onurBs"
 visibility_mode = 1
 
 [node name="JumpButton" type="TouchScreenButton" parent="CanvasLayer/MobileControls"]
 self_modulate = Color(1, 1, 1, 0.7647059)
-position = Vector2(536, -32)
+position = Vector2(479.99994, -32)
 scale = Vector2(2.5, 2.5)
 texture_normal = ExtResource("11_osi1y")
 
 [node name="InteractButton" type="TouchScreenButton" parent="CanvasLayer/MobileControls"]
 self_modulate = Color(1, 1, 1, 0.7647059)
-position = Vector2(515, 56)
+position = Vector2(459, 56)
 texture_normal = ExtResource("12_1uv7s")
 action = "Interact"
 
 [node name="HealMenuButton" type="TouchScreenButton" parent="CanvasLayer/MobileControls"]
 self_modulate = Color(1, 1, 1, 0.7647059)
-position = Vector2(611, 56)
+position = Vector2(555, 56)
 texture_normal = ExtResource("10_y6tnf")
 action = "HealMenu"
 
 [node name="LeftButton" type="TouchScreenButton" parent="CanvasLayer/MobileControls"]
 self_modulate = Color(1, 1, 1, 0.7647059)
-position = Vector2(12, 13)
+position = Vector2(-11.999996, 5)
 scale = Vector2(2.5, 2.5)
 texture_normal = ExtResource("10_osi1y")
 passby_press = true
@@ -122,21 +136,11 @@ action = "ControllerLeft"
 
 [node name="RightButton" type="TouchScreenButton" parent="CanvasLayer/MobileControls"]
 self_modulate = Color(1, 1, 1, 0.7647059)
-position = Vector2(97.99998, 13)
+position = Vector2(73.99997, 5)
 scale = Vector2(2.5, 2.5)
 texture_normal = ExtResource("11_1uv7s")
 passby_press = true
 action = "ControllerRight"
-
-[node name="SpeedrunTimer" type="Label" parent="CanvasLayer"]
-visible = false
-anchors_preset = -1
-anchor_left = 0.4416315
-anchor_top = 0.0375
-anchor_right = 0.5668073
-anchor_bottom = 0.095
-text = "Timer: x:x:x"
-metadata/_edit_use_anchors_ = true
 
 [node name="HealMenu" type="Window" parent="."]
 oversampling_override = 1.0
@@ -151,6 +155,7 @@ offset_top = 32.0
 offset_right = 87.0
 offset_bottom = 79.0
 text = "Fency"
+script = ExtResource("15_hl7lw")
 
 [node name="Toasty" type="Button" parent="HealMenu"]
 offset_left = 199.0
@@ -158,6 +163,7 @@ offset_top = 32.0
 offset_right = 286.0
 offset_bottom = 79.0
 text = "Toasty"
+script = ExtResource("15_hl7lw")
 
 [node name="PanLoduwka" type="Button" parent="HealMenu"]
 offset_left = 89.0
@@ -165,6 +171,7 @@ offset_top = 32.0
 offset_right = 197.0
 offset_bottom = 79.0
 text = "PanLoduwka"
+script = ExtResource("15_hl7lw")
 
 [node name="Info" type="Label" parent="HealMenu"]
 offset_top = 77.0
@@ -195,6 +202,6 @@ text = "100/100"
 [connection signal="pressed" from="CanvasLayer/MobileControls/JumpButton" to="." method="_on_jump_button_pressed"]
 [connection signal="released" from="CanvasLayer/MobileControls/JumpButton" to="." method="_on_jump_button_released"]
 [connection signal="close_requested" from="HealMenu" to="HealMenu" method="_on_close_requested"]
-[connection signal="pressed" from="HealMenu/Fency" to="HealMenu" method="_on_fency_pressed"]
-[connection signal="pressed" from="HealMenu/Toasty" to="HealMenu" method="_on_toasty_pressed"]
-[connection signal="pressed" from="HealMenu/PanLoduwka" to="HealMenu" method="_on_pan_loduwka_pressed"]
+[connection signal="pressed" from="HealMenu/Fency" to="HealMenu/Fency" method="_on_pressed"]
+[connection signal="pressed" from="HealMenu/Toasty" to="HealMenu/Toasty" method="_on_pressed"]
+[connection signal="pressed" from="HealMenu/PanLoduwka" to="HealMenu/PanLoduwka" method="_on_pressed"]

@@ -1,8 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://bwoda6al5nah2"]
+[gd_scene load_steps=4 format=3 uid="uid://bwoda6al5nah2"]
 
-[ext_resource type="Script" uid="uid://calv5yro7hme7" path="res://Scripts/GUI/speedrun_mode_menu.gd" id="1_h0r61"]
+[ext_resource type="Script" uid="uid://dh75sfhn8p42b" path="res://Scripts/GUI/Menus/speedrun_mode_menu.gd" id="1_h0r61"]
+[ext_resource type="FontFile" uid="uid://cfp7imnsoqkrp" path="res://Assets/Fonts/VCR_OSD_MONO_1.001.ttf" id="2_x1bp8"]
+[ext_resource type="LabelSettings" uid="uid://covmcdqm70qom" path="res://Resources/Fonts/DefaultFont.tres" id="3_hk25u"]
 
 [node name="SpeedrunModeMenu" type="Window"]
+oversampling_override = 1.0
 title = "Speedrun Mode Settings"
 initial_position = 1
 size = Vector2i(270, 160)
@@ -14,36 +17,41 @@ offset_left = 1.0
 offset_top = 1.0
 offset_right = 217.0
 offset_bottom = 45.0
+theme_override_fonts/font = ExtResource("2_x1bp8")
 placeholder_text = "Toast 0-100, -1 for random"
 
 [node name="Label" type="Label" parent="Toast"]
 layout_mode = 0
-offset_left = 216.0
+offset_left = 217.0
 offset_top = 8.0
-offset_right = 268.0
-offset_bottom = 52.0
+offset_right = 269.0
+offset_bottom = 35.0
 text = "-1"
+label_settings = ExtResource("3_hk25u")
 
 [node name="START" type="Button" parent="."]
 offset_left = 97.0
 offset_top = 111.0
 offset_right = 184.0
 offset_bottom = 159.0
+theme_override_fonts/font = ExtResource("2_x1bp8")
 text = "START"
 
 [node name="Saltniczka" type="Button" parent="."]
 offset_top = 48.0
 offset_right = 155.0
 offset_bottom = 93.0
+theme_override_fonts/font = ExtResource("2_x1bp8")
 text = "Random Saltniczka"
 
 [node name="Label" type="Label" parent="Saltniczka"]
 layout_mode = 0
-offset_left = 157.0
-offset_top = 8.0
-offset_right = 197.0
-offset_bottom = 31.0
+offset_left = 168.0
+offset_top = 10.0
+offset_right = 217.0
+offset_bottom = 33.0
 text = "true"
+label_settings = ExtResource("3_hk25u")
 
 [connection signal="close_requested" from="." to="." method="_on_close_requested"]
 [connection signal="text_submitted" from="Toast" to="." method="_on_toast_text_submitted"]

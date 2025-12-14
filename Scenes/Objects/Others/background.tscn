@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://c8jjqycyb5u8t"]
 
 [ext_resource type="Texture2D" uid="uid://d17ambl7737n3" path="res://Assets/Sprites/Backgrounds/Background1.png" id="1_0lpst"]
-[ext_resource type="Script" uid="uid://dw0hs7dkpk2ln" path="res://Scripts/Objects/Others/background.gd" id="1_7thw2"]
+[ext_resource type="Script" uid="uid://b6wytxw2q4plg" path="res://Scripts/Objects/Others/background.gd" id="1_7thw2"]
 
 [node name="Background" type="Node2D"]
 script = ExtResource("1_7thw2")

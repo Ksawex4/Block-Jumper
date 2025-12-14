@@ -1,0 +1,124 @@
+[gd_scene load_steps=3 format=3 uid="uid://ccqr6yube5dbf"]
+
+[ext_resource type="Script" uid="uid://6lbd6p8p3gcy" path="res://Scripts/GUI/Menus/file_manager_window.gd" id="1_xryal"]
+[ext_resource type="Script" uid="uid://ci3ot6ral0dyg" path="res://Scripts/GUI/file_remover_button.gd" id="2_1vmci"]
+
+[node name="FileManager" type="Window"]
+oversampling_override = 1.0
+title = "File Manager"
+initial_position = 1
+size = Vector2i(220, 160)
+visible = false
+script = ExtResource("1_xryal")
+
+[node name="Achievements" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchor_right = 1.0
+anchor_bottom = 0.2
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Filename" type="Label" parent="Achievements"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Achievements.bj"
+
+[node name="Button" type="Button" parent="Achievements"]
+layout_mode = 0
+offset_left = 140.0
+offset_right = 220.0
+offset_bottom = 32.0
+text = "Delete"
+script = ExtResource("2_1vmci")
+file_path = "user://Achievements.bj"
+
+[node name="Save" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchor_top = 0.10666667
+anchor_right = 1.0
+anchor_bottom = 0.30624998
+offset_top = 17.000002
+offset_bottom = 17.000004
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Filename" type="Label" parent="Save"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Save.bj"
+
+[node name="Button" type="Button" parent="Save"]
+layout_mode = 0
+offset_left = 140.0
+offset_right = 220.0
+offset_bottom = 32.0
+text = "Delete"
+script = ExtResource("2_1vmci")
+file_path = "user://Save.bj"
+
+[node name="Settings" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchor_top = 0.21333334
+anchor_right = 1.0
+anchor_bottom = 0.40625
+offset_top = 34.000004
+offset_bottom = 34.000004
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Filename" type="Label" parent="Settings"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Settings.bj"
+
+[node name="Button" type="Button" parent="Settings"]
+layout_mode = 0
+offset_left = 140.0
+offset_right = 220.0
+offset_bottom = 32.0
+text = "Delete"
+script = ExtResource("2_1vmci")
+file_path = "user://Settings.bj"
+
+[node name="BOB" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchor_top = 0.32
+anchor_right = 1.0
+anchor_bottom = 0.625
+offset_top = 51.000015
+offset_bottom = 51.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Filename" type="Label" parent="BOB"]
+layout_mode = 0
+offset_right = 139.0
+offset_bottom = 49.0
+text = "The Bobs have awoken.BOB"
+autowrap_mode = 3
+
+[node name="Button" type="Button" parent="BOB"]
+layout_mode = 0
+offset_left = 140.0
+offset_right = 220.0
+offset_bottom = 49.0
+text = "Delete"
+script = ExtResource("2_1vmci")
+file_path = "user://The Bobs have awoken.BOB"
+
+[connection signal="close_requested" from="." to="." method="_on_close_requested"]
+[connection signal="pressed" from="Achievements/Button" to="Achievements/Button" method="_on_pressed"]
+[connection signal="pressed" from="Save/Button" to="Save/Button" method="_on_pressed"]
+[connection signal="pressed" from="Settings/Button" to="Settings/Button" method="_on_pressed"]
+[connection signal="pressed" from="BOB/Button" to="BOB/Button" method="_on_pressed"]

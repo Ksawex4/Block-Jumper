@@ -1,5 +1,6 @@
-[gd_scene load_steps=18 format=4 uid="uid://gva2opgxecvj"]
+[gd_scene load_steps=19 format=4 uid="uid://gva2opgxecvj"]
 
+[ext_resource type="Script" uid="uid://dsb563quiy52p" path="res://Scripts/level.gd" id="1_n5brk"]
 [ext_resource type="PackedScene" uid="uid://c8jjqycyb5u8t" path="res://Scenes/Objects/Others/background.tscn" id="1_npb5y"]
 [ext_resource type="Texture2D" uid="uid://chikbsgddokpq" path="res://Assets/Sprites/Backgrounds/BackgroundTrash.png" id="2_lkdxe"]
 [ext_resource type="PackedScene" uid="uid://dict2vu23hgm2" path="res://Scenes/GUI/pause_menu.tscn" id="2_xogil"]
@@ -19,11 +20,11 @@
 [ext_resource type="PackedScene" uid="uid://bu2l0f1ivopr7" path="res://Scenes/Objects/Others/save_point.tscn" id="10_kkbg5"]
 
 [node name="trash_room" type="Node2D"]
+script = ExtResource("1_n5brk")
 
 [node name="Background" parent="." instance=ExtResource("1_npb5y")]
-sprite = ExtResource("2_lkdxe")
-spriteSize = Vector2i(711, 431)
-spriteScale = Vector2(1, 1)
+Sprite = ExtResource("2_lkdxe")
+Mirroring = Vector2i(711, 431)
 
 [node name="Windows" type="Node2D" parent="."]
 
@@ -44,7 +45,7 @@ tile_map_data = PackedByteArray("AAD//wEAAAABAAAAAAD+/wEAAAABAAAAAAD//wIAAAABAAA
 [node name="Enemies" type="Node2D" parent="."]
 
 [node name="KillBlock" parent="Enemies" instance=ExtResource("6_kkbg5")]
-position = Vector2(176, 176)
+position = Vector2(176, 179)
 metadata/instanceID = "kill_block_2085878802"
 
 [node name="KillBlock2" parent="Enemies" instance=ExtResource("6_kkbg5")]
@@ -60,23 +61,23 @@ metadata/instanceID = "kill_block_2085878802"
 [node name="Stick" parent="Items" instance=ExtResource("8_8dmrm")]
 z_index = 1
 position = Vector2(-175, 702)
-noPlayer = true
+No_player = true
 
 [node name="Stick2" parent="Items" instance=ExtResource("8_8dmrm")]
 z_index = 1
 position = Vector2(1191, 227)
-noPlayer = true
+No_player = true
 
 [node name="Stick3" parent="Items" instance=ExtResource("8_8dmrm")]
 z_index = 1
 position = Vector2(1570, 821)
-noPlayer = true
+No_player = true
 
 [node name="NPCs" type="Node2D" parent="."]
 
 [node name="BadlyDrawnQueenDeltarune" parent="NPCs" instance=ExtResource("6_wrhd0")]
 position = Vector2(2068, 648)
-secretQueen = true
+Secret_queen = true
 
 [node name="Interractables" type="Node2D" parent="."]
 
@@ -135,7 +136,7 @@ rotation = -1.5708
 
 [node name="TrashCan20" parent="Interractables" instance=ExtResource("7_0ys6h")]
 position = Vector2(-1295, -224)
-isInfinite = true
+Is_infinite = true
 
 [node name="TrashCan21" parent="Interractables" instance=ExtResource("7_0ys6h")]
 position = Vector2(-2375, -448)
@@ -148,9 +149,9 @@ rotation = -1.5708
 [node name="LevelChanger" parent="Interractables" instance=ExtResource("8_6qss2")]
 position = Vector2(225, 288)
 scale = Vector2(1, 2)
-LevelPath = "test_room"
+Level_name = "test_room"
 
-[node name="Label" type="Label" parent="Interractables/LevelChanger"]
+[node name="VeryImportantInformation" type="Label" parent="Interractables/LevelChanger"]
 offset_left = -98.0
 offset_top = -16.0
 offset_right = -16.0
@@ -164,7 +165,7 @@ position = Vector2(272, 144)
 [node name="Players" type="Node2D" parent="."]
 
 [node name="Fency" parent="Players" instance=ExtResource("5_6qss2")]
-position = Vector2(466, 47)
+position = Vector2(468, 46)
 
 [node name="PanLoduwka" parent="Players" instance=ExtResource("6_i6uot")]
 position = Vector2(497, 5)

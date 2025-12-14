@@ -1,6 +1,7 @@
-[gd_scene load_steps=14 format=4 uid="uid://dux3aathoasi3"]
+[gd_scene load_steps=23 format=4 uid="uid://dux3aathoasi3"]
 
 [ext_resource type="PackedScene" uid="uid://c8jjqycyb5u8t" path="res://Scenes/Objects/Others/background.tscn" id="1_j7b5o"]
+[ext_resource type="Script" uid="uid://dsb563quiy52p" path="res://Scripts/level.gd" id="1_nhuim"]
 [ext_resource type="PackedScene" uid="uid://dict2vu23hgm2" path="res://Scenes/GUI/pause_menu.tscn" id="2_jjbce"]
 [ext_resource type="PackedScene" uid="uid://cvv0gpubt765j" path="res://Scenes/GUI/achievements_menu.tscn" id="3_blxh8"]
 [ext_resource type="PackedScene" uid="uid://clkawf7n1yg00" path="res://Scenes/GUI/settings_menu.tscn" id="4_4a7u7"]
@@ -8,16 +9,25 @@
 [ext_resource type="PackedScene" uid="uid://cgr5yq0b3lq60" path="res://Scenes/Characters/NPCs/bob.tscn" id="6_nhuim"]
 [ext_resource type="PackedScene" uid="uid://dkasiow3t788s" path="res://Scenes/Objects/Others/trash_can.tscn" id="7_4a7u7"]
 [ext_resource type="PackedScene" uid="uid://b37to0sdnfys5" path="res://Scenes/Characters/Players/fency.tscn" id="7_7tx8g"]
+[ext_resource type="Material" uid="uid://cqxhv0p6s4vyq" path="res://Resources/Characters/NPCs/BobRed.tres" id="8_05rek"]
 [ext_resource type="PackedScene" uid="uid://vdjpm6gewqvf" path="res://Scenes/Characters/Players/pan_loduwka.tscn" id="8_d14vf"]
 [ext_resource type="PackedScene" uid="uid://bu2l0f1ivopr7" path="res://Scenes/Objects/Others/save_point.tscn" id="8_s2rw3"]
 [ext_resource type="PackedScene" uid="uid://tk6vu5tms825" path="res://Scenes/Characters/Players/toasty.tscn" id="9_ccf7p"]
+[ext_resource type="Material" uid="uid://c7qpkphmxbdw1" path="res://Resources/Characters/NPCs/BobBlue.tres" id="9_xie4u"]
+[ext_resource type="Material" uid="uid://b4gernxcbknx7" path="res://Resources/Characters/NPCs/BobOrange.tres" id="10_brd00"]
 [ext_resource type="PackedScene" uid="uid://c0egin0l7hc2v" path="res://Scenes/Objects/Others/smooth_camera.tscn" id="10_jjbce"]
+[ext_resource type="Material" uid="uid://382chxh1ot4d" path="res://Resources/Characters/NPCs/BobPurpol.tres" id="11_uceip"]
 [ext_resource type="AudioStream" uid="uid://cyf37ii0agxwk" path="res://Assets/Audio/Music/musNewbob.ogg" id="12_4a7u7"]
+[ext_resource type="Material" uid="uid://bc7xbj3x0ie7y" path="res://Resources/Characters/NPCs/BobYellow.tres" id="12_ly1e2"]
+[ext_resource type="Material" uid="uid://dtys8hpdg77hn" path="res://Resources/Characters/NPCs/BobGreen.tres" id="13_kco5t"]
+[ext_resource type="Material" uid="uid://cem4c2c3jd4k8" path="res://Resources/Characters/NPCs/BobPink.tres" id="14_4g8ms"]
+[ext_resource type="Material" uid="uid://cgh1v2kborh6b" path="res://Resources/Characters/NPCs/BobCyan.tres" id="15_ol45u"]
 
 [node name="TheVoidLands" type="Node2D"]
+script = ExtResource("1_nhuim")
 
 [node name="Background" parent="." instance=ExtResource("1_j7b5o")]
-spriteSize = Vector2i(715, 435)
+Mirroring = Vector2i(708, 428)
 
 [node name="Windows" type="Node2D" parent="."]
 
@@ -42,108 +52,101 @@ tile_map_data = PackedByteArray("AAD6/wsAAAAAAAIAAAD7/wsAAAAAAAIAAAD8/wsAAAAAAAI
 [node name="NPCs" type="Node2D" parent="."]
 
 [node name="Bob" parent="NPCs" instance=ExtResource("6_nhuim")]
+material = ExtResource("8_05rek")
 position = Vector2(-153, 334)
-chillGuy = true
-isQuiet = true
-whichTexture = "NormalBob1"
+Bobert_idk_too = Array[int]([0, 1])
 
 [node name="Bob2" parent="NPCs" instance=ExtResource("6_nhuim")]
+material = ExtResource("9_xie4u")
 position = Vector2(-173, 334)
-chillGuy = true
-isQuiet = true
-whichTexture = "NormalBob2"
+Bobert_idk_too = Array[int]([0, 1])
 
 [node name="Bob3" parent="NPCs" instance=ExtResource("6_nhuim")]
+material = ExtResource("10_brd00")
 position = Vector2(-164, 304)
-chillGuy = true
-isQuiet = true
-whichTexture = "NormalBob3"
-
-[node name="Bob7" parent="NPCs" instance=ExtResource("6_nhuim")]
-position = Vector2(-451, -18)
-chillGuy = true
-isQuiet = true
-whichTexture = "NormalBob4"
-
-[node name="Bob16" parent="NPCs" instance=ExtResource("6_nhuim")]
-position = Vector2(253, 622)
-chillGuy = true
-isQuiet = true
-whichTexture = "NormalBob5"
-
-[node name="Bob8" parent="NPCs" instance=ExtResource("6_nhuim")]
-position = Vector2(1213, 270)
-chillGuy = true
-isQuiet = true
-whichTexture = "NormalBob6"
-
-[node name="Bob9" parent="NPCs" instance=ExtResource("6_nhuim")]
-position = Vector2(1215, 246)
-rotation = 3.14159
-chillGuy = true
-isQuiet = true
-whichTexture = "NormalBob7"
-
-[node name="Bob10" parent="NPCs" instance=ExtResource("6_nhuim")]
-position = Vector2(1197, 210)
-chillGuy = true
-isQuiet = true
-whichTexture = "NormalBob8"
+Bobert_idk_too = Array[int]([0, 1])
 
 [node name="Bob4" parent="NPCs" instance=ExtResource("6_nhuim")]
+material = ExtResource("8_05rek")
 position = Vector2(-1683, -73)
-chillGuy = true
-isQuiet = true
-whichTexture = "NormalBobC1"
-spin = true
+Bobert_idk_too = Array[int]([0, 1])
+Sprite = 1
+Spin = true
 
 [node name="Bob5" parent="NPCs" instance=ExtResource("6_nhuim")]
+material = ExtResource("9_xie4u")
 position = Vector2(-794, -147)
-chillGuy = true
-isQuiet = true
-whichTexture = "NormalBobC2"
-spin = true
+Bobert_idk_too = Array[int]([0, 1])
+Sprite = 1
+Spin = true
 
 [node name="Bob6" parent="NPCs" instance=ExtResource("6_nhuim")]
+material = ExtResource("10_brd00")
 position = Vector2(-726, 37)
-chillGuy = true
-isQuiet = true
-whichTexture = "NormalBobC3"
-spin = true
+Bobert_idk_too = Array[int]([0, 1])
+Sprite = 1
+Spin = true
+
+[node name="Bob7" parent="NPCs" instance=ExtResource("6_nhuim")]
+material = ExtResource("11_uceip")
+position = Vector2(-451, -18)
+Bobert_idk_too = Array[int]([0, 1])
+
+[node name="Bob8" parent="NPCs" instance=ExtResource("6_nhuim")]
+material = ExtResource("12_ly1e2")
+position = Vector2(1213, 270)
+Bobert_idk_too = Array[int]([0, 1])
+
+[node name="Bob9" parent="NPCs" instance=ExtResource("6_nhuim")]
+material = ExtResource("13_kco5t")
+position = Vector2(1215, 246)
+rotation = 3.14159
+Bobert_idk_too = Array[int]([0, 1])
+
+[node name="Bob10" parent="NPCs" instance=ExtResource("6_nhuim")]
+material = ExtResource("14_4g8ms")
+position = Vector2(1197, 210)
+Bobert_idk_too = Array[int]([0, 1])
 
 [node name="Bob11" parent="NPCs" instance=ExtResource("6_nhuim")]
+material = ExtResource("11_uceip")
 position = Vector2(-2, -36)
-chillGuy = true
-isQuiet = true
-whichTexture = "NormalBobC4"
-spin = true
+Bobert_idk_too = Array[int]([0, 1])
+Sprite = 1
+Spin = true
 
 [node name="Bob12" parent="NPCs" instance=ExtResource("6_nhuim")]
+material = ExtResource("12_ly1e2")
 position = Vector2(1718, 675)
-chillGuy = true
-isQuiet = true
-whichTexture = "NormalBobC5"
-spin = true
+Bobert_idk_too = Array[int]([0, 1])
+Sprite = 1
+Spin = true
 
 [node name="Bob13" parent="NPCs" instance=ExtResource("6_nhuim")]
+material = ExtResource("14_4g8ms")
 position = Vector2(1718, 645)
-chillGuy = true
-isQuiet = true
-whichTexture = "NormalBobC6"
-spin = true
+Bobert_idk_too = Array[int]([0, 1])
+Sprite = 1
+Spin = true
 
 [node name="Bob14" parent="NPCs" instance=ExtResource("6_nhuim")]
+material = ExtResource("13_kco5t")
 position = Vector2(448, -72)
-chillGuy = true
-isQuiet = true
-whichTexture = "NormalBobC7"
+Bobert_idk_too = Array[int]([0, 1])
+Sprite = 1
+Spin = true
 
 [node name="Bob15" parent="NPCs" instance=ExtResource("6_nhuim")]
+material = ExtResource("12_ly1e2")
 position = Vector2(300, 271)
-chillGuy = true
-isQuiet = true
-whichTexture = "NormalBobC8"
-spin = true
+Bobert_idk_too = Array[int]([0, 1])
+Sprite = 1
+Spin = true
+
+[node name="Bob16" parent="NPCs" instance=ExtResource("6_nhuim")]
+material = ExtResource("15_ol45u")
+position = Vector2(253, 622)
+Bobert_idk_too = Array[int]([0, 1])
 
 [node name="Interractables" type="Node2D" parent="."]
 
@@ -160,7 +163,7 @@ rotation = 3.14159
 
 [node name="SavePoint" parent="Interractables" instance=ExtResource("8_s2rw3")]
 position = Vector2(303, 304)
-alwaysFailToSave = true
+Always_fail_to_save = true
 
 [node name="Players" type="Node2D" parent="."]
 

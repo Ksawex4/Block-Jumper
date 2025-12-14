@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://2k45qt2g31y8"]
 
 [ext_resource type="Script" uid="uid://dtxprkvrf5bb1" path="res://Scripts/Objects/Projectiles/cheese.gd" id="1_dm2rf"]
-[ext_resource type="Texture2D" uid="uid://bl4e0s11fkgnp" path="res://Assets/Sprites/Objects/Items/cheese.png" id="2_0cpfa"]
+[ext_resource type="Texture2D" uid="uid://bl4e0s11fkgnp" path="res://Assets/Sprites/Objects/Projectiles/cheese.png" id="2_0cpfa"]
 [ext_resource type="AudioStream" uid="uid://di14je3q31uqd" path="res://Assets/Audio/SFX/sfxCheese.ogg" id="3_0cpfa"]
 [ext_resource type="AudioStream" uid="uid://bhrk07k4b4611" path="res://Assets/Audio/SFX/sfxBigCheese.ogg" id="4_35ksc"]
 

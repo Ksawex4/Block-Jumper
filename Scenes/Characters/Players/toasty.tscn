@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://tk6vu5tms825"]
 
-[ext_resource type="Script" uid="uid://d0m8thsya0hd0" path="res://Scripts/Characters/Players/player.gd" id="1_0yfl2"]
+[ext_resource type="Script" uid="uid://8lbxah20kpl" path="res://Scripts/Characters/Players/player.gd" id="1_0yfl2"]
 [ext_resource type="Texture2D" uid="uid://bavnratvhdd3r" path="res://Assets/Sprites/Characters/Players/Toasty.png" id="2_0yfl2"]
 [ext_resource type="Texture2D" uid="uid://co6u0el55quo6" path="res://Assets/Sprites/Characters/Quack.jpg" id="2_7jdxq"]
 
@@ -42,13 +42,7 @@ bg_color = Color(0.91764706, 0.85882354, 0.7058824, 1)
 [node name="Toasty" type="CharacterBody2D" groups=["players"]]
 collision_layer = 2
 script = ExtResource("1_0yfl2")
-whoAmI = "Toasty"
-gravityDifference = 600.0
-controls = {
-"Jump": "ToastyJump",
-"Left": "ToastyLeft",
-"Right": "ToastyRight"
-}
+WhoAmI = "Toasty"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 texture_filter = 1
@@ -103,4 +97,7 @@ offset_bottom = 20.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "80/80"
 
+[node name="Poison_cooldown" type="Timer" parent="."]
+
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="timeout" from="Poison_cooldown" to="." method="_on_poison_cooldown_timeout"]

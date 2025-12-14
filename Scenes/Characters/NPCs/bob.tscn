@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://cgr5yq0b3lq60"]
+[gd_scene load_steps=7 format=3 uid="uid://cgr5yq0b3lq60"]
 
 [ext_resource type="Texture2D" uid="uid://b6wt7a2ttj22b" path="res://Assets/Sprites/Characters/NPCs/Bob.png" id="1_8eqm1"]
-[ext_resource type="Script" uid="uid://cprxa2mlq6llu" path="res://Scripts/Characters/NPCs/bob.gd" id="1_jdacs"]
+[ext_resource type="Script" uid="uid://l5dlti1eoqf1" path="res://Scripts/Characters/NPCs/bob.gd" id="1_jdacs"]
+[ext_resource type="Material" uid="uid://d2d6pemfmf4aq" path="res://Resources/Characters/NPCs/BobBlack.tres" id="1_uewa2"]
 [ext_resource type="AudioStream" uid="uid://cw6f7wr0uds25" path="res://Assets/Audio/SFX/sfxBob.wav" id="3_uewa2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3gcl8"]
@@ -12,12 +13,15 @@ size = Vector2(20, 30)
 
 [node name="Bob" type="CharacterBody2D"]
 process_mode = 3
+material = ExtResource("1_uewa2")
 script = ExtResource("1_jdacs")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+use_parent_material = true
 texture = ExtResource("1_8eqm1")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(2, 3)
 shape = SubResource("RectangleShape2D_3gcl8")
 disabled = true
@@ -27,6 +31,7 @@ stream = ExtResource("3_uewa2")
 volume_db = 3.28
 
 [node name="Area2D" type="Area2D" parent="."]
+visible = false
 collision_layer = 0
 collision_mask = 63
 

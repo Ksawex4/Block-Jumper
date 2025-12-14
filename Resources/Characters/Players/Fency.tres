@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Player" load_steps=2 format=3 uid="uid://6fk1uio5cv8b"]
+
+[ext_resource type="Script" uid="uid://denbsa5blgv1g" path="res://Scripts/Resources/Player.gd" id="1_2kpje"]
+
+[resource]
+script = ExtResource("1_2kpje")
+Health = 80
+Max_health = 80
+WhoAmI = "Fency"
+X_speed = 150.0
+Jump_height = -430.0
+metadata/_custom_type_script = "uid://denbsa5blgv1g"

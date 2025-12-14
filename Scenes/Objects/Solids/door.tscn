@@ -1,7 +1,7 @@
 [gd_scene load_steps=23 format=3 uid="uid://cah7ih7yxth6u"]
 
-[ext_resource type="Script" uid="uid://blwt5tm2xbmwk" path="res://Scripts/Objects/Solids/door.gd" id="1_eiwj6"]
-[ext_resource type="Texture2D" uid="uid://cw2ajyyaxmt3k" path="res://Assets/Sprites/Objects/Solids/Door.png" id="1_gar4v"]
+[ext_resource type="Script" uid="uid://bku1c63id61f" path="res://Scripts/Objects/Blocks/door.gd" id="1_eiwj6"]
+[ext_resource type="Texture2D" uid="uid://cw2ajyyaxmt3k" path="res://Assets/Sprites/Objects/Blocks/Door.png" id="1_gar4v"]
 [ext_resource type="Texture2D" uid="uid://drr0cs7mjo64q" path="res://Assets/Sprites/BootSplash/spr_realisticexplosion.png" id="2_eiwj6"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_l02tk"]

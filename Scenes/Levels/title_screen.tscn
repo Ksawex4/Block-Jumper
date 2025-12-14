@@ -1,7 +1,7 @@
-[gd_scene load_steps=28 format=3 uid="uid://xh68prap5akj"]
+[gd_scene load_steps=35 format=3 uid="uid://xh68prap5akj"]
 
 [ext_resource type="Texture2D" uid="uid://swlt67kvlp7u" path="res://Assets/Sprites/Backgrounds/MainMenu.png" id="1_kysdl"]
-[ext_resource type="Script" uid="uid://dsrlsr0niy3rt" path="res://Scripts/GUI/title_buttons.gd" id="1_roj86"]
+[ext_resource type="Script" uid="uid://jxy8k36ike2j" path="res://Scripts/GUI/title_buttons.gd" id="1_roj86"]
 [ext_resource type="Texture2D" uid="uid://dpj2b7s6vlvr0" path="res://Assets/Sprites/GUI/Buttons/New.png" id="2_kjbj0"]
 [ext_resource type="Texture2D" uid="uid://sp4wh1qxqro3" path="res://Assets/Sprites/GUI/Buttons/Load.png" id="3_h4qv3"]
 [ext_resource type="Texture2D" uid="uid://c4w2oolkqr8qp" path="res://Assets/Sprites/GUI/Buttons/Quit.png" id="3_sufyd"]
@@ -10,11 +10,13 @@
 [ext_resource type="Texture2D" uid="uid://du7ro4la741i4" path="res://Assets/Sprites/GUI/Buttons/Settings.png" id="6_oxd3l"]
 [ext_resource type="Texture2D" uid="uid://pb1vfwgvjiml" path="res://Assets/Sprites/GUI/Buttons/SpeedrunMode.png" id="8_shcqs"]
 [ext_resource type="PackedScene" uid="uid://clkawf7n1yg00" path="res://Scenes/GUI/settings_menu.tscn" id="8_w4sgk"]
+[ext_resource type="FontFile" uid="uid://cfp7imnsoqkrp" path="res://Assets/Fonts/VCR_OSD_MONO_1.001.ttf" id="9_la3a0"]
 [ext_resource type="AudioStream" uid="uid://dmjhlutkjeexy" path="res://Assets/Audio/Music/musMainMenu.ogg" id="10_oxd3l"]
 [ext_resource type="PackedScene" uid="uid://bwoda6al5nah2" path="res://Scenes/GUI/speedrun_mode_menu.tscn" id="11_p5jl7"]
 [ext_resource type="PackedScene" uid="uid://cnapla1ydbe63" path="res://Scenes/Objects/Solids/tiles.tscn" id="11_vtciy"]
 [ext_resource type="PackedScene" uid="uid://chihoo373bwy7" path="res://Scenes/Objects/Items/saltniczka.tscn" id="12_72p0a"]
-[ext_resource type="Script" uid="uid://cs3y0l70wwyyc" path="res://Scripts/GUI/version_label.gd" id="15_p5jl7"]
+[ext_resource type="PackedScene" uid="uid://ccqr6yube5dbf" path="res://Scenes/GUI/file_manager.tscn" id="13_nrs1e"]
+[ext_resource type="Script" uid="uid://dobwxllsesc8m" path="res://Scripts/GUI/version_label.gd" id="15_p5jl7"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_sufyd"]
 
@@ -27,7 +29,7 @@
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vtciy"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_72p0a"]
-font_size = 14
+font_size = 13
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hgm2k"]
 
@@ -38,6 +40,16 @@ font_size = 14
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dgnw3"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_72p0a"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_la3a0"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nrs1e"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2bjg4"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_w06op"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_br58k"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_shcqs"]
 font_size = 10
@@ -53,18 +65,19 @@ texture = ExtResource("1_kysdl")
 [node name="TitleButtons" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
-offset_left = -587.0
-offset_top = -42.5
-offset_right = -480.0
-offset_bottom = 42.5
+offset_left = -528.0
+offset_top = -180.0
+offset_right = -320.0
+offset_bottom = 180.0
 script = ExtResource("1_roj86")
+Target_pos = Vector2(-320, -180)
 
 [node name="NewGame" type="Button" parent="TitleButtons"]
 layout_mode = 0
 offset_left = 4.0
-offset_top = -1.0
+offset_top = 127.0
 offset_right = 108.0
-offset_bottom = 39.0
+offset_bottom = 167.0
 theme_override_colors/icon_pressed_color = Color(1, 0.564706, 0, 1)
 theme_override_colors/icon_hover_color = Color(1, 1, 0, 1)
 theme_override_styles/normal = SubResource("StyleBoxEmpty_sufyd")
@@ -77,9 +90,9 @@ icon = ExtResource("2_kjbj0")
 [node name="LoadGame" type="Button" parent="TitleButtons"]
 layout_mode = 0
 offset_left = 4.0
-offset_top = -44.0
+offset_top = 84.0
 offset_right = 108.0
-offset_bottom = -4.0
+offset_bottom = 124.0
 theme_override_colors/icon_pressed_color = Color(1, 0.564706, 0, 1)
 theme_override_colors/icon_hover_color = Color(1, 1, 0, 1)
 theme_override_styles/normal = SubResource("StyleBoxEmpty_sufyd")
@@ -93,21 +106,21 @@ icon = ExtResource("3_h4qv3")
 visible = false
 layout_mode = 0
 offset_left = 8.0
-offset_top = -91.0
+offset_top = -83.0
 offset_right = 191.0
-offset_bottom = -2.0
+offset_bottom = 6.0
 text = "This save was made in a
 different version of this 
-game, there is a possibility 
+game, there is a chance
 of some things breaking."
 label_settings = SubResource("LabelSettings_72p0a")
 
 [node name="Achievements" type="Button" parent="TitleButtons"]
 layout_mode = 0
-offset_left = 4.0
-offset_top = 42.0
-offset_right = 186.0
-offset_bottom = 82.0
+offset_left = 3.0
+offset_top = 167.0
+offset_right = 185.0
+offset_bottom = 207.0
 theme_override_colors/icon_pressed_color = Color(1, 0.564706, 0, 1)
 theme_override_colors/icon_hover_color = Color(1, 1, 0, 1)
 theme_override_styles/normal = SubResource("StyleBoxEmpty_hgm2k")
@@ -120,9 +133,9 @@ icon = ExtResource("4_hgm2k")
 [node name="Settings" type="Button" parent="TitleButtons"]
 layout_mode = 0
 offset_left = 4.0
-offset_top = 82.0
+offset_top = 210.0
 offset_right = 151.0
-offset_bottom = 122.0
+offset_bottom = 250.0
 theme_override_colors/icon_pressed_color = Color(1, 0.564706, 0, 1)
 theme_override_colors/icon_hover_color = Color(1, 1, 0, 1)
 theme_override_styles/normal = SubResource("StyleBoxEmpty_hgm2k")
@@ -135,9 +148,9 @@ icon = ExtResource("6_oxd3l")
 [node name="Quit" type="Button" parent="TitleButtons"]
 layout_mode = 0
 offset_left = 4.0
-offset_top = 127.0
+offset_top = 255.0
 offset_right = 108.0
-offset_bottom = 167.0
+offset_bottom = 295.0
 theme_override_colors/icon_pressed_color = Color(1, 0.564706, 0, 1)
 theme_override_colors/icon_hover_color = Color(1, 1, 0, 1)
 theme_override_styles/normal = SubResource("StyleBoxEmpty_hgm2k")
@@ -150,9 +163,9 @@ icon = ExtResource("3_sufyd")
 [node name="SpeedrunMode" type="Button" parent="TitleButtons"]
 layout_mode = 0
 offset_left = 4.0
-offset_top = 191.0
+offset_top = 325.0
 offset_right = 164.0
-offset_bottom = 231.0
+offset_bottom = 365.0
 theme_override_colors/icon_pressed_color = Color(1, 0.564706, 0, 1)
 theme_override_colors/icon_hover_color = Color(1, 1, 0, 1)
 theme_override_styles/normal = SubResource("StyleBoxEmpty_hgm2k")
@@ -162,11 +175,29 @@ theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_dgnw3")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_72p0a")
 icon = ExtResource("8_shcqs")
 
+[node name="FileManager" type="Button" parent="TitleButtons"]
+layout_mode = 0
+offset_top = 292.0
+offset_right = 203.0
+offset_bottom = 327.0
+theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
+theme_override_colors/font_hover_color = Color(1, 0.5647059, 0, 1)
+theme_override_fonts/font = ExtResource("9_la3a0")
+theme_override_font_sizes/font_size = 28
+theme_override_styles/normal = SubResource("StyleBoxEmpty_la3a0")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_nrs1e")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_2bjg4")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_w06op")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_br58k")
+text = "File Manager"
+
 [node name="AchievementsMenu" parent="." instance=ExtResource("6_kysdl")]
 
 [node name="SettingsMenu" parent="." instance=ExtResource("8_w4sgk")]
 
 [node name="SpeedrunModeMenu" parent="." instance=ExtResource("11_p5jl7")]
+
+[node name="FileManager" parent="." instance=ExtResource("13_nrs1e")]
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 process_mode = 3
@@ -177,14 +208,17 @@ bus = &"Music"
 [node name="Tiles" parent="." instance=ExtResource("11_vtciy")]
 
 [node name="saltniczka" parent="." instance=ExtResource("12_72p0a")]
-position = Vector2(277, -140)
+offset_left = 277.0
+offset_top = -140.0
+offset_right = 339.0
+offset_bottom = -70.0
 scale = Vector2(0.5, 0.5)
 
 [node name="Version" type="Label" parent="."]
-offset_left = 318.0
-offset_top = 186.0
-offset_right = 470.0
-offset_bottom = 209.0
+offset_left = 261.0
+offset_top = 157.0
+offset_right = 413.0
+offset_bottom = 180.0
 text = "v?.?.?"
 label_settings = SubResource("LabelSettings_shcqs")
 script = ExtResource("15_p5jl7")
@@ -195,3 +229,4 @@ script = ExtResource("15_p5jl7")
 [connection signal="pressed" from="TitleButtons/Settings" to="TitleButtons" method="_on_settings_pressed"]
 [connection signal="pressed" from="TitleButtons/Quit" to="TitleButtons" method="_on_quit_pressed"]
 [connection signal="pressed" from="TitleButtons/SpeedrunMode" to="TitleButtons" method="_on_speedrun_mode_pressed"]
+[connection signal="pressed" from="TitleButtons/FileManager" to="TitleButtons" method="_on_file_manager_pressed"]

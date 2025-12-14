@@ -1,11 +1,11 @@
-extends CharacterBody2D
+extends Button
 
-func _ready() -> void:
-	if randi_range(0,30) != 6 and PlayerStats.SpeedrunModeRandomSaltniczka:
-		print("[saltniczka.gd] Byeeeeeee, the random number is not 6")
-		queue_free()
+#func _ready() -> void:
+	#if GameMan.Random_saltniczka and randi_range(0,30) != 6:
+		#queue_free()
 
-func _on_button_pressed() -> void:
-	LevelMan.FlyingThingAlive = true
-	print("[saltniczka.gd] There will be salt")
+
+func _on_pressed() -> void:
+	LevelMan.Spawn_flying_thing = true
+	DebugMan.dprint("[saltniczka, _on_pressed] It's... SALTSANDTIME")
 	queue_free()

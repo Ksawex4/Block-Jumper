@@ -7,5 +7,5 @@ func _on_body_entered(_body: Node2D) -> void:
 
 
 func _on_animated_sprite_2d_animation_finished() -> void:
-	AchievMan.AddAchievement("ParkourGuy")
+	AchievMan.add_achievement("ParkourGuy")
 	queue_free()

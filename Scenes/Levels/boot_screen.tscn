@@ -1,15 +1,17 @@
-[gd_scene load_steps=113 format=3 uid="uid://bdw0vwua1oy14"]
+[gd_scene load_steps=115 format=3 uid="uid://bdw0vwua1oy14"]
 
 [ext_resource type="Script" uid="uid://d0hpuult3e2w5" path="res://Scripts/BootSplash/boot_screen.gd" id="1_6acqa"]
 [ext_resource type="Texture2D" uid="uid://dvd1xf4dji7vx" path="res://Assets/Sprites/BootSplash/BootSplashFency.png" id="1_e05bb"]
 [ext_resource type="Texture2D" uid="uid://swlt67kvlp7u" path="res://Assets/Sprites/Backgrounds/MainMenu.png" id="2_6acqa"]
+[ext_resource type="Texture2D" uid="uid://c4lib2gse8ur" path="res://Assets/Sprites/Backgrounds/testBackground.png" id="2_5400a"]
 [ext_resource type="Texture2D" uid="uid://wrxtjfsy0by6" path="res://Assets/Sprites/BootSplash/Block.png" id="4_nxau8"]
 [ext_resource type="Texture2D" uid="uid://cuktpe01dcha1" path="res://Assets/Sprites/BootSplash/Jumper.png" id="5_v07ap"]
-[ext_resource type="Script" uid="uid://ctnd42xwsxwvq" path="res://Scripts/BootSplash/FailedToRunWindow.gd" id="6_rppc3"]
+[ext_resource type="Script" uid="uid://ctnd42xwsxwvq" path="res://Scripts/BootSplash/failed_to_run_window.gd" id="6_rppc3"]
 [ext_resource type="Texture2D" uid="uid://b6wt7a2ttj22b" path="res://Assets/Sprites/Characters/NPCs/Bob.png" id="7_6kbg0"]
-[ext_resource type="Script" uid="uid://ceuqjombxiqiq" path="res://Scripts/BootSplash/bootBob.gd" id="8_3aowl"]
+[ext_resource type="Script" uid="uid://ceuqjombxiqiq" path="res://Scripts/BootSplash/boot_bob.gd" id="8_3aowl"]
 [ext_resource type="Texture2D" uid="uid://bh8dptg4s6jfu" path="res://Assets/Sprites/Characters/Players/sprFency.png" id="9_4jyde"]
-[ext_resource type="Script" uid="uid://bfwuimh7yag54" path="res://Scripts/BootSplash/BootSplashPlayer.gd" id="10_k7nhw"]
+[ext_resource type="Script" uid="uid://bfwuimh7yag54" path="res://Scripts/BootSplash/boot_splash_player.gd" id="10_k7nhw"]
+[ext_resource type="AudioStream" uid="uid://bnwtnhirg2frj" path="res://Assets/Audio/SFX/sfxKabumm.wav" id="11_5400a"]
 [ext_resource type="Texture2D" uid="uid://dotqfisudchml" path="res://Assets/Sprites/Characters/Players/sprPanLoduwka.png" id="11_spxrr"]
 [ext_resource type="Texture2D" uid="uid://bavnratvhdd3r" path="res://Assets/Sprites/Characters/Players/Toasty.png" id="12_4h331"]
 [ext_resource type="Texture2D" uid="uid://31jehernh81s" path="res://Assets/Sprites/Characters/Players/sprPanLoduwkaLeft.png" id="12_spxrr"]
@@ -720,11 +722,12 @@ offset_right = 372.0
 offset_bottom = 205.0
 color = Color(0.133333, 0.168627, 0.270588, 1)
 
+[node name="background" type="Sprite2D" parent="."]
+texture = ExtResource("2_5400a")
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_dth5a")
-frame = 34
-frame_progress = 1.0
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
@@ -734,7 +737,8 @@ position = Vector2(0, 888)
 texture = ExtResource("2_6acqa")
 
 [node name="FailedToLoad" type="Window" parent="."]
-title = "Bob"
+oversampling_override = 1.0
+title = "Bob Jumper"
 initial_position = 1
 size = Vector2i(160, 100)
 visible = false
@@ -766,30 +770,24 @@ text = "This game saves your progress inside Documents/Nova-Games/Block-Jumper/"
 position = Vector2(0, -256)
 texture = ExtResource("7_6kbg0")
 script = ExtResource("8_3aowl")
-rotation_speed = 1.0
-radius = 64.0
-angle = 2.0
+Angle = 2.0
 
 [node name="Bob2" type="Sprite2D" parent="."]
 position = Vector2(0, -296)
 texture = ExtResource("7_6kbg0")
 script = ExtResource("8_3aowl")
-rotation_speed = 1.0
-radius = 64.0
 
 [node name="Bob3" type="Sprite2D" parent="."]
 position = Vector2(0, -328)
 texture = ExtResource("7_6kbg0")
 script = ExtResource("8_3aowl")
-rotation_speed = 1.0
-radius = 64.0
-angle = -2.0
+Angle = -2.0
 
 [node name="Fency" type="AnimatedSprite2D" parent="."]
-position = Vector2(-517, -170)
+position = Vector2(-469, -149)
 sprite_frames = SubResource("SpriteFrames_sufts")
 script = ExtResource("10_k7nhw")
-targetPos = [Vector2(403, -170), Vector2(-389, 182)]
+Target_pos = [Vector2(347, -149), Vector2(-341, 164)]
 
 [node name="Button" type="Button" parent="Fency"]
 self_modulate = Color(1, 1, 1, 0)
@@ -797,18 +795,23 @@ offset_left = -16.0
 offset_top = -16.0
 offset_right = 16.0
 offset_bottom = 16.0
+metadata/_edit_use_anchors_ = true
 
 [node name="Explosion" type="AnimatedSprite2D" parent="Fency"]
 visible = false
 position = Vector2(0, 1)
 sprite_frames = SubResource("SpriteFrames_4hrd0")
 
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Fency"]
+stream = ExtResource("11_5400a")
+bus = &"SFX"
+
 [node name="PanLoduwka" type="AnimatedSprite2D" parent="."]
-position = Vector2(-389, -176)
+position = Vector2(-341, -155)
 sprite_frames = SubResource("SpriteFrames_j7a52")
 script = ExtResource("10_k7nhw")
-targetPos = [Vector2(403, -176), Vector2(-389, 176)]
-hasLeftRightAnim = true
+Target_pos = [Vector2(347, -155), Vector2(-389, 156)]
+Has_left_right_anim = true
 
 [node name="Button" type="Button" parent="PanLoduwka"]
 self_modulate = Color(1, 1, 1, 0)
@@ -823,11 +826,15 @@ visible = false
 position = Vector2(0, 2)
 sprite_frames = SubResource("SpriteFrames_4hrd0")
 
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="PanLoduwka"]
+stream = ExtResource("11_5400a")
+bus = &"SFX"
+
 [node name="Toasty" type="AnimatedSprite2D" parent="."]
-position = Vector2(-637, -170)
+position = Vector2(-589, -149)
 sprite_frames = SubResource("SpriteFrames_f4kdb")
 script = ExtResource("10_k7nhw")
-targetPos = [Vector2(409, -170), Vector2(-389, 182)]
+Target_pos = [Vector2(347, -149), Vector2(-341, 164)]
 
 [node name="Button" type="Button" parent="Toasty"]
 self_modulate = Color(1, 1, 1, 0)
@@ -841,12 +848,16 @@ visible = false
 position = Vector2(2, 4)
 sprite_frames = SubResource("SpriteFrames_4hrd0")
 
-[node name="Toasty2" type="AnimatedSprite2D" parent="."]
-position = Vector2(-853, -170)
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Toasty"]
+stream = ExtResource("11_5400a")
+bus = &"SFX"
+
+[node name="Bean" type="AnimatedSprite2D" parent="."]
+position = Vector2(-853, -148)
 sprite_frames = SubResource("SpriteFrames_6q6bn")
 script = ExtResource("10_k7nhw")
-targetPos = [Vector2(409, -170), Vector2(-389, 182)]
-isPlayer = false
+Target_pos = [Vector2(347, -148), Vector2(-341, 165)]
+Is_player = false
 
 [node name="Block" type="Sprite2D" parent="."]
 texture_filter = 1
@@ -859,6 +870,7 @@ position = Vector2(-417, 52)
 texture = ExtResource("5_v07ap")
 
 [node name="Explosion" type="AnimatedSprite2D" parent="."]
+visible = false
 rotation = 1.5707964
 scale = Vector2(10, 10)
 sprite_frames = SubResource("SpriteFrames_unuhr")
