@@ -2,6 +2,7 @@ extends Node
 
 var Paused: bool = false
 var Os: String = OS.get_name()
+var Is_web: bool = false
 var Random_saltniczka := true
 var Load_position: Vector2
 var Jump_pressed: bool = false # mobile only
@@ -15,6 +16,11 @@ var Spared_bosses: Dictionary = {
 }
 signal PauseGame()
 signal LevelChanged()
+
+func _ready() -> void:
+	Is_web = true if OS.get_name() == "Web" else false
+	if Is_web:
+		Os = "Android" if OS.has_feature("web_android") or OS.has_feature("web_ios") else "Linux"
 
 
 func toggle_pause(pause: bool) -> void:

@@ -44,7 +44,7 @@ window/size/viewport_width=640
 window/size/viewport_height=360
 window/size/mode=3
 window/stretch/mode="canvas_items"
-window/stretch/scale_mode="integer"
+window/vsync/vsync_mode=0
 
 [editor]
 
