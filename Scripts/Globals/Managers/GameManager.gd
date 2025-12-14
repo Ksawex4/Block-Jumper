@@ -68,15 +68,14 @@ func load_game() -> void:
 		var level: String
 		if data["PlayerStats"]:
 			PlayerStats.load_save_data(data["PlayerStats"])
-			Load_position.x = data["xPos"] if data["xPos"] else 0.0
-			Load_position.y = data["yPos"] if data["yPos"] else 0.0
-			PlayerStats.Beans = data["Beans"] if data["Beans"] else 0
-			level = data["Level"] if data["Level"] else null
-			PlayerStats.Chip = data["Chip"] if data["Chip"] else false
-			ToastEventMan.get_new_event(int(data["Toast"]) if int(data["Toast"]) else -1)
-			PlayerStats.Follow_who = data["FollowingWho"] if data["FollowingWho"] else PlayerStats.Follow_who
-			Killed_bosses = data["Killed_bosses"] if data["Killed_bosses"] else Killed_bosses
-			Spared_bosses = data["Spared_bosses"] if data["Spared_bosses"] else Killed_bosses
+			Load_position.x = data.get("xPos", 0.0)
+			Load_position.y = data.get("yPos", 0.0)
+			PlayerStats.Beans = int(data.get("Beans", 0))
+			level = data.get("Level", null)
+			PlayerStats.Chip = data.get("Chip", false)
+			ToastEventMan.get_new_event(int(data.get("Toast", -1)))
+			PlayerStats.Follow_who = data.get("FollowingWho", PlayerStats.Follow_who)
+			_load_bosses(data.get("Killed_bosses"), data.get("Spared_bosses"))
 			DebugMan.dprint("[GameMan, load_game] Loaded, ", data)
 		
 		if level and ResourceLoader.exists(level):
@@ -85,6 +84,16 @@ func load_game() -> void:
 			if Load_position.x and Load_position.y:
 				for player in get_tree().get_nodes_in_group("players"):
 					player.position = Load_position
+
+
+func _load_bosses(killed: Dictionary[String, bool], spared: Dictionary[String, bool]) -> void:
+	if killed != null:
+		for x in killed.keys():
+			Killed_bosses.set(x, killed[x])
+	
+	if spared != null:
+		for x in spared.keys():
+			Spared_bosses.set(x, spared[x])
 
 
 func reset_variables_to_default() -> void:

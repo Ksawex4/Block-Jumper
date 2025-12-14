@@ -17,7 +17,7 @@ run/main_scene="uid://bdw0vwua1oy14"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 boot_splash/use_filter=false
 boot_splash/image="uid://c4lib2gse8ur"
-config/icon="res://icon.svg"
+config/icon="uid://m8mvttomh8ys"
 config/windows_native_icon="res://Assets/icon.ico"
 
 [autoload]
@@ -33,7 +33,6 @@ PlayerStats="*res://Scripts/Globals/Managers/PlayerStats.gd"
 ToastEventMan="*res://Scripts/Globals/Managers/ToastEventManager.gd"
 NovaFunc="*res://Scripts/Globals/Other/NovaFunctions.gd"
 BobMan="*res://Scripts/Globals/Managers/BobManager.gd"
-AssetMan="*res://Scripts/Globals/Managers/AssetManager.gd"
 
 [debug]
 
@@ -43,6 +42,7 @@ gdscript/warnings/unused_signal=0
 
 window/size/viewport_width=640
 window/size/viewport_height=360
+window/size/mode=3
 window/stretch/mode="canvas_items"
 window/stretch/scale_mode="integer"
 

@@ -22,11 +22,11 @@ func get_save_data() -> Dictionary:
 
 func load_save_data(data: Dictionary):
 	if data:
-		if data["Fency"]:
+		if data.get("Fency") != null:
 			Player_stats["Fency"].load_stats(data["Fency"])
-		if data["PanLoduwka"]:
+		if data.get("PanLoduwka") != null:
 			Player_stats["PanLoduwka"].load_stats(data["PanLoduwka"])
-		if data["Toasty"]:
+		if data.get("Toasty") != null:
 			Player_stats["Toasty"].load_stats(data["Toasty"])
 		DebugMan.dprint("[PlayerStats, load_save_data] done ", data)
 

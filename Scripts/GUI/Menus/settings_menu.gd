@@ -22,6 +22,10 @@ func _ready() -> void:
 	DebugMode.text = "DebugMode %s" % DebugMan.Debug_mode
 	SFX.value = SettingsMan.SFX_volume
 	Music.value = SettingsMan.Music_volume
+	
+	if GameMan.is_mobile():
+		$ControlsMenu.queue_free()
+		$Controls.queue_free()
 
 
 func _process(_delta: float) -> void:

@@ -28,30 +28,24 @@ font_size = 14
 outline_size = 4
 outline_color = Color(0, 0, 0, 1)
 
-[node name="SettingsMenu" type="Window" node_paths=PackedStringArray("VSyncNode", "DebugMode", "BasicDebugNode", "MaxFPS", "Controls", "SFX", "SFXLabel", "Music", "MusicLabel")]
+[node name="SettingsMenu" type="Window" node_paths=PackedStringArray("VSyncNode", "DebugMode", "BasicDebugNode", "Controls", "SFX", "SFXLabel", "Music", "MusicLabel")]
 process_mode = 3
 oversampling_override = 1.0
 title = "Settings"
 initial_position = 1
 size = Vector2i(380, 250)
+visible = false
 min_size = Vector2i(380, 200)
 max_size = Vector2i(612, 322)
 script = ExtResource("1_wlny4")
 VSyncNode = NodePath("VSync")
 DebugMode = NodePath("DebugMode")
 BasicDebugNode = NodePath("BasicDebug")
-MaxFPS = NodePath("")
 Controls = NodePath("Controls")
 SFX = NodePath("SFX")
 SFXLabel = NodePath("SFX/SFX")
 Music = NodePath("Music")
 MusicLabel = NodePath("Music/Music")
-
-[node name="Control" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
 
 [node name="VSync" type="Button" parent="."]
 offset_left = 1.0

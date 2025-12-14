@@ -24,6 +24,7 @@ func save_settings() -> void:
 		"VSync": DisplayServer.window_get_vsync_mode(),
 		"MaxFPS": Engine.max_fps,
 		"Controls": InputMan.Saved_controls,
+		"DebugInfo": DebugMan.Basic_debug,
 	}
 	SaveMan.save_file("Settings.bj", data, false)
 
@@ -31,14 +32,15 @@ func save_settings() -> void:
 func load_settings() -> void:
 	var data := SaveMan.get_data_from_file("Settings.bj", false)
 	if data:
-		Music_volume = data["MusicVolume"] if data["MusicVolume"] else 0.0
-		SFX_volume = data["SFXVolume"] if data["SFXVolume"] else 0.0
-		if int(data["VSync"]) == 0:
+		Music_volume = data.get("MusicVolume", 0.0)
+		SFX_volume = data.get("SFXVolume", 0.0)
+		if int(data.get("VSync")) == 0:
 			DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_DISABLED)
 		else:
 			DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_ENABLED)
-		Engine.max_fps = data["MaxFPS"] if data["MaxFPS"] != null else 60
-		InputMan.load_keys(data["Controls"])
+		Engine.max_fps = data.get("MaxFPS", 60)
+		InputMan.load_keys(data.get("Controls"))
+		DebugMan.Basic_debug = data.get("DebugInfo", false)
 
 
 func reset_variables_to_default(reset: bool=false) -> void:

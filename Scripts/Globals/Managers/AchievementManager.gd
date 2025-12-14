@@ -54,8 +54,8 @@ func save_achievements() -> void:
 func load_achievements() -> void:
 	var data := SaveMan.get_data_from_file("Achievements.bj")
 	if data:
-		Achievements = data["Achievements"] if data["Achievements"] else []
-		Achievements_to_show = data["Achievements_to_show"] if data["Achievements_to_show"] else []
+		Achievements = data.get("Achievements", [])
+		Achievements_to_show = data.get("Achievements_to_show", [])
 		DebugMan.dprint("[AchievMan, load_achievements] Loaded")
 
 

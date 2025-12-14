@@ -130,7 +130,7 @@ func spawn_bobs() -> void:
 func load_bobs_from_filah() -> void:
 	var data := SaveMan.get_data_from_file("The Bobs have awoken.BOB")
 	if data:
-		Saved_bobs = int(data["BOB"]) if int(data["BOB"]) else 0
+		Saved_bobs = int(data.get("BOB", 0))
 		if Saved_bobs < 0:
 			Saved_bobs = -1
 			await get_tree().create_timer(1.0).timeout

@@ -27,11 +27,12 @@ func change_keybind(action_name: String, new_key: Key) -> void:
 
 
 func load_keys(keys: Dictionary) -> void:
-	Saved_controls = keys
-	for key in Saved_controls.keys():
-		if int(Saved_controls[key]) is Key:
-			change_keybind(key, Saved_controls[key])
-	DebugMan.dprint("[InputMan, load_keys] Loaded ", keys)
+	if keys != null:
+		Saved_controls = keys
+		for key in Saved_controls.keys():
+			if int(Saved_controls[key]) is Key:
+				change_keybind(key, Saved_controls[key])
+		DebugMan.dprint("[InputMan, load_keys] Loaded ", keys)
 
 
 func reset_variables_to_default(reset: bool) -> void:
