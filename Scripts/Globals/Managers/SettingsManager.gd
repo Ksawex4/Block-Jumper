@@ -26,6 +26,7 @@ func save_settings() -> void:
 		"MaxFPS": Engine.max_fps,
 		"Controls": InputMan.Saved_controls,
 		"DebugInfo": DebugMan.Basic_debug,
+		"StaticBossCamera": StaticBossCamera,
 	}
 	SaveMan.save_file("Settings.bj", data, false)
 
@@ -42,6 +43,7 @@ func load_settings() -> void:
 		Engine.max_fps = data.get("MaxFPS", 60)
 		InputMan.load_keys(data.get("Controls"))
 		DebugMan.Basic_debug = data.get("DebugInfo", false)
+		StaticBossCamera = data.get("StaticBossCamera", false)
 
 
 func reset_variables_to_default(reset: bool=false) -> void:
