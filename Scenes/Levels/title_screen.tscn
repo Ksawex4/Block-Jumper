@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://xh68prap5akj"]
+[gd_scene load_steps=36 format=3 uid="uid://xh68prap5akj"]
 
 [ext_resource type="Texture2D" uid="uid://swlt67kvlp7u" path="res://Assets/Sprites/Backgrounds/MainMenu.png" id="1_kysdl"]
 [ext_resource type="Script" uid="uid://jxy8k36ike2j" path="res://Scripts/GUI/title_buttons.gd" id="1_roj86"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://pb1vfwgvjiml" path="res://Assets/Sprites/GUI/Buttons/SpeedrunMode.png" id="8_shcqs"]
 [ext_resource type="PackedScene" uid="uid://clkawf7n1yg00" path="res://Scenes/GUI/settings_menu.tscn" id="8_w4sgk"]
 [ext_resource type="FontFile" uid="uid://cfp7imnsoqkrp" path="res://Assets/Fonts/VCR_OSD_MONO_1.001.ttf" id="9_la3a0"]
+[ext_resource type="Texture2D" uid="uid://c01hdolvwmmox" path="res://Assets/Sprites/GUI/Buttons/FileManager.png" id="10_nrs1e"]
 [ext_resource type="AudioStream" uid="uid://dmjhlutkjeexy" path="res://Assets/Audio/Music/musMainMenu.ogg" id="10_oxd3l"]
 [ext_resource type="PackedScene" uid="uid://bwoda6al5nah2" path="res://Scenes/GUI/speedrun_mode_menu.tscn" id="11_p5jl7"]
 [ext_resource type="PackedScene" uid="uid://cnapla1ydbe63" path="res://Scenes/Objects/Solids/tiles.tscn" id="11_vtciy"]
@@ -65,9 +66,9 @@ texture = ExtResource("1_kysdl")
 [node name="TitleButtons" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
-offset_left = -528.0
+offset_left = -544.0
 offset_top = -180.0
-offset_right = -320.0
+offset_right = -321.0
 offset_bottom = 180.0
 script = ExtResource("1_roj86")
 Target_pos = Vector2(-320, -180)
@@ -180,16 +181,15 @@ layout_mode = 0
 offset_top = 292.0
 offset_right = 203.0
 offset_bottom = 327.0
-theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
-theme_override_colors/font_hover_color = Color(1, 0.5647059, 0, 1)
+theme_override_colors/icon_pressed_color = Color(1, 0.5647059, 0, 1)
+theme_override_colors/icon_hover_color = Color(1, 1, 0, 1)
 theme_override_fonts/font = ExtResource("9_la3a0")
-theme_override_font_sizes/font_size = 28
 theme_override_styles/normal = SubResource("StyleBoxEmpty_la3a0")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_nrs1e")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_2bjg4")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_w06op")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_br58k")
-text = "File Manager"
+icon = ExtResource("10_nrs1e")
 
 [node name="AchievementsMenu" parent="." instance=ExtResource("6_kysdl")]
 
