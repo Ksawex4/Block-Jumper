@@ -63,7 +63,7 @@ func bob_check() -> void:
 	if players:
 		for player: CharacterBody2D in players:
 			if player != null:
-				var current_level_scene_path = get_tree().current_scene.scene_file_path.get_file()
+				var current_level_scene_path := get_tree().current_scene.scene_file_path.get_file()
 				if player.position.y >= Bob_spawn_y_pos and Saved_bobs >= 0:
 					Bob_spawn_y_pos = INF
 					add_bob_and_end()

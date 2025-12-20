@@ -2,7 +2,7 @@ extends Node
 
 var Gravity: float = 10.0
 var Spawn_flying_thing := false
-var Cam_zoom = Vector2(1.0, 1.0)
+var Cam_zoom := Vector2(1.0, 1.0)
 var Can_player_save := true
 var Boss_fight := false
 var Boss_cam_pos := Vector2.ZERO
@@ -15,7 +15,7 @@ func _ready() -> void:
 
 func change_level(level_name: String, path: String="res://Scenes/Levels/") -> void:
 	if Can_quit_level:
-		var level_path = path + level_name
+		var level_path := path + level_name
 		get_tree().call_deferred("change_scene_to_file", level_path)
 		DebugMan.dprint("===== Changed level to ", level_name, " ===== [LevelMan]")
 

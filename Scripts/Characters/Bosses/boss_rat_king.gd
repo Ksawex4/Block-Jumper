@@ -74,10 +74,6 @@ func start_fight() -> void:
 		DebugMan.dprint("[boss_rat_king, start_fight] fight started")
 	else:
 		end_fight()
-	
-	#Engine.time_scale = 0.5
-	#AudioServer.playback_speed_scale = 0.5
-	#LevelMan.Gravity = 5
 
 
 func pick_random_attack() -> void:

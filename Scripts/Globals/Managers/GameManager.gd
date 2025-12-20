@@ -7,7 +7,7 @@ var Random_saltniczka := true
 var Load_position: Vector2
 var Jump_pressed: bool = false # mobile only
 var Speedrun_mode := false
-var Speedrun_timer := {"Hours": 0, "Minutes": 0, "Seconds": 0, "Frames": 0}
+var Speedrun_timer := {"Hours": 0, "Minutes": 0, "Seconds": 0.0}
 var Killed_bosses: Dictionary = {
 	"RatKing": false,
 }
@@ -21,6 +21,7 @@ func _ready() -> void:
 	Is_web = true if OS.get_name() == "Web" else false
 	if Is_web:
 		Os = "Android" if OS.has_feature("web_android") or OS.has_feature("web_ios") else "Linux"
+	process_mode = Node.PROCESS_MODE_ALWAYS
 
 
 func toggle_pause(pause: bool) -> void:
@@ -28,25 +29,19 @@ func toggle_pause(pause: bool) -> void:
 	get_tree().paused = pause
 
 
-func _process(_delta: float) -> void:
+func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("Pause") and get_tree().get_nodes_in_group("pauseMenu").size() != 0:
 		emit_signal("PauseGame")
 		toggle_pause(true)
-
-
-func _physics_process(_delta: float) -> void:
-	if Speedrun_mode and AchievMan.Achievements.size() >= AchievMan.Amount_of_achievements-1:
+	if Speedrun_mode and AchievMan.Achievements.size() >= AchievMan.Amount_of_achievements:
 		Speedrun_mode = false
+	
 	if Speedrun_mode:
-		Speedrun_timer["Frames"] += 1
-		if Speedrun_timer["Frames"] >= 60:
-			Speedrun_timer["Frames"] -= 60
-			Speedrun_timer["Seconds"] += 1
+		Speedrun_timer["Seconds"] += delta
 		if Speedrun_timer["Seconds"] >= 60:
 			Speedrun_timer["Seconds"] -= 60
 			Speedrun_timer["Minutes"] += 1
 		if Speedrun_timer["Minutes"] >= 60:
-			Speedrun_timer["Minutes"] -= 60
 			Speedrun_timer["Hours"] += 1
 
 
@@ -69,7 +64,7 @@ func save_game(position) -> void:
 
 
 func load_game() -> void:
-	var data = SaveMan.get_data_from_file("Save.bj")
+	var data: Dictionary = SaveMan.get_data_from_file("Save.bj")
 	if data and BobMan.Saved_bobs <= 0:
 		var level: String
 		if data["PlayerStats"]:
@@ -102,12 +97,16 @@ func _load_bosses(killed: Dictionary, spared: Dictionary) -> void:
 			Spared_bosses.set(x, spared[x])
 
 
-func reset_variables_to_default() -> void:
+func reset_variables_to_default(reset_speedrun: bool=false) -> void:
 	Paused = false
 	get_tree().paused = false
-	Random_saltniczka = true
 	Load_position = Vector2.ZERO
-	Speedrun_timer = {"Hours": 0, "Minutes": 0, "Seconds": 0, "Frames": 0}
+	if reset_speedrun:
+		Speedrun_timer = {"Hours": 0, "Minutes": 0, "Seconds": 0}
+		Random_saltniczka = true
+		SaveMan.remove_file("Save.bjSPEED")
+		SaveMan.remove_file("Achievements.bjSPEED")
+		SaveMan.remove_file("The Bobs have awoken.BOBSPEED")
 	for key in Killed_bosses.keys():
 		Killed_bosses[key] = false
 		Spared_bosses[key] = false

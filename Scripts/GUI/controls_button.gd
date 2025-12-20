@@ -13,5 +13,5 @@ func _on_pressed() -> void:
 
 
 func _update_label() -> void:
-	var key = InputMan.get_input_key(name)
+	var key := InputMan.get_input_key(name)
 	text = name + ": " + str(OS.get_keycode_string(key.physical_keycode if key != null else KEY_I))

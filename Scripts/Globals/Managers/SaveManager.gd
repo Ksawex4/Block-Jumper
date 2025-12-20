@@ -6,6 +6,8 @@ var Game_version: Variant = ProjectSettings.get_setting("application/config/vers
 func save_file(file_name: String, data: Dictionary, encode: bool =true, path: String ="user://") -> void:
 	var data_string: String = stringify_and_encode(data) if encode else JSON.stringify(data)
 	var file_path := path + file_name
+	if GameMan.Speedrun_mode:
+		file_path += "SPEED"
 	var file: FileAccess = FileAccess.open(file_path, FileAccess.WRITE)
 	if FileAccess.get_open_error() == OK:
 		file.store_string(data_string)
@@ -19,6 +21,8 @@ func save_file(file_name: String, data: Dictionary, encode: bool =true, path: St
 ## an empty Dictionary means File doesn't exist, some error appeared or the file had an empty dictionary
 func get_data_from_file(file_name: String, encoded: bool=true, path: String="user://") -> Dictionary:
 	var file_path := path + file_name
+	if GameMan.Speedrun_mode:
+		file_path += "SPEED"
 	if FileAccess.file_exists(file_path):
 		var file: FileAccess = FileAccess.open(file_path, FileAccess.READ)
 		if FileAccess.get_open_error() == OK:
@@ -34,7 +38,7 @@ func get_data_from_file(file_name: String, encoded: bool=true, path: String="use
 
 
 func stringify_and_encode(data: Dictionary) -> String:
-	var json_string = JSON.stringify(data)
+	var json_string := JSON.stringify(data)
 	return Marshalls.utf8_to_base64(json_string)
 
 
@@ -49,7 +53,7 @@ func decode_and_parse(encoded_string: String) -> Dictionary:
 
 
 func remove_file(file_name: String, path: String = "user://") -> void:
-	var file_path = path + file_name
+	var file_path := path + file_name
 	if FileAccess.file_exists(file_path):
 		var error: Error = DirAccess.remove_absolute(file_path)
 		if error != OK:

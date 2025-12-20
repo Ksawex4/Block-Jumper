@@ -19,7 +19,10 @@ func _on_new_game_pressed() -> void:
 
 
 func _on_load_game_pressed() -> void:
-	if FileAccess.file_exists("user://Save.bj") and BobMan.Saved_bobs <= 0:
+	var file_path := "user://Save.bj"
+	if GameMan.Speedrun_mode:
+		file_path += "SPEED"
+	if FileAccess.file_exists(file_path) and BobMan.Saved_bobs <= 0:
 		NovaFunc.reset_all_variables_to_default(false, false, true)
 		GameMan.load_game()
 	elif BobMan.Saved_bobs > 0:

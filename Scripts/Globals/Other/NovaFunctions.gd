@@ -12,7 +12,7 @@ func get_node_from_group(node_name: String, group_name: String="players") -> Nod
 		return
 
 func get_nearest_player(global_position: Vector2) -> CharacterBody2D:
-	var players = get_tree().get_nodes_in_group("players")
+	var players := get_tree().get_nodes_in_group("players")
 	var nearestDistance: float = -1
 	var nearestPlayer: Node2D
 	if players:
@@ -24,12 +24,12 @@ func get_nearest_player(global_position: Vector2) -> CharacterBody2D:
 	return nearestPlayer
 
 
-func reset_all_variables_to_default(reset_achievements: bool=false, reset_controls: bool=false, reset_player_stats: bool=false, reset_settings: bool=false, reset_flying: bool=false) -> void:
+func reset_all_variables_to_default(reset_achievements: bool=false, reset_controls: bool=false, reset_player_stats: bool=false, reset_settings: bool=false, reset_flying: bool=false, reset_speedrun: bool=false) -> void:
 	DebugMan.dprint("[NovaFunc, reset_all_variables_to_default] Began")
 	AchievMan.reset_variables_to_default(reset_achievements)
 	BobMan.reset_variables_to_default()
 	DebugMan.reset_variables_to_default()
-	GameMan.reset_variables_to_default()
+	GameMan.reset_variables_to_default(reset_speedrun)
 	InputMan.reset_variables_to_default(reset_controls)
 	LevelMan.reset_variables_to_default(reset_flying)
 	PlayerStats.reset_variables_to_default(reset_player_stats)

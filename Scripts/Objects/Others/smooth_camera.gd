@@ -71,12 +71,9 @@ func _physics_process(delta: float) -> void:
 	
 	if GameMan.Speedrun_mode:
 		$CanvasLayer/SpeedrunTimer.show()
-		$CanvasLayer/SpeedrunTimer.text = (
-			str(GameMan.Speedrun_timer["Hours"]) + ":" 
-			+ str(GameMan.Speedrun_timer["Minutes"]) + ":" 
-			+ str(GameMan.Speedrun_timer["Seconds"]) + ":" 
-			+ str(GameMan.Speedrun_timer["Frames"])
-		)
+		$CanvasLayer/SpeedrunTimer.text = "%s:%s:%.1f" % [GameMan.Speedrun_timer["Hours"], GameMan.Speedrun_timer["Minutes"], GameMan.Speedrun_timer["Seconds"]]
+	else:
+		$CanvasLayer/SpeedrunTimer.text = "%s:%s:%.3f" % [GameMan.Speedrun_timer["Hours"], GameMan.Speedrun_timer["Minutes"], GameMan.Speedrun_timer["Seconds"]]
 
 
 func _show_achievement(ach: String) -> void:

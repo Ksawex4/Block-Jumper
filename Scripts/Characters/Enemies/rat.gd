@@ -11,7 +11,7 @@ var Throw_delay := 0.0
 var Speed := 500
 var Direction: int = [-1,1].pick_random()
 var Wall_stop := false
-@onready var Start_pos = position 
+@onready var Start_pos := position 
 
 func _ready() -> void:
 	if King:
@@ -70,8 +70,8 @@ func _physics_process(delta: float) -> void:
 
 
 func throw_cheese(player: CharacterBody2D) -> void:
-	var distanceVector = player.global_position - global_position + Vector2(randf_range(-50.0, 50.0), randf_range(-50.0, 50.0))
-	var cheeseVelocity = distanceVector.normalized() * 250
+	var distanceVector := player.global_position - global_position + Vector2(randf_range(-50.0, 50.0), randf_range(-50.0, 50.0))
+	var cheeseVelocity := distanceVector.normalized() * 250
 	var cheeseObject = preload("uid://2k45qt2g31y8").instantiate()
 	get_tree().current_scene.add_child(cheeseObject)
 	cheeseObject.velocity = cheeseVelocity

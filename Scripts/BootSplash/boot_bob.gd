@@ -16,6 +16,6 @@ func _physics_process(delta: float) -> void:
 	
 	if Spin:
 		Angle += Rotation_speed * delta
-		var my_offset = Vector2(cos(Angle), sin(Angle)) * Radius
+		var my_offset := Vector2(cos(Angle), sin(Angle)) * Radius
 		position = Center_point + my_offset
 		look_at(Vector2(0,0))

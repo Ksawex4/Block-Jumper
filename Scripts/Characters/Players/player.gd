@@ -100,7 +100,7 @@ func check_duck_status() -> void:
 				$AnimatedSprite2D.play("CurseOfADuck")
 				$AnimatedSprite2D.scale = Vector2(0.167, 0.192)
 
- 
+
 func _on_death() -> void:
 	if not PlayerStats.is_any_player_alive():
 		LevelMan.change_level("title_screen.tscn")

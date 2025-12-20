@@ -32,7 +32,7 @@ func load_stats(data: Dictionary={}) -> void:
 			0: Stick = StickType.NONE
 			1: Stick = StickType.NORMAL
 			2: Stick = StickType.CHEESE
- 
+
 
 func get_save_data() -> Dictionary:
 	return {
