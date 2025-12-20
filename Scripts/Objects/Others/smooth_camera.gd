@@ -27,16 +27,19 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	# Camera position and zoom
-	var node: CharacterBody2D = NovaFunc.get_node_from_group(PlayerStats.Follow_who)
-	if node:
-		if node.velocity.x > Max_smooth_speed or node.velocity.y > Max_smooth_speed:
-			position = node.position
+	if not (SettingsMan.StaticBossCamera and LevelMan.Boss_fight):
+		var node: CharacterBody2D = NovaFunc.get_node_from_group(PlayerStats.Follow_who)
+		if node:
+			if node.velocity.x > Max_smooth_speed or node.velocity.y > Max_smooth_speed:
+				position = node.position
+			else:
+				position = lerp(position, node.position, 6.0 * delta)
 		else:
-			position = lerp(position, node.position, 6.0 * delta)
-	else:
-		var player: CharacterBody2D = get_tree().get_first_node_in_group("players")
-		if player:
-			PlayerStats.Follow_who = player.name
+			var player: CharacterBody2D = get_tree().get_first_node_in_group("players")
+			if player:
+				PlayerStats.Follow_who = player.name
+	elif SettingsMan.StaticBossCamera and LevelMan.Boss_fight:
+		position = lerp(position, LevelMan.Boss_cam_pos, 6.0 * delta)
 	zoom = lerp(zoom, LevelMan.Cam_zoom, 6.0 * delta)
 	
 	# Camera player changing

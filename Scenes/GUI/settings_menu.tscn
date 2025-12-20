@@ -28,7 +28,7 @@ font_size = 14
 outline_size = 4
 outline_color = Color(0, 0, 0, 1)
 
-[node name="SettingsMenu" type="Window" node_paths=PackedStringArray("VSyncNode", "DebugMode", "BasicDebugNode", "Controls", "SFX", "SFXLabel", "Music", "MusicLabel")]
+[node name="SettingsMenu" type="Window" node_paths=PackedStringArray("VSyncNode", "DebugMode", "BasicDebugNode", "Controls", "SFX", "SFXLabel", "Music", "MusicLabel", "BossCamToggle")]
 process_mode = 3
 oversampling_override = 1.0
 title = "Settings"
@@ -46,6 +46,7 @@ SFX = NodePath("SFX")
 SFXLabel = NodePath("SFX/SFX")
 Music = NodePath("Music")
 MusicLabel = NodePath("Music/Music")
+BossCamToggle = NodePath("CameraBossTypeToggle")
 
 [node name="VSync" type="Button" parent="."]
 offset_left = 1.0
@@ -315,6 +316,17 @@ anchor_bottom = 0.236
 text = "Debug Info: "
 metadata/_edit_use_anchors_ = true
 
+[node name="CameraBossTypeToggle" type="Button" parent="."]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -193.0
+offset_bottom = 27.0
+grow_horizontal = 0
+theme_override_fonts/font = ExtResource("2_56h7t")
+theme_override_font_sizes/font_size = 21
+text = "BossCam: Follow"
+
 [connection signal="close_requested" from="." to="." method="_on_close_requested"]
 [connection signal="pressed" from="VSync" to="." method="_on_v_sync_pressed"]
 [connection signal="pressed" from="DebugMode" to="." method="_on_debug_mode_pressed"]
@@ -336,3 +348,4 @@ metadata/_edit_use_anchors_ = true
 [connection signal="pressed" from="Controls" to="." method="_on_controls_pressed"]
 [connection signal="drag_ended" from="MaxFPS" to="." method="_on_max_fps_drag_ended"]
 [connection signal="pressed" from="BasicDebug" to="." method="_on_basic_debug_pressed"]
+[connection signal="pressed" from="CameraBossTypeToggle" to="." method="_on_camera_boss_type_toggle_pressed"]

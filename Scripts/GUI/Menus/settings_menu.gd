@@ -10,6 +10,7 @@ var Vsync: bool
 @export var SFXLabel: Label
 @export var Music: HSlider
 @export var MusicLabel: Label
+@export var BossCamToggle: Button
 
 func _ready() -> void:
 	SettingsMan.connect("ShowSettings", Callable(self, "_show"))
@@ -82,3 +83,11 @@ func _on_basic_debug_pressed() -> void:
 	else:
 		DebugMan.Basic_debug = false
 		BasicDebugNode.text = "Debug Info: false"
+
+
+func _on_camera_boss_type_toggle_pressed() -> void:
+	SettingsMan.StaticBossCamera = not SettingsMan.StaticBossCamera
+	if SettingsMan.StaticBossCamera:
+		BossCamToggle.text = "BossCam: Static"
+	else:
+		BossCamToggle.text = "BossCam: Follow"

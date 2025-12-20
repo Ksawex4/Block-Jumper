@@ -3,6 +3,7 @@ extends Node
 signal ShowSettings()
 var Music_volume: float = 0.0
 var SFX_volume: float = 0.0
+var StaticBossCamera := false
 
 
 func toggle_vsync() -> void:

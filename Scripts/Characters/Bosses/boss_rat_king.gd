@@ -26,8 +26,10 @@ func _ready() -> void:
 
 
 func _physics_process(_delta: float) -> void:
-	if LevelMan.Boss_fight:
+	if LevelMan.Boss_fight and not SettingsMan.StaticBossCamera:
 		PlayerStats.Follow_who = Battle_player_name
+	else:
+		pass
 	if not is_on_floor():
 		velocity.y += LevelMan.Gravity
 	
@@ -67,7 +69,7 @@ func start_fight() -> void:
 	if not GameMan.Killed_bosses["RatKing"] or not GameMan.Spared_bosses["RatKing"]:
 		$Timer.start(0.1)
 		LevelMan.Boss_cam_pos = Vector2(-2747.0, -324.0)
-		LevelMan.Cam_zoom = Vector2(0.55, 0.55)
+		LevelMan.Cam_zoom = Vector2(0.5, 0.5)
 		RatStart.emit()
 		Battle_player_name = NovaFunc.get_nearest_player(global_position).WhoAmI
 		PlayerStats.Follow_who = Battle_player_name
