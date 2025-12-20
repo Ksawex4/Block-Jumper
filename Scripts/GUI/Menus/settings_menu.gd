@@ -27,6 +27,11 @@ func _ready() -> void:
 	if GameMan.is_mobile():
 		$ControlsMenu.queue_free()
 		$Controls.queue_free()
+	
+	if SettingsMan.StaticBossCamera:
+		BossCamToggle.text = "BossCam: Static"
+	else:
+		BossCamToggle.text = "BossCam: Follow"
 
 
 func _process(_delta: float) -> void:
