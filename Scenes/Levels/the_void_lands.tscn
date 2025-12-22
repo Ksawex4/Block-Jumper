@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=4 uid="uid://dux3aathoasi3"]
+[gd_scene load_steps=24 format=4 uid="uid://dux3aathoasi3"]
 
 [ext_resource type="PackedScene" uid="uid://c8jjqycyb5u8t" path="res://Scenes/Objects/Others/background.tscn" id="1_j7b5o"]
 [ext_resource type="Script" uid="uid://dsb563quiy52p" path="res://Scripts/level.gd" id="1_nhuim"]
@@ -22,6 +22,7 @@
 [ext_resource type="Material" uid="uid://dtys8hpdg77hn" path="res://Resources/Characters/NPCs/BobGreen.tres" id="13_kco5t"]
 [ext_resource type="Material" uid="uid://cem4c2c3jd4k8" path="res://Resources/Characters/NPCs/BobPink.tres" id="14_4g8ms"]
 [ext_resource type="Material" uid="uid://cgh1v2kborh6b" path="res://Resources/Characters/NPCs/BobCyan.tres" id="15_ol45u"]
+[ext_resource type="Script" uid="uid://cmtib520rqj0l" path="res://Scripts/Objects/Others/semi_global_test.gd" id="23_xie4u"]
 
 [node name="TheVoidLands" type="Node2D"]
 script = ExtResource("1_nhuim")
@@ -179,3 +180,7 @@ Always_fail_to_save = true
 stream = ExtResource("12_4a7u7")
 autoplay = true
 bus = &"Music"
+
+[node name="Semi-Global_test" type="Node2D" parent="."]
+position = Vector2(-3664, -1478)
+script = ExtResource("23_xie4u")

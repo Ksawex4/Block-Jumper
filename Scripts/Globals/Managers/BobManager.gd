@@ -12,6 +12,7 @@ var Done := false
 var Spawned_bobs := false
 var Fail_to_load := false
 var Cam_zoom_timer := 0.0
+var Can_spawn_bobs := true
 
 
 func _ready() -> void:
@@ -22,7 +23,7 @@ func _ready() -> void:
 
 func _process(_delta: float) -> void:
 	bob_check()
-	if not Spawned_bobs and Saved_bobs != 9:
+	if not Spawned_bobs and Saved_bobs != 9 and Can_spawn_bobs:
 		spawn_bobs()
 	if Saved_bobs >= 1:
 		LevelMan.Can_player_save = false
@@ -68,12 +69,12 @@ func bob_check() -> void:
 					Bob_spawn_y_pos = INF
 					add_bob_and_end()
 					break
-				elif player.position.y >= Bob_spawn_y_pos * 1.5 and current_level_scene_path != "the_void_lands.tscn":
+				elif player.position.y >= Bob_spawn_y_pos * 1.5 and current_level_scene_path != "the_void_lands.tscn" and Can_spawn_bobs:
 					LevelMan.change_level("the_void_lands.tscn")
 					AchievMan.add_achievement("TheVoidLands")
 					DebugMan.dprint("[BobMan , bob_check] Changed level, ", player.position.y)
 					break
-				elif player.position.y >= Bob_spawn_y_pos * 0.4 and current_level_scene_path == "the_void_lands.tscn":
+				elif player.position.y >= Bob_spawn_y_pos * 0.4 and current_level_scene_path == "the_void_lands.tscn" and Can_spawn_bobs:
 					LevelMan.change_level("the_void_lands.tscn")
 					DebugMan.dprint("[BobMan , bob_check] reloaded level, ", player.position.y)
 					break
