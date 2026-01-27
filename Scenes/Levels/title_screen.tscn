@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://xh68prap5akj"]
+[gd_scene format=3 uid="uid://xh68prap5akj"]
 
 [ext_resource type="Texture2D" uid="uid://swlt67kvlp7u" path="res://Assets/Sprites/Backgrounds/MainMenu.png" id="1_kysdl"]
 [ext_resource type="Script" uid="uid://jxy8k36ike2j" path="res://Scripts/GUI/title_buttons.gd" id="1_roj86"]
@@ -55,15 +55,15 @@ font_size = 13
 [sub_resource type="LabelSettings" id="LabelSettings_shcqs"]
 font_size = 10
 
-[node name="TitleScreen" type="Node2D"]
+[node name="TitleScreen" type="Node2D" unique_id=328233825]
 metadata/Music = "souMainMenu.wav"
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1233339047]
 texture = ExtResource("1_kysdl")
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1389060212]
 
-[node name="TitleButtons" type="Control" parent="."]
+[node name="TitleButtons" type="Control" parent="." unique_id=450983227]
 layout_mode = 3
 anchors_preset = 0
 offset_left = -544.0
@@ -73,7 +73,7 @@ offset_bottom = 180.0
 script = ExtResource("1_roj86")
 Target_pos = Vector2(-320, -180)
 
-[node name="NewGame" type="Button" parent="TitleButtons"]
+[node name="NewGame" type="Button" parent="TitleButtons" unique_id=1528044520]
 layout_mode = 0
 offset_left = 4.0
 offset_top = 127.0
@@ -88,7 +88,7 @@ theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_kysdl"
 theme_override_styles/focus = SubResource("StyleBoxEmpty_vtciy")
 icon = ExtResource("2_kjbj0")
 
-[node name="LoadGame" type="Button" parent="TitleButtons"]
+[node name="LoadGame" type="Button" parent="TitleButtons" unique_id=671321705]
 layout_mode = 0
 offset_left = 4.0
 offset_top = 84.0
@@ -103,7 +103,7 @@ theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_kysdl"
 theme_override_styles/focus = SubResource("StyleBoxEmpty_vtciy")
 icon = ExtResource("3_h4qv3")
 
-[node name="Information" type="Label" parent="TitleButtons/LoadGame"]
+[node name="Information" type="Label" parent="TitleButtons/LoadGame" unique_id=850266175]
 visible = false
 layout_mode = 0
 offset_left = 8.0
@@ -116,7 +116,7 @@ game, there is a chance
 of some things breaking."
 label_settings = SubResource("LabelSettings_72p0a")
 
-[node name="Achievements" type="Button" parent="TitleButtons"]
+[node name="Achievements" type="Button" parent="TitleButtons" unique_id=1128415139]
 layout_mode = 0
 offset_left = 3.0
 offset_top = 167.0
@@ -131,7 +131,7 @@ theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_dgnw3")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_72p0a")
 icon = ExtResource("4_hgm2k")
 
-[node name="Settings" type="Button" parent="TitleButtons"]
+[node name="Settings" type="Button" parent="TitleButtons" unique_id=764859277]
 layout_mode = 0
 offset_left = 4.0
 offset_top = 210.0
@@ -146,7 +146,7 @@ theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_dgnw3")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_72p0a")
 icon = ExtResource("6_oxd3l")
 
-[node name="Quit" type="Button" parent="TitleButtons"]
+[node name="Quit" type="Button" parent="TitleButtons" unique_id=233946738]
 layout_mode = 0
 offset_left = 4.0
 offset_top = 255.0
@@ -161,7 +161,7 @@ theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_dgnw3")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_72p0a")
 icon = ExtResource("3_sufyd")
 
-[node name="SpeedrunMode" type="Button" parent="TitleButtons"]
+[node name="SpeedrunMode" type="Button" parent="TitleButtons" unique_id=2036212217]
 layout_mode = 0
 offset_left = 4.0
 offset_top = 325.0
@@ -176,7 +176,7 @@ theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_dgnw3")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_72p0a")
 icon = ExtResource("8_shcqs")
 
-[node name="FileManager" type="Button" parent="TitleButtons"]
+[node name="FileManager" type="Button" parent="TitleButtons" unique_id=1818436630]
 layout_mode = 0
 offset_top = 292.0
 offset_right = 203.0
@@ -191,30 +191,30 @@ theme_override_styles/disabled = SubResource("StyleBoxEmpty_w06op")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_br58k")
 icon = ExtResource("10_nrs1e")
 
-[node name="AchievementsMenu" parent="." instance=ExtResource("6_kysdl")]
+[node name="AchievementsMenu" parent="." unique_id=926907283 instance=ExtResource("6_kysdl")]
 
-[node name="SettingsMenu" parent="." instance=ExtResource("8_w4sgk")]
+[node name="SettingsMenu" parent="." unique_id=1131455512 instance=ExtResource("8_w4sgk")]
 
-[node name="SpeedrunModeMenu" parent="." instance=ExtResource("11_p5jl7")]
+[node name="SpeedrunModeMenu" parent="." unique_id=981587637 instance=ExtResource("11_p5jl7")]
 
-[node name="FileManager" parent="." instance=ExtResource("13_nrs1e")]
+[node name="FileManager" parent="." unique_id=1407454542 instance=ExtResource("13_nrs1e")]
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1288205100]
 process_mode = 3
 stream = ExtResource("10_oxd3l")
 autoplay = true
 bus = &"Music"
 
-[node name="Tiles" parent="." instance=ExtResource("11_vtciy")]
+[node name="Tiles" parent="." unique_id=354738746 instance=ExtResource("11_vtciy")]
 
-[node name="saltniczka" parent="." instance=ExtResource("12_72p0a")]
+[node name="saltniczka" parent="." unique_id=244989371 instance=ExtResource("12_72p0a")]
 offset_left = 277.0
 offset_top = -140.0
 offset_right = 339.0
 offset_bottom = -70.0
 scale = Vector2(0.5, 0.5)
 
-[node name="Version" type="Label" parent="."]
+[node name="Version" type="Label" parent="." unique_id=2071971462]
 offset_left = 261.0
 offset_top = 157.0
 offset_right = 413.0

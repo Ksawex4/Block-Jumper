@@ -67,6 +67,8 @@ func _physics_process(_delta: float) -> void:
 			for child in get_tree().current_scene.get_children():
 				if child.scene_file_path.get_file().get_basename() == "bouncy_onurb":
 					child.queue_free()
+	
+	check_duck_status()
 
 
 func take_damage(damage: int) -> void:

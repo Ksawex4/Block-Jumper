@@ -38,7 +38,7 @@ func _process(_delta: float) -> void:
 
 func This_random_player_is_now_A_DUCK() -> void:
 	var players: Array = get_tree().get_nodes_in_group("players")
-	if players.size() != 0 and len(PlayerStats.Duck_players) == 0:
+	if players.size() != 0 and len(PlayerStats.Player_ducks) == 0:
 		var randomNumber: int = randi_range(1,4)
 		var theDuck: Node2D = players.pick_random()
 		if theDuck != null and randomNumber != 4:

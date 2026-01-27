@@ -8,5 +8,6 @@ func _ready() -> void:
 		Semi_global = ResourceLoader.load("res://Resources/testing/semi-global.gd").new()
 
 
-func _physics_process(delta: float) -> void:
-	Semi_global.exist()
+func _physics_process(_delta: float) -> void:
+	if Semi_global:
+		Semi_global.exist(get_tree())

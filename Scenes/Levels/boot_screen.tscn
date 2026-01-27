@@ -1,4 +1,4 @@
-[gd_scene load_steps=115 format=3 uid="uid://bdw0vwua1oy14"]
+[gd_scene format=3 uid="uid://bdw0vwua1oy14"]
 
 [ext_resource type="Script" uid="uid://d0hpuult3e2w5" path="res://Scripts/BootSplash/boot_screen.gd" id="1_6acqa"]
 [ext_resource type="Texture2D" uid="uid://dvd1xf4dji7vx" path="res://Assets/Sprites/BootSplash/BootSplashFency.png" id="1_e05bb"]
@@ -584,6 +584,16 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5400a"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_blg43"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_sufts"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nk3qw"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5xdw2"]
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_6q6bn"]
 atlas = ExtResource("16_m0s4q")
 region = Rect2(0, 0, 71, 100)
@@ -711,10 +721,10 @@ animations = [{
 "speed": 12.0
 }]
 
-[node name="BootScreen" type="Node2D"]
+[node name="BootScreen" type="Node2D" unique_id=2020373586]
 script = ExtResource("1_6acqa")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1596735532]
 texture_filter = 1
 offset_left = -365.0
 offset_top = -205.0
@@ -722,21 +732,21 @@ offset_right = 372.0
 offset_bottom = 205.0
 color = Color(0.133333, 0.168627, 0.270588, 1)
 
-[node name="background" type="Sprite2D" parent="."]
+[node name="background" type="Sprite2D" parent="." unique_id=893579660]
 texture = ExtResource("2_5400a")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1357253730]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_dth5a")
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1362250138]
 
-[node name="MainMenu" type="Sprite2D" parent="."]
+[node name="MainMenu" type="Sprite2D" parent="." unique_id=2026857427]
 texture_filter = 1
 position = Vector2(0, 888)
 texture = ExtResource("2_6acqa")
 
-[node name="FailedToLoad" type="Window" parent="."]
+[node name="FailedToLoad" type="Window" parent="." unique_id=392828282]
 oversampling_override = 1.0
 title = "Bob Jumper"
 initial_position = 1
@@ -744,21 +754,21 @@ size = Vector2i(160, 100)
 visible = false
 script = ExtResource("6_rppc3")
 
-[node name="Label" type="Label" parent="FailedToLoad"]
+[node name="Label" type="Label" parent="FailedToLoad" unique_id=809237906]
 offset_right = 150.0
 offset_bottom = 68.0
 text = "The game has failed
 to run, please try
 again"
 
-[node name="Button" type="Button" parent="FailedToLoad"]
+[node name="Button" type="Button" parent="FailedToLoad" unique_id=1992693717]
 offset_left = 92.0
 offset_top = 62.0
 offset_right = 158.0
 offset_bottom = 101.0
 text = "Ok"
 
-[node name="Information" type="Label" parent="."]
+[node name="Information" type="Label" parent="." unique_id=510523844]
 visible = false
 offset_left = -300.0
 offset_top = -111.0
@@ -766,30 +776,30 @@ offset_right = 300.0
 offset_bottom = -41.0
 text = "This game saves your progress inside Documents/Nova-Games/Block-Jumper/"
 
-[node name="Bob1" type="Sprite2D" parent="."]
+[node name="Bob1" type="Sprite2D" parent="." unique_id=1534260424]
 position = Vector2(0, -256)
 texture = ExtResource("7_6kbg0")
 script = ExtResource("8_3aowl")
 Angle = 2.0
 
-[node name="Bob2" type="Sprite2D" parent="."]
+[node name="Bob2" type="Sprite2D" parent="." unique_id=608396139]
 position = Vector2(0, -296)
 texture = ExtResource("7_6kbg0")
 script = ExtResource("8_3aowl")
 
-[node name="Bob3" type="Sprite2D" parent="."]
+[node name="Bob3" type="Sprite2D" parent="." unique_id=1745271254]
 position = Vector2(0, -328)
 texture = ExtResource("7_6kbg0")
 script = ExtResource("8_3aowl")
 Angle = -2.0
 
-[node name="Fency" type="AnimatedSprite2D" parent="."]
+[node name="Fency" type="AnimatedSprite2D" parent="." unique_id=683154915]
 position = Vector2(-469, -149)
 sprite_frames = SubResource("SpriteFrames_sufts")
 script = ExtResource("10_k7nhw")
 Target_pos = [Vector2(347, -149), Vector2(-341, 164)]
 
-[node name="Button" type="Button" parent="Fency"]
+[node name="Button" type="Button" parent="Fency" unique_id=1474961155]
 self_modulate = Color(1, 1, 1, 0)
 offset_left = -16.0
 offset_top = -16.0
@@ -797,23 +807,23 @@ offset_right = 16.0
 offset_bottom = 16.0
 metadata/_edit_use_anchors_ = true
 
-[node name="Explosion" type="AnimatedSprite2D" parent="Fency"]
+[node name="Explosion" type="AnimatedSprite2D" parent="Fency" unique_id=831294416]
 visible = false
 position = Vector2(0, 1)
 sprite_frames = SubResource("SpriteFrames_4hrd0")
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Fency"]
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Fency" unique_id=251204998]
 stream = ExtResource("11_5400a")
 bus = &"SFX"
 
-[node name="PanLoduwka" type="AnimatedSprite2D" parent="."]
+[node name="PanLoduwka" type="AnimatedSprite2D" parent="." unique_id=1314391986]
 position = Vector2(-341, -155)
 sprite_frames = SubResource("SpriteFrames_j7a52")
 script = ExtResource("10_k7nhw")
 Target_pos = [Vector2(347, -155), Vector2(-389, 156)]
 Has_left_right_anim = true
 
-[node name="Button" type="Button" parent="PanLoduwka"]
+[node name="Button" type="Button" parent="PanLoduwka" unique_id=932872034]
 self_modulate = Color(1, 1, 1, 0)
 offset_left = -14.0
 offset_top = -18.0
@@ -821,55 +831,69 @@ offset_right = 13.0
 offset_bottom = 22.0
 metadata/_edit_use_anchors_ = true
 
-[node name="Explosion" type="AnimatedSprite2D" parent="PanLoduwka"]
+[node name="Explosion" type="AnimatedSprite2D" parent="PanLoduwka" unique_id=1904255193]
 visible = false
 position = Vector2(0, 2)
 sprite_frames = SubResource("SpriteFrames_4hrd0")
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="PanLoduwka"]
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="PanLoduwka" unique_id=516718806]
 stream = ExtResource("11_5400a")
 bus = &"SFX"
 
-[node name="Toasty" type="AnimatedSprite2D" parent="."]
+[node name="Toasty" type="AnimatedSprite2D" parent="." unique_id=656881705]
 position = Vector2(-589, -149)
 sprite_frames = SubResource("SpriteFrames_f4kdb")
 script = ExtResource("10_k7nhw")
 Target_pos = [Vector2(347, -149), Vector2(-341, 164)]
 
-[node name="Button" type="Button" parent="Toasty"]
+[node name="Button" type="Button" parent="Toasty" unique_id=204622355]
 self_modulate = Color(1, 1, 1, 0)
 offset_left = -16.0
 offset_top = -13.0
 offset_right = 16.0
 offset_bottom = 16.0
 
-[node name="Explosion" type="AnimatedSprite2D" parent="Toasty"]
+[node name="Explosion" type="AnimatedSprite2D" parent="Toasty" unique_id=1071501276]
 visible = false
 position = Vector2(2, 4)
 sprite_frames = SubResource("SpriteFrames_4hrd0")
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Toasty"]
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Toasty" unique_id=1363193656]
 stream = ExtResource("11_5400a")
 bus = &"SFX"
 
-[node name="Bean" type="AnimatedSprite2D" parent="."]
+[node name="Bean" type="AnimatedSprite2D" parent="." unique_id=1025217051]
 position = Vector2(-853, -148)
 sprite_frames = SubResource("SpriteFrames_6q6bn")
 script = ExtResource("10_k7nhw")
 Target_pos = [Vector2(347, -148), Vector2(-341, 165)]
 Is_player = false
+Is_bean = true
 
-[node name="Block" type="Sprite2D" parent="."]
+[node name="BeanButton" type="Button" parent="Bean" unique_id=355992819]
+offset_left = -26.0
+offset_top = -24.0
+offset_right = 23.0
+offset_bottom = 17.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_5400a")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_blg43")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_sufts")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_nk3qw")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_5xdw2")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Bean" unique_id=1994571380]
+
+[node name="Block" type="Sprite2D" parent="." unique_id=1716060437]
 texture_filter = 1
 position = Vector2(550, -9)
 texture = ExtResource("4_nxau8")
 
-[node name="Jumper" type="Sprite2D" parent="."]
+[node name="Jumper" type="Sprite2D" parent="." unique_id=1000452586]
 texture_filter = 1
 position = Vector2(-417, 52)
 texture = ExtResource("5_v07ap")
 
-[node name="Explosion" type="AnimatedSprite2D" parent="."]
+[node name="Explosion" type="AnimatedSprite2D" parent="." unique_id=1741283772]
 visible = false
 rotation = 1.5707964
 scale = Vector2(10, 10)
@@ -877,7 +901,7 @@ sprite_frames = SubResource("SpriteFrames_unuhr")
 frame = 16
 frame_progress = 1.0
 
-[node name="Announcement" type="Label" parent="."]
+[node name="Announcement" type="Label" parent="." unique_id=1171408392]
 visible = false
 offset_left = -65.0
 offset_top = 883.0
@@ -886,7 +910,7 @@ offset_bottom = 932.0
 text = "Block Jumper 0.2
 on October 31st"
 
-[node name="Explosion2" type="AnimatedSprite2D" parent="."]
+[node name="Explosion2" type="AnimatedSprite2D" parent="." unique_id=713738066]
 position = Vector2(0, 888)
 scale = Vector2(10, 10)
 sprite_frames = SubResource("SpriteFrames_unuhr")
@@ -902,4 +926,5 @@ frame_progress = 1.0
 [connection signal="animation_finished" from="PanLoduwka/Explosion" to="PanLoduwka" method="_on_explosion_animation_finished"]
 [connection signal="pressed" from="Toasty/Button" to="Toasty" method="_on_button_pressed"]
 [connection signal="animation_finished" from="Toasty/Explosion" to="Toasty" method="_on_explosion_animation_finished"]
+[connection signal="pressed" from="Bean/BeanButton" to="Bean" method="_on_bean_button_pressed"]
 [connection signal="animation_finished" from="Explosion" to="." method="_on_explosion_animation_finished"]

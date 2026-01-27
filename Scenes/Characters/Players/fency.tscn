@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://b37to0sdnfys5"]
+[gd_scene format=3 uid="uid://b37to0sdnfys5"]
 
 [ext_resource type="Script" uid="uid://8lbxah20kpl" path="res://Scripts/Characters/Players/player.gd" id="1_apm7n"]
 [ext_resource type="Texture2D" uid="uid://co6u0el55quo6" path="res://Assets/Sprites/Characters/Quack.jpg" id="2_apm7n"]
@@ -64,28 +64,29 @@ bg_color = Color(0, 0, 0, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_424lp"]
 bg_color = Color(0.21568628, 0.36862746, 0.5921569, 1)
 
-[node name="Fency" type="CharacterBody2D" groups=["players"]]
+[node name="Fency" type="CharacterBody2D" unique_id=1401853618 groups=["players"]]
 collision_layer = 2
 script = ExtResource("1_apm7n")
 WhoAmI = "Fency"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=986018683]
 texture_filter = 1
 shape = SubResource("RectangleShape2D_014rp")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1965164888]
 use_parent_material = true
 position = Vector2(-4.76837e-07, 0)
 sprite_frames = SubResource("SpriteFrames_l4cu0")
+animation = &"CurseOfADuck"
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Area2D" type="Area2D" parent="." unique_id=1165661593]
 collision_layer = 0
 collision_mask = 4
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1757597738]
 shape = SubResource("RectangleShape2D_j1j6g")
 
-[node name="HPBar" type="Control" parent="."]
+[node name="HPBar" type="Control" parent="." unique_id=845443419]
 z_index = 1
 layout_mode = 3
 anchors_preset = 0
@@ -94,13 +95,13 @@ offset_top = -39.0
 offset_right = 26.0
 offset_bottom = -21.0
 
-[node name="Bar" type="ColorRect" parent="HPBar"]
+[node name="Bar" type="ColorRect" parent="HPBar" unique_id=1930060683]
 layout_mode = 0
 offset_right = 52.0
 offset_bottom = 18.0
 color = Color(0.0431373, 0.235294, 0.521569, 1)
 
-[node name="ProgressBar" type="ProgressBar" parent="HPBar"]
+[node name="ProgressBar" type="ProgressBar" parent="HPBar" unique_id=649754043]
 layout_mode = 0
 offset_left = 1.0
 offset_top = 1.0000002
@@ -113,7 +114,7 @@ max_value = 120.0
 value = 120.0
 show_percentage = false
 
-[node name="Label" type="Label" parent="HPBar"]
+[node name="Label" type="Label" parent="HPBar" unique_id=976314221]
 layout_mode = 0
 offset_left = 1.0
 offset_top = -3.0
@@ -121,6 +122,6 @@ offset_right = 51.0
 offset_bottom = 20.0
 text = "80/80"
 
-[node name="Poison_cooldown" type="Timer" parent="."]
+[node name="Poison_cooldown" type="Timer" parent="." unique_id=389826066]
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

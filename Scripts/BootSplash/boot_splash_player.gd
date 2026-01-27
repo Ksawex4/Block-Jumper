@@ -1,10 +1,11 @@
 extends AnimatedSprite2D
 
-enum Direction { LEFT, RIGHT }
+enum Direction { LEFT, RIGHT, NONE }
 @onready var Parent := $".."
 @export var Target_pos := [Vector2(403.0, -149.0), Vector2(-389.0, 182.0)]
 @export var Has_left_right_anim := false
 @export var Is_player := true
+@export var Is_bean := false
 var My_direction: Direction = Direction.RIGHT
 var Current_index := 0
 var Laps := 0
@@ -25,6 +26,8 @@ func _physics_process(delta: float) -> void:
 				position.x -= 120 * delta
 				if Has_left_right_anim:
 					play("left")
+			elif My_direction == Direction.NONE:
+				position.y = lerp(position.y, -240.0, 5.0 * delta)
 			else:
 				change_direction()
 		else:
@@ -52,3 +55,9 @@ func _on_explosion_animation_finished() -> void:
 	Parent.Exploded_players += 1
 	queue_free()
 	DebugMan.dprint("[" + name + ", _on_explosion_animation_finished] Exploded")
+
+
+func _on_bean_button_pressed() -> void:
+	if Is_bean and My_direction != Direction.NONE:
+		My_direction = Direction.NONE
+		
