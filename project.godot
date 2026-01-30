@@ -24,6 +24,10 @@ boot_splash/image="uid://c4lib2gse8ur"
 config/icon="uid://m8mvttomh8ys"
 config/windows_native_icon="res://Assets/icon.ico"
 
+[audio]
+
+buses/default_bus_layout="uid://d310ipshkndeq"
+
 [autoload]
 
 GameMan="*res://Scripts/Globals/Managers/GameManager.gd"

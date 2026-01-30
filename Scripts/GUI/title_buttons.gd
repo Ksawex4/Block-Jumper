@@ -2,11 +2,14 @@ extends Control
 
 @export var Target_pos: Vector2 = Vector2.ZERO
 @onready var Speedrun_mode_menu: Window = $"../SpeedrunModeMenu"
+@export var LoadGameInfo: Label
+@export var LoadGameButton: Button
+@export var FileManager: Window
 
 
 func _ready() -> void:
 	if SaveMan.get_data_from_file("Save.bj").get("Version") != SaveMan.Game_version:
-		$LoadGame/Information.show()
+		LoadGameInfo.show()
 
 
 func _physics_process(delta: float) -> void:
@@ -26,7 +29,7 @@ func _on_load_game_pressed() -> void:
 		NovaFunc.reset_all_variables_to_default(false, false, true)
 		GameMan.load_game()
 	elif BobMan.Saved_bobs > 0:
-		$LoadGame.queue_free()
+		LoadGameButton.queue_free()
 
 
 func _on_achievements_pressed() -> void:
@@ -48,4 +51,4 @@ func _on_speedrun_mode_pressed() -> void:
 
 
 func _on_file_manager_pressed() -> void:
-	$"../FileManager".show()
+	FileManager.show()
