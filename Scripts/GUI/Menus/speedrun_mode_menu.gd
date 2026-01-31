@@ -15,12 +15,12 @@ func _on_saltniczka_pressed() -> void:
 
 
 func _on_start_pressed() -> void:
-	ToastEventMan.Toast = Toast
 	GameMan.reset_variables_to_default(true)
 	GameMan.Random_saltniczka = Spawn
 	hide()
 	AchievMan.reset_variables_to_default(true)
 	GameMan.Speedrun_mode = true
+	ToastEventMan.Toast = Toast
 	LevelMan.change_level("title_screen.tscn")
 
 

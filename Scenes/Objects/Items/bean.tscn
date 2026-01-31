@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bnl2k01fyg3fl"]
+[gd_scene format=3 uid="uid://bnl2k01fyg3fl"]
 
 [ext_resource type="Script" uid="uid://c6qrnaja633an" path="res://Scripts/Objects/Items/bean.gd" id="1_2xqpn"]
 [ext_resource type="Texture2D" uid="uid://dnc1euktaauew" path="res://Assets/Sprites/Objects/Items/Bean1.png" id="1_l3jwv"]
@@ -62,24 +62,25 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_megnq"]
 size = Vector2(59, 53)
 
-[node name="Bean" type="CharacterBody2D"]
+[node name="Bean" type="CharacterBody2D" unique_id=2051215050]
 collision_layer = 8
 script = ExtResource("1_2xqpn")
 metadata/beans = 1
 metadata/instanceID = "bean_1154445053"
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=285300122]
 sprite_frames = SubResource("SpriteFrames_7vi2r")
-frame_progress = 0.642043
+animation = &"Toast"
+frame_progress = 0.6200075
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1896477900]
 shape = SubResource("RectangleShape2D_megnq")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Area2D" type="Area2D" parent="." unique_id=48165656]
 collision_layer = 0
 collision_mask = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1628173751]
 shape = SubResource("RectangleShape2D_megnq")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

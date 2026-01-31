@@ -16,6 +16,8 @@ func get_new_event(toast: int =-1) -> void:
 	if not GameMan.Speedrun_mode:
 		reset_variables_to_default()
 		Toast = randi_range(0,100) if toast == -1 else toast
+	else:
+		Toast = toast
 	match Toast:
 		4: Event = Events.TOAST_ACHIEVEMENT_SOUND
 		28: Event = Events.SPAM_QUEEN

@@ -18,6 +18,7 @@ func _physics_process(delta: float) -> void:
 
 func _on_new_game_pressed() -> void:
 	NovaFunc.reset_all_variables_to_default(false, false, true)
+	ToastEventMan.get_new_event(ToastEventMan.Toast)
 	LevelMan.change_level("trash_room.tscn")
 
 

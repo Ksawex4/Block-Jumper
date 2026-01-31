@@ -9,7 +9,10 @@ var Direction: int = [-1, 1].pick_random()
 var Wall_stop := false
 
 func _ready() -> void:
-	$AnimatedSprite2D.play()
+	if ToastEventMan.Event != ToastEventMan.Events.TOASTY_BEANS:
+		$AnimatedSprite2D.play("default")
+	else:
+		$AnimatedSprite2D.play("Toast")
 
 
 func _physics_process(_delta: float) -> void:

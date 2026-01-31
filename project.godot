@@ -15,7 +15,7 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 [application]
 
 config/name="Block Jumper"
-config/version="0.2.4"
+config/version="0.3"
 config/tags=PackedStringArray("2d", "block_jumper", "game", "github", "indevelopment", "rewrite")
 run/main_scene="uid://bdw0vwua1oy14"
 config/features=PackedStringArray("4.6", "GL Compatibility")
