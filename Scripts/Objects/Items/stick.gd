@@ -39,6 +39,17 @@ func _physics_process(_delta: float) -> void:
 	if No_player:
 		if not is_on_floor():
 			velocity.y += LevelMan.Gravity
+		
+		if $RayCast2DLeft.is_colliding() or $RayCast2DRight.is_colliding():
+			$CollisionShape2D.disabled = true
+			velocity.y = LevelMan.Gravity * 5
+		if $RayCast2DRight.is_colliding() and !$RayCast2DLeft.is_colliding():
+			position.x -= 10
+		elif !$RayCast2DRight.is_colliding() and $RayCast2DLeft.is_colliding():
+			position.x += 10
+		
+		if !($RayCast2DLeft.is_colliding() or $RayCast2DRight.is_colliding()):
+			$CollisionShape2D.disabled = false
 		move_and_slide()
 
 

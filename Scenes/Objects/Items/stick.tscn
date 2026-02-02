@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://b335udwa3qnb"]
+[gd_scene format=3 uid="uid://b335udwa3qnb"]
 
 [ext_resource type="Texture2D" uid="uid://bgjxr6kgptfv4" path="res://Assets/Sprites/Objects/Items/Stick.png" id="1_j7kfn"]
 [ext_resource type="Script" uid="uid://dcglvjkdab7ys" path="res://Scripts/Objects/Items/stick.gd" id="1_uxke7"]
@@ -12,31 +12,41 @@ size = Vector2(48, 4)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kx400"]
 size = Vector2(48, 4)
 
-[node name="Stick" type="CharacterBody2D"]
+[node name="Stick" type="CharacterBody2D" unique_id=1489808321]
 process_mode = 3
 collision_layer = 32
 collision_mask = 0
 script = ExtResource("1_uxke7")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=149278818]
 shape = SubResource("RectangleShape2D_tgyry")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=202019146]
 texture = ExtResource("1_j7kfn")
 
-[node name="AttackArea" type="Area2D" parent="."]
+[node name="AttackArea" type="Area2D" parent="." unique_id=869807609]
 collision_layer = 0
 collision_mask = 4
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea" unique_id=961309548]
 shape = SubResource("RectangleShape2D_uxke7")
 
-[node name="PickUpArea" type="Area2D" parent="."]
+[node name="PickUpArea" type="Area2D" parent="." unique_id=1576478073]
 collision_layer = 0
 collision_mask = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PickUpArea"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PickUpArea" unique_id=1357845823]
 shape = SubResource("RectangleShape2D_kx400")
+
+[node name="RayCast2DLeft" type="RayCast2D" parent="." unique_id=1336723866]
+position = Vector2(-16, -3)
+target_position = Vector2(0, -4)
+hit_from_inside = true
+
+[node name="RayCast2DRight" type="RayCast2D" parent="." unique_id=1945990797]
+position = Vector2(16, -3)
+target_position = Vector2(0, -4)
+hit_from_inside = true
 
 [connection signal="body_entered" from="AttackArea" to="." method="_on_attack_area_body_entered"]
 [connection signal="body_entered" from="PickUpArea" to="." method="_on_pick_up_area_body_entered"]
