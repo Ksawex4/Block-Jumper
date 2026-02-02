@@ -17,7 +17,7 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 config/name="Block Jumper"
 config/version="0.3"
 config/tags=PackedStringArray("2d", "block_jumper", "game", "github", "indevelopment", "rewrite")
-run/main_scene="uid://bdw0vwua1oy14"
+run/main_scene="uid://dwod62ax8nur7"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 boot_splash/use_filter=false
 boot_splash/image="uid://c4lib2gse8ur"
@@ -30,6 +30,12 @@ buses/default_bus_layout="uid://d310ipshkndeq"
 
 [autoload]
 
+NovaTexture="*uid://c3s5ls8isn1pk"
+NovaAnimation="*uid://d2lgtf02oixnb"
+NovaTranslation="*uid://rqdjajdrxdjj"
+NovaAudio="*uid://hg2loqpj0ydg"
+NovaFont="*uid://c15tc7x6hpso0"
+NovaResourcePack="*uid://b0pi17fo4ohhu"
 GameMan="*res://Scripts/Globals/Managers/GameManager.gd"
 LevelMan="*res://Scripts/Globals/Managers/LevelManager.gd"
 DebugMan="*res://Scripts/Globals/Managers/DebugManager.gd"
@@ -60,7 +66,7 @@ movie_writer/movie_file="/home/nova/Godot/movie.avi"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/PaletteSwapShader/plugin.cfg")
+enabled=PackedStringArray("res://addons/PaletteSwapShader/plugin.cfg", "res://addons/nova-resource-packs/plugin.cfg")
 
 [file_customization]
 

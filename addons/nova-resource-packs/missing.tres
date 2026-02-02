@@ -1,0 +1,39 @@
+[gd_resource type="SpriteFrames" format=3 uid="uid://bco1o0x5vwajh"]
+
+[ext_resource type="Texture2D" uid="uid://yy6aj8nl3eck" path="res://addons/nova-resource-packs/missing.png" id="1_hsmhg"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y51bk"]
+atlas = ExtResource("1_hsmhg")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_04uno"]
+atlas = ExtResource("1_hsmhg")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n70vg"]
+atlas = ExtResource("1_hsmhg")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lmk8p"]
+atlas = ExtResource("1_hsmhg")
+region = Rect2(0, 16, 16, 16)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y51bk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_04uno")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n70vg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lmk8p")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d374138e1otho"
-path="res://.godot/imported/test.png-44780daaf7d7c0a1e069f6d5308ad279.ctex"
+uid="uid://c4lib2gse8ur"
+path="res://.godot/imported/boot-splash-background.png-0dc7545f13fde47d0eaa25637c545283.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/Backgrounds/test.png"
-dest_files=["res://.godot/imported/test.png-44780daaf7d7c0a1e069f6d5308ad279.ctex"]
+source_file="res://Assets/Sprites/Backgrounds/boot-splash-background.png"
+dest_files=["res://.godot/imported/boot-splash-background.png-0dc7545f13fde47d0eaa25637c545283.ctex"]
 
 [params]
 

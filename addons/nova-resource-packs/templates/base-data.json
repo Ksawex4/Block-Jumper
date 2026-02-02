@@ -1,0 +1,71 @@
+{
+  "assets-path": "res://assets/",
+  "sfx-path": "audio/sfx/",
+  "music-path": "audio/music",
+  "textures-path": "textures/",
+  "langs-path": "langs/",
+  "fonts-path": "fonts/",
+  "meta": {
+	 "name": "base-pack-template",
+	 "description": "Base Resource Pack template, all paths except assets-path is assets-path + x-path",
+	 "authors": [
+      "NovaProot"
+	 ]
+  },
+
+  "audio": {
+	 "sfx": {
+		"example-sfx-id": "path to sfx from assets-path + sfx-path"
+	 },
+	 "music": {
+		"example-music-id": "path to music from assets-path + music-path"
+	 }
+  },
+
+  "textures": {
+	 "example-texture-id": "path to texture from assets-path + textures-path"
+  },
+  "animations": {
+	 "example-animation-sheet": {
+		"type": "sheet",
+		"texture-id": "id from textures above",
+		"frames-x": 2,
+		"frames-y": 2,
+		"fps": 5.0,
+		"loop": true
+	 },
+	 "example-animation-frames": {
+		"type": "frames",
+		"texture-id": [
+		  "texture-id.1",
+	"texture-id.2",
+	"INFO: Animation id format is: AnimationId.AnimationName if AnimationName is empty, for example 'animation5'",
+	"INFO: then animation id will be 'animation5' and AnimationName will be 'default'"
+		],
+		"fps": 5.0,
+		"loop": false
+	 },
+	 "example-animation.right": {
+		"type": "sheet",
+		"texture-id": "for this animation id is 'example-animation' and name is 'right'",
+		"frames-x": 40,
+		"frames-y": 25,
+		"fps": 24.9,
+		"loop": true
+	 }
+  },
+
+  "langs": {
+	 "en": "en.json  path for this would be assets-path + langs-path so 'res://assets/langs/en.json'",
+	 "pl": {
+		"menu.settings.can-duck-fly": "Czy kaczki potrafią latać?",
+		"pack.example.info.1": "There are 2 ways to make a translation, first is giving the path to the .json file",
+		"pack.example.info.2": "and second is typing it inside the file",
+		"pack.example.info.3": "Don't forget to change path to this file in NovaResourcePack.gd BASE_PACK_DATA_PATH to the path of this file if your file is in a different path than the default 'res://assets/data.json'"
+	 }
+  },
+
+  "fonts": {
+	 "example-font": "main.ttf this font path would be assets-path + fonts-path so 'res://assets/fonts/main.ttf'"
+  }
+}

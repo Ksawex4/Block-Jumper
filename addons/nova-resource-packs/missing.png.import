@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c4lib2gse8ur"
-path="res://.godot/imported/testBackground.png-6df65b8516ab0083a2d6cb5367cb8d08.ctex"
+uid="uid://yy6aj8nl3eck"
+path="res://.godot/imported/missing.png-1a2387c6f419cd4703a8d755c56a9094.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/Backgrounds/testBackground.png"
-dest_files=["res://.godot/imported/testBackground.png-6df65b8516ab0083a2d6cb5367cb8d08.ctex"]
+source_file="res://addons/nova-resource-packs/missing.png"
+dest_files=["res://.godot/imported/missing.png-1a2387c6f419cd4703a8d755c56a9094.ctex"]
 
 [params]
 
