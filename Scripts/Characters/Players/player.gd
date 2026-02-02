@@ -91,15 +91,13 @@ func _update_bar() -> void:
 
 func check_duck_status() -> void:
 	if PlayerStats.is_player_duck(WhoAmI):
+		$AnimatedSprite2D.play("curse-of-a-duck")
 		match WhoAmI:
 			"Fency": 
-				$AnimatedSprite2D.play("CurseOfADuck")
 				$AnimatedSprite2D.scale = Vector2(0.167, 0.212)
 			"PanLoduwka":
-				$AnimatedSprite2D.play("CurseOfADuck")
 				$AnimatedSprite2D.scale = Vector2(0.141, 0.278)
 			"Toasty":
-				$AnimatedSprite2D.play("CurseOfADuck")
 				$AnimatedSprite2D.scale = Vector2(0.167, 0.192)
 
 

@@ -34,7 +34,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_yavni")
 }],
 "loop": true,
-"name": &"CurseOfADuck",
+"name": &"curse-of-a-duck",
 "speed": 5.0
 }, {
 "frames": [{
@@ -77,7 +77,7 @@ shape = SubResource("RectangleShape2D_014rp")
 use_parent_material = true
 position = Vector2(-4.76837e-07, 0)
 sprite_frames = SubResource("SpriteFrames_l4cu0")
-animation = &"CurseOfADuck"
+animation = &"curse-of-a-duck"
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1165661593]
 collision_layer = 0
