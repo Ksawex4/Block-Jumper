@@ -156,7 +156,7 @@
       "fps": 5.0,
       "loop": true
     },
-    "enemy-kill-block": {
+    "enemy-kill-block.deadly": {
       "type": "sheet",
       "texture-id": "enemy-kill-block.deadly",
       "frames-x": 2,
