@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://drxk8bs36lex7"]
+[gd_scene format=3 uid="uid://drxk8bs36lex7"]
 
 [ext_resource type="Script" uid="uid://cqj1vcgragev6" path="res://Scripts/Characters/NPCs/breabit.gd" id="1_fgvix"]
 [ext_resource type="Texture2D" uid="uid://c2l3yd1wsky33" path="res://Assets/Sprites/Characters/NPCs/BreabitExplosion.png" id="2_tl14t"]
@@ -67,14 +67,6 @@ region = Rect2(0, 144, 48, 48)
 atlas = ExtResource("2_tl14t")
 region = Rect2(48, 144, 48, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_fmykt"]
-atlas = ExtResource("2_tl14t")
-region = Rect2(96, 144, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_qu55a"]
-atlas = ExtResource("2_tl14t")
-region = Rect2(144, 144, 48, 48)
-
 [sub_resource type="SpriteFrames" id="SpriteFrames_2tj6k"]
 animations = [{
 "frames": [{
@@ -127,32 +119,26 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_7p50g")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_fmykt")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_qu55a")
 }],
 "loop": false,
 "name": &"explode",
 "speed": 10.0
 }]
 
-[node name="Breabit" type="Area2D"]
+[node name="Breabit" type="Area2D" unique_id=1713618137]
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("1_fgvix")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=814449884]
 shape = SubResource("RectangleShape2D_n0abf")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=562746457]
 position = Vector2(0, -24)
 sprite_frames = SubResource("SpriteFrames_2tj6k")
 animation = &"explode"
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1943123289]
 stream = ExtResource("4_gbx24")
 volume_db = 10.895
 

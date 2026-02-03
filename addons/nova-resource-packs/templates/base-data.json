@@ -28,9 +28,10 @@
   "animations": {
 	 "example-animation-sheet": {
 		"type": "sheet",
-		"texture-id": "id from textures above",
+		"texture-id": "id from textures above, remove-x-frames deletes x last frames",
 		"frames-x": 2,
 		"frames-y": 2,
+		"remove-x-frames": 0,
 		"fps": 5.0,
 		"loop": true
 	 },

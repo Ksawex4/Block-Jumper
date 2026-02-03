@@ -87,8 +87,8 @@
 
     "fency": "Characters/Players/sprFency.png",
     "pan-loduwka": "Characters/Players/sprPanLoduwka.png",
-    "pan-loduwka.left": "Characters/Players/sprPanLoduwkaRight.png",
-    "pan-loduwka.right": "Characters/Players/sprPanLoduwkaLeft.png",
+    "pan-loduwka.left": "Characters/Players/sprPanLoduwkaLeft.png",
+    "pan-loduwka.right": "Characters/Players/sprPanLoduwkaRight.png",
     "toasty": "Characters/Players/Toasty.png",
 
     "gui.title-screen.achievements": "GUI/Buttons/Achievements.png",
@@ -137,6 +137,7 @@
       "texture-id": "boot-splash-fency",
       "frames-x": 7,
       "frames-y": 6,
+      "remove-x-frames": 5,
       "fps": 8.0,
       "loop": false
     },
@@ -145,6 +146,7 @@
       "texture-id": "spr-realistic-explosion",
       "frames-x": 6,
       "frames-y": 3,
+      "remove-x-frames": 1,
       "fps": 12.0,
       "loop": false
     },
@@ -177,6 +179,7 @@
       "texture-id": "npc-breadbit.explosion",
       "frames-x": 4,
       "frames-y": 4,
+      "remove-x-frames": 2,
       "fps": 10.0,
       "loop": false
     },
@@ -241,24 +244,26 @@
     "save-point": {
       "type": "sheet",
       "texture-id": "save-point",
-      "frames-x": 2,
-      "frames-y": 2,
+      "frames-x": 3,
+      "frames-y": 3,
+      "remove-x-frames": 1,
       "fps": 5.0,
       "loop": true
     },
     "save-point.save": {
       "type": "sheet",
       "texture-id": "save-point.save",
-      "frames-x": 3,
-      "frames-y": 3,
+      "frames-x": 2,
+      "frames-y": 2,
       "fps": 5.0,
-      "loop": true
+      "loop": false
     },
     "save-point.bob-fail": {
       "type": "sheet",
       "texture-id": "save-point.bob-fail",
       "frames-x": 2,
       "frames-y": 2,
+      "remove-x-frames": 1,
       "fps": 5.0,
       "loop": false
     },

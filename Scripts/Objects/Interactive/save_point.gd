@@ -4,7 +4,6 @@ extends CharacterBody2D
 var Is_colliding: int = 0
 var Saved := false
 var Save: bool = false
-var Save_fail_SFX := preload("uid://dneayfxwqines")
 
 
 func _ready() -> void:
@@ -16,17 +15,15 @@ func _process(_delta: float) -> void:
 		Saved = true
 		if LevelMan.Can_player_save and not Always_fail_to_save:
 			$AnimatedSprite2D.play("save")
-			DebugMan.dprint("["+ name +", _process] will save")
-		else:
-			$AnimatedSprite2D.play("bobSave")
-			DebugMan.dprint("["+ name +", _process] will fail")
 	if Save:
 		Save = false
 		if LevelMan.Can_player_save and not Always_fail_to_save:
 			GameMan.save_game(position)
 			AchievMan.save_achievements()
 		else:
-			$AudioStreamPlayer.stream = Save_fail_SFX
+			$AnimatedSprite2D.play("bob-fail")
+			await $AnimatedSprite2D.animation_finished
+			$AudioStreamPlayer.stream = NovaAudio.get_sfx("sfx-save-fail")
 		$AudioStreamPlayer.play()
 	
 	if (

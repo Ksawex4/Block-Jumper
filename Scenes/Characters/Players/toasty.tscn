@@ -40,10 +40,11 @@ bg_color = Color(1, 1, 1, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rjyu4"]
 bg_color = Color(0.91764706, 0.85882354, 0.7058824, 1)
 
-[node name="Toasty" type="CharacterBody2D" unique_id=1741372814 groups=["players"]]
+[node name="Toasty" type="CharacterBody2D" unique_id=1741372814 node_paths=PackedStringArray("AnimationSprite") groups=["players"]]
 collision_layer = 2
 script = ExtResource("1_0yfl2")
 WhoAmI = "Toasty"
+AnimationSprite = NodePath("AnimatedSprite2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1801195587]
 texture_filter = 1

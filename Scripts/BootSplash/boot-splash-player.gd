@@ -1,4 +1,4 @@
-extends AnimatedSprite2D
+extends "res://addons/nova-resource-packs/nodes/animations/NovaAnimatedSprite2D.gd"
 
 enum Directions {
 	NONE,
@@ -13,7 +13,7 @@ var Direction: Directions = Directions.NONE
 var Exploded: bool = false
 
 
-func _ready() -> void:
+func _nova_ready() -> void:
 	await Parent.PlayersMove
 	Direction = Directions.RIGHT
 	play("default")

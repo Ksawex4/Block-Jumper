@@ -133,10 +133,11 @@ bg_color = Color(0, 0, 0, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ghqpk"]
 bg_color = Color(0.21568628, 0.36862746, 0.5921569, 1)
 
-[node name="PanLoduwka" type="CharacterBody2D" unique_id=776481368 groups=["players"]]
+[node name="PanLoduwka" type="CharacterBody2D" unique_id=776481368 node_paths=PackedStringArray("AnimationSprite") groups=["players"]]
 collision_layer = 2
 script = ExtResource("1_6i6db")
 WhoAmI = "PanLoduwka"
+AnimationSprite = NodePath("AnimatedSprite2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1160091434]
 texture_filter = 1

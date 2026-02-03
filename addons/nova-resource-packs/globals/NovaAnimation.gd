@@ -6,10 +6,6 @@ var AnimationsData: Dictionary[StringName, Dictionary] # CurrentData
 signal ReloadAnimation()
 
 
-func _ready() -> void:
-	await get_tree().create_timer(0.5).timeout
-
-
 func add_animation(id: StringName, animation_data: Dictionary) -> void:
 	var type: String = animation_data.get("type")
 	
@@ -26,6 +22,7 @@ func _add_animation_sheet(id: StringName, animation_data: Dictionary) -> void:
 	var fps: float = animation_data.get("fps", 5.0)
 	var loop: bool = animation_data.get("loop", false)
 	var texture_id: StringName = animation_data.get("texture-id", &"missing")
+	var remove_x_frames: int = animation_data.get("remove-x-frames", 0)
 	var frames: Vector2 = Vector2(
 		animation_data.get("frames-x", 2),
 		animation_data.get("frames-y", 2)
@@ -56,6 +53,12 @@ func _add_animation_sheet(id: StringName, animation_data: Dictionary) -> void:
 			atlas.region.position.x += region.size.x
 		atlas.region.position.x = 0.0
 		atlas.region.position.y += region.size.y
+	
+	if sprite_frames.get_frame_count(animation_name) <= remove_x_frames:
+		remove_x_frames = sprite_frames.get_frame_count(animation_name) - 1
+	
+	for x in range(remove_x_frames):
+		sprite_frames.remove_frame(animation_name, sprite_frames.get_frame_count(animation_name) - 1)
 	
 	Animations.set(new_id, sprite_frames)
 	if !BaseAnimationsData.has(id):
