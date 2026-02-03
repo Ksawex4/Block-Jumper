@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://cctvnv0h8vo4n" path="res://Scripts/BootSplash/boot-screen.gd" id="1_6acqa"]
 [ext_resource type="Texture2D" uid="uid://swlt67kvlp7u" path="res://Assets/Sprites/Backgrounds/MainMenu.png" id="2_6acqa"]
 [ext_resource type="Texture2D" uid="uid://dvd1xf4dji7vx" path="res://Assets/Sprites/BootSplash/BootSplashFency.png" id="2_5400a"]
+[ext_resource type="Texture2D" uid="uid://c4lib2gse8ur" path="res://Assets/Sprites/Backgrounds/boot-splash-background.png" id="2_sufts"]
 [ext_resource type="Texture2D" uid="uid://wrxtjfsy0by6" path="res://Assets/Sprites/BootSplash/Block.png" id="4_nxau8"]
 [ext_resource type="Texture2D" uid="uid://cuktpe01dcha1" path="res://Assets/Sprites/BootSplash/Jumper.png" id="5_v07ap"]
 [ext_resource type="Script" uid="uid://ctnd42xwsxwvq" path="res://Scripts/BootSplash/failed_to_run_window.gd" id="6_rppc3"]
@@ -628,6 +629,7 @@ offset_bottom = 205.0
 color = Color(0.133333, 0.168627, 0.270588, 1)
 
 [node name="Background" type="Sprite2D" parent="." unique_id=517563942]
+texture = ExtResource("2_sufts")
 script = ExtResource("19_cetiw")
 TextureId = &"bg-boot-splash"
 
@@ -638,8 +640,7 @@ frame = 36
 frame_progress = 1.0
 script = ExtResource("20_6qtqy")
 AnimationId = &"boot-splash-fency"
-BaseTextureSizeId = &"boot-splash-fency"
-BaseTextureSize = Vector2(32, 81)
+BaseFrameSize = Vector2(32, 81)
 metadata/_custom_type_script = "uid://dyqqwh40wkb8p"
 
 [node name="MainMenuBackground" type="Sprite2D" parent="." unique_id=970624521]

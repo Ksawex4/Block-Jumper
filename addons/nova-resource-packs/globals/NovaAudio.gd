@@ -86,7 +86,7 @@ func get_music_path(id: StringName) -> String:
 
 
 func play_music(id: StringName) -> void:
-	if Music.has(id):
+	if Music.has(id) and CurrentMusicId != id:
 		var stream: AudioStream = get_music(id)
 		if stream != null:
 			MusicStreamPlayer.stream = stream

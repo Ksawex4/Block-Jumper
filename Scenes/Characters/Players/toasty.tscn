@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://tk6vu5tms825"]
+[gd_scene format=3 uid="uid://tk6vu5tms825"]
 
 [ext_resource type="Script" uid="uid://8lbxah20kpl" path="res://Scripts/Characters/Players/player.gd" id="1_0yfl2"]
 [ext_resource type="Texture2D" uid="uid://bavnratvhdd3r" path="res://Assets/Sprites/Characters/Players/Toasty.png" id="2_0yfl2"]
 [ext_resource type="Texture2D" uid="uid://co6u0el55quo6" path="res://Assets/Sprites/Characters/Quack.jpg" id="2_7jdxq"]
+[ext_resource type="Script" uid="uid://dyqqwh40wkb8p" path="res://addons/nova-resource-packs/nodes/animations/NovaAnimatedSprite2D.gd" id="4_7jdxq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7jdxq"]
 size = Vector2(31.8, 28.8)
@@ -18,7 +19,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_rjyu4")
 }],
 "loop": true,
-"name": &"CurseOfADuck",
+"name": &"curse-of-a-duck",
 "speed": 5.0
 }, {
 "frames": [{
@@ -39,28 +40,32 @@ bg_color = Color(1, 1, 1, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rjyu4"]
 bg_color = Color(0.91764706, 0.85882354, 0.7058824, 1)
 
-[node name="Toasty" type="CharacterBody2D" groups=["players"]]
+[node name="Toasty" type="CharacterBody2D" unique_id=1741372814 groups=["players"]]
 collision_layer = 2
 script = ExtResource("1_0yfl2")
 WhoAmI = "Toasty"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1801195587]
 texture_filter = 1
 position = Vector2(0, 1.5)
 shape = SubResource("RectangleShape2D_7jdxq")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=691408636]
 sprite_frames = SubResource("SpriteFrames_rjyu4")
+script = ExtResource("4_7jdxq")
+AnimationId = &"toasty"
+BaseFrameSize = Vector2(32, 32)
+metadata/_custom_type_script = "uid://dyqqwh40wkb8p"
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Area2D" type="Area2D" parent="." unique_id=2124921219]
 collision_layer = 0
 collision_mask = 4
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1034028343]
 position = Vector2(0, 1.5)
 shape = SubResource("RectangleShape2D_qbh40")
 
-[node name="HPBar" type="Control" parent="."]
+[node name="HPBar" type="Control" parent="." unique_id=772002220]
 z_index = 1
 layout_mode = 3
 anchors_preset = 0
@@ -69,13 +74,13 @@ offset_top = -39.0
 offset_right = 26.0
 offset_bottom = -21.0
 
-[node name="Bar" type="ColorRect" parent="HPBar"]
+[node name="Bar" type="ColorRect" parent="HPBar" unique_id=191529454]
 layout_mode = 0
 offset_right = 52.0
 offset_bottom = 18.0
 color = Color(0.54902, 0.54902, 0.54902, 1)
 
-[node name="ProgressBar" type="ProgressBar" parent="HPBar"]
+[node name="ProgressBar" type="ProgressBar" parent="HPBar" unique_id=1888225663]
 layout_mode = 0
 offset_left = 1.0
 offset_top = 1.0
@@ -88,7 +93,7 @@ max_value = 120.0
 value = 120.0
 show_percentage = false
 
-[node name="Label" type="Label" parent="HPBar"]
+[node name="Label" type="Label" parent="HPBar" unique_id=1196460267]
 layout_mode = 0
 offset_left = 1.0
 offset_top = -3.0
@@ -97,7 +102,7 @@ offset_bottom = 20.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "80/80"
 
-[node name="Poison_cooldown" type="Timer" parent="."]
+[node name="Poison_cooldown" type="Timer" parent="." unique_id=283102363]
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="timeout" from="Poison_cooldown" to="." method="_on_poison_cooldown_timeout"]

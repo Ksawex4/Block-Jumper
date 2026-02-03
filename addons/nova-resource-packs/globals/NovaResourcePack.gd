@@ -95,8 +95,7 @@ func load_save_data(data: Dictionary) -> void:
 
 
 func load_active_resource_packs() -> void:
-	print("Loading packs: ",ActiveResourcePacks)
-	#load_base_assets()
+	print("======== Loading packs: %s ========" % ActiveResourcePacks)
 	
 	var assets: Dictionary[StringName, Dictionary] = {
 		&"textures": {},
@@ -120,13 +119,13 @@ func load_active_resource_packs() -> void:
 	NovaAudio.load_music(assets[&"audio"][&"music"], "")
 	NovaFont.load_fonts(assets[&"fonts"], "")
 	
-	print("======== Loaded packs %s ========" % ActiveResourcePacks)
-	
+	print("======== Reloading resources %s ========" % ActiveResourcePacks)
 	NovaTexture.ReloadTexture.emit()
 	NovaAnimation.ReloadAnimation.emit()
 	NovaAudio.ReloadSfx.emit()
 	NovaAudio.ReloadMusic.emit()
 	NovaFont.ReloadFont.emit()
+	print("======== Reloaded ========")
 
 
 func _get_assets_path(pack_data: Dictionary, pack_id: String) -> String:

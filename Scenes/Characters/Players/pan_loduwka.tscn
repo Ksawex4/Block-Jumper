@@ -1,10 +1,11 @@
-[gd_scene load_steps=24 format=3 uid="uid://vdjpm6gewqvf"]
+[gd_scene format=3 uid="uid://vdjpm6gewqvf"]
 
 [ext_resource type="Script" uid="uid://8lbxah20kpl" path="res://Scripts/Characters/Players/player.gd" id="1_6i6db"]
 [ext_resource type="Texture2D" uid="uid://dotqfisudchml" path="res://Assets/Sprites/Characters/Players/sprPanLoduwka.png" id="2_mdoun"]
 [ext_resource type="Texture2D" uid="uid://co6u0el55quo6" path="res://Assets/Sprites/Characters/Quack.jpg" id="2_s0i4f"]
 [ext_resource type="Texture2D" uid="uid://31jehernh81s" path="res://Assets/Sprites/Characters/Players/sprPanLoduwkaLeft.png" id="3_s0i4f"]
 [ext_resource type="Texture2D" uid="uid://j1t633h6nlwi" path="res://Assets/Sprites/Characters/Players/sprPanLoduwkaRight.png" id="4_ghqpk"]
+[ext_resource type="Script" uid="uid://dyqqwh40wkb8p" path="res://addons/nova-resource-packs/nodes/animations/NovaAnimatedSprite2D.gd" id="6_s0i4f"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_317mc"]
 size = Vector2(26.8, 41.8)
@@ -68,7 +69,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_317mc")
 }],
 "loop": true,
-"name": &"CurseOfADuck",
+"name": &"curse-of-a-duck",
 "speed": 5.0
 }, {
 "frames": [{
@@ -132,28 +133,32 @@ bg_color = Color(0, 0, 0, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ghqpk"]
 bg_color = Color(0.21568628, 0.36862746, 0.5921569, 1)
 
-[node name="PanLoduwka" type="CharacterBody2D" groups=["players"]]
+[node name="PanLoduwka" type="CharacterBody2D" unique_id=776481368 groups=["players"]]
 collision_layer = 2
 script = ExtResource("1_6i6db")
 WhoAmI = "PanLoduwka"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1160091434]
 texture_filter = 1
 position = Vector2(-0.5, 1)
 shape = SubResource("RectangleShape2D_317mc")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=564413575]
 sprite_frames = SubResource("SpriteFrames_1h1or")
+script = ExtResource("6_s0i4f")
+AnimationId = &"pan-loduwka"
+BaseFrameSize = Vector2(32, 48)
+metadata/_custom_type_script = "uid://dyqqwh40wkb8p"
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Area2D" type="Area2D" parent="." unique_id=521084387]
 collision_layer = 0
 collision_mask = 4
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=734762392]
 position = Vector2(-0.5, 1)
 shape = SubResource("RectangleShape2D_ijean")
 
-[node name="HPBar" type="Control" parent="."]
+[node name="HPBar" type="Control" parent="." unique_id=603441136]
 z_index = 1
 layout_mode = 3
 anchors_preset = 0
@@ -162,14 +167,14 @@ offset_top = -39.0
 offset_right = 26.0
 offset_bottom = -21.0
 
-[node name="Bar" type="ColorRect" parent="HPBar"]
+[node name="Bar" type="ColorRect" parent="HPBar" unique_id=1143148957]
 layout_mode = 0
 offset_left = -6.0
 offset_right = 59.0
 offset_bottom = 18.0
 color = Color(0, 0, 0, 1)
 
-[node name="ProgressBar" type="ProgressBar" parent="HPBar"]
+[node name="ProgressBar" type="ProgressBar" parent="HPBar" unique_id=1010078180]
 layout_mode = 0
 offset_left = -5.0
 offset_top = 1.0
@@ -182,7 +187,7 @@ max_value = 120.0
 value = 120.0
 show_percentage = false
 
-[node name="Label" type="Label" parent="HPBar"]
+[node name="Label" type="Label" parent="HPBar" unique_id=1920292788]
 layout_mode = 0
 offset_left = -5.0
 offset_top = -3.0
@@ -190,6 +195,6 @@ offset_right = 57.0
 offset_bottom = 20.0
 text = "100/100"
 
-[node name="Poison_cooldown" type="Timer" parent="."]
+[node name="Poison_cooldown" type="Timer" parent="." unique_id=1936070982]
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

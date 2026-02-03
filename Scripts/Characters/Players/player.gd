@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 var Stats: Player
 @export var WhoAmI: String
+@export var AnimationSprite: AnimatedSprite2D
 var Has_left_n_right_anim := false
 var Stick_instance: CharacterBody2D
 
@@ -14,8 +15,8 @@ func _ready() -> void:
 		_spawn_stick()
 		check_duck_status()
 		Stats.hurt(0)
-		$AnimatedSprite2D.play("default")
-		if $AnimatedSprite2D.sprite_frames.has_animation("left") and $AnimatedSprite2D.sprite_frames.has_animation("right"):
+		AnimationSprite.play("default")
+		if AnimationSprite.sprite_frames.has_animation("left") and AnimationSprite.sprite_frames.has_animation("right"):
 			Has_left_n_right_anim = true
 
 
@@ -46,13 +47,13 @@ func _physics_process(_delta: float) -> void:
 	if not is_on_floor() and axis.y >= 0 and velocity.y < 0.0:
 		velocity.y = 80
 	
-	if Has_left_n_right_anim and $AnimatedSprite2D.animation != "CurseOfADuck":
+	if Has_left_n_right_anim and AnimationSprite.animation != "CurseOfADuck":
 		if velocity.x > 0.0:
-			$AnimatedSprite2D.play("right")
+			AnimationSprite.play("right")
 		elif velocity.x < 0.0:
-			$AnimatedSprite2D.play("left")
+			AnimationSprite.play("left")
 		else:
-			$AnimatedSprite2D.play("default")
+			AnimationSprite.play("default")
 	
 	move_and_slide()
 	
@@ -91,14 +92,14 @@ func _update_bar() -> void:
 
 func check_duck_status() -> void:
 	if PlayerStats.is_player_duck(WhoAmI):
-		$AnimatedSprite2D.play("curse-of-a-duck")
+		AnimationSprite.play("curse-of-a-duck")
 		match WhoAmI:
 			"Fency": 
-				$AnimatedSprite2D.scale = Vector2(0.167, 0.212)
+				AnimationSprite.scale = Vector2(0.167, 0.212)
 			"PanLoduwka":
-				$AnimatedSprite2D.scale = Vector2(0.141, 0.278)
+				AnimationSprite.scale = Vector2(0.141, 0.278)
 			"Toasty":
-				$AnimatedSprite2D.scale = Vector2(0.167, 0.192)
+				AnimationSprite.scale = Vector2(0.167, 0.192)
 
 
 func _on_death() -> void:
