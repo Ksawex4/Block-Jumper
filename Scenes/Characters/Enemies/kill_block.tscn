@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://c2ldxhh8n667v"]
+[gd_scene format=3 uid="uid://c2ldxhh8n667v"]
 
 [ext_resource type="Script" uid="uid://bkxk8qhkc4pkj" path="res://Scripts/Characters/Enemies/kill_block.gd" id="1_e3at7"]
 [ext_resource type="Texture2D" uid="uid://bncx76kmfmqr4" path="res://Assets/Sprites/Characters/Enemies/sprKillBlock.png" id="1_plcyi"]
 [ext_resource type="Texture2D" uid="uid://btp4u43gbqkkw" path="res://Assets/Sprites/Characters/Enemies/sprDeadlyKillBlock.png" id="2_q5rk0"]
+[ext_resource type="Script" uid="uid://dyqqwh40wkb8p" path="res://addons/nova-resource-packs/nodes/animations/NovaAnimatedSprite2D.gd" id="4_a0lch"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_a0lch"]
 atlas = ExtResource("2_q5rk0")
@@ -48,14 +49,18 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0ji0f"]
 size = Vector2(32, 32)
 
-[node name="KillBlock" type="CharacterBody2D" groups=["enemies"]]
+[node name="KillBlock" type="CharacterBody2D" unique_id=465907162 groups=["enemies"]]
 collision_layer = 4
 collision_mask = 3
 script = ExtResource("1_e3at7")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=514194531]
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_a0lch")
+script = ExtResource("4_a0lch")
+AnimationId = &"enemy-kill-block"
+NovaScale = Vector2(0.5, 0.5)
+metadata/_custom_type_script = "uid://dyqqwh40wkb8p"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=426258287]
 shape = SubResource("RectangleShape2D_0ji0f")

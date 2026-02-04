@@ -1,21 +1,25 @@
-[gd_scene load_steps=4 format=3 uid="uid://dkasiow3t788s"]
+[gd_scene format=3 uid="uid://dkasiow3t788s"]
 
 [ext_resource type="Script" uid="uid://b0w8ed4ddhbsq" path="res://Scripts/Objects/Interactive/trash_can.gd" id="1_jgkua"]
 [ext_resource type="Texture2D" uid="uid://p2rdk3yru28f" path="res://Assets/Sprites/Objects/Interactive/TrashCan.png" id="2_q4o5x"]
+[ext_resource type="Script" uid="uid://b4ijjfgwm0d5h" path="res://addons/nova-resource-packs/nodes/texture/NovaSprite2D.gd" id="3_u8fmg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u8fmg"]
 size = Vector2(40, 54)
 
-[node name="TrashCan" type="Area2D" groups=["trash_cans"]]
+[node name="TrashCan" type="Area2D" unique_id=1989580153 groups=["trash_cans"]]
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("1_jgkua")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1976741713]
 position = Vector2(0, 5)
 shape = SubResource("RectangleShape2D_u8fmg")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1193014214]
 texture = ExtResource("2_q4o5x")
+script = ExtResource("3_u8fmg")
+TextureId = &"trash-can"
+metadata/_custom_type_script = "uid://b4ijjfgwm0d5h"
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://swlt67kvlp7u" path="res://Assets/Sprites/Backgrounds/MainMenu.png" id="1_kysdl"]
 [ext_resource type="Script" uid="uid://jxy8k36ike2j" path="res://Scripts/GUI/title_buttons.gd" id="1_roj86"]
+[ext_resource type="Script" uid="uid://b4ijjfgwm0d5h" path="res://addons/nova-resource-packs/nodes/texture/NovaSprite2D.gd" id="2_br58k"]
 [ext_resource type="Texture2D" uid="uid://dpj2b7s6vlvr0" path="res://Assets/Sprites/GUI/Buttons/New.png" id="2_kjbj0"]
 [ext_resource type="Script" uid="uid://b55hlkul4v5i0" path="res://Scripts/GUI/title_button.gd" id="3_2bjg4"]
 [ext_resource type="Texture2D" uid="uid://sp4wh1qxqro3" path="res://Assets/Sprites/GUI/Buttons/Load.png" id="3_h4qv3"]
@@ -19,6 +20,7 @@
 [ext_resource type="PackedScene" uid="uid://chihoo373bwy7" path="res://Scenes/Objects/Items/saltniczka.tscn" id="12_72p0a"]
 [ext_resource type="PackedScene" uid="uid://ccqr6yube5dbf" path="res://Scenes/GUI/file_manager.tscn" id="13_nrs1e"]
 [ext_resource type="Script" uid="uid://dobwxllsesc8m" path="res://Scripts/GUI/version_label.gd" id="15_p5jl7"]
+[ext_resource type="Script" uid="uid://10mtty5u20kl" path="res://addons/nova-resource-packs/nodes/audio/NovaAudioStreamPlayer.gd" id="18_0mgxj"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_sufyd"]
 
@@ -59,8 +61,11 @@ font_size = 10
 [node name="TitleScreen" type="Node2D" unique_id=328233825]
 metadata/Music = "souMainMenu.wav"
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1233339047]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1488152500]
 texture = ExtResource("1_kysdl")
+script = ExtResource("2_br58k")
+TextureId = &"bg-main-menu"
+metadata/_custom_type_script = "uid://b4ijjfgwm0d5h"
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1389060212]
 
@@ -218,11 +223,16 @@ FileManager = NodePath("../FileManager")
 
 [node name="FileManager" parent="." unique_id=1407454542 instance=ExtResource("13_nrs1e")]
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1288205100]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1676903374]
 process_mode = 3
 stream = ExtResource("10_oxd3l")
 autoplay = true
 bus = &"Music"
+script = ExtResource("18_0mgxj")
+AudioType = 1
+AudioId = &"mus-main-menu"
+Loop = true
+metadata/_custom_type_script = "uid://10mtty5u20kl"
 
 [node name="Tiles" parent="." unique_id=354738746 instance=ExtResource("11_vtciy")]
 

@@ -16,6 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://bavnratvhdd3r" path="res://Assets/Sprites/Characters/Players/Toasty.png" id="12_4h331"]
 [ext_resource type="Texture2D" uid="uid://31jehernh81s" path="res://Assets/Sprites/Characters/Players/sprPanLoduwkaLeft.png" id="12_spxrr"]
 [ext_resource type="Texture2D" uid="uid://j1t633h6nlwi" path="res://Assets/Sprites/Characters/Players/sprPanLoduwkaRight.png" id="13_4h331"]
+[ext_resource type="Script" uid="uid://beu7ws15ho70p" path="res://addons/nova-resource-packs/nodes/audio/NovaAudioStreamPlayer2D.gd" id="14_nk3qw"]
 [ext_resource type="Texture2D" uid="uid://dnc1euktaauew" path="res://Assets/Sprites/Objects/Items/Bean1.png" id="15_4h331"]
 [ext_resource type="Texture2D" uid="uid://drr0cs7mjo64q" path="res://Assets/Sprites/BootSplash/spr_realisticexplosion.png" id="16_m0s4q"]
 [ext_resource type="Script" uid="uid://b4ijjfgwm0d5h" path="res://addons/nova-resource-packs/nodes/texture/NovaSprite2D.gd" id="19_cetiw"]
@@ -721,13 +722,20 @@ offset_right = 16.0
 offset_bottom = 16.0
 metadata/_edit_use_anchors_ = true
 
-[node name="Explosion" type="AnimatedSprite2D" parent="Fency" unique_id=831294416]
+[node name="Explosion" type="AnimatedSprite2D" parent="Fency" unique_id=177134101]
 visible = false
 position = Vector2(0, 1)
 sprite_frames = SubResource("SpriteFrames_4hrd0")
+script = ExtResource("20_6qtqy")
+AnimationId = &"spr-realistic-explosion"
+BaseFrameSize = Vector2(71, 100)
+metadata/_custom_type_script = "uid://dyqqwh40wkb8p"
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Fency" unique_id=251204998]
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Fency" unique_id=350102348]
 stream = ExtResource("11_5400a")
+script = ExtResource("14_nk3qw")
+AudioId = &"sfx-kabumm"
+metadata/_custom_type_script = "uid://beu7ws15ho70p"
 
 [node name="PanLoduwka" type="AnimatedSprite2D" parent="." unique_id=1049545078 node_paths=PackedStringArray("Parent")]
 position = Vector2(-341, -155)
@@ -748,13 +756,20 @@ offset_right = 13.0
 offset_bottom = 22.0
 metadata/_edit_use_anchors_ = true
 
-[node name="Explosion" type="AnimatedSprite2D" parent="PanLoduwka" unique_id=1904255193]
+[node name="Explosion" type="AnimatedSprite2D" parent="PanLoduwka" unique_id=409823870]
 visible = false
 position = Vector2(0, 2)
 sprite_frames = SubResource("SpriteFrames_4hrd0")
+script = ExtResource("20_6qtqy")
+AnimationId = &"spr-realistic-explosion"
+BaseFrameSize = Vector2(71, 100)
+metadata/_custom_type_script = "uid://dyqqwh40wkb8p"
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="PanLoduwka" unique_id=516718806]
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="PanLoduwka" unique_id=1392787332]
 stream = ExtResource("11_5400a")
+script = ExtResource("14_nk3qw")
+AudioId = &"sfx-kabumm"
+metadata/_custom_type_script = "uid://beu7ws15ho70p"
 
 [node name="Toasty" type="AnimatedSprite2D" parent="." unique_id=2093878619 node_paths=PackedStringArray("Parent")]
 position = Vector2(-589, -149)
@@ -773,13 +788,20 @@ offset_top = -13.0
 offset_right = 16.0
 offset_bottom = 16.0
 
-[node name="Explosion" type="AnimatedSprite2D" parent="Toasty" unique_id=1071501276]
+[node name="Explosion" type="AnimatedSprite2D" parent="Toasty" unique_id=1121817419]
 visible = false
 position = Vector2(2, 4)
 sprite_frames = SubResource("SpriteFrames_4hrd0")
+script = ExtResource("20_6qtqy")
+AnimationId = &"spr-realistic-explosion"
+BaseFrameSize = Vector2(71, 100)
+metadata/_custom_type_script = "uid://dyqqwh40wkb8p"
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Toasty" unique_id=1363193656]
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Toasty" unique_id=1902341177]
 stream = ExtResource("11_5400a")
+script = ExtResource("14_nk3qw")
+AudioId = &"sfx-kabumm"
+metadata/_custom_type_script = "uid://beu7ws15ho70p"
 
 [node name="Bean" type="AnimatedSprite2D" parent="." unique_id=79934950 node_paths=PackedStringArray("Parent")]
 position = Vector2(-781, -148)

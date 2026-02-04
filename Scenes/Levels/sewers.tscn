@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://dsb563quiy52p" path="res://Scripts/level.gd" id="1_22yfd"]
 [ext_resource type="PackedScene" uid="uid://c8jjqycyb5u8t" path="res://Scenes/Objects/Others/background.tscn" id="1_so4p6"]
-[ext_resource type="Texture2D" uid="uid://cdo8gxcamy4u7" path="res://Assets/Sprites/Backgrounds/SewersBackground.png" id="2_dnweb"]
 [ext_resource type="PackedScene" uid="uid://dict2vu23hgm2" path="res://Scenes/GUI/pause_menu.tscn" id="2_spwqa"]
 [ext_resource type="PackedScene" uid="uid://cvv0gpubt765j" path="res://Scenes/GUI/achievements_menu.tscn" id="3_7davq"]
 [ext_resource type="PackedScene" uid="uid://clkawf7n1yg00" path="res://Scenes/GUI/settings_menu.tscn" id="4_c3jp4"]
@@ -38,6 +37,8 @@
 [ext_resource type="Texture2D" uid="uid://buq2hue05v4d2" path="res://Assets/Sprites/Objects/Blocks/sewerBlock.png" id="22_claet"]
 [ext_resource type="AudioStream" uid="uid://bhrdck8esi86b" path="res://Assets/Audio/Music/musBigcheese.ogg" id="26_tc42j"]
 [ext_resource type="Script" uid="uid://bgqpxwxsj2uve" path="res://Scripts/Objects/Others/player_counter.gd" id="30_e5a16"]
+[ext_resource type="Script" uid="uid://10mtty5u20kl" path="res://addons/nova-resource-packs/nodes/audio/NovaAudioStreamPlayer.gd" id="33_i472g"]
+[ext_resource type="Script" uid="uid://b4ijjfgwm0d5h" path="res://addons/nova-resource-packs/nodes/texture/NovaSprite2D.gd" id="38_2d81g"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_e5a16"]
 font_size = 9
@@ -61,7 +62,7 @@ size = Vector2(1376, 684)
 script = ExtResource("1_22yfd")
 
 [node name="Background" parent="." unique_id=851477069 instance=ExtResource("1_so4p6")]
-Sprite = ExtResource("2_dnweb")
+SpriteId = &"bg-sewers"
 Mirroring = Vector2i(1422, 800)
 
 [node name="Windows" type="Node2D" parent="." unique_id=1734767092]
@@ -558,11 +559,16 @@ zoom = Vector2(0.55, 0.55)
 
 [node name="SmoothCamera" parent="." unique_id=382482259 instance=ExtResource("9_7davq")]
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1889212876]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=684716838]
 process_mode = 3
 stream = ExtResource("10_c3jp4")
 autoplay = true
 bus = &"Music"
+script = ExtResource("33_i472g")
+AudioType = 1
+AudioId = &"mus-sewer-song"
+Loop = true
+metadata/_custom_type_script = "uid://10mtty5u20kl"
 
 [node name="Boss-RatKing" type="Node2D" parent="." unique_id=1367778137]
 
@@ -652,64 +658,105 @@ shape = SubResource("RectangleShape2D_3wx2x")
 position = Vector2(-2128, -304)
 collision_mask = 0
 
-[node name="Sprite2D" type="Sprite2D" parent="Boss-RatKing/Door" unique_id=617927867]
+[node name="Sprite2D" type="Sprite2D" parent="Boss-RatKing/Door" unique_id=1338205933]
 position = Vector2(0, -64)
 texture = ExtResource("22_claet")
+script = ExtResource("38_2d81g")
+TextureId = &"sewer-block"
+metadata/_custom_type_script = "uid://b4ijjfgwm0d5h"
 
-[node name="Sprite2D2" type="Sprite2D" parent="Boss-RatKing/Door" unique_id=1156932158]
+[node name="Sprite2D2" type="Sprite2D" parent="Boss-RatKing/Door" unique_id=600511279]
 position = Vector2(0, 32)
 texture = ExtResource("22_claet")
+script = ExtResource("38_2d81g")
+TextureId = &"sewer-block"
+metadata/_custom_type_script = "uid://b4ijjfgwm0d5h"
 
-[node name="Sprite2D3" type="Sprite2D" parent="Boss-RatKing/Door" unique_id=768806349]
+[node name="Sprite2D3" type="Sprite2D" parent="Boss-RatKing/Door" unique_id=859478368]
 position = Vector2(0, 64)
 texture = ExtResource("22_claet")
+script = ExtResource("38_2d81g")
+TextureId = &"sewer-block"
+metadata/_custom_type_script = "uid://b4ijjfgwm0d5h"
 
-[node name="Sprite2D4" type="Sprite2D" parent="Boss-RatKing/Door" unique_id=1557223311]
+[node name="Sprite2D4" type="Sprite2D" parent="Boss-RatKing/Door" unique_id=769297493]
 position = Vector2(0, -96)
 texture = ExtResource("22_claet")
+script = ExtResource("38_2d81g")
+TextureId = &"sewer-block"
+metadata/_custom_type_script = "uid://b4ijjfgwm0d5h"
 
-[node name="Sprite2D5" type="Sprite2D" parent="Boss-RatKing/Door" unique_id=430430341]
+[node name="Sprite2D5" type="Sprite2D" parent="Boss-RatKing/Door" unique_id=1414227367]
 texture = ExtResource("22_claet")
+script = ExtResource("38_2d81g")
+TextureId = &"sewer-block"
+metadata/_custom_type_script = "uid://b4ijjfgwm0d5h"
 
-[node name="Sprite2D6" type="Sprite2D" parent="Boss-RatKing/Door" unique_id=1580072571]
+[node name="Sprite2D6" type="Sprite2D" parent="Boss-RatKing/Door" unique_id=638693339]
 position = Vector2(0, -32)
 texture = ExtResource("22_claet")
+script = ExtResource("38_2d81g")
+TextureId = &"sewer-block"
+metadata/_custom_type_script = "uid://b4ijjfgwm0d5h"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Boss-RatKing/Door" unique_id=965514473]
 position = Vector2(0, -16)
 shape = SubResource("RectangleShape2D_2pliy")
 
-[node name="Sprite2D7" type="Sprite2D" parent="Boss-RatKing/Door" unique_id=2111273272]
+[node name="Sprite2D7" type="Sprite2D" parent="Boss-RatKing/Door" unique_id=1181285356]
 position = Vector2(-1248, -64)
 texture = ExtResource("22_claet")
+script = ExtResource("38_2d81g")
+TextureId = &"sewer-block"
+metadata/_custom_type_script = "uid://b4ijjfgwm0d5h"
 
-[node name="Sprite2D8" type="Sprite2D" parent="Boss-RatKing/Door" unique_id=806984979]
+[node name="Sprite2D8" type="Sprite2D" parent="Boss-RatKing/Door" unique_id=1944350011]
 position = Vector2(-1248, 32)
 texture = ExtResource("22_claet")
+script = ExtResource("38_2d81g")
+TextureId = &"sewer-block"
+metadata/_custom_type_script = "uid://b4ijjfgwm0d5h"
 
-[node name="Sprite2D9" type="Sprite2D" parent="Boss-RatKing/Door" unique_id=219568811]
+[node name="Sprite2D9" type="Sprite2D" parent="Boss-RatKing/Door" unique_id=255899339]
 position = Vector2(-1248, 64)
 texture = ExtResource("22_claet")
+script = ExtResource("38_2d81g")
+TextureId = &"sewer-block"
+metadata/_custom_type_script = "uid://b4ijjfgwm0d5h"
 
-[node name="Sprite2D10" type="Sprite2D" parent="Boss-RatKing/Door" unique_id=42178266]
+[node name="Sprite2D10" type="Sprite2D" parent="Boss-RatKing/Door" unique_id=1036958088]
 position = Vector2(-1248, -96)
 texture = ExtResource("22_claet")
+script = ExtResource("38_2d81g")
+TextureId = &"sewer-block"
+metadata/_custom_type_script = "uid://b4ijjfgwm0d5h"
 
-[node name="Sprite2D11" type="Sprite2D" parent="Boss-RatKing/Door" unique_id=1830199455]
+[node name="Sprite2D11" type="Sprite2D" parent="Boss-RatKing/Door" unique_id=1751305869]
 position = Vector2(-1248, 0)
 texture = ExtResource("22_claet")
+script = ExtResource("38_2d81g")
+TextureId = &"sewer-block"
+metadata/_custom_type_script = "uid://b4ijjfgwm0d5h"
 
-[node name="Sprite2D12" type="Sprite2D" parent="Boss-RatKing/Door" unique_id=1488028545]
+[node name="Sprite2D12" type="Sprite2D" parent="Boss-RatKing/Door" unique_id=2142200537]
 position = Vector2(-1248, -32)
 texture = ExtResource("22_claet")
+script = ExtResource("38_2d81g")
+TextureId = &"sewer-block"
+metadata/_custom_type_script = "uid://b4ijjfgwm0d5h"
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Boss-RatKing/Door" unique_id=1196447691]
 position = Vector2(-1248, -16)
 shape = SubResource("RectangleShape2D_2pliy")
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Boss-RatKing" unique_id=1765489922]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Boss-RatKing" unique_id=1470260812]
 stream = ExtResource("26_tc42j")
 bus = &"Music"
+script = ExtResource("33_i472g")
+AudioType = 1
+AudioId = &"mus-big-cheese"
+Loop = true
+metadata/_custom_type_script = "uid://10mtty5u20kl"
 
 [node name="PlayerCounter" type="Area2D" parent="Boss-RatKing" unique_id=303475393]
 position = Vector2(0, -15)
@@ -722,6 +769,5 @@ position = Vector2(-2726, -325)
 shape = SubResource("RectangleShape2D_6df3s")
 
 [connection signal="body_entered" from="Boss-RatKing/RoomEntry" to="Boss-RatKing/RoomEntry" method="_on_body_entered"]
-[connection signal="finished" from="Boss-RatKing/AudioStreamPlayer" to="Boss-RatKing/Boss-RatKing" method="_on_audio_stream_player_finished"]
 [connection signal="body_entered" from="Boss-RatKing/PlayerCounter" to="Boss-RatKing/PlayerCounter" method="_on_body_entered"]
 [connection signal="body_exited" from="Boss-RatKing/PlayerCounter" to="Boss-RatKing/PlayerCounter" method="_on_body_exited"]

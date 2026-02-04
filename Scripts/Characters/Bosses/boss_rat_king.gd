@@ -12,12 +12,15 @@ var Action: Actions = Actions.NONE
 @export var Level_music_player: AudioStreamPlayer
 @export var Entry_thing: Area2D
 @export var Player_counter: Area2D
+var FightTimer: Timer = Timer.new()
 var Battle_player_name := ""
 signal RatStart()
 signal RatStop()
 
 
 func _ready() -> void:
+	add_child(FightTimer)
+	FightTimer.timeout.connect(_on_timer_finished)
 	$HealthBar/ProgressBar.max_value = Health
 	$HealthBar/ProgressBar.value = Health
 	$HealthBar/Label.text = str(Health)
@@ -67,6 +70,7 @@ func _on_timer_timeout() -> void:
 
 func start_fight() -> void:
 	if not GameMan.Killed_bosses["RatKing"] or not GameMan.Spared_bosses["RatKing"]:
+		var fight_length: float = 172.6
 		$Timer.start(0.1)
 		LevelMan.Boss_cam_pos = Vector2(-2747.0, -324.0)
 		LevelMan.Cam_zoom = Vector2(0.5, 0.5)
@@ -74,6 +78,7 @@ func start_fight() -> void:
 		Battle_player_name = NovaFunc.get_nearest_player(global_position).WhoAmI
 		PlayerStats.Follow_who = Battle_player_name
 		DebugMan.dprint("[boss_rat_king, start_fight] fight started")
+		FightTimer.start(fight_length)
 	else:
 		end_fight()
 
@@ -113,7 +118,7 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		end_fight()
 
 
-func _on_audio_stream_player_finished() -> void:
+func _on_timer_finished() -> void:
 	end_fight()
 	AchievMan.add_achievement("TheRatKing")
 	GameMan.Spared_bosses["RatKing"] = true

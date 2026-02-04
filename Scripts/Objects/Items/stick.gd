@@ -20,10 +20,10 @@ func _ready() -> void:
 			queue_free()
 		Player.StickType.NORMAL:
 			Damage = 40
-			$Sprite2D.texture = preload("uid://bgjxr6kgptfv4")
+			$Sprite2D.change_texture(&"stick")
 		Player.StickType.CHEESE:
 			Damage = 20
-			$Sprite2D.texture = preload("uid://bln2uwbsqudqs")
+			$Sprite2D.change_texture(&"stick.cheese")
 
 func _process(_delta: float) -> void:
 	if not No_player and Who != "":

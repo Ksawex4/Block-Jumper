@@ -1,25 +1,29 @@
-[gd_scene load_steps=5 format=3 uid="uid://c63w3cme0mfpt"]
+[gd_scene format=3 uid="uid://c63w3cme0mfpt"]
 
 [ext_resource type="Script" uid="uid://d2pspn4x5jsp3" path="res://Scripts/Characters/NPCs/badly_drawn_queen_deltarune.gd" id="1_05l0v"]
 [ext_resource type="Texture2D" uid="uid://dvsfhukspkyvg" path="res://Assets/Sprites/Characters/NPCs/BadlyDrawnQueen.png" id="2_wvl3v"]
+[ext_resource type="Script" uid="uid://b4ijjfgwm0d5h" path="res://addons/nova-resource-packs/nodes/texture/NovaSprite2D.gd" id="3_33tp5"]
 [ext_resource type="LabelSettings" uid="uid://covmcdqm70qom" path="res://Resources/Fonts/DefaultFont.tres" id="3_wvl3v"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_33tp5"]
 size = Vector2(83, 102)
 
-[node name="BadlyDrawnQueenDeltarune" type="Area2D" groups=["npcs"]]
+[node name="BadlyDrawnQueenDeltarune" type="Area2D" unique_id=351222860 groups=["npcs"]]
 collision_layer = 16
 collision_mask = 2
 script = ExtResource("1_05l0v")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=998113294]
 position = Vector2(1.5, 5)
 shape = SubResource("RectangleShape2D_33tp5")
 
-[node name="Sprite2D" type="Sprite2D" parent="." groups=["npcs"]]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1362644310 groups=["npcs"]]
 texture = ExtResource("2_wvl3v")
+script = ExtResource("3_33tp5")
+TextureId = &"npc-badly-drawn-queen"
+metadata/_custom_type_script = "uid://b4ijjfgwm0d5h"
 
-[node name="Label" type="Label" parent="."]
+[node name="Label" type="Label" parent="." unique_id=781531657]
 offset_left = -179.0
 offset_top = -181.0
 offset_right = 266.0

@@ -24,8 +24,8 @@ var Spin_speed: float = randf_range(0.01,0.1) * 60.0
 
 func _ready() -> void:
 	match Sprite:
-		WhichSprite.NORMAL: $Sprite2D.texture = preload("uid://b6wt7a2ttj22b")
-		WhichSprite.CORRUPTED: $Sprite2D.texture = preload("uid://idv0qkopgg6")
+		WhichSprite.NORMAL: $Sprite2D.change_texture("npc-bob")
+		WhichSprite.CORRUPTED: $Sprite2D.change_texture("npc-corrupted-bob")
 	Glitch = BobMan.Can_glitch
 	Spin_things = BobMan.Can_spin
 	Add_velocity = BobMan.Can_add_velocity

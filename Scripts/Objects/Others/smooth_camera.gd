@@ -16,8 +16,8 @@ signal ShowHealMenu()
 
 func _ready() -> void:
 	Achievement_start_pos = AchievementLabel.position
-	$AudioStreamPlayer.stream = load(AchievMan.Achievement_sound)
-	if AchievMan.Achievement_sound == "res://Assets/Audio/SFX/souTOASTAch.wav":
+	$AudioStreamPlayer.stream = NovaAudio.get_sfx(AchievMan.Achievement_id)
+	if AchievMan.Achievement_id == &"sfx-toast-achievement":
 		$AudioStreamPlayer.volume_db = 10
 	if GameMan.is_mobile():
 		$CanvasLayer/MobileControls.show()
@@ -80,7 +80,7 @@ func _physics_process(delta: float) -> void:
 
 
 func _show_achievement(ach: String) -> void:
-	var achievement := AchievMan.Achievement_sprites[ach]
+	var achievement := NovaTexture.get_texture(AchievMan.Achievement_sprites[ach])
 	AchievementLabel.text = ""
 	if achievement:
 		AchievementLabel.add_image(achievement)
@@ -88,8 +88,8 @@ func _show_achievement(ach: String) -> void:
 		AchievementLabel.text = "Everything is fucked," + ach
 	Achievement_show = true
 	Achievement_hidden = false
-	$AudioStreamPlayer.stream = load(AchievMan.Achievement_sound)
-	if AchievMan.Achievement_sound == "res://Assets/Audio/SFX/souTOASTAch.wav":
+	$AudioStreamPlayer.stream = NovaAudio.get_sfx(AchievMan.Achievement_id)
+	if AchievMan.Achievement_id == &"sfx-toast-achievement":
 		$AudioStreamPlayer.volume_db = 10
 	$AudioStreamPlayer.play()
 	await get_tree().create_timer(4.0).timeout

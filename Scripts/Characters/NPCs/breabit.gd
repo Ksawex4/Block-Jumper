@@ -2,7 +2,7 @@ extends Area2D
 
 
 func _on_body_entered(_body: Node2D) -> void:
-	$AnimatedSprite2D.play("explode")
+	$AnimatedSprite2D.play("explosion")
 	$AudioStreamPlayer.play()
 
 

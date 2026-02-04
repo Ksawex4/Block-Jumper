@@ -1,16 +1,20 @@
-[gd_scene load_steps=3 format=3 uid="uid://chihoo373bwy7"]
+[gd_scene format=3 uid="uid://chihoo373bwy7"]
 
 [ext_resource type="Script" uid="uid://dyf6fbcj83gle" path="res://Scripts/Objects/Items/saltniczka.gd" id="1_6gbhy"]
 [ext_resource type="Texture2D" uid="uid://busfbqah2sxym" path="res://Assets/Sprites/Objects/Items/saltniczka.png" id="1_gi8p6"]
+[ext_resource type="Script" uid="uid://b4ijjfgwm0d5h" path="res://addons/nova-resource-packs/nodes/texture/NovaSprite2D.gd" id="3_akbvv"]
 
-[node name="saltniczka" type="Button"]
+[node name="saltniczka" type="Button" unique_id=855648481]
 self_modulate = Color(1, 1, 1, 0)
 offset_right = 62.0
 offset_bottom = 70.0
 script = ExtResource("1_6gbhy")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1888171836]
 position = Vector2(30, 34)
 texture = ExtResource("1_gi8p6")
+script = ExtResource("3_akbvv")
+TextureId = &"saltniczka"
+metadata/_custom_type_script = "uid://b4ijjfgwm0d5h"
 
 [connection signal="pressed" from="." to="." method="_on_pressed"]

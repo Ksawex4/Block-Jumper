@@ -24,6 +24,6 @@ func show_achievements() -> void:
 func update_achievements() -> void:
 	$RichTextLabel.text = Text.replace("ACH", str(AchievMan.Achievements.size()))
 	for x: String in AchievMan.Achievements:
-		$RichTextLabel.add_image(AchievMan.Achievement_sprites[x])
+		$RichTextLabel.add_image(NovaTexture.get_texture(AchievMan.Achievement_sprites[x]))
 	
 	DebugMan.dprint("[achievements_menu, update_achievements] done")

@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://cqx8mt1calvhl"]
+[gd_scene format=3 uid="uid://cqx8mt1calvhl"]
 
 [ext_resource type="Script" uid="uid://dm0onul5ch2rx" path="res://Scripts/Characters/Enemies/spamguy.gd" id="1_crk3p"]
 [ext_resource type="Texture2D" uid="uid://badqcpmmkcbtc" path="res://Assets/Sprites/Characters/Enemies/Ksawton.png" id="2_1ti0o"]
+[ext_resource type="Script" uid="uid://b4ijjfgwm0d5h" path="res://addons/nova-resource-packs/nodes/texture/NovaSprite2D.gd" id="3_1ti0o"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1ti0o"]
 size = Vector2(83, 102)
@@ -18,32 +19,35 @@ size = Vector2(42, 48)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w5le7"]
 size = Vector2(56, 110)
 
-[node name="Spamguy" type="CharacterBody2D" groups=["spamton"]]
+[node name="Spamguy" type="CharacterBody2D" unique_id=865859856 groups=["spamton"]]
 collision_layer = 4
 collision_mask = 5
 script = ExtResource("1_crk3p")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1273889360]
 texture = ExtResource("2_1ti0o")
+script = ExtResource("3_1ti0o")
+TextureId = &"enemy-ksawton"
+metadata/_custom_type_script = "uid://b4ijjfgwm0d5h"
 
-[node name="BDSpamQueen" type="CollisionShape2D" parent="."]
+[node name="BDSpamQueen" type="CollisionShape2D" parent="." unique_id=1611850431]
 position = Vector2(1.5, 5)
 shape = SubResource("RectangleShape2D_1ti0o")
 disabled = true
 
-[node name="BDSpamguy" type="CollisionShape2D" parent="."]
+[node name="BDSpamguy" type="CollisionShape2D" parent="." unique_id=1284068110]
 position = Vector2(2, -2.5)
 shape = SubResource("RectangleShape2D_crk3p")
 disabled = true
 
-[node name="Brunton1" type="CollisionShape2D" parent="."]
+[node name="Brunton1" type="CollisionShape2D" parent="." unique_id=1514197173]
 shape = SubResource("RectangleShape2D_jrtis")
 disabled = true
 
-[node name="Brunton2" type="CollisionShape2D" parent="."]
+[node name="Brunton2" type="CollisionShape2D" parent="." unique_id=988065233]
 shape = SubResource("RectangleShape2D_hjtj8")
 disabled = true
 
-[node name="Ksawton" type="CollisionShape2D" parent="."]
+[node name="Ksawton" type="CollisionShape2D" parent="." unique_id=1372096257]
 shape = SubResource("RectangleShape2D_w5le7")
 disabled = true

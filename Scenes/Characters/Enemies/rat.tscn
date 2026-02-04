@@ -1,32 +1,36 @@
-[gd_scene load_steps=4 format=3 uid="uid://bhpncggoodwp6"]
+[gd_scene format=3 uid="uid://bhpncggoodwp6"]
 
 [ext_resource type="Script" uid="uid://bqj2w3gob7ml2" path="res://Scripts/Characters/Enemies/rat.gd" id="1_vxr17"]
 [ext_resource type="Texture2D" uid="uid://dmqakg24p7wcm" path="res://Assets/Sprites/Characters/NPCs/rat.png" id="2_vxr17"]
+[ext_resource type="Script" uid="uid://b4ijjfgwm0d5h" path="res://addons/nova-resource-packs/nodes/texture/NovaSprite2D.gd" id="3_3qb7n"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vxr17"]
 size = Vector2(26, 22)
 
-[node name="Rat" type="CharacterBody2D"]
+[node name="Rat" type="CharacterBody2D" unique_id=1876888716]
 collision_layer = 0
 collision_mask = 64
 script = ExtResource("1_vxr17")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=880942779]
 position = Vector2(3.7252903e-07, 0)
 texture = ExtResource("2_vxr17")
+script = ExtResource("3_3qb7n")
+TextureId = &"npc-rat"
+metadata/_custom_type_script = "uid://b4ijjfgwm0d5h"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=164012087]
 shape = SubResource("RectangleShape2D_vxr17")
 
-[node name="Timer" type="Timer" parent="."]
+[node name="Timer" type="Timer" parent="." unique_id=706472588]
 wait_time = 30.0
 one_shot = true
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Area2D" type="Area2D" parent="." unique_id=238356712]
 collision_layer = 0
 collision_mask = 2
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D" unique_id=1035776773]
 shape = SubResource("RectangleShape2D_vxr17")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

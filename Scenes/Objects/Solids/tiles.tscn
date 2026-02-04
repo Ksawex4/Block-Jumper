@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://cnapla1ydbe63"]
+[gd_scene format=3 uid="uid://cnapla1ydbe63"]
 
 [ext_resource type="Texture2D" uid="uid://bu5fh31ha7gy2" path="res://Assets/Sprites/Objects/Blocks/Tiles.png" id="1_g0r5v"]
 
@@ -42,5 +42,5 @@ physics_layer_0/collision_layer = 1
 navigation_layer_0/layers = 1
 sources/0 = SubResource("TileSetAtlasSource_mikbt")
 
-[node name="Tiles" type="TileMapLayer"]
+[node name="Tiles" type="TileMapLayer" unique_id=40120780]
 tile_set = SubResource("TileSet_j5785")

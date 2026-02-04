@@ -7,27 +7,29 @@ var Wall_stop: bool = false
 
 func _ready() -> void:
 	AchievMan.add_achievement("Trash")
+	var texture_id: StringName = &"missing"
 	match randi_range(0,4):
 		0:
 			$BDSpamguy.disabled = false
-			$Sprite2D.texture = load("res://Assets/Sprites/Characters/Enemies/BadlyDrawnSpamton.png")
+			texture_id = &"enemy-badly-drawn-spamton"
 			Speed = 70
 		1:
 			$Brunton1.disabled = false
-			$Sprite2D.texture = load("res://Assets/Sprites/Characters/Enemies/Brunton1.png")
+			texture_id = &"enemy-brunton.1"
 			Speed = 130
 		2:
 			$Brunton2.disabled = false
-			$Sprite2D.texture = load("res://Assets/Sprites/Characters/Enemies/Brunton2.png")
-			Speed = 130
+			texture_id = &"enemy-brunton.2"
 		3:
 			$Ksawton.disabled = false
-			$Sprite2D.texture = load("res://Assets/Sprites/Characters/Enemies/Ksawton.png")
+			texture_id = &"enemy-ksawton"
 			Speed = 100
 		4:
 			$BDSpamQueen.disabled = false
-			$Sprite2D.texture = load("res://Assets/Sprites/Characters/Enemies/BadlyDrawnSpamQueen.png")
+			texture_id = &"enemy-badly-drawn-spam-queen"
 			Speed = 117
+	
+	$Sprite2D.change_texture(texture_id)
 	# removing not needed hitboxes
 	for x in get_children():
 		if x is CollisionShape2D and x.disabled:

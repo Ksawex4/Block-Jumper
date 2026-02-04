@@ -100,7 +100,7 @@ func add_bob_and_end() -> void:
 
 
 func crash_bob() -> void:
-	var sound: Resource = preload("uid://la1lof170xpm")
+	var sound: Resource = NovaAudio.get_sfx(&"sfx-crash")
 	var audioPlayer: AudioStreamPlayer = AudioStreamPlayer.new()
 	audioPlayer.stream = sound
 	audioPlayer.process_mode = Node.PROCESS_MODE_ALWAYS
@@ -142,18 +142,14 @@ func load_bobs_from_filah() -> void:
 func bob8() -> void:
 	if not Done and get_tree().current_scene:
 		Done = true
-		var songs: Array = ["musMainMenu.ogg", "musTrash.ogg", "musZworkaSong.ogg", "musNewbob.ogg", "musSewerSong.ogg", "musBigcheese.ogg"]
-		if len(songs) != 0:
-			for song: String in songs:
-				var path: String = "res://Assets/Audio/Music/" + song
-				var streamer: Resource = load(path)
-				if streamer:
-					var audiPlayer: AudioStreamPlayer = AudioStreamPlayer.new()
-					audiPlayer.stream = streamer
-					audiPlayer.autoplay = true
-					audiPlayer.process_mode = Node.PROCESS_MODE_ALWAYS
-					get_tree().current_scene.add_child(audiPlayer)
-					audiPlayer.play()
+		for song: String in NovaAudio.Music.keys():
+			var audiPlayer: AudioStreamPlayer = AudioStreamPlayer.new()
+			audiPlayer.stream = NovaAudio.get_music(song)
+			audiPlayer.autoplay = true
+			audiPlayer.process_mode = Node.PROCESS_MODE_ALWAYS
+			get_tree().current_scene.add_child(audiPlayer)
+			audiPlayer.play()
+			audiPlayer.finished.connect(audiPlayer.play)
 
 func reset_variables_to_default() -> void:
 	Saved_bobs = 0

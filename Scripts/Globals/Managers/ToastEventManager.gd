@@ -28,8 +28,8 @@ func _process(_delta: float) -> void:
 	match Event:
 		Events.NONE: pass
 		Events.TOAST_ACHIEVEMENT_SOUND:
-			if AchievMan.Achievement_sound != "res://Assets/Audio/SFX/sfxTOASTAch.wav":
-				AchievMan.change_achievement_sound("res://Assets/Audio/SFX/sfxTOASTAch.wav")
+			if AchievMan.Achievement_id != &"sfx-toast-achievement":
+				AchievMan.change_achievement_sound(&"sfx-toast-achievement")
 		Events.SPAM_QUEEN:
 			Spam_queen = true
 		Events.RANDOM_DUCK_PLAYER:

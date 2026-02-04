@@ -2,7 +2,9 @@
 
 [ext_resource type="Script" uid="uid://cqj1vcgragev6" path="res://Scripts/Characters/NPCs/breabit.gd" id="1_fgvix"]
 [ext_resource type="Texture2D" uid="uid://c2l3yd1wsky33" path="res://Assets/Sprites/Characters/NPCs/BreabitExplosion.png" id="2_tl14t"]
+[ext_resource type="Script" uid="uid://dyqqwh40wkb8p" path="res://addons/nova-resource-packs/nodes/animations/NovaAnimatedSprite2D.gd" id="3_fgvix"]
 [ext_resource type="AudioStream" uid="uid://t3dfhq06p6eq" path="res://Assets/Audio/SFX/sfxKrzykuBumBum.wav" id="4_gbx24"]
+[ext_resource type="Script" uid="uid://10mtty5u20kl" path="res://addons/nova-resource-packs/nodes/audio/NovaAudioStreamPlayer.gd" id="5_gbx24"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n0abf"]
 size = Vector2(58, 58)
@@ -121,7 +123,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_7p50g")
 }],
 "loop": false,
-"name": &"explode",
+"name": &"explosion",
 "speed": 10.0
 }]
 
@@ -133,14 +135,20 @@ script = ExtResource("1_fgvix")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=814449884]
 shape = SubResource("RectangleShape2D_n0abf")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=562746457]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1926594685]
 position = Vector2(0, -24)
 sprite_frames = SubResource("SpriteFrames_2tj6k")
-animation = &"explode"
+animation = &"explosion"
+script = ExtResource("3_fgvix")
+AnimationId = &"npc-breabit"
+metadata/_custom_type_script = "uid://dyqqwh40wkb8p"
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1943123289]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=650614284]
 stream = ExtResource("4_gbx24")
 volume_db = 10.895
+script = ExtResource("5_gbx24")
+AudioId = &"sfx-krzyku-bum-bum"
+metadata/_custom_type_script = "uid://10mtty5u20kl"
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

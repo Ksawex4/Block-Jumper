@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://khf6venocxir"]
+[gd_scene format=3 uid="uid://khf6venocxir"]
 
 [ext_resource type="Script" uid="uid://bappcv7ntgk32" path="res://Scripts/Characters/Bosses/boss_rat_king.gd" id="1_u4xys"]
 [ext_resource type="Texture2D" uid="uid://dh8i3y067k8de" path="res://Assets/Sprites/Characters/Bosses/TheRatKing.png" id="2_u84b3"]
 [ext_resource type="Texture2D" uid="uid://uq0jcuol0lbe" path="res://Assets/Sprites/Objects/Others/RatKingHealthBar.png" id="3_8djqo"]
+[ext_resource type="Script" uid="uid://b4ijjfgwm0d5h" path="res://addons/nova-resource-packs/nodes/texture/NovaSprite2D.gd" id="3_ce6u1"]
 [ext_resource type="FontFile" uid="uid://cfp7imnsoqkrp" path="res://Assets/Fonts/VCR_OSD_MONO_1.001.ttf" id="4_rwp20"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8djqo"]
@@ -18,39 +19,45 @@ bg_color = Color(1, 1, 0, 1)
 font = ExtResource("4_rwp20")
 font_color = Color(0, 0, 0, 1)
 
-[node name="Boss-RatKing" type="CharacterBody2D"]
+[node name="Boss-RatKing" type="CharacterBody2D" unique_id=2043030344]
 collision_layer = 4
 collision_mask = 64
 script = ExtResource("1_u4xys")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1845902875]
 texture = ExtResource("2_u84b3")
+script = ExtResource("3_ce6u1")
+TextureId = &"boss-rat-king"
+metadata/_custom_type_script = "uid://b4ijjfgwm0d5h"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1164888251]
 shape = SubResource("RectangleShape2D_8djqo")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Area2D" type="Area2D" parent="." unique_id=1877561142]
 collision_layer = 0
 collision_mask = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1307530065]
 shape = SubResource("RectangleShape2D_8djqo")
 
-[node name="Timer" type="Timer" parent="."]
+[node name="Timer" type="Timer" parent="." unique_id=504835690]
 one_shot = true
 
-[node name="HealthBar" type="Control" parent="."]
+[node name="HealthBar" type="Control" parent="." unique_id=648447186]
 layout_mode = 3
 anchors_preset = 0
 offset_left = 1.0
 offset_right = 41.0
 offset_bottom = 40.0
 
-[node name="Sprite2D" type="Sprite2D" parent="HealthBar"]
+[node name="Sprite2D" type="Sprite2D" parent="HealthBar" unique_id=1478158460]
 position = Vector2(-1, -72)
 texture = ExtResource("3_8djqo")
+script = ExtResource("3_ce6u1")
+TextureId = &"health-bar.rat-king"
+metadata/_custom_type_script = "uid://b4ijjfgwm0d5h"
 
-[node name="ProgressBar" type="ProgressBar" parent="HealthBar"]
+[node name="ProgressBar" type="ProgressBar" parent="HealthBar" unique_id=1352440414]
 layout_mode = 0
 offset_left = -55.0
 offset_top = -70.0
@@ -63,7 +70,7 @@ max_value = 200.0
 value = 200.0
 show_percentage = false
 
-[node name="Label" type="Label" parent="HealthBar"]
+[node name="Label" type="Label" parent="HealthBar" unique_id=241027543]
 layout_mode = 0
 offset_left = -15.0
 offset_top = -70.0

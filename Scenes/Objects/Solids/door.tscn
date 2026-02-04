@@ -1,8 +1,10 @@
-[gd_scene load_steps=23 format=3 uid="uid://cah7ih7yxth6u"]
+[gd_scene format=3 uid="uid://cah7ih7yxth6u"]
 
 [ext_resource type="Script" uid="uid://bku1c63id61f" path="res://Scripts/Objects/Blocks/door.gd" id="1_eiwj6"]
 [ext_resource type="Texture2D" uid="uid://cw2ajyyaxmt3k" path="res://Assets/Sprites/Objects/Blocks/Door.png" id="1_gar4v"]
 [ext_resource type="Texture2D" uid="uid://drr0cs7mjo64q" path="res://Assets/Sprites/BootSplash/spr_realisticexplosion.png" id="2_eiwj6"]
+[ext_resource type="Script" uid="uid://b4ijjfgwm0d5h" path="res://addons/nova-resource-packs/nodes/texture/NovaSprite2D.gd" id="3_370gk"]
+[ext_resource type="Script" uid="uid://dyqqwh40wkb8p" path="res://addons/nova-resource-packs/nodes/animations/NovaAnimatedSprite2D.gd" id="5_e4dtl"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_l02tk"]
 atlas = ExtResource("2_eiwj6")
@@ -134,19 +136,26 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0lxhm"]
 size = Vector2(16, 32)
 
-[node name="Door" type="StaticBody2D"]
+[node name="Door" type="StaticBody2D" unique_id=935296727]
 collision_mask = 0
 script = ExtResource("1_eiwj6")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=257462101]
 texture = ExtResource("1_gar4v")
+script = ExtResource("3_370gk")
+TextureId = &"door"
+metadata/_custom_type_script = "uid://b4ijjfgwm0d5h"
 
-[node name="Boom" type="AnimatedSprite2D" parent="."]
+[node name="Boom" type="AnimatedSprite2D" parent="." unique_id=562872825]
 visible = false
 position = Vector2(0, -3)
 sprite_frames = SubResource("SpriteFrames_2n47g")
+script = ExtResource("5_e4dtl")
+AnimationId = &"spr-realistic-explosion"
+BaseFrameSize = Vector2(71, 100)
+metadata/_custom_type_script = "uid://dyqqwh40wkb8p"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1582394251]
 shape = SubResource("RectangleShape2D_0lxhm")
 
 [connection signal="animation_finished" from="Boom" to="." method="_on_boom_animation_finished"]

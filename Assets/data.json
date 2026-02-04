@@ -166,7 +166,7 @@
       "fps": 5.0,
       "loop": true
     },
-    "npc-breadbit": {
+    "npc-breabit": {
       "type": "sheet",
       "texture-id": "npc-breadbit",
       "frames-x": 1,
@@ -174,7 +174,7 @@
       "fps": 1.0,
       "loop": false
     },
-    "npc-breadbit.explosion": {
+    "npc-breabit.explosion": {
       "type": "sheet",
       "texture-id": "npc-breadbit.explosion",
       "frames-x": 4,
@@ -271,6 +271,14 @@
       "type": "sheet",
       "texture-id": "bean",
       "frames-x": 2,
+      "frames-y": 2,
+      "fps": 5.0,
+      "loop": true
+    },
+    "bean.toast": {
+      "type": "sheet",
+      "texture-id": "toast",
+      "frames-x": 1,
       "frames-y": 2,
       "fps": 5.0,
       "loop": true

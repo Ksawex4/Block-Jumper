@@ -1,30 +1,33 @@
-[gd_scene load_steps=4 format=3 uid="uid://bvptmfk8ofbv7"]
+[gd_scene format=3 uid="uid://bvptmfk8ofbv7"]
 
 [ext_resource type="Script" uid="uid://dv1b0eusere1c" path="res://Scripts/Characters/Enemies/flying_thing.gd" id="1_l7rty"]
 [ext_resource type="Texture2D" uid="uid://cacwgynrspxgf" path="res://Assets/Sprites/Characters/Enemies/FlyingSaltThing.png" id="2_qjg4g"]
+[ext_resource type="Script" uid="uid://b4ijjfgwm0d5h" path="res://addons/nova-resource-packs/nodes/texture/NovaSprite2D.gd" id="3_qjg4g"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_telhr"]
 radius = 20.0
 
-[node name="FlyingThing" type="CharacterBody2D"]
+[node name="FlyingThing" type="CharacterBody2D" unique_id=231783159]
 collision_layer = 4
 collision_mask = 0
 script = ExtResource("1_l7rty")
 metadata/damage = 111
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=350447152]
 position = Vector2(0, 1.2517e-06)
 scale = Vector2(0.044, 0.0554785)
 texture = ExtResource("2_qjg4g")
+script = ExtResource("3_qjg4g")
+metadata/_custom_type_script = "uid://b4ijjfgwm0d5h"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=378175907]
 shape = SubResource("CircleShape2D_telhr")
 
-[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=692045590]
 avoidance_layers = 0
 avoidance_mask = 0
 
-[node name="Timer" type="Timer" parent="."]
+[node name="Timer" type="Timer" parent="." unique_id=925619360]
 wait_time = 0.2
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

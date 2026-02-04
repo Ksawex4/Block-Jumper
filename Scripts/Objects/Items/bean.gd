@@ -12,7 +12,7 @@ func _ready() -> void:
 	if ToastEventMan.Event != ToastEventMan.Events.TOASTY_BEANS:
 		$AnimatedSprite2D.play("default")
 	else:
-		$AnimatedSprite2D.play("Toast")
+		$AnimatedSprite2D.play("toast")
 
 
 func _physics_process(_delta: float) -> void:

@@ -1,47 +1,58 @@
-[gd_scene load_steps=6 format=3 uid="uid://2k45qt2g31y8"]
+[gd_scene format=3 uid="uid://2k45qt2g31y8"]
 
 [ext_resource type="Script" uid="uid://dtxprkvrf5bb1" path="res://Scripts/Objects/Projectiles/cheese.gd" id="1_dm2rf"]
 [ext_resource type="Texture2D" uid="uid://bl4e0s11fkgnp" path="res://Assets/Sprites/Objects/Projectiles/cheese.png" id="2_0cpfa"]
 [ext_resource type="AudioStream" uid="uid://di14je3q31uqd" path="res://Assets/Audio/SFX/sfxCheese.ogg" id="3_0cpfa"]
+[ext_resource type="Script" uid="uid://b4ijjfgwm0d5h" path="res://addons/nova-resource-packs/nodes/texture/NovaSprite2D.gd" id="3_tr3yn"]
 [ext_resource type="AudioStream" uid="uid://bhrk07k4b4611" path="res://Assets/Audio/SFX/sfxBigCheese.ogg" id="4_35ksc"]
+[ext_resource type="Script" uid="uid://10mtty5u20kl" path="res://addons/nova-resource-packs/nodes/audio/NovaAudioStreamPlayer.gd" id="5_w6t02"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_35ksc"]
 
-[node name="cheese" type="CharacterBody2D"]
+[node name="cheese" type="CharacterBody2D" unique_id=275801413]
 collision_layer = 128
 collision_mask = 0
 script = ExtResource("1_dm2rf")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=808125922]
 position = Vector2(4.7683716e-07, 4.7683716e-07)
 texture = ExtResource("2_0cpfa")
+script = ExtResource("3_tr3yn")
+TextureId = &"cheese"
+metadata/_custom_type_script = "uid://b4ijjfgwm0d5h"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=337945624]
 shape = SubResource("RectangleShape2D_35ksc")
 disabled = true
 
-[node name="AttackBox" type="Area2D" parent="."]
+[node name="AttackBox" type="Area2D" parent="." unique_id=227955565]
 collision_layer = 0
 collision_mask = 2
 
-[node name="CollisionShape2D2" type="CollisionPolygon2D" parent="AttackBox"]
+[node name="CollisionShape2D2" type="CollisionPolygon2D" parent="AttackBox" unique_id=1821108384]
 polygon = PackedVector2Array(1, 18.5, 19.5, -6.5, 19.5, -18.5, -19.5, -13.5, -19.5, -0.5)
 
-[node name="FreeBox" type="Area2D" parent="."]
+[node name="FreeBox" type="Area2D" parent="." unique_id=1014258510]
 collision_layer = 0
 collision_mask = 64
 
-[node name="CollisionShape2D3" type="CollisionPolygon2D" parent="FreeBox"]
+[node name="CollisionShape2D3" type="CollisionPolygon2D" parent="FreeBox" unique_id=1552433363]
 polygon = PackedVector2Array(1, 18.5, 19.5, -6.5, 19.5, -18.5, -19.5, -13.5, -19.5, -0.5)
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=674866684]
 stream = ExtResource("3_0cpfa")
 bus = &"SFX"
+script = ExtResource("5_w6t02")
+AudioId = &"sfx-cheese"
+metadata/_custom_type_script = "uid://10mtty5u20kl"
 
-[node name="BigCheese" type="AudioStreamPlayer" parent="."]
+[node name="BigCheese" type="AudioStreamPlayer" parent="." unique_id=299293638]
 stream = ExtResource("4_35ksc")
 volume_db = 9.533
 bus = &"SFX"
+script = ExtResource("5_w6t02")
+AudioId = &"sfx-big-cheese"
+metadata/_custom_type_script = "uid://10mtty5u20kl"
 
 [connection signal="body_entered" from="AttackBox" to="." method="_on_attack_box_body_entered"]
 [connection signal="body_entered" from="FreeBox" to="." method="_on_free_box_body_entered"]

@@ -7,7 +7,7 @@ var Spamguy := preload("uid://cqx8mt1calvhl")
 
 func _ready() -> void:
 	if Is_infinite:
-		$Sprite2D.texture = Infinite_texture
+		$Sprite2D.change_texture(&"trash-can.infinite")
 
 
 func _on_body_entered(_body: Node2D) -> void:

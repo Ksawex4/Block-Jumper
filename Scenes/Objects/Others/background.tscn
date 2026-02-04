@@ -1,19 +1,23 @@
-[gd_scene load_steps=3 format=3 uid="uid://c8jjqycyb5u8t"]
+[gd_scene format=3 uid="uid://c8jjqycyb5u8t"]
 
 [ext_resource type="Texture2D" uid="uid://d17ambl7737n3" path="res://Assets/Sprites/Backgrounds/Background1.png" id="1_0lpst"]
 [ext_resource type="Script" uid="uid://b6wytxw2q4plg" path="res://Scripts/Objects/Others/background.gd" id="1_7thw2"]
+[ext_resource type="Script" uid="uid://b4ijjfgwm0d5h" path="res://addons/nova-resource-packs/nodes/texture/NovaSprite2D.gd" id="3_uja15"]
 
-[node name="Background" type="Node2D"]
+[node name="Background" type="Node2D" unique_id=1515317151]
 script = ExtResource("1_7thw2")
 
-[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+[node name="ParallaxBackground" type="ParallaxBackground" parent="." unique_id=691842412]
 follow_viewport_scale = 1000.0
 
-[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground" unique_id=1536955643]
 motion_scale = Vector2(0.8, 0.8)
 motion_offset = Vector2(5, 8)
 motion_mirroring = Vector2(711, 432)
 
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer" unique_id=1478440344]
 texture = ExtResource("1_0lpst")
 centered = false
+script = ExtResource("3_uja15")
+TextureId = &"bg-1"
+metadata/_custom_type_script = "uid://b4ijjfgwm0d5h"

@@ -14,7 +14,7 @@ func _ready() -> void:
 	if Secret_queen:
 		Text = Secret_text
 	if ToastEventMan.Spam_queen:
-		$Sprite2D.texture = load("uid://cc82e7km5w72n")
+		$Sprite2D.change_texture(&"enemy-badly-drawn-spam-queen")
 
 
 func _physics_process(_delta: float) -> void:
