@@ -1,11 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://cvv0gpubt765j"]
+[gd_scene format=3 uid="uid://cvv0gpubt765j"]
 
 [ext_resource type="Script" uid="uid://ds0wdymuj5o6g" path="res://Scripts/GUI/Menus/achievement_menu.gd" id="1_ujtx3"]
+[ext_resource type="Script" uid="uid://g4j0hga52ut1" path="res://Scripts/GUI/custom_richtextlabel_font.gd" id="2_f2pxp"]
+[ext_resource type="Script" uid="uid://c48wk8hbjm0uu" path="res://Scripts/GUI/button_custom_font.gd" id="3_f2pxp"]
 
-[node name="AchievementsMenu" type="Window"]
+[node name="AchievementsMenu" type="Window" unique_id=1054974654]
 process_mode = 3
 oversampling_override = 1.0
-title = "Achievements"
+title = "menu.achievements.title"
 initial_position = 1
 size = Vector2i(250, 250)
 visible = false
@@ -13,7 +15,7 @@ min_size = Vector2i(192, 208)
 max_size = Vector2i(621, 324)
 script = ExtResource("1_ujtx3")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="."]
+[node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=735674467]
 texture_filter = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -22,21 +24,23 @@ offset_top = 31.0
 grow_horizontal = 2
 grow_vertical = 2
 bbcode_enabled = true
-text = "[color=yellow]Your current achievements ACH/10:[/color]"
+text = "menu.achievements.current-achievements"
+script = ExtResource("2_f2pxp")
 metadata/_edit_use_anchors_ = true
 
-[node name="TopWide" type="Control" parent="."]
+[node name="TopWide" type="Control" parent="." unique_id=499419113]
 layout_mode = 3
 anchors_preset = 10
 anchor_right = 1.0
 offset_bottom = 31.0
 grow_horizontal = 2
 
-[node name="ResetAchievements" type="Button" parent="TopWide"]
+[node name="ResetAchievements" type="Button" parent="TopWide" unique_id=803702609]
 layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
-text = "Reset ALL Achievements"
+text = "menu.achievements.reset"
+script = ExtResource("3_f2pxp")
 metadata/_edit_use_anchors_ = true
 
 [connection signal="close_requested" from="." to="." method="_on_close_requested"]

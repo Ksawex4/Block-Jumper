@@ -1,9 +1,10 @@
 extends Button
 
 @onready var Parent := $".."
-
+@export var FontId: StringName = &"main"
 
 func _ready() -> void:
+	add_theme_font_override("normal_font", NovaFont.get_font(FontId))
 	Parent.connect("UpdateLabel", Callable(self, "_update_label"))
 
 

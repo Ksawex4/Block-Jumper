@@ -1,8 +1,8 @@
 extends Button
 
-#func _ready() -> void:
-	#if GameMan.Random_saltniczka and randi_range(0,30) != 6 and GameMan.Random_saltniczka:
-		#queue_free()
+func _ready() -> void:
+	if GameMan.Random_saltniczka and randi_range(0,30) != 6 and GameMan.Random_saltniczka:
+		queue_free()
 
 
 func _on_pressed() -> void:

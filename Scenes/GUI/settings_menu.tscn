@@ -1,9 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://clkawf7n1yg00"]
+[gd_scene format=3 uid="uid://clkawf7n1yg00"]
 
 [ext_resource type="Script" uid="uid://bueajuw4tfq1u" path="res://Scripts/GUI/Menus/settings_menu.gd" id="1_wlny4"]
 [ext_resource type="FontFile" uid="uid://cfp7imnsoqkrp" path="res://Assets/Fonts/VCR_OSD_MONO_1.001.ttf" id="2_56h7t"]
 [ext_resource type="Script" uid="uid://dtbdlksnki47v" path="res://Scripts/GUI/Menus/controls_menu.gd" id="2_l3qjt"]
 [ext_resource type="Script" uid="uid://c4doibhs1bd7t" path="res://Scripts/GUI/controls_button.gd" id="3_04xhd"]
+[ext_resource type="Script" uid="uid://c48wk8hbjm0uu" path="res://Scripts/GUI/button_custom_font.gd" id="3_740wm"]
+[ext_resource type="Script" uid="uid://bs73o2ihu7mo4" path="res://Scripts/GUI/custom_font.gd" id="3_ll5tk"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_wlny4"]
 font = ExtResource("2_56h7t")
@@ -28,10 +30,10 @@ font_size = 14
 outline_size = 4
 outline_color = Color(0, 0, 0, 1)
 
-[node name="SettingsMenu" type="Window" node_paths=PackedStringArray("VSyncNode", "DebugMode", "BasicDebugNode", "Controls", "SFX", "SFXLabel", "Music", "MusicLabel", "BossCamToggle")]
+[node name="SettingsMenu" type="Window" unique_id=5280296 node_paths=PackedStringArray("VSyncNode", "DebugMode", "BasicDebugNode", "Controls", "SFX", "SFXLabel", "Music", "MusicLabel", "BossCamToggle")]
 process_mode = 3
 oversampling_override = 1.0
-title = "Settings"
+title = "menu.settings.title"
 initial_position = 1
 size = Vector2i(380, 250)
 visible = false
@@ -48,54 +50,58 @@ Music = NodePath("Music")
 MusicLabel = NodePath("Music/Music")
 BossCamToggle = NodePath("CameraBossTypeToggle")
 
-[node name="VSync" type="Button" parent="."]
+[node name="VSync" type="Button" parent="." unique_id=1443882256]
 offset_left = 1.0
 offset_right = 83.0
 offset_bottom = 28.0
 theme_override_fonts/font = ExtResource("2_56h7t")
 theme_override_font_sizes/font_size = 18
 text = "VSYNC: "
+script = ExtResource("3_740wm")
 
-[node name="DebugMode" type="Button" parent="."]
+[node name="DebugMode" type="Button" parent="." unique_id=1650237986]
 anchors_preset = -1
 anchor_top = 0.5467298
 anchor_right = 0.39473686
 anchor_bottom = 0.6707298
 grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_56h7t")
 text = "DebugMode: False"
+script = ExtResource("3_740wm")
 metadata/_edit_use_anchors_ = true
 
-[node name="Label" type="Label" parent="DebugMode"]
+[node name="Label" type="Label" parent="DebugMode" unique_id=1988679767]
 layout_mode = 1
 anchors_preset = -1
 anchor_top = -2.2799165
 anchor_right = 2.5666666
 anchor_bottom = 0.026534788
-text = "WARNING!! Turning on Debug Mode disables achievements and stops you from saving, make sure to SAVE before turning on this mode if you dont want to lose progress!"
+text = "menu.settings.debug-warning"
 label_settings = SubResource("LabelSettings_wlny4")
 autowrap_mode = 3
+script = ExtResource("3_ll5tk")
 metadata/_edit_use_anchors_ = true
 
-[node name="Label2" type="Label" parent="DebugMode"]
+[node name="Label2" type="Label" parent="DebugMode" unique_id=664964253]
 layout_mode = 0
 anchor_top = 1.032258
 anchor_right = 2.3266666
 anchor_bottom = 2.3225806
 offset_right = -129.0
-text = "B - spawn bouncy onurb
-Ctrl + B - remove all bouncy onurbs"
+text = "menu.settings.debug-controls"
 label_settings = SubResource("LabelSettings_04xhd")
+script = ExtResource("3_ll5tk")
 metadata/_edit_use_anchors_ = true
 
-[node name="ControlsMenu" type="Window" parent="."]
+[node name="ControlsMenu" type="Window" parent="." unique_id=877279510]
 oversampling_override = 1.0
-title = "Controls"
+title = "menu.controls.title"
 initial_position = 1
 size = Vector2i(500, 300)
 visible = false
 script = ExtResource("2_l3qjt")
 
-[node name="FencyJump" type="Button" parent="ControlsMenu"]
+[node name="FencyJump" type="Button" parent="ControlsMenu" unique_id=1381498619]
 offset_left = 1.0
 offset_top = 27.0
 offset_right = 54.0
@@ -103,7 +109,7 @@ offset_bottom = 73.0
 text = "Up: "
 script = ExtResource("3_04xhd")
 
-[node name="FencyLeft" type="Button" parent="ControlsMenu"]
+[node name="FencyLeft" type="Button" parent="ControlsMenu" unique_id=1068901270]
 offset_left = 1.0
 offset_top = 74.0
 offset_right = 54.0
@@ -111,7 +117,7 @@ offset_bottom = 120.0
 text = "Left: "
 script = ExtResource("3_04xhd")
 
-[node name="FencyRight" type="Button" parent="ControlsMenu"]
+[node name="FencyRight" type="Button" parent="ControlsMenu" unique_id=1160266594]
 offset_left = 1.0
 offset_top = 121.0
 offset_right = 54.0
@@ -119,7 +125,7 @@ offset_bottom = 167.0
 text = "Right:"
 script = ExtResource("3_04xhd")
 
-[node name="FencyCam" type="Button" parent="ControlsMenu"]
+[node name="FencyCam" type="Button" parent="ControlsMenu" unique_id=858344142]
 offset_left = 1.0
 offset_top = 168.0
 offset_right = 54.0
@@ -127,7 +133,7 @@ offset_bottom = 214.0
 text = "Cam:"
 script = ExtResource("3_04xhd")
 
-[node name="ToastyJump" type="Button" parent="ControlsMenu"]
+[node name="ToastyJump" type="Button" parent="ControlsMenu" unique_id=1881623235]
 offset_left = 155.0
 offset_top = 27.0
 offset_right = 208.0
@@ -135,7 +141,7 @@ offset_bottom = 73.0
 text = "Up:"
 script = ExtResource("3_04xhd")
 
-[node name="ToastyLeft" type="Button" parent="ControlsMenu"]
+[node name="ToastyLeft" type="Button" parent="ControlsMenu" unique_id=910595498]
 offset_left = 155.0
 offset_top = 74.0
 offset_right = 208.0
@@ -143,7 +149,7 @@ offset_bottom = 120.0
 text = "Left:"
 script = ExtResource("3_04xhd")
 
-[node name="ToastyRight" type="Button" parent="ControlsMenu"]
+[node name="ToastyRight" type="Button" parent="ControlsMenu" unique_id=45327712]
 offset_left = 155.0
 offset_top = 121.0
 offset_right = 208.0
@@ -151,7 +157,7 @@ offset_bottom = 167.0
 text = "Right:"
 script = ExtResource("3_04xhd")
 
-[node name="ToastyCam" type="Button" parent="ControlsMenu"]
+[node name="ToastyCam" type="Button" parent="ControlsMenu" unique_id=1179320475]
 offset_left = 155.0
 offset_top = 168.0
 offset_right = 208.0
@@ -159,7 +165,7 @@ offset_bottom = 214.0
 text = "Cam:"
 script = ExtResource("3_04xhd")
 
-[node name="PanLoduwkaJump" type="Button" parent="ControlsMenu"]
+[node name="PanLoduwkaJump" type="Button" parent="ControlsMenu" unique_id=1184832591]
 offset_left = 316.0
 offset_top = 27.0
 offset_right = 369.0
@@ -167,7 +173,7 @@ offset_bottom = 73.0
 text = "Up:"
 script = ExtResource("3_04xhd")
 
-[node name="PanLoduwkaLeft" type="Button" parent="ControlsMenu"]
+[node name="PanLoduwkaLeft" type="Button" parent="ControlsMenu" unique_id=145786627]
 offset_left = 316.0
 offset_top = 74.0
 offset_right = 369.0
@@ -175,7 +181,7 @@ offset_bottom = 120.0
 text = "Left:"
 script = ExtResource("3_04xhd")
 
-[node name="PanLoduwkaRight" type="Button" parent="ControlsMenu"]
+[node name="PanLoduwkaRight" type="Button" parent="ControlsMenu" unique_id=1219084431]
 offset_left = 316.0
 offset_top = 121.0
 offset_right = 369.0
@@ -183,7 +189,7 @@ offset_bottom = 167.0
 text = "Right:"
 script = ExtResource("3_04xhd")
 
-[node name="PanLoduwkaCam" type="Button" parent="ControlsMenu"]
+[node name="PanLoduwkaCam" type="Button" parent="ControlsMenu" unique_id=534131373]
 offset_left = 316.0
 offset_top = 168.0
 offset_right = 369.0
@@ -191,7 +197,7 @@ offset_bottom = 214.0
 text = "Cam:"
 script = ExtResource("3_04xhd")
 
-[node name="Interact" type="Button" parent="ControlsMenu"]
+[node name="Interact" type="Button" parent="ControlsMenu" unique_id=322217671]
 offset_left = 60.0
 offset_top = 252.0
 offset_right = 113.0
@@ -199,7 +205,7 @@ offset_bottom = 298.0
 text = "Interact:"
 script = ExtResource("3_04xhd")
 
-[node name="HealMenu" type="Button" parent="ControlsMenu"]
+[node name="HealMenu" type="Button" parent="ControlsMenu" unique_id=267572301]
 offset_left = 296.0
 offset_top = 252.0
 offset_right = 370.0
@@ -207,28 +213,31 @@ offset_bottom = 298.0
 text = "HealMenu:"
 script = ExtResource("3_04xhd")
 
-[node name="Fency" type="Label" parent="ControlsMenu"]
+[node name="Fency" type="Label" parent="ControlsMenu" unique_id=1353939259]
 offset_left = 1.0
 offset_top = 1.0
 offset_right = 46.0
 offset_bottom = 24.0
-text = "Fency"
+text = "menu.controls.fency"
+script = ExtResource("3_ll5tk")
 
-[node name="Toasty" type="Label" parent="ControlsMenu"]
+[node name="Toasty" type="Label" parent="ControlsMenu" unique_id=30209696]
 offset_left = 155.0
 offset_top = 1.0
 offset_right = 206.0
 offset_bottom = 24.0
-text = "Toasty"
+text = "menu.controls.toasty"
+script = ExtResource("3_ll5tk")
 
-[node name="PanLoduwka" type="Label" parent="ControlsMenu"]
+[node name="PanLoduwka" type="Label" parent="ControlsMenu" unique_id=575090668]
 offset_left = 316.0
 offset_top = 1.0
 offset_right = 420.0
 offset_bottom = 24.0
-text = "Pan Loduwka"
+text = "menu.controls.pan-loduwka"
+script = ExtResource("3_ll5tk")
 
-[node name="Controls" type="Button" parent="."]
+[node name="Controls" type="Button" parent="." unique_id=61954616]
 anchors_preset = -1
 anchor_left = 0.7026316
 anchor_top = 0.5963416
@@ -238,11 +247,12 @@ offset_top = 8.0
 offset_bottom = 8.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "Controls
-"
+theme_override_fonts/font = ExtResource("2_56h7t")
+text = "menu.settings.controls"
+script = ExtResource("3_740wm")
 metadata/_edit_use_anchors_ = true
 
-[node name="SFX" type="HSlider" parent="."]
+[node name="SFX" type="HSlider" parent="." unique_id=952117654]
 anchors_preset = -1
 anchor_top = 0.9145239
 anchor_right = 0.28423774
@@ -255,7 +265,7 @@ max_value = 20.0
 step = 0.25
 metadata/_edit_use_anchors_ = true
 
-[node name="SFX" type="Label" parent="SFX"]
+[node name="SFX" type="Label" parent="SFX" unique_id=322532800]
 layout_mode = 0
 offset_top = -14.0
 offset_right = 40.0
@@ -263,7 +273,7 @@ offset_bottom = 9.0
 text = "SFX"
 label_settings = SubResource("LabelSettings_ll5tk")
 
-[node name="Music" type="HSlider" parent="."]
+[node name="Music" type="HSlider" parent="." unique_id=270386585]
 anchors_preset = -1
 anchor_left = 0.33338094
 anchor_top = 0.9061906
@@ -277,7 +287,7 @@ max_value = 20.0
 step = 0.25
 metadata/_edit_use_anchors_ = true
 
-[node name="Music" type="Label" parent="Music"]
+[node name="Music" type="Label" parent="Music" unique_id=1307918947]
 layout_mode = 0
 offset_top = -15.0
 offset_right = 47.0
@@ -285,7 +295,7 @@ offset_bottom = 8.0
 text = "Music"
 label_settings = SubResource("LabelSettings_ll5tk")
 
-[node name="MaxFPS" type="HSlider" parent="."]
+[node name="MaxFPS" type="HSlider" parent="." unique_id=618253847]
 anchors_preset = -1
 anchor_left = 0.70789474
 anchor_top = 0.83
@@ -296,7 +306,7 @@ value = 60.0
 rounded = true
 metadata/_edit_use_anchors_ = true
 
-[node name="Label" type="Label" parent="MaxFPS"]
+[node name="Label" type="Label" parent="MaxFPS" unique_id=1780089834]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = -0.07272727
@@ -307,16 +317,18 @@ text = "FPS: 240"
 label_settings = SubResource("LabelSettings_740wm")
 metadata/_edit_use_anchors_ = true
 
-[node name="BasicDebug" type="Button" parent="."]
+[node name="BasicDebug" type="Button" parent="." unique_id=456938928]
 anchors_preset = -1
 anchor_left = 0.002631579
 anchor_top = 0.112
 anchor_right = 0.29473683
 anchor_bottom = 0.236
+theme_override_fonts/font = ExtResource("2_56h7t")
 text = "Debug Info: "
+script = ExtResource("3_740wm")
 metadata/_edit_use_anchors_ = true
 
-[node name="CameraBossTypeToggle" type="Button" parent="."]
+[node name="CameraBossTypeToggle" type="Button" parent="." unique_id=2040907784]
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
@@ -326,6 +338,7 @@ grow_horizontal = 0
 theme_override_fonts/font = ExtResource("2_56h7t")
 theme_override_font_sizes/font_size = 21
 text = "BossCam: Follow"
+script = ExtResource("3_740wm")
 
 [connection signal="close_requested" from="." to="." method="_on_close_requested"]
 [connection signal="pressed" from="VSync" to="." method="_on_v_sync_pressed"]

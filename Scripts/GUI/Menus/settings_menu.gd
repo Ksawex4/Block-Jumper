@@ -4,7 +4,6 @@ var Vsync: bool
 @export var VSyncNode: Button
 @export var DebugMode: Button
 @export var BasicDebugNode: Button
-@export var MaxFPS: LineEdit
 @export var Controls: Button
 @export var SFX: HSlider
 @export var SFXLabel: Label

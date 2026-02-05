@@ -26,6 +26,7 @@
 [ext_resource type="PackedScene" uid="uid://bnl2k01fyg3fl" path="res://Scenes/Objects/Items/bean.tscn" id="12_rxrux"]
 [ext_resource type="Material" uid="uid://b4gernxcbknx7" path="res://Resources/Characters/NPCs/BobOrange.tres" id="13_x0m8n"]
 [ext_resource type="PackedScene" uid="uid://wjvjhu8rs6q8" path="res://Scenes/Characters/NPCs/bit_rat.tscn" id="14_0chq0"]
+[ext_resource type="Script" uid="uid://bs73o2ihu7mo4" path="res://Scripts/GUI/custom_font.gd" id="14_2d81g"]
 [ext_resource type="Material" uid="uid://cem4c2c3jd4k8" path="res://Resources/Characters/NPCs/BobPink.tres" id="14_22yfd"]
 [ext_resource type="PackedScene" uid="uid://bu2l0f1ivopr7" path="res://Scenes/Objects/Others/save_point.tscn" id="15_dnweb"]
 [ext_resource type="Material" uid="uid://bc7xbj3x0ie7y" path="res://Resources/Characters/NPCs/BobYellow.tres" id="15_i472g"]
@@ -346,6 +347,7 @@ offset_right = 70.0
 offset_bottom = -13.0
 text = "HOLY SHIT I LEAD TO TRASH?!?!"
 label_settings = SubResource("LabelSettings_e5a16")
+script = ExtResource("14_2d81g")
 
 [node name="Bob5" parent="NPCs" unique_id=1316225489 instance=ExtResource("7_426ph")]
 material = ExtResource("14_22yfd")

@@ -1,18 +1,20 @@
-[gd_scene load_steps=4 format=3 uid="uid://bwoda6al5nah2"]
+[gd_scene format=3 uid="uid://bwoda6al5nah2"]
 
 [ext_resource type="Script" uid="uid://dh75sfhn8p42b" path="res://Scripts/GUI/Menus/speedrun_mode_menu.gd" id="1_h0r61"]
 [ext_resource type="FontFile" uid="uid://cfp7imnsoqkrp" path="res://Assets/Fonts/VCR_OSD_MONO_1.001.ttf" id="2_x1bp8"]
+[ext_resource type="Script" uid="uid://c48wk8hbjm0uu" path="res://Scripts/GUI/button_custom_font.gd" id="3_dyhfu"]
 [ext_resource type="LabelSettings" uid="uid://covmcdqm70qom" path="res://Resources/Fonts/DefaultFont.tres" id="3_hk25u"]
+[ext_resource type="Script" uid="uid://bs73o2ihu7mo4" path="res://Scripts/GUI/custom_font.gd" id="4_hk25u"]
 
-[node name="SpeedrunModeMenu" type="Window"]
+[node name="SpeedrunModeMenu" type="Window" unique_id=31490014]
 oversampling_override = 1.0
-title = "Speedrun Mode Settings"
+title = "menu.speedrun-mode-settings.title"
 initial_position = 1
 size = Vector2i(270, 160)
 visible = false
 script = ExtResource("1_h0r61")
 
-[node name="Toast" type="LineEdit" parent="."]
+[node name="Toast" type="LineEdit" parent="." unique_id=299423387]
 offset_left = 1.0
 offset_top = 1.0
 offset_right = 217.0
@@ -20,38 +22,41 @@ offset_bottom = 45.0
 theme_override_fonts/font = ExtResource("2_x1bp8")
 placeholder_text = "Toast 0-100, -1 for random"
 
-[node name="Label" type="Label" parent="Toast"]
+[node name="Label" type="Label" parent="Toast" unique_id=417670047]
 layout_mode = 0
-offset_left = 217.0
-offset_top = 8.0
-offset_right = 269.0
-offset_bottom = 35.0
-text = "-1"
+offset_left = 219.0
+offset_top = 7.0
+offset_right = 271.0
+offset_bottom = 34.0
+text = "-100"
 label_settings = ExtResource("3_hk25u")
 
-[node name="START" type="Button" parent="."]
+[node name="START" type="Button" parent="." unique_id=1662745054]
 offset_left = 97.0
 offset_top = 111.0
 offset_right = 184.0
 offset_bottom = 159.0
 theme_override_fonts/font = ExtResource("2_x1bp8")
 text = "START"
+script = ExtResource("3_dyhfu")
 
-[node name="Saltniczka" type="Button" parent="."]
+[node name="Saltniczka" type="Button" parent="." unique_id=1814927517]
 offset_top = 48.0
 offset_right = 155.0
 offset_bottom = 93.0
 theme_override_fonts/font = ExtResource("2_x1bp8")
-text = "Random Saltniczka"
+text = "menu.speedrun-mode-settings.random-saltniczka"
+script = ExtResource("3_dyhfu")
 
-[node name="Label" type="Label" parent="Saltniczka"]
+[node name="Label" type="Label" parent="Saltniczka" unique_id=117854354]
 layout_mode = 0
-offset_left = 168.0
+offset_left = 211.0
 offset_top = 10.0
-offset_right = 217.0
+offset_right = 260.0
 offset_bottom = 33.0
 text = "true"
 label_settings = ExtResource("3_hk25u")
+script = ExtResource("4_hk25u")
 
 [connection signal="close_requested" from="." to="." method="_on_close_requested"]
 [connection signal="text_submitted" from="Toast" to="." method="_on_toast_text_submitted"]

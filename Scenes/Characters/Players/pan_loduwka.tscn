@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://31jehernh81s" path="res://Assets/Sprites/Characters/Players/sprPanLoduwkaLeft.png" id="3_s0i4f"]
 [ext_resource type="Texture2D" uid="uid://j1t633h6nlwi" path="res://Assets/Sprites/Characters/Players/sprPanLoduwkaRight.png" id="4_ghqpk"]
 [ext_resource type="Script" uid="uid://dyqqwh40wkb8p" path="res://addons/nova-resource-packs/nodes/animations/NovaAnimatedSprite2D.gd" id="6_s0i4f"]
+[ext_resource type="FontFile" uid="uid://cfp7imnsoqkrp" path="res://Assets/Fonts/VCR_OSD_MONO_1.001.ttf" id="7_317mc"]
 [ext_resource type="Script" uid="uid://bs73o2ihu7mo4" path="res://Scripts/GUI/custom_font.gd" id="7_ghqpk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_317mc"]
@@ -134,6 +135,11 @@ bg_color = Color(0, 0, 0, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ghqpk"]
 bg_color = Color(0.21568628, 0.36862746, 0.5921569, 1)
 
+[sub_resource type="LabelSettings" id="LabelSettings_lmdqx"]
+font = ExtResource("7_317mc")
+font_color = Color(0, 0, 0, 1)
+outline_size = 2
+
 [node name="PanLoduwka" type="CharacterBody2D" unique_id=776481368 node_paths=PackedStringArray("AnimationSprite") groups=["players"]]
 collision_layer = 2
 script = ExtResource("1_6i6db")
@@ -192,10 +198,12 @@ show_percentage = false
 [node name="Label" type="Label" parent="HPBar" unique_id=1920292788]
 layout_mode = 0
 offset_left = -5.0
-offset_top = -3.0
+offset_top = 1.0
 offset_right = 57.0
-offset_bottom = 20.0
-text = "100/100"
+offset_bottom = 17.0
+text = "100"
+label_settings = SubResource("LabelSettings_lmdqx")
+horizontal_alignment = 1
 script = ExtResource("7_ghqpk")
 
 [node name="Poison_cooldown" type="Timer" parent="." unique_id=1936070982]

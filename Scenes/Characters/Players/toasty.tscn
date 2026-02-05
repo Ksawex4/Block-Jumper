@@ -4,6 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://bavnratvhdd3r" path="res://Assets/Sprites/Characters/Players/Toasty.png" id="2_0yfl2"]
 [ext_resource type="Texture2D" uid="uid://co6u0el55quo6" path="res://Assets/Sprites/Characters/Quack.jpg" id="2_7jdxq"]
 [ext_resource type="Script" uid="uid://dyqqwh40wkb8p" path="res://addons/nova-resource-packs/nodes/animations/NovaAnimatedSprite2D.gd" id="4_7jdxq"]
+[ext_resource type="FontFile" uid="uid://cfp7imnsoqkrp" path="res://Assets/Fonts/VCR_OSD_MONO_1.001.ttf" id="5_qbh40"]
+[ext_resource type="Script" uid="uid://bs73o2ihu7mo4" path="res://Scripts/GUI/custom_font.gd" id="5_rjyu4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7jdxq"]
 size = Vector2(31.8, 28.8)
@@ -39,6 +41,11 @@ bg_color = Color(1, 1, 1, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rjyu4"]
 bg_color = Color(0.91764706, 0.85882354, 0.7058824, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_u3u3f"]
+font = ExtResource("5_qbh40")
+font_color = Color(0, 0, 0, 1)
+outline_size = 2
 
 [node name="Toasty" type="CharacterBody2D" unique_id=1741372814 node_paths=PackedStringArray("AnimationSprite") groups=["players"]]
 collision_layer = 2
@@ -97,11 +104,14 @@ show_percentage = false
 [node name="Label" type="Label" parent="HPBar" unique_id=1196460267]
 layout_mode = 0
 offset_left = 1.0
-offset_top = -3.0
+offset_top = 1.0
 offset_right = 51.0
-offset_bottom = 20.0
+offset_bottom = 17.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "80/80"
+text = "80"
+label_settings = SubResource("LabelSettings_u3u3f")
+horizontal_alignment = 1
+script = ExtResource("5_rjyu4")
 
 [node name="Poison_cooldown" type="Timer" parent="." unique_id=283102363]
 

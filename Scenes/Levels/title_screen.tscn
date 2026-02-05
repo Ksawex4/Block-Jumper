@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://sp4wh1qxqro3" path="res://Assets/Sprites/GUI/Buttons/Load.png" id="3_h4qv3"]
 [ext_resource type="Texture2D" uid="uid://c4w2oolkqr8qp" path="res://Assets/Sprites/GUI/Buttons/Quit.png" id="3_sufyd"]
 [ext_resource type="Texture2D" uid="uid://bnvxv36jc6f8" path="res://Assets/Sprites/GUI/Buttons/Achievements.png" id="4_hgm2k"]
+[ext_resource type="Script" uid="uid://bs73o2ihu7mo4" path="res://Scripts/GUI/custom_font.gd" id="5_0mgxj"]
 [ext_resource type="PackedScene" uid="uid://cvv0gpubt765j" path="res://Scenes/GUI/achievements_menu.tscn" id="6_kysdl"]
 [ext_resource type="Texture2D" uid="uid://du7ro4la741i4" path="res://Assets/Sprites/GUI/Buttons/Settings.png" id="6_oxd3l"]
 [ext_resource type="Texture2D" uid="uid://pb1vfwgvjiml" path="res://Assets/Sprites/GUI/Buttons/SpeedrunMode.png" id="8_shcqs"]
@@ -84,6 +85,7 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_vtciy")
 icon = ExtResource("3_h4qv3")
 script = ExtResource("3_2bjg4")
 TargetNode = NodePath("../TitleButtonsTargetPos")
+TimerLenght = 0.0
 
 [node name="Information" type="Label" parent="LoadGame" unique_id=850266175]
 visible = false
@@ -92,11 +94,9 @@ offset_left = 8.0
 offset_top = -83.0
 offset_right = 191.0
 offset_bottom = 6.0
-text = "This save was made in a
-different version of this 
-game, there is a chance
-of some things breaking."
+text = "title-screen.load-info"
 label_settings = SubResource("LabelSettings_72p0a")
+script = ExtResource("5_0mgxj")
 
 [node name="NewGame" type="Button" parent="." unique_id=1528044520 node_paths=PackedStringArray("TargetNode")]
 offset_left = -540.0
@@ -113,7 +113,7 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_vtciy")
 icon = ExtResource("2_kjbj0")
 script = ExtResource("3_2bjg4")
 TargetNode = NodePath("../TitleButtonsTargetPos")
-TimerLenght = 0.3
+TimerLenght = 0.2
 
 [node name="Achievements" type="Button" parent="." unique_id=1128415139 node_paths=PackedStringArray("TargetNode")]
 offset_left = -541.0
@@ -130,7 +130,7 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_72p0a")
 icon = ExtResource("4_hgm2k")
 script = ExtResource("3_2bjg4")
 TargetNode = NodePath("../TitleButtonsTargetPos")
-TimerLenght = 0.5
+TimerLenght = 0.4
 
 [node name="Settings" type="Button" parent="." unique_id=764859277 node_paths=PackedStringArray("TargetNode")]
 offset_left = -540.0
@@ -147,7 +147,7 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_72p0a")
 icon = ExtResource("6_oxd3l")
 script = ExtResource("3_2bjg4")
 TargetNode = NodePath("../TitleButtonsTargetPos")
-TimerLenght = 0.7
+TimerLenght = 0.6
 
 [node name="Quit" type="Button" parent="." unique_id=233946738 node_paths=PackedStringArray("TargetNode")]
 offset_left = -540.0
@@ -164,7 +164,7 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_72p0a")
 icon = ExtResource("3_sufyd")
 script = ExtResource("3_2bjg4")
 TargetNode = NodePath("../TitleButtonsTargetPos")
-TimerLenght = 0.9
+TimerLenght = 0.8
 
 [node name="FileManager2" type="Button" parent="." unique_id=1818436630 node_paths=PackedStringArray("TargetNode")]
 offset_left = -544.0
@@ -182,7 +182,7 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_br58k")
 icon = ExtResource("10_nrs1e")
 script = ExtResource("3_2bjg4")
 TargetNode = NodePath("../TitleButtonsTargetPos")
-TimerLenght = 1.1
+TimerLenght = 1.0
 
 [node name="SpeedrunMode" type="Button" parent="." unique_id=2036212217 node_paths=PackedStringArray("TargetNode")]
 offset_left = -540.0
@@ -199,7 +199,7 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_72p0a")
 icon = ExtResource("8_shcqs")
 script = ExtResource("3_2bjg4")
 TargetNode = NodePath("../TitleButtonsTargetPos")
-TimerLenght = 1.3
+TimerLenght = 1.2
 
 [node name="TitleButtonsTargetPos" type="Control" parent="." unique_id=450983227 node_paths=PackedStringArray("LoadGameInfo", "LoadGameButton", "FileManager")]
 layout_mode = 3
@@ -244,9 +244,9 @@ offset_bottom = -70.0
 scale = Vector2(0.5, 0.5)
 
 [node name="Version" type="Label" parent="." unique_id=2071971462]
-offset_left = 261.0
+offset_left = 253.0
 offset_top = 157.0
-offset_right = 413.0
+offset_right = 289.0
 offset_bottom = 180.0
 text = "v?.?.?"
 label_settings = SubResource("LabelSettings_shcqs")

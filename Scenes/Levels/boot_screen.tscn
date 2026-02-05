@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://ctnd42xwsxwvq" path="res://Scripts/BootSplash/failed_to_run_window.gd" id="6_rppc3"]
 [ext_resource type="Texture2D" uid="uid://b6wt7a2ttj22b" path="res://Assets/Sprites/Characters/NPCs/Bob.png" id="7_6kbg0"]
 [ext_resource type="Script" uid="uid://bugaqp2tgv4pi" path="res://Scripts/BootSplash/boot-bob.gd" id="8_3aowl"]
+[ext_resource type="Script" uid="uid://bs73o2ihu7mo4" path="res://Scripts/GUI/custom_font.gd" id="8_5xdw2"]
 [ext_resource type="Texture2D" uid="uid://bh8dptg4s6jfu" path="res://Assets/Sprites/Characters/Players/sprFency.png" id="9_4jyde"]
 [ext_resource type="Script" uid="uid://yb4t4bd2wlk2" path="res://Scripts/BootSplash/boot-splash-player.gd" id="10_k7nhw"]
 [ext_resource type="AudioStream" uid="uid://bnwtnhirg2frj" path="res://Assets/Audio/SFX/sfxKabumm.wav" id="11_5400a"]
@@ -653,7 +654,7 @@ TextureId = &"bg-main-menu"
 
 [node name="FailedToLoad" type="Window" parent="." unique_id=392828282]
 oversampling_override = 1.0
-title = "Bob Jumper"
+title = "menu.bob-jumper.title"
 initial_position = 1
 size = Vector2i(160, 100)
 visible = false
@@ -662,9 +663,8 @@ script = ExtResource("6_rppc3")
 [node name="Info" type="Label" parent="FailedToLoad" unique_id=809237906]
 offset_right = 150.0
 offset_bottom = 68.0
-text = "The game has failed
-to run, please try
-again"
+text = "menu.bob-jumper.error"
+script = ExtResource("8_5xdw2")
 
 [node name="Ok" type="Button" parent="FailedToLoad" unique_id=1992693717]
 offset_left = 92.0
@@ -672,14 +672,6 @@ offset_top = 62.0
 offset_right = 158.0
 offset_bottom = 101.0
 text = "Ok"
-
-[node name="Information" type="Label" parent="." unique_id=510523844]
-visible = false
-offset_left = -300.0
-offset_top = -111.0
-offset_right = 300.0
-offset_bottom = -41.0
-text = "This game saves your progress inside Documents/Nova-Games/Block-Jumper/"
 
 [node name="Bob1" type="Sprite2D" parent="." unique_id=1607708113 node_paths=PackedStringArray("Parent")]
 position = Vector2(0, -256)

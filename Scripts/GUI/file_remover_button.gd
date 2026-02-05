@@ -3,8 +3,10 @@ extends Button
 @export var file_path: String = "user://nonexistent.bj"
 @onready var Parent: Control = $".."
 @export var Make_parent_invis := true
+@export var FontId: StringName = &"main"
 
 func _ready() -> void:
+	add_theme_font_override("normal_font", NovaFont.get_font(FontId))
 	if Make_parent_invis and FileAccess.file_exists(file_path):
 		Parent.show()
 
