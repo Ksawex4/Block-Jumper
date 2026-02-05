@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://cjnmjspdg62mw"]
+[gd_scene format=3 uid="uid://cjnmjspdg62mw"]
 
 [ext_resource type="Script" uid="uid://bt2tixla5xuy8" path="res://Scripts/Objects/Others/level_changer.gd" id="1_t3iut"]
+[ext_resource type="Script" uid="uid://bs73o2ihu7mo4" path="res://Scripts/GUI/custom_font.gd" id="2_2gmax"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2gmax"]
 size = Vector2(32, 32)
@@ -8,15 +9,15 @@ size = Vector2(32, 32)
 [sub_resource type="LabelSettings" id="LabelSettings_t3iut"]
 font_size = 11
 
-[node name="LevelChanger" type="Area2D"]
+[node name="LevelChanger" type="Area2D" unique_id=1185005904]
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("1_t3iut")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1470770940]
 shape = SubResource("RectangleShape2D_2gmax")
 
-[node name="Label" type="Label" parent="."]
+[node name="Label" type="Label" parent="." unique_id=1564874674]
 visible = false
 offset_left = -72.0
 offset_top = -50.0
@@ -25,5 +26,6 @@ offset_bottom = -1.0
 text = "Can Only teleport:
 Fency, Toasty, PanLoduwka"
 label_settings = SubResource("LabelSettings_t3iut")
+script = ExtResource("2_2gmax")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

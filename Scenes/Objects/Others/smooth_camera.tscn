@@ -1,9 +1,10 @@
-[gd_scene load_steps=16 format=3 uid="uid://c0egin0l7hc2v"]
+[gd_scene format=3 uid="uid://c0egin0l7hc2v"]
 
 [ext_resource type="Script" uid="uid://k6mfh6qrhaew" path="res://Scripts/Objects/Others/smooth_camera.gd" id="1_eudxl"]
 [ext_resource type="Script" uid="uid://c4oym2vbadbjm" path="res://Scripts/Debug/fps_label.gd" id="2_6oxvd"]
 [ext_resource type="AudioStream" uid="uid://btqjqrhgbcva" path="res://Assets/Audio/SFX/sfxAch.wav" id="3_yj5kq"]
 [ext_resource type="LabelSettings" uid="uid://covmcdqm70qom" path="res://Resources/Fonts/DefaultFont.tres" id="4_j63ul"]
+[ext_resource type="Script" uid="uid://bs73o2ihu7mo4" path="res://Scripts/GUI/custom_font.gd" id="5_58hl8"]
 [ext_resource type="Texture2D" uid="uid://du54mdekovu47" path="res://Assets/Sprites/GUI/MobileButtons/Pause.png" id="6_4chum"]
 [ext_resource type="Texture2D" uid="uid://cgmam0rrrv7f2" path="res://Assets/Sprites/GUI/MobileButtons/SwitchPlayer.png" id="7_mkhw6"]
 [ext_resource type="Texture2D" uid="uid://g7bsrts3djrh" path="res://Assets/Sprites/GUI/MobileButtons/SpawnBouncy_onurB.png" id="8_b7i7j"]
@@ -16,19 +17,19 @@
 [ext_resource type="Script" uid="uid://cpng626lloslg" path="res://Scripts/GUI/Menus/heal_menu.gd" id="12_y6tnf"]
 [ext_resource type="Script" uid="uid://cv27nchlxoj5w" path="res://Scripts/GUI/heal_button.gd" id="15_hl7lw"]
 
-[node name="SmoothCamera" type="Camera2D" node_paths=PackedStringArray("HealMenu", "AchievementLabel", "BeansLabel")]
+[node name="SmoothCamera" type="Camera2D" unique_id=1164520069 node_paths=PackedStringArray("HealMenu", "AchievementLabel", "BeansLabel")]
 script = ExtResource("1_eudxl")
 HealMenu = NodePath("HealMenu")
 AchievementLabel = NodePath("CanvasLayer/Achievement")
 BeansLabel = NodePath("CanvasLayer/Beans")
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1801735022]
 stream = ExtResource("3_yj5kq")
 bus = &"SFX"
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1615809941]
 
-[node name="FpsLabel" type="Label" parent="CanvasLayer"]
+[node name="FpsLabel" type="Label" parent="CanvasLayer" unique_id=1367932500]
 process_mode = 3
 visible = false
 anchors_preset = -1
@@ -39,15 +40,16 @@ anchor_bottom = 0.42
 script = ExtResource("2_6oxvd")
 metadata/_edit_use_anchors_ = true
 
-[node name="Beans" type="Label" parent="CanvasLayer"]
+[node name="Beans" type="Label" parent="CanvasLayer" unique_id=1017616025]
 anchors_preset = -1
 anchor_right = 0.1625
 anchor_bottom = 0.08888889
 text = "Beans: "
 label_settings = ExtResource("4_j63ul")
+script = ExtResource("5_58hl8")
 metadata/_edit_use_anchors_ = true
 
-[node name="SpeedrunTimer" type="Label" parent="CanvasLayer"]
+[node name="SpeedrunTimer" type="Label" parent="CanvasLayer" unique_id=1601774735]
 visible = false
 anchors_preset = 5
 anchor_left = 0.5
@@ -59,8 +61,9 @@ grow_horizontal = 2
 text = "Timer: x:x:x
 "
 label_settings = ExtResource("4_j63ul")
+script = ExtResource("5_58hl8")
 
-[node name="Achievement" type="RichTextLabel" parent="CanvasLayer"]
+[node name="Achievement" type="RichTextLabel" parent="CanvasLayer" unique_id=70990433]
 clip_contents = false
 anchors_preset = -1
 anchor_left = -0.15
@@ -70,7 +73,7 @@ scroll_active = false
 autowrap_mode = 0
 metadata/_edit_use_anchors_ = true
 
-[node name="MobileControls" type="Control" parent="CanvasLayer"]
+[node name="MobileControls" type="Control" parent="CanvasLayer" unique_id=2079373432]
 visible = false
 layout_mode = 3
 anchor_left = 0.033755273
@@ -80,53 +83,53 @@ anchor_bottom = 0.9825
 grow_vertical = 0
 metadata/_edit_use_anchors_ = true
 
-[node name="Pause" type="TouchScreenButton" parent="CanvasLayer/MobileControls"]
+[node name="Pause" type="TouchScreenButton" parent="CanvasLayer/MobileControls" unique_id=1012635765]
 self_modulate = Color(1, 1, 1, 0.7647059)
 position = Vector2(584, -265)
 texture_normal = ExtResource("6_4chum")
 action = "Pause"
 visibility_mode = 1
 
-[node name="SwitchPlayer" type="TouchScreenButton" parent="CanvasLayer/MobileControls"]
+[node name="SwitchPlayer" type="TouchScreenButton" parent="CanvasLayer/MobileControls" unique_id=1165927187]
 self_modulate = Color(1, 1, 1, 0.7647059)
 position = Vector2(480, -265)
 texture_normal = ExtResource("7_mkhw6")
 action = "SwitchPlayer"
 visibility_mode = 1
 
-[node name="SpawnBouncy" type="TouchScreenButton" parent="CanvasLayer/MobileControls"]
+[node name="SpawnBouncy" type="TouchScreenButton" parent="CanvasLayer/MobileControls" unique_id=1492441756]
 self_modulate = Color(1, 1, 1, 0.7647059)
 position = Vector2(584, -162)
 texture_normal = ExtResource("8_b7i7j")
 action = "SpawnBouncy_onurB"
 visibility_mode = 1
 
-[node name="DeleteBouncy" type="TouchScreenButton" parent="CanvasLayer/MobileControls"]
+[node name="DeleteBouncy" type="TouchScreenButton" parent="CanvasLayer/MobileControls" unique_id=1242098877]
 self_modulate = Color(1, 1, 1, 0.7647059)
 position = Vector2(584, -74)
 texture_normal = ExtResource("9_svihx")
 action = "DeleteAllBouncy_onurBs"
 visibility_mode = 1
 
-[node name="JumpButton" type="TouchScreenButton" parent="CanvasLayer/MobileControls"]
+[node name="JumpButton" type="TouchScreenButton" parent="CanvasLayer/MobileControls" unique_id=1692201755]
 self_modulate = Color(1, 1, 1, 0.7647059)
 position = Vector2(479.99994, -32)
 scale = Vector2(2.5, 2.5)
 texture_normal = ExtResource("11_osi1y")
 
-[node name="InteractButton" type="TouchScreenButton" parent="CanvasLayer/MobileControls"]
+[node name="InteractButton" type="TouchScreenButton" parent="CanvasLayer/MobileControls" unique_id=372078674]
 self_modulate = Color(1, 1, 1, 0.7647059)
 position = Vector2(459, 56)
 texture_normal = ExtResource("12_1uv7s")
 action = "Interact"
 
-[node name="HealMenuButton" type="TouchScreenButton" parent="CanvasLayer/MobileControls"]
+[node name="HealMenuButton" type="TouchScreenButton" parent="CanvasLayer/MobileControls" unique_id=35653509]
 self_modulate = Color(1, 1, 1, 0.7647059)
 position = Vector2(555, 56)
 texture_normal = ExtResource("10_y6tnf")
 action = "HealMenu"
 
-[node name="LeftButton" type="TouchScreenButton" parent="CanvasLayer/MobileControls"]
+[node name="LeftButton" type="TouchScreenButton" parent="CanvasLayer/MobileControls" unique_id=159097863]
 self_modulate = Color(1, 1, 1, 0.7647059)
 position = Vector2(-11.999996, 5)
 scale = Vector2(2.5, 2.5)
@@ -134,7 +137,7 @@ texture_normal = ExtResource("10_osi1y")
 passby_press = true
 action = "ControllerLeft"
 
-[node name="RightButton" type="TouchScreenButton" parent="CanvasLayer/MobileControls"]
+[node name="RightButton" type="TouchScreenButton" parent="CanvasLayer/MobileControls" unique_id=1687497094]
 self_modulate = Color(1, 1, 1, 0.7647059)
 position = Vector2(73.99997, 5)
 scale = Vector2(2.5, 2.5)
@@ -142,7 +145,7 @@ texture_normal = ExtResource("11_1uv7s")
 passby_press = true
 action = "ControllerRight"
 
-[node name="HealMenu" type="Window" parent="."]
+[node name="HealMenu" type="Window" parent="." unique_id=993772234]
 oversampling_override = 1.0
 title = "Heal Menu"
 initial_position = 1
@@ -150,14 +153,14 @@ size = Vector2i(286, 100)
 visible = false
 script = ExtResource("12_y6tnf")
 
-[node name="Fency" type="Button" parent="HealMenu"]
+[node name="Fency" type="Button" parent="HealMenu" unique_id=1065290796]
 offset_top = 32.0
 offset_right = 87.0
 offset_bottom = 79.0
 text = "Fency"
 script = ExtResource("15_hl7lw")
 
-[node name="Toasty" type="Button" parent="HealMenu"]
+[node name="Toasty" type="Button" parent="HealMenu" unique_id=1510780867]
 offset_left = 199.0
 offset_top = 32.0
 offset_right = 286.0
@@ -165,7 +168,7 @@ offset_bottom = 79.0
 text = "Toasty"
 script = ExtResource("15_hl7lw")
 
-[node name="PanLoduwka" type="Button" parent="HealMenu"]
+[node name="PanLoduwka" type="Button" parent="HealMenu" unique_id=869450767]
 offset_left = 89.0
 offset_top = 32.0
 offset_right = 197.0
@@ -173,31 +176,35 @@ offset_bottom = 79.0
 text = "PanLoduwka"
 script = ExtResource("15_hl7lw")
 
-[node name="Info" type="Label" parent="HealMenu"]
+[node name="Info" type="Label" parent="HealMenu" unique_id=2026869637]
 offset_top = 77.0
 offset_right = 286.0
 offset_bottom = 100.0
 text = "-1 Bean -> +20 HP"
+script = ExtResource("5_58hl8")
 
-[node name="FencyHP" type="Label" parent="HealMenu"]
+[node name="FencyHP" type="Label" parent="HealMenu" unique_id=219528972]
 offset_top = 5.0
 offset_right = 86.0
 offset_bottom = 28.0
 text = "100/100"
+script = ExtResource("5_58hl8")
 
-[node name="PanLoduwkaHP" type="Label" parent="HealMenu"]
+[node name="PanLoduwkaHP" type="Label" parent="HealMenu" unique_id=1114406716]
 offset_left = 96.0
 offset_top = 5.0
 offset_right = 182.0
 offset_bottom = 28.0
 text = "100/100"
+script = ExtResource("5_58hl8")
 
-[node name="ToastyHP" type="Label" parent="HealMenu"]
+[node name="ToastyHP" type="Label" parent="HealMenu" unique_id=698244981]
 offset_left = 200.0
 offset_top = 5.0
 offset_right = 286.0
 offset_bottom = 28.0
 text = "100/100"
+script = ExtResource("5_58hl8")
 
 [connection signal="pressed" from="CanvasLayer/MobileControls/JumpButton" to="." method="_on_jump_button_pressed"]
 [connection signal="released" from="CanvasLayer/MobileControls/JumpButton" to="." method="_on_jump_button_released"]

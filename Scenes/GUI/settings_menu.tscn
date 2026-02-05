@@ -9,6 +9,7 @@
 
 [sub_resource type="LabelSettings" id="LabelSettings_wlny4"]
 font = ExtResource("2_56h7t")
+font_size = 13
 font_color = Color(1, 0.196078, 0, 1)
 outline_size = 4
 outline_color = Color(0, 0, 0, 1)
@@ -272,6 +273,7 @@ offset_right = 40.0
 offset_bottom = 9.0
 text = "SFX"
 label_settings = SubResource("LabelSettings_ll5tk")
+script = ExtResource("3_ll5tk")
 
 [node name="Music" type="HSlider" parent="." unique_id=270386585]
 anchors_preset = -1
@@ -294,6 +296,7 @@ offset_right = 47.0
 offset_bottom = 8.0
 text = "Music"
 label_settings = SubResource("LabelSettings_ll5tk")
+script = ExtResource("3_ll5tk")
 
 [node name="MaxFPS" type="HSlider" parent="." unique_id=618253847]
 anchors_preset = -1
@@ -315,6 +318,7 @@ anchor_right = 0.5272727
 anchor_bottom = 2.4375
 text = "FPS: 240"
 label_settings = SubResource("LabelSettings_740wm")
+script = ExtResource("3_ll5tk")
 metadata/_edit_use_anchors_ = true
 
 [node name="BasicDebug" type="Button" parent="." unique_id=456938928]

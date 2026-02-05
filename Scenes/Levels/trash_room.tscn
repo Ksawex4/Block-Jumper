@@ -17,6 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://c0egin0l7hc2v" path="res://Scenes/Objects/Others/smooth_camera.tscn" id="8_lkdxe"]
 [ext_resource type="AudioStream" uid="uid://iyxig0wvh166" path="res://Assets/Audio/Music/musTrash.ogg" id="9_8dmrm"]
 [ext_resource type="PackedScene" uid="uid://bu2l0f1ivopr7" path="res://Scenes/Objects/Others/save_point.tscn" id="10_kkbg5"]
+[ext_resource type="Script" uid="uid://bs73o2ihu7mo4" path="res://Scripts/GUI/custom_font.gd" id="12_xkjl3"]
 [ext_resource type="Script" uid="uid://10mtty5u20kl" path="res://addons/nova-resource-packs/nodes/audio/NovaAudioStreamPlayer.gd" id="19_xkjl3"]
 
 [node name="trash_room" type="Node2D" unique_id=817672896]
@@ -158,6 +159,7 @@ offset_right = -16.0
 offset_bottom = 7.0
 scale = Vector2(1, 0.5)
 text = "Test Room"
+script = ExtResource("12_xkjl3")
 
 [node name="SavePoint" parent="Interractables" unique_id=322202243 instance=ExtResource("10_kkbg5")]
 position = Vector2(272, 144)

@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://bxkqdoxr6gr7j" path="res://Scripts/Objects/Interactive/toilet.gd" id="1_kv5os"]
 [ext_resource type="Texture2D" uid="uid://dfvdnmevtskjx" path="res://Assets/Sprites/Objects/Interactive/toilet.png" id="1_u3lhj"]
 [ext_resource type="Script" uid="uid://b4ijjfgwm0d5h" path="res://addons/nova-resource-packs/nodes/texture/NovaSprite2D.gd" id="3_os0od"]
+[ext_resource type="Script" uid="uid://bs73o2ihu7mo4" path="res://Scripts/GUI/custom_font.gd" id="4_8mtta"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kv5os"]
 size = Vector2(20, 29)
@@ -29,6 +30,7 @@ offset_top = -36.0
 offset_right = 73.0
 offset_bottom = -13.0
 text = "Press z to interact"
+script = ExtResource("4_8mtta")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]

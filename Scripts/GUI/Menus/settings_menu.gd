@@ -12,6 +12,8 @@ var Vsync: bool
 @export var BossCamToggle: Button
 
 func _ready() -> void:
+	add_theme_font_override("title_font", NovaFont.get_font(&"main"))
+	NovaFont.ReloadFont.connect(_update_font)
 	SettingsMan.connect("ShowSettings", Callable(self, "_show"))
 	VSyncNode.text = "VSYNC: false" if DisplayServer.window_get_vsync_mode() == DisplayServer.VSYNC_DISABLED else "VSYNC: true"
 	BasicDebugNode.text = "Debug Info: true" if DebugMan.Basic_debug else "Debug Info: false"
@@ -31,6 +33,10 @@ func _ready() -> void:
 		BossCamToggle.text = "BossCam: Static"
 	else:
 		BossCamToggle.text = "BossCam: Follow"
+
+
+func _update_font() -> void:
+	add_theme_font_override("title_font", NovaFont.get_font(&"main"))
 
 
 func _process(_delta: float) -> void:

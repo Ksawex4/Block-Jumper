@@ -6,7 +6,13 @@ var Keybind: String = ""
 signal UpdateLabel()
 
 func _ready() -> void:
+	_update_font()
+	NovaFont.ReloadFont.connect(_update_font)
 	emit_signal("UpdateLabel")
+
+
+func _update_font() -> void:
+	add_theme_font_override("title_font", NovaFont.get_font(&"main"))
 
 
 func _input(event: InputEvent) -> void:

@@ -1,7 +1,9 @@
 [gd_scene format=3 uid="uid://bu2l0f1ivopr7"]
 
 [ext_resource type="Script" uid="uid://bnpmrfg6sgho5" path="res://Scripts/Objects/Interactive/save_point.gd" id="1_ayn6r"]
+[ext_resource type="Script" uid="uid://bs73o2ihu7mo4" path="res://Scripts/GUI/custom_font.gd" id="4_ayn6r"]
 [ext_resource type="AudioStream" uid="uid://br83xp3pqujcy" path="res://Assets/Audio/SFX/sfxSave.wav" id="4_nnqdd"]
+[ext_resource type="Script" uid="uid://10mtty5u20kl" path="res://addons/nova-resource-packs/nodes/audio/NovaAudioStreamPlayer.gd" id="4_w1w56"]
 [ext_resource type="Script" uid="uid://dyqqwh40wkb8p" path="res://addons/nova-resource-packs/nodes/animations/NovaAnimatedSprite2D.gd" id="5_8bsjg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j13ct"]
@@ -31,10 +33,13 @@ collision_mask = 2
 position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_s2k42")
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1615839881]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=529330251]
 stream = ExtResource("4_nnqdd")
 volume_db = 20.0
 bus = &"SFX"
+script = ExtResource("4_w1w56")
+AudioId = &"sfx-save"
+metadata/_custom_type_script = "uid://10mtty5u20kl"
 
 [node name="Label" type="Label" parent="." unique_id=1541021749]
 visible = false
@@ -44,6 +49,7 @@ offset_top = -88.0
 offset_right = 64.0
 offset_bottom = -65.0
 text = "Press Z to reload"
+script = ExtResource("4_ayn6r")
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

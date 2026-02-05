@@ -5,6 +5,15 @@ func _init() -> void:
 	GameMan.connect("PauseGame", Callable(self, "show"))
 
 
+func _ready() -> void:
+	add_theme_font_override("title_font", NovaFont.get_font(&"main"))
+	NovaFont.ReloadFont.connect(_update_font)
+
+
+func _update_font() -> void:
+	add_theme_font_override("title_font", NovaFont.get_font(&"main"))
+
+
 func _on_continue_game_pressed() -> void:
 	GameMan.toggle_pause(false)
 	hide()
