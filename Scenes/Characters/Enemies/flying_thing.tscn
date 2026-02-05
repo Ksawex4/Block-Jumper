@@ -18,6 +18,7 @@ position = Vector2(0, 1.2517e-06)
 scale = Vector2(0.044, 0.0554785)
 texture = ExtResource("2_qjg4g")
 script = ExtResource("3_qjg4g")
+TextureId = &"enemy-flying-salt-thing"
 metadata/_custom_type_script = "uid://b4ijjfgwm0d5h"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=378175907]

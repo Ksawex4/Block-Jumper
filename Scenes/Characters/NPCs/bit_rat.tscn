@@ -5,36 +5,14 @@
 [ext_resource type="Script" uid="uid://10mtty5u20kl" path="res://addons/nova-resource-packs/nodes/audio/NovaAudioStreamPlayer.gd" id="3_d4tlk"]
 [ext_resource type="Texture2D" uid="uid://bfpwl8r32o6wl" path="res://Assets/Sprites/Characters/NPCs/bitrat.png" id="3_w5rrf"]
 [ext_resource type="Script" uid="uid://b4ijjfgwm0d5h" path="res://addons/nova-resource-packs/nodes/texture/NovaSprite2D.gd" id="5_w5rrf"]
+[ext_resource type="FontFile" uid="uid://cfp7imnsoqkrp" path="res://Assets/Fonts/VCR_OSD_MONO_1.001.ttf" id="6_p3hlf"]
+[ext_resource type="Script" uid="uid://bs73o2ihu7mo4" path="res://Scripts/GUI/custom_font.gd" id="7_r33qh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_15fdn"]
 size = Vector2(26, 22)
 
-[sub_resource type="FontFile" id="FontFile_7utok"]
-subpixel_positioning = 0
-msdf_pixel_range = 14
-msdf_size = 128
-cache/0/variation_coordinates = {}
-cache/0/face_index = 0
-cache/0/embolden = 0.0
-cache/0/transform = Transform2D(1, 0, 0, 1, 0, 0)
-cache/0/spacing_top = 0
-cache/0/spacing_bottom = 0
-cache/0/spacing_space = 0
-cache/0/spacing_glyph = 0
-cache/0/baseline_offset = 0.0
-cache/0/16/0/ascent = 0.0
-cache/0/16/0/descent = 0.0
-cache/0/16/0/underline_position = 0.0
-cache/0/16/0/underline_thickness = 0.0
-cache/0/16/0/scale = 1.0
-cache/0/10/0/ascent = 0.0
-cache/0/10/0/descent = 0.0
-cache/0/10/0/underline_position = 0.0
-cache/0/10/0/underline_thickness = 0.0
-cache/0/10/0/scale = 1.0
-
 [sub_resource type="LabelSettings" id="LabelSettings_d4tlk"]
-font = SubResource("FontFile_7utok")
+font = ExtResource("6_p3hlf")
 font_size = 10
 
 [node name="BitRat" type="Area2D" unique_id=18656262]
@@ -64,8 +42,9 @@ offset_left = -45.0
 offset_top = -27.0
 offset_right = 46.0
 offset_bottom = -13.0
-text = "Press Z to interact"
+text = "interact-text"
 label_settings = SubResource("LabelSettings_d4tlk")
+script = ExtResource("7_r33qh")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]

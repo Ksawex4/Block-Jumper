@@ -1,5 +1,5 @@
 extends Node
-const DEFAULT_LOCALE = "en_us"
+const DEFAULT_LOCALE = "en"
 
 
 func load_base_translations(data: Dictionary = {}) -> void:

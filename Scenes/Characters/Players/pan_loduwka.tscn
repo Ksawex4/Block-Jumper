@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://31jehernh81s" path="res://Assets/Sprites/Characters/Players/sprPanLoduwkaLeft.png" id="3_s0i4f"]
 [ext_resource type="Texture2D" uid="uid://j1t633h6nlwi" path="res://Assets/Sprites/Characters/Players/sprPanLoduwkaRight.png" id="4_ghqpk"]
 [ext_resource type="Script" uid="uid://dyqqwh40wkb8p" path="res://addons/nova-resource-packs/nodes/animations/NovaAnimatedSprite2D.gd" id="6_s0i4f"]
+[ext_resource type="Script" uid="uid://bs73o2ihu7mo4" path="res://Scripts/GUI/custom_font.gd" id="7_ghqpk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_317mc"]
 size = Vector2(26.8, 41.8)
@@ -195,6 +196,7 @@ offset_top = -3.0
 offset_right = 57.0
 offset_bottom = 20.0
 text = "100/100"
+script = ExtResource("7_ghqpk")
 
 [node name="Poison_cooldown" type="Timer" parent="." unique_id=1936070982]
 

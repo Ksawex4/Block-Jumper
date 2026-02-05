@@ -1,7 +1,7 @@
 extends Area2D
 
 var Texter := -1
-@export var Text: Array[String] = ["PLAYER Get That Chip", "Sodium Chloride"]
+@export var Text: Array[String] = ["npc-queen.text.1", "npc-queen.text.2"]
 var Secret_text: Array[String] = ["Hello PLAYER, what are you doing here?", "I guess it doesn't matter", "So congrats, You found me", "What are you waiting for?", "I don't give any reward", "...", "...", "You are not just going to leave me here, are you?", "welp...", "I guess i could give you a hint", 'On some hidden achievement in this "Game"', "Just fall", "And wait...", "And if you wait enough, you might meet something", 'Or someone that could give you some hidden "Achievement" you might be searching for', "And if you are still listening", "I wish that you have fun...", "AND don't forget to smash that button and ring that bell for more things like this", "So just, go have some fun", "This is all i had to say to you", "Thank you for listening", "So just, go fall, or do anything else", "And im going to sit here", "", "", "", "", "", "", "", "I am spinning right now"]
 @export var No_chip := false
 @export var Secret_queen := false
@@ -13,6 +13,8 @@ func _ready() -> void:
 		Text = ["OH NOOOOOOOOOOOO", "There Is No Chip!!!"]
 	if Secret_queen:
 		Text = Secret_text
+		if BobMan.Saved_bobs < 0:
+			Text = ["Hello PLAYER, what are you doing here?", "I guess it doesn't matter", "So congrats, You found me", "What are you waiting for?", "I don't give any reward", "...", "...", "You are not just going to leave me here, are you?", "welp...", "I guess i could give you a hint", 'On some hidden achievement in this "Game"', "but it seems that you already got it"]
 	if ToastEventMan.Spam_queen:
 		$Sprite2D.change_texture(&"enemy-badly-drawn-spam-queen")
 
@@ -33,7 +35,7 @@ func _on_body_entered(body: Node2D) -> void:
 			Texter += 1
 			if PlayerStats.Chip:
 				AchievMan.add_achievement("Chip")
-		$Label.text = Text[Texter].replace("PLAYER", body.name)
+		$Label.text = tr(Text[Texter]).replace("PLAYER", body.name)
 		if $Label.text == "I am spinning right now" and not Spin:
 			Spin = true
 		for x in len($Label.text):

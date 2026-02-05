@@ -176,6 +176,7 @@ Always_fail_to_save = true
 [node name="Toasty" parent="Players" unique_id=1816825498 instance=ExtResource("9_ccf7p")]
 
 [node name="SmoothCamera" parent="." unique_id=1082693645 instance=ExtResource("10_jjbce")]
+limit_enabled = false
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1064446106]
 stream = ExtResource("12_4a7u7")

@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://dvsfhukspkyvg" path="res://Assets/Sprites/Characters/NPCs/BadlyDrawnQueen.png" id="2_wvl3v"]
 [ext_resource type="Script" uid="uid://b4ijjfgwm0d5h" path="res://addons/nova-resource-packs/nodes/texture/NovaSprite2D.gd" id="3_33tp5"]
 [ext_resource type="LabelSettings" uid="uid://covmcdqm70qom" path="res://Resources/Fonts/DefaultFont.tres" id="3_wvl3v"]
+[ext_resource type="Script" uid="uid://bs73o2ihu7mo4" path="res://Scripts/GUI/custom_font.gd" id="5_y36py"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_33tp5"]
 size = Vector2(83, 102)
@@ -32,5 +33,6 @@ label_settings = ExtResource("3_wvl3v")
 vertical_alignment = 2
 autowrap_mode = 3
 visible_characters = 0
+script = ExtResource("5_y36py")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

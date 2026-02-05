@@ -85,7 +85,7 @@ func _spawn_stick() -> void:
 
 
 func _update_bar() -> void:
-	$HPBar/Label.text = "%s/%s" % [Stats.Health, Stats.Max_health]
+	$HPBar/Label.text = "%s" % [Stats.Health]
 	$HPBar/ProgressBar.value = Stats.Health
 	$HPBar/ProgressBar.max_value = Stats.Max_health
 

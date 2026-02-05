@@ -1,13 +1,13 @@
 extends Area2D
 
 @export var Is_infinite: bool = false
-var Infinite_texture := preload("uid://tj0qpeprurae")
+var Infinite_texture := &"trash-can.infinite"
 var Spamguy := preload("uid://cqx8mt1calvhl")
 
 
 func _ready() -> void:
 	if Is_infinite:
-		$Sprite2D.change_texture(&"trash-can.infinite")
+		$Sprite2D.change_texture(Infinite_texture)
 
 
 func _on_body_entered(_body: Node2D) -> void:

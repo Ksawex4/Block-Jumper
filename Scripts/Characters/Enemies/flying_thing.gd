@@ -31,11 +31,9 @@ func _ready() -> void:
 	
 	match randi_range(1,2):
 		1: 
-			$Sprite2D.scale = Vector2(0.044, 0.055)
-			$Sprite2D.texture = preload("uid://cacwgynrspxgf")
+			$Sprite2D.change_texture(&"enemy-flying-salt-thing", Vector2(0.044, 0.055))
 		2: 
-			$Sprite2D.scale = Vector2(0.07, 0.074)
-			$Sprite2D.texture = preload("uid://bearliq6xur6b")
+			$Sprite2D.change_texture(&"enemy-flying-sand-thing", Vector2(0.07, 0.074))
 
 
 func _physics_process(_delta: float) -> void:
