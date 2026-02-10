@@ -47,6 +47,7 @@ PlayerStats="*res://Scripts/Globals/Managers/PlayerStats.gd"
 ToastEventMan="*res://Scripts/Globals/Managers/ToastEventManager.gd"
 NovaFunc="*res://Scripts/Globals/Other/NovaFunctions.gd"
 BobMan="*res://Scripts/Globals/Managers/BobManager.gd"
+ResourcePacksMenu="*uid://b8i3plisy8crb"
 
 [debug]
 

@@ -1,0 +1,69 @@
+[gd_scene format=3 uid="uid://b8i3plisy8crb"]
+
+[ext_resource type="Script" uid="uid://2p7s2rrlbyvx" path="res://Scripts/GUI/Menus/resource_packs_menu.gd" id="1_ilwey"]
+[ext_resource type="Texture2D" uid="uid://dph2wx4lmd4i5" path="res://Assets/Sprites/GUI/Buttons/Close.png" id="1_ybfiq"]
+[ext_resource type="Script" uid="uid://c48wk8hbjm0uu" path="res://Scripts/GUI/button_custom_font.gd" id="3_ilwey"]
+
+[node name="CanvasLayer" type="CanvasLayer" unique_id=1447387507]
+layer = 2
+follow_viewport_enabled = true
+
+[node name="ResourcePacksMenu" type="PanelContainer" parent="." unique_id=92110985]
+custom_minimum_size = Vector2(585, 327)
+offset_left = -298.0
+offset_top = -163.0
+offset_right = 298.0
+offset_bottom = 164.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("1_ilwey")
+
+[node name="VSplitContainer" type="VSplitContainer" parent="ResourcePacksMenu" unique_id=1582999145]
+layout_mode = 2
+dragging_enabled = false
+dragger_visibility = 1
+
+[node name="Container" type="Control" parent="ResourcePacksMenu/VSplitContainer" unique_id=1598253953]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="Close" type="Button" parent="ResourcePacksMenu/VSplitContainer/Container" unique_id=1483233924]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 0
+offset_left = 572.0
+offset_right = 596.0
+offset_bottom = 24.0
+icon = ExtResource("1_ybfiq")
+flat = true
+
+[node name="Rescan" type="Button" parent="ResourcePacksMenu/VSplitContainer/Container" unique_id=1368338917]
+layout_mode = 0
+offset_right = 49.0
+offset_bottom = 25.0
+theme_override_font_sizes/font_size = 12
+text = "Rescan"
+script = ExtResource("3_ilwey")
+
+[node name="HSplitContainer" type="HSplitContainer" parent="ResourcePacksMenu/VSplitContainer" unique_id=1954231358]
+layout_mode = 2
+dragging_enabled = false
+
+[node name="DisabledResourcePacks" type="ScrollContainer" parent="ResourcePacksMenu/VSplitContainer/HSplitContainer" unique_id=626084510]
+custom_minimum_size = Vector2(292.5, 163)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ResourcePacksMenu/VSplitContainer/HSplitContainer/DisabledResourcePacks" unique_id=1174488881]
+custom_minimum_size = Vector2(292.5, 163)
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="ActiveResourcePacks" type="ScrollContainer" parent="ResourcePacksMenu/VSplitContainer/HSplitContainer" unique_id=433498157]
+custom_minimum_size = Vector2(292.5, 163)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ResourcePacksMenu/VSplitContainer/HSplitContainer/ActiveResourcePacks" unique_id=370480920]
+custom_minimum_size = Vector2(292.5, 0)
+layout_mode = 2
+
+[connection signal="pressed" from="ResourcePacksMenu/VSplitContainer/Container/Close" to="ResourcePacksMenu" method="_on_close_pressed"]
+[connection signal="pressed" from="ResourcePacksMenu/VSplitContainer/Container/Rescan" to="ResourcePacksMenu" method="rescan"]

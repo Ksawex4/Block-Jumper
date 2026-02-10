@@ -253,6 +253,25 @@ text = "menu.settings.controls"
 script = ExtResource("3_740wm")
 metadata/_edit_use_anchors_ = true
 
+[node name="ResourcePacks" type="Button" parent="." unique_id=1014493577]
+anchors_preset = -1
+anchor_left = 0.64078945
+anchor_top = 0.5963416
+anchor_right = 0.8039474
+anchor_bottom = 0.7203416
+offset_left = -27.5
+offset_top = -23.085403
+offset_right = 74.5
+offset_bottom = -23.085403
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("2_56h7t")
+text = "menu.settings.resource_pack"
+script = ExtResource("3_740wm")
+metadata/_edit_use_anchors_ = true
+
 [node name="SFX" type="HSlider" parent="." unique_id=952117654]
 anchors_preset = -1
 anchor_top = 0.9145239
@@ -363,6 +382,7 @@ script = ExtResource("3_740wm")
 [connection signal="pressed" from="ControlsMenu/Interact" to="ControlsMenu/Interact" method="_on_pressed"]
 [connection signal="pressed" from="ControlsMenu/HealMenu" to="ControlsMenu/HealMenu" method="_on_pressed"]
 [connection signal="pressed" from="Controls" to="." method="_on_controls_pressed"]
+[connection signal="pressed" from="ResourcePacks" to="." method="_on_resource_packs_pressed"]
 [connection signal="drag_ended" from="MaxFPS" to="." method="_on_max_fps_drag_ended"]
 [connection signal="pressed" from="BasicDebug" to="." method="_on_basic_debug_pressed"]
 [connection signal="pressed" from="CameraBossTypeToggle" to="." method="_on_camera_boss_type_toggle_pressed"]

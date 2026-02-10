@@ -12,6 +12,8 @@ func _ready() -> void:
 
 
 func _update_font() -> void:
+	if has_theme_font_override("title_font"):
+		remove_theme_font_override("title_font")
 	add_theme_font_override("title_font", NovaFont.get_font(&"main"))
 
 

@@ -6,12 +6,11 @@ const BASE_PACK_ID = "base"
 const BASE_PACK_DATA_PATH = "res://Assets/data.json" # Path to data.json of the default resource pack
 const RESOURCE_PACKS_PATH = "user://resource-packs"
 const RESOURCE_PACK_DATA_PATH = RESOURCE_PACKS_PATH + "/%s/data.json"
+signal UpdateResourcePacks()
 
 func _ready() -> void:
 	load_base_assets()
 	load_resource_pack_ids()
-	activate_resource_pack("random-bj-pack")
-	load_active_resource_packs()
 
 
 func load_base_assets() -> void:
@@ -69,17 +68,34 @@ func get_pack_data(id: String = BASE_PACK_ID) -> Dictionary:
 
 
 func activate_resource_pack(id: String) -> void:
-	load_resource_pack_ids()
 	if ResourcePacks.has(id) and !ActiveResourcePacks.has(id):
 		ActiveResourcePacks.append(id)
+		UpdateResourcePacks.emit()
+		print("Activated pack %s" % id)
 
 
 func disable_resource_pack(id: String) -> void:
 	if ActiveResourcePacks.has(id) and id != BASE_PACK_ID:
 		ActiveResourcePacks.erase(id)
+		UpdateResourcePacks.emit()
+		print("Disabled pack %s" % id)
+
+
+func set_active_packs(array: PackedStringArray) -> void:
+	if !array.has(BASE_PACK_ID):
+		var old_array: PackedStringArray = array
+		array = [BASE_PACK_ID]
+		array.append_array(old_array)
 	
-	if !ResourcePacks.has(id):
-		ResourcePacks.erase(id)
+	if !array.is_empty():
+		ActiveResourcePacks = array
+		UpdateResourcePacks.emit()
+
+
+func set_resource_packs(array: PackedStringArray) -> void:
+	if !array.is_empty():
+		ResourcePacks = array
+		UpdateResourcePacks.emit()
 
 
 func return_save_data() -> Dictionary:

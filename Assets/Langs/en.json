@@ -58,6 +58,7 @@
   "menu.settings.debug-warning": "WARNING!! Turning on Debug Mode disables achievements and stops you from saving, make sure to SAVE before turning on this mode if you dont want to lose progress!",
   "menu.settings.debug-controls": "B - spawn bouncy onurb\nCtrl + B - remove all bouncy onurbs",
   "menu.settings.controls": "Controls",
+  "menu.settings.resource_pack": "Resource Packs",
 
   "menu.controls.title": "Controls",
   "menu.controls.fency": "Fency",

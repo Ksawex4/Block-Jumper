@@ -1,0 +1,171 @@
+[gd_scene format=3 uid="uid://n33uotanv1gt"]
+
+[ext_resource type="Script" uid="uid://dem4im8vciceg" path="res://Scripts/GUI/Menus/resource_pack_panel.gd" id="1_1cnco"]
+[ext_resource type="Texture2D" uid="uid://fqashxqqq14a" path="res://Resources/testing/npcTest.png" id="1_r50b1"]
+[ext_resource type="Script" uid="uid://bs73o2ihu7mo4" path="res://Scripts/GUI/custom_font.gd" id="2_kwvhh"]
+[ext_resource type="Script" uid="uid://c48wk8hbjm0uu" path="res://Scripts/GUI/button_custom_font.gd" id="3_svyjr"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_1cnco"]
+font_size = 6
+
+[sub_resource type="LabelSettings" id="LabelSettings_r50b1"]
+font_size = 13
+outline_size = 2
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_kwvhh"]
+font_size = 10
+outline_size = 2
+outline_color = Color(0, 0, 0, 1)
+
+[node name="ResourcePackPanel" type="PanelContainer" unique_id=1274069135 node_paths=PackedStringArray("Icon", "Name", "Description", "TexturesCount", "AudioCount", "FontsCount", "TranslationsCount")]
+z_index = 1
+custom_minimum_size = Vector2(292, 40)
+offset_right = 292.0
+offset_bottom = 126.0
+size_flags_vertical = 0
+script = ExtResource("1_1cnco")
+Icon = NodePath("VSplitContainer/HSplitContainer/TextureRect")
+Name = NodePath("VSplitContainer/HSplitContainer/VSplitContainer/Pack Name")
+Description = NodePath("VSplitContainer/HSplitContainer/VSplitContainer/Description")
+TexturesCount = NodePath("VSplitContainer/GridContainer2/TexturesCount")
+AudioCount = NodePath("VSplitContainer/GridContainer2/AudioCount")
+FontsCount = NodePath("VSplitContainer/GridContainer2/FontsCount")
+TranslationsCount = NodePath("VSplitContainer/GridContainer2/TranslationsCount")
+
+[node name="VSplitContainer" type="VSplitContainer" parent="." unique_id=628684550]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_constants/separation = 8
+split_offsets = PackedInt32Array(0, 68)
+dragging_enabled = false
+dragger_visibility = 1
+
+[node name="GridContainer2" type="GridContainer" parent="VSplitContainer" unique_id=1912142400]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_constants/h_separation = 3
+theme_override_constants/v_separation = 3
+columns = 5
+
+[node name="TexturesCount" type="Label" parent="VSplitContainer/GridContainer2" unique_id=1284704932]
+layout_mode = 2
+text = "Textures: ???"
+label_settings = SubResource("LabelSettings_1cnco")
+script = ExtResource("2_kwvhh")
+
+[node name="AudioCount" type="Label" parent="VSplitContainer/GridContainer2" unique_id=808895909]
+layout_mode = 2
+text = "Audio: ???"
+label_settings = SubResource("LabelSettings_1cnco")
+script = ExtResource("2_kwvhh")
+
+[node name="FontsCount" type="Label" parent="VSplitContainer/GridContainer2" unique_id=1702961538]
+layout_mode = 2
+text = "Fonts: ???"
+label_settings = SubResource("LabelSettings_1cnco")
+script = ExtResource("2_kwvhh")
+
+[node name="TranslationsCount" type="Label" parent="VSplitContainer/GridContainer2" unique_id=1931184551]
+layout_mode = 2
+text = "Translations: ???"
+label_settings = SubResource("LabelSettings_1cnco")
+script = ExtResource("2_kwvhh")
+
+[node name="HSplitContainer" type="HSplitContainer" parent="VSplitContainer" unique_id=1995574128]
+custom_minimum_size = Vector2(292, 60)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+split_offsets = PackedInt32Array(60)
+dragging_enabled = false
+dragger_visibility = 1
+split_offset = 60
+
+[node name="TextureRect" type="TextureRect" parent="VSplitContainer/HSplitContainer" unique_id=1260371051]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+texture = ExtResource("1_r50b1")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="VSplitContainer" type="VSplitContainer" parent="VSplitContainer/HSplitContainer" unique_id=872421598]
+custom_minimum_size = Vector2(220, 40)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+split_offsets = PackedInt32Array(20)
+dragging_enabled = false
+dragger_visibility = 1
+split_offset = 20
+
+[node name="Pack Name" type="Label" parent="VSplitContainer/HSplitContainer/VSplitContainer" unique_id=402565425]
+custom_minimum_size = Vector2(210, 20)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+text = "Resource Pack Name Hereeeeee"
+label_settings = SubResource("LabelSettings_r50b1")
+horizontal_alignment = 1
+autowrap_mode = 3
+script = ExtResource("2_kwvhh")
+
+[node name="Description" type="Label" parent="VSplitContainer/HSplitContainer/VSplitContainer" unique_id=871056367]
+custom_minimum_size = Vector2(210, 14)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+text = "aaaaaaaaaaaa"
+label_settings = SubResource("LabelSettings_kwvhh")
+autowrap_mode = 3
+script = ExtResource("2_kwvhh")
+
+[node name="GridContainer" type="GridContainer" parent="VSplitContainer" unique_id=657532615]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+columns = 3
+
+[node name="Toggle" type="Button" parent="VSplitContainer/GridContainer" unique_id=536569075]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 12
+text = "Toggle"
+script = ExtResource("3_svyjr")
+
+[node name="ShowDir" type="Button" parent="VSplitContainer/GridContainer" unique_id=1915706870]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 12
+text = "Show Directory"
+script = ExtResource("3_svyjr")
+
+[node name="Delete" type="Button" parent="VSplitContainer/GridContainer" unique_id=1991375130]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 12
+text = "DELETE"
+script = ExtResource("3_svyjr")
+
+[node name="MoveUp" type="Button" parent="VSplitContainer/GridContainer" unique_id=2127175332]
+layout_mode = 2
+size_flags_vertical = 12
+theme_override_font_sizes/font_size = 12
+text = "Move Up"
+script = ExtResource("3_svyjr")
+
+[node name="MoveDown" type="Button" parent="VSplitContainer/GridContainer" unique_id=1908759702]
+layout_mode = 2
+size_flags_vertical = 12
+theme_override_font_sizes/font_size = 12
+text = "Move Down"
+script = ExtResource("3_svyjr")
+
+[connection signal="pressed" from="VSplitContainer/GridContainer/Toggle" to="." method="_on_toggle_pressed"]
+[connection signal="pressed" from="VSplitContainer/GridContainer/ShowDir" to="." method="_on_show_dir_pressed"]
+[connection signal="pressed" from="VSplitContainer/GridContainer/MoveUp" to="." method="_on_move_up_pressed"]
+[connection signal="pressed" from="VSplitContainer/GridContainer/MoveDown" to="." method="_on_move_down_pressed"]

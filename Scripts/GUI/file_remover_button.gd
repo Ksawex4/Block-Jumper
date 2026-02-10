@@ -6,6 +6,8 @@ extends Button
 @export var FontId: StringName = &"main"
 
 func _ready() -> void:
+	if has_theme_font_override("font"):
+		remove_theme_font_override("font")
 	add_theme_font_override("font", NovaFont.get_font(FontId))
 	NovaFont.ReloadFont.connect(_update_font)
 	if Make_parent_invis and FileAccess.file_exists(file_path):
@@ -13,6 +15,8 @@ func _ready() -> void:
 
 
 func _update_font() -> void:
+	if has_theme_font_override("font"):
+		remove_theme_font_override("font")
 	add_theme_font_override("font", NovaFont.get_font(&"main"))
 
 

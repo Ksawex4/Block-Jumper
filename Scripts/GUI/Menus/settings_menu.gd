@@ -12,6 +12,8 @@ var Vsync: bool
 @export var BossCamToggle: Button
 
 func _ready() -> void:
+	if has_theme_font_override("title_font"):
+		remove_theme_font_override("title_font")
 	add_theme_font_override("title_font", NovaFont.get_font(&"main"))
 	NovaFont.ReloadFont.connect(_update_font)
 	SettingsMan.connect("ShowSettings", Callable(self, "_show"))
@@ -36,6 +38,8 @@ func _ready() -> void:
 
 
 func _update_font() -> void:
+	if has_theme_font_override("title_font"):
+		remove_theme_font_override("title_font")
 	add_theme_font_override("title_font", NovaFont.get_font(&"main"))
 
 
@@ -101,3 +105,7 @@ func _on_camera_boss_type_toggle_pressed() -> void:
 		BossCamToggle.text = "BossCam: Static"
 	else:
 		BossCamToggle.text = "BossCam: Follow"
+
+
+func _on_resource_packs_pressed() -> void:
+	ResourcePacksMenu.get_node("ResourcePacksMenu").show()

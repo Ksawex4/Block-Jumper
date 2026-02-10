@@ -8,6 +8,7 @@
   "meta": {
     "name": "Zworka Base Pack",
     "description": "All resources for Block Jumper",
+    "icon": "res://Assets/FencyIcon.svg",
     "authors": [
       "NovaProot (Ksawex4)",
       "qStarRat",

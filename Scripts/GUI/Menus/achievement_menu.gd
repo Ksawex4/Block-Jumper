@@ -5,6 +5,8 @@ var Text: String = "[color=yellow]Your current achievements ACH/" + str(AchievMa
 
 
 func _ready() -> void:
+	if has_theme_font_override("title_font"):
+		remove_theme_font_override("title_font")
 	add_theme_font_override("title_font", NovaFont.get_font(&"main"))
 	NovaFont.ReloadFont.connect(_update_font)
 	AchievMan.connect("ShowAchievements", Callable(self, "show_achievements"))
@@ -13,6 +15,8 @@ func _ready() -> void:
 
 
 func _update_font() -> void:
+	if has_theme_font_override("title_font"):
+		remove_theme_font_override("title_font")
 	add_theme_font_override("title_font", NovaFont.get_font(&"main"))
 
 
