@@ -105,7 +105,7 @@ func return_save_data() -> Dictionary:
 
 
 func load_save_data(data: Dictionary) -> void:
-	ActiveResourcePacks = data.get("ActiveResourcePacks", [BASE_PACK_ID])
+	set_active_packs(data.get("ActiveResourcePacks", []))
 	load_active_resource_packs()
 
 
@@ -267,3 +267,52 @@ func _merge_fonts(fonts: Dictionary, new_fonts: Dictionary, fonts_path: String, 
 			push_warning("Pack id: %s, Font id: %s File doesn't exist at path: %s" % [pack_id, id, font_path])
 	
 	return fonts
+
+
+func remove_pack(pack_id: String) -> void:
+	var pack_directory: String = RESOURCE_PACKS_PATH + "/%s" % pack_id
+	if DirAccess.dir_exists_absolute(pack_directory):
+		if ActiveResourcePacks.has(pack_id):
+			disable_resource_pack(pack_id)
+		
+		var dirs: PackedStringArray = get_all_files(pack_directory, [], true)
+		dirs = _sort_by_deepness(dirs)
+		for dir in dirs:
+			var files: PackedStringArray = get_all_files(dir)
+			files = get_all_files(dir, files, true)
+			for file in files:
+				DirAccess.remove_absolute(file)
+			DirAccess.remove_absolute(dir)
+		
+		var pack_files: PackedStringArray = get_all_files(pack_directory)
+		for file in pack_files:
+			DirAccess.remove_absolute(file)
+		DirAccess.remove_absolute(pack_directory)
+
+
+func _sort_by_deepness(array: PackedStringArray) -> PackedStringArray:
+	var sorted: Array = array.duplicate()
+	sorted.sort_custom(func(a: String, b: String) -> bool:
+		return a.count("/") > b.count("/")
+	)
+	
+	return PackedStringArray(array)
+
+
+func get_all_files(path: String, files: PackedStringArray = PackedStringArray([]), get_dirs: bool=false) -> PackedStringArray:
+	var dir := DirAccess.open(path)
+	if DirAccess.get_open_error() == OK:
+		dir.list_dir_begin()
+		var file_name := dir.get_next()
+		
+		while file_name != "":
+			if dir.current_is_dir() and not get_dirs:
+				files = get_all_files(dir.get_current_dir() + "/%s" % file_name, files)
+			else:
+				if get_dirs and dir.current_is_dir() or not get_dirs and not dir.current_is_dir():
+					files.append(dir.get_current_dir()+ "/%s" % file_name)
+			file_name = dir.get_next()
+	else:
+		print("Failed to open dir at ", path)
+	
+	return files

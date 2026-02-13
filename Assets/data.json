@@ -6,299 +6,299 @@
   "langs-path": "Langs/",
   "fonts-path": "Fonts/",
   "meta": {
-    "name": "Zworka Base Pack",
-    "description": "All resources for Block Jumper",
-    "icon": "res://Assets/FencyIcon.svg",
-    "authors": [
-      "NovaProot (Ksawex4)",
-      "qStarRat",
+	 "name": "Zworka Base Pack",
+	 "description": "All resources for Block Jumper",
+	 "icon": "res://Assets/FencyIcon.svg",
+	 "authors": [
+		"NovaProot (Ksawex4)",
+		"qStarRat",
       "Dżifoto"
-    ]
+	 ]
   },
   
   "audio": {
-    "sfx": {
-      "sfx-achievement": "sfxAch.wav",
-      "sfx-big-cheese": "sfxBigCheese.ogg",
-      "sfx-bit-rat": "sfxBitRat.mp3",
-      "sfx-bob": "sfxBob.wav",
-      "sfx-cheese": "sfxCheese.ogg",
-      "sfx-crash": "sfxCrash.wav",
-      "sfx-kabumm": "sfxKabumm.wav",
-      "sfx-krzyku-bum-bum": "sfxKrzykuBumBum.wav",
-      "sfx-save": "sfxSave.wav",
-      "sfx-save-fail": "sfxSaveFail.wav",
-      "sfx-toast-achievement": "sfxTOASTAch.wav"
-    },
-    "music": {
-      "mus-big-cheese": "musBigcheese.ogg",
-      "mus-main-menu": "musMainMenu.ogg",
-      "mus-new-bob": "musNewbob.ogg",
-      "mus-sewer-song": "musSewerSong.ogg",
-      "mus-trash": "musTrash.ogg",
-      "mus-zworka-song": "musZworkaSong.ogg"
-    }
+	 "sfx": {
+		"sfx-achievement": "sfxAch.wav",
+		"sfx-big-cheese": "sfxBigCheese.ogg",
+		"sfx-bit-rat": "sfxBitRat.mp3",
+		"sfx-bob": "sfxBob.wav",
+		"sfx-cheese": "sfxCheese.ogg",
+		"sfx-crash": "sfxCrash.wav",
+		"sfx-kabumm": "sfxKabumm.wav",
+		"sfx-krzyku-bum-bum": "sfxKrzykuBumBum.wav",
+		"sfx-save": "sfxSave.wav",
+		"sfx-save-fail": "sfxSaveFail.wav",
+		"sfx-toast-achievement": "sfxTOASTAch.wav"
+	 },
+	 "music": {
+		"mus-big-cheese": "musBigcheese.ogg",
+		"mus-main-menu": "musMainMenu.ogg",
+		"mus-new-bob": "musNewbob.ogg",
+		"mus-sewer-song": "musSewerSong.ogg",
+		"mus-trash": "musTrash.ogg",
+		"mus-zworka-song": "musZworkaSong.ogg"
+	 }
   },
 
   "textures": {
-    "ach-block-killer": "Achievements/BlockKiller.png",
-    "ach-bob": "Achievements/BOB.png",
-    "ach-chip": "Achievements/Chip.png",
-    "ach-parkour-guy": "Achievements/ParkourGuy.png",
-    "ach-saltiest": "Achievements/Saltiest.png",
-    "ach-spam-killer": "Achievements/SpamKiller.png",
-    "ach-stick": "Achievements/Stick.png",
-    "ach-the-rat-king": "Achievements/TheRatKing.png",
-    "ach-the-void-lands": "Achievements/TheVoidLands.png",
-    "ach-trash": "Achievements/Trash.png",
+	 "ach-block-killer": "Achievements/BlockKiller.png",
+	 "ach-bob": "Achievements/BOB.png",
+	 "ach-chip": "Achievements/Chip.png",
+	 "ach-parkour-guy": "Achievements/ParkourGuy.png",
+	 "ach-saltiest": "Achievements/Saltiest.png",
+	 "ach-spam-killer": "Achievements/SpamKiller.png",
+	 "ach-stick": "Achievements/Stick.png",
+	 "ach-the-rat-king": "Achievements/TheRatKing.png",
+	 "ach-the-void-lands": "Achievements/TheVoidLands.png",
+	 "ach-trash": "Achievements/Trash.png",
 
-    "bg-1": "Backgrounds/Background1.png",
-    "bg-trash": "Backgrounds/BackgroundTrash.png",
-    "bg-main-menu": "Backgrounds/MainMenu.png",
-    "bg-sewers": "Backgrounds/SewersBackground.png",
-    "bg-boot-splash": "Backgrounds/boot-splash-background.png",
+	 "bg-1": "Backgrounds/Background1.png",
+	 "bg-trash": "Backgrounds/BackgroundTrash.png",
+	 "bg-main-menu": "Backgrounds/MainMenu.png",
+	 "bg-sewers": "Backgrounds/SewersBackground.png",
+	 "bg-boot-splash": "Backgrounds/boot-splash-background.png",
 
-    "block-txt": "BootSplash/Block.png",
-    "boot-splash-fency": "BootSplash/BootSplashFency.png",
-    "jumper-txt": "BootSplash/Jumper.png",
-    "spr-realistic-explosion": "BootSplash/spr_realisticexplosion.png",
+	 "block-txt": "BootSplash/Block.png",
+	 "boot-splash-fency": "BootSplash/BootSplashFency.png",
+	 "jumper-txt": "BootSplash/Jumper.png",
+	 "spr-realistic-explosion": "BootSplash/spr_realisticexplosion.png",
 
-    "npc-badly-drawn-queen": "Characters/NPCs/BadlyDrawnQueen.png",
-    "npc-bitrat": "Characters/NPCs/bitrat.png",
-    "npc-bob": "Characters/NPCs/Bob.png",
-    "npc-bouncy-onurb": "Characters/NPCs/Bouncy_onurB.png",
-    "npc-breadbit": "Characters/NPCs/Breabit.png",
-    "npc-breadbit.explosion": "Characters/NPCs/BreabitExplosion.png",
-    "npc-call-rat": "Characters/NPCs/callRat.png",
-    "npc-corrupted-bob": "Characters/NPCs/CorruptedBob.png",
-    "npc-rat": "Characters/NPCs/rat.png",
+	 "npc-badly-drawn-queen": "Characters/NPCs/BadlyDrawnQueen.png",
+	 "npc-bitrat": "Characters/NPCs/bitrat.png",
+	 "npc-bob": "Characters/NPCs/Bob.png",
+	 "npc-bouncy-onurb": "Characters/NPCs/Bouncy_onurB.png",
+	 "npc-breadbit": "Characters/NPCs/Breabit.png",
+	 "npc-breadbit.explosion": "Characters/NPCs/BreabitExplosion.png",
+	 "npc-call-rat": "Characters/NPCs/callRat.png",
+	 "npc-corrupted-bob": "Characters/NPCs/CorruptedBob.png",
+	 "npc-rat": "Characters/NPCs/rat.png",
 
-    "boss-rat-king": "Characters/Bosses/TheRatKing.png",
-    "duck": "Characters/Quack.jpg",
+	 "boss-rat-king": "Characters/Bosses/TheRatKing.png",
+	 "duck": "Characters/Quack.jpg",
 
-    "enemy-badly-drawn-spam-queen": "Characters/Enemies/BadlyDrawnSpamQueen.png",
-    "enemy-badly-drawn-spamton": "Characters/Enemies/BadlyDrawnSpamton.png",
-    "enemy-brunton.1": "Characters/Enemies/Brunton1.png",
-    "enemy-brunton.2": "Characters/Enemies/Brunton2.png",
-    "enemy-flying-salt-thing": "Characters/Enemies/FlyingSaltThing.png",
-    "enemy-flying-sand-thing": "Characters/Enemies/FlyingSandThing.jpg",
-    "enemy-ksawton": "Characters/Enemies/Ksawton.png",
-    "enemy-kill-block.deadly": "Characters/Enemies/sprDeadlyKillBlock.png",
-    "enemy-kill-block": "Characters/Enemies/sprKillBlock.png",
+	 "enemy-badly-drawn-spam-queen": "Characters/Enemies/BadlyDrawnSpamQueen.png",
+	 "enemy-badly-drawn-spamton": "Characters/Enemies/BadlyDrawnSpamton.png",
+	 "enemy-brunton.1": "Characters/Enemies/Brunton1.png",
+	 "enemy-brunton.2": "Characters/Enemies/Brunton2.png",
+	 "enemy-flying-salt-thing": "Characters/Enemies/FlyingSaltThing.png",
+	 "enemy-flying-sand-thing": "Characters/Enemies/FlyingSandThing.jpg",
+	 "enemy-ksawton": "Characters/Enemies/Ksawton.png",
+	 "enemy-kill-block.deadly": "Characters/Enemies/sprDeadlyKillBlock.png",
+	 "enemy-kill-block": "Characters/Enemies/sprKillBlock.png",
 
-    "fency": "Characters/Players/sprFency.png",
-    "pan-loduwka": "Characters/Players/sprPanLoduwka.png",
-    "pan-loduwka.left": "Characters/Players/sprPanLoduwkaLeft.png",
-    "pan-loduwka.right": "Characters/Players/sprPanLoduwkaRight.png",
-    "toasty": "Characters/Players/Toasty.png",
+	 "fency": "Characters/Players/sprFency.png",
+	 "pan-loduwka": "Characters/Players/sprPanLoduwka.png",
+	 "pan-loduwka.left": "Characters/Players/sprPanLoduwkaLeft.png",
+	 "pan-loduwka.right": "Characters/Players/sprPanLoduwkaRight.png",
+	 "toasty": "Characters/Players/Toasty.png",
 
-    "gui.title-screen.achievements": "GUI/Buttons/Achievements.png",
-    "gui.title-screen.file-manager": "GUI/Buttons/FileManager.png",
-    "gui.title-screen.load": "GUI/Buttons/Load.png",
-    "gui.title-screen.new": "GUI/Buttons/Quit.png",
-    "gui.title-screen.settings": "GUI/Buttons/Settings.png",
-    "gui.title-screen.speedrun-mode": "GUI/Buttons/SpeedrunMode.png",
+	 "gui.title-screen.achievements": "GUI/Buttons/Achievements.png",
+	 "gui.title-screen.file-manager": "GUI/Buttons/FileManager.png",
+	 "gui.title-screen.load": "GUI/Buttons/Load.png",
+	 "gui.title-screen.new": "GUI/Buttons/Quit.png",
+	 "gui.title-screen.settings": "GUI/Buttons/Settings.png",
+	 "gui.title-screen.speedrun-mode": "GUI/Buttons/SpeedrunMode.png",
 
-    "gui.mobile.delete-bouncy-onurbs": "GUI/MobileButtons/DeleteAllBouncy_onurBs.png",
-    "gui.mobile.e": "GUI/MobileButtons/E.png",
-    "gui.mobile.jump": "GUI/MobileButtons/Jump.png",
-    "gui.mobile.left": "GUI/MobileButtons/Left.png",
-    "gui.mobile.pause": "GUI/MobileButtons/Pause.png",
-    "gui.mobile.right": "GUI/MobileButtons/Right.png",
-    "gui.mobile.spawn-bouncy-onurb": "GUI/MobileButtons/SpawnBouncy_onurB.png",
-    "gui.mobile.switch-player": "GUI/MobileButtons/SwitchPlayer.png",
-    "gui.mobile.z": "GUI/MobileButtons/Z.png",
+	 "gui.mobile.delete-bouncy-onurbs": "GUI/MobileButtons/DeleteAllBouncy_onurBs.png",
+	 "gui.mobile.e": "GUI/MobileButtons/E.png",
+	 "gui.mobile.jump": "GUI/MobileButtons/Jump.png",
+	 "gui.mobile.left": "GUI/MobileButtons/Left.png",
+	 "gui.mobile.pause": "GUI/MobileButtons/Pause.png",
+	 "gui.mobile.right": "GUI/MobileButtons/Right.png",
+	 "gui.mobile.spawn-bouncy-onurb": "GUI/MobileButtons/SpawnBouncy_onurB.png",
+	 "gui.mobile.switch-player": "GUI/MobileButtons/SwitchPlayer.png",
+	 "gui.mobile.z": "GUI/MobileButtons/Z.png",
 
-    "door": "Objects/Blocks/Door.png",
-    "sewer-block": "Objects/Blocks/sewerBlock.png",
-    "tiles": "Objects/Blocks/Tiles.png",
+	 "door": "Objects/Blocks/Door.png",
+	 "sewer-block": "Objects/Blocks/sewerBlock.png",
+	 "tiles": "Objects/Blocks/Tiles.png",
 
-    "trash-can": "Objects/Interactive/TrashCan.png",
-    "trash-can.infinite": "Objects/Interactive/InfiniteTrashCan.png",
-    "save-point.save": "Objects/Interactive/Save.png",
-    "save-point.bob-fail": "Objects/Interactive/SaveBobFail.png",
-    "save-point": "Objects/Interactive/SavePointIdle.png",
-    "toilet": "Objects/Interactive/toilet.png",
-    
-    "bean": "Objects/Items/Bean1.png",
-    "stick": "Objects/Items/Stick.png",
-    "stick.cheese": "Objects/Items/CheeseStick.png",
-    "chip": "Objects/Items/Chip.png",
-    "rusty-key": "Objects/Items/RustyKey.png",
-    "saltniczka": "Objects/Items/saltniczka.png",
-    "toast": "Objects/Items/Toast.png",
+	 "trash-can": "Objects/Interactive/TrashCan.png",
+	 "trash-can.infinite": "Objects/Interactive/InfiniteTrashCan.png",
+	 "save-point.save": "Objects/Interactive/Save.png",
+	 "save-point.bob-fail": "Objects/Interactive/SaveBobFail.png",
+	 "save-point": "Objects/Interactive/SavePointIdle.png",
+	 "toilet": "Objects/Interactive/toilet.png",
+	 
+	 "bean": "Objects/Items/Bean1.png",
+	 "stick": "Objects/Items/Stick.png",
+	 "stick.cheese": "Objects/Items/CheeseStick.png",
+	 "chip": "Objects/Items/Chip.png",
+	 "rusty-key": "Objects/Items/RustyKey.png",
+	 "saltniczka": "Objects/Items/saltniczka.png",
+	 "toast": "Objects/Items/Toast.png",
 
-    "cheese": "Objects/Projectiles/cheese.png",
+	 "cheese": "Objects/Projectiles/cheese.png",
 
-    "health-bar.rat-king": "Objects/Others/RatKingHealthBar.png"
+	 "health-bar.rat-king": "Objects/Others/RatKingHealthBar.png"
   },
   "animations": {
-    "boot-splash-fency": {
-      "type": "sheet",
-      "texture-id": "boot-splash-fency",
-      "frames-x": 7,
-      "frames-y": 6,
-      "remove-x-frames": 5,
-      "fps": 8.0,
-      "loop": false
-    },
-    "spr-realistic-explosion": {
-      "type": "sheet",
-      "texture-id": "spr-realistic-explosion",
-      "frames-x": 6,
-      "frames-y": 3,
-      "remove-x-frames": 1,
-      "fps": 12.0,
-      "loop": false
-    },
-    "enemy-kill-block": {
-      "type": "sheet",
-      "texture-id": "enemy-kill-block",
-      "frames-x": 2,
-      "frames-y": 1,
-      "fps": 5.0,
-      "loop": true
-    },
-    "enemy-kill-block.deadly": {
-      "type": "sheet",
-      "texture-id": "enemy-kill-block.deadly",
-      "frames-x": 2,
-      "frames-y": 1,
-      "fps": 5.0,
-      "loop": true
-    },
-    "npc-breabit": {
-      "type": "sheet",
-      "texture-id": "npc-breadbit",
-      "frames-x": 1,
-      "frames-y": 1,
-      "fps": 1.0,
-      "loop": false
-    },
-    "npc-breabit.explosion": {
-      "type": "sheet",
-      "texture-id": "npc-breadbit.explosion",
-      "frames-x": 4,
-      "frames-y": 4,
-      "remove-x-frames": 2,
-      "fps": 10.0,
-      "loop": false
-    },
-    "fency": {
-      "type": "sheet",
-      "texture-id": "fency",
-      "frames-x": 2,
-      "frames-y": 2,
-      "fps": 5.0,
-      "loop": true
-    },
-    "fency.curse-of-a-duck": {
-      "type": "frames",
-      "texture-id": ["duck"],
-      "fps": 0.0,
-      "loop": true
-    },
-    "pan-loduwka": {
-      "type": "sheet",
-      "texture-id": "pan-loduwka",
-      "frames-x": 2,
-      "frames-y": 2,
-      "fps": 5.0,
-      "loop": true
-    },
-    "pan-loduwka.left": {
-      "type": "sheet",
-      "texture-id": "pan-loduwka.left",
-      "frames-x": 2,
-      "frames-y": 2,
-      "fps": 5.0,
-      "loop": true
-    },
-    "pan-loduwka.right": {
-      "type": "sheet",
-      "texture-id": "pan-loduwka.right",
-      "frames-x": 2,
-      "frames-y": 2,
-      "fps": 5.0,
-      "loop": true
-    },
-    "pan-loduwka.curse-of-a-duck": {
-      "type": "frames",
-      "texture-id": ["duck"],
-      "fps": 0.0,
-      "loop": true
-    },
-    "toasty": {
-      "type": "sheet",
-      "texture-id": "toasty",
-      "frames-x": 1,
-      "frames-y": 1,
-      "fps": 0.0,
-      "loop": true
-    },
-    "toasty.curse-of-a-duck": {
-      "type": "frames",
-      "texture-id": ["duck"],
-      "fps": 0.0,
-      "loop": false
-    },
-    "save-point": {
-      "type": "sheet",
-      "texture-id": "save-point",
-      "frames-x": 3,
-      "frames-y": 3,
-      "remove-x-frames": 1,
-      "fps": 5.0,
-      "loop": true
-    },
-    "save-point.save": {
-      "type": "sheet",
-      "texture-id": "save-point.save",
-      "frames-x": 2,
-      "frames-y": 2,
-      "fps": 5.0,
-      "loop": false
-    },
-    "save-point.bob-fail": {
-      "type": "sheet",
-      "texture-id": "save-point.bob-fail",
-      "frames-x": 2,
-      "frames-y": 2,
-      "remove-x-frames": 1,
-      "fps": 5.0,
-      "loop": false
-    },
-    "bean": {
-      "type": "sheet",
-      "texture-id": "bean",
-      "frames-x": 2,
-      "frames-y": 2,
-      "fps": 5.0,
-      "loop": true
-    },
-    "bean.toast": {
-      "type": "sheet",
-      "texture-id": "toast",
-      "frames-x": 1,
-      "frames-y": 2,
-      "fps": 5.0,
-      "loop": true
-    },
-    "toast": {
-      "type": "sheet",
-      "texture-id": "toast",
-      "frames-x": 1,
-      "frames-y": 2,
-      "fps": 5.0,
-      "loop": true
-    }
+	 "boot-splash-fency": {
+		"type": "sheet",
+		"texture-id": "boot-splash-fency",
+		"frames-x": 7,
+		"frames-y": 6,
+		"remove-x-frames": 5,
+		"fps": 8.0,
+		"loop": false
+	 },
+	 "spr-realistic-explosion": {
+		"type": "sheet",
+		"texture-id": "spr-realistic-explosion",
+		"frames-x": 6,
+		"frames-y": 3,
+		"remove-x-frames": 1,
+		"fps": 12.0,
+		"loop": false
+	 },
+	 "enemy-kill-block": {
+		"type": "sheet",
+		"texture-id": "enemy-kill-block",
+		"frames-x": 2,
+		"frames-y": 1,
+		"fps": 5.0,
+		"loop": true
+	 },
+	 "enemy-kill-block.deadly": {
+		"type": "sheet",
+		"texture-id": "enemy-kill-block.deadly",
+		"frames-x": 2,
+		"frames-y": 1,
+		"fps": 5.0,
+		"loop": true
+	 },
+	 "npc-breabit": {
+		"type": "sheet",
+		"texture-id": "npc-breadbit",
+		"frames-x": 1,
+		"frames-y": 1,
+		"fps": 1.0,
+		"loop": false
+	 },
+	 "npc-breabit.explosion": {
+		"type": "sheet",
+		"texture-id": "npc-breadbit.explosion",
+		"frames-x": 4,
+		"frames-y": 4,
+		"remove-x-frames": 2,
+		"fps": 10.0,
+		"loop": false
+	 },
+	 "fency": {
+		"type": "sheet",
+		"texture-id": "fency",
+		"frames-x": 2,
+		"frames-y": 2,
+		"fps": 5.0,
+		"loop": true
+	 },
+	 "fency.curse-of-a-duck": {
+		"type": "frames",
+		"texture-id": ["duck"],
+		"fps": 0.0,
+		"loop": true
+	 },
+	 "pan-loduwka": {
+		"type": "sheet",
+		"texture-id": "pan-loduwka",
+		"frames-x": 2,
+		"frames-y": 2,
+		"fps": 5.0,
+		"loop": true
+	 },
+	 "pan-loduwka.left": {
+		"type": "sheet",
+		"texture-id": "pan-loduwka.left",
+		"frames-x": 2,
+		"frames-y": 2,
+		"fps": 5.0,
+		"loop": true
+	 },
+	 "pan-loduwka.right": {
+		"type": "sheet",
+		"texture-id": "pan-loduwka.right",
+		"frames-x": 2,
+		"frames-y": 2,
+		"fps": 5.0,
+		"loop": true
+	 },
+	 "pan-loduwka.curse-of-a-duck": {
+		"type": "frames",
+		"texture-id": ["duck"],
+		"fps": 0.0,
+		"loop": true
+	 },
+	 "toasty": {
+		"type": "sheet",
+		"texture-id": "toasty",
+		"frames-x": 1,
+		"frames-y": 1,
+		"fps": 0.0,
+		"loop": true
+	 },
+	 "toasty.curse-of-a-duck": {
+		"type": "frames",
+		"texture-id": ["duck"],
+		"fps": 0.0,
+		"loop": false
+	 },
+	 "save-point": {
+		"type": "sheet",
+		"texture-id": "save-point",
+		"frames-x": 3,
+		"frames-y": 3,
+		"remove-x-frames": 1,
+		"fps": 5.0,
+		"loop": true
+	 },
+	 "save-point.save": {
+		"type": "sheet",
+		"texture-id": "save-point.save",
+		"frames-x": 2,
+		"frames-y": 2,
+		"fps": 5.0,
+		"loop": false
+	 },
+	 "save-point.bob-fail": {
+		"type": "sheet",
+		"texture-id": "save-point.bob-fail",
+		"frames-x": 2,
+		"frames-y": 2,
+		"remove-x-frames": 1,
+		"fps": 5.0,
+		"loop": false
+	 },
+	 "bean": {
+		"type": "sheet",
+		"texture-id": "bean",
+		"frames-x": 2,
+		"frames-y": 2,
+		"fps": 5.0,
+		"loop": true
+	 },
+	 "bean.toast": {
+		"type": "sheet",
+		"texture-id": "toast",
+		"frames-x": 1,
+		"frames-y": 2,
+		"fps": 5.0,
+		"loop": true
+	 },
+	 "toast": {
+		"type": "sheet",
+		"texture-id": "toast",
+		"frames-x": 1,
+		"frames-y": 2,
+		"fps": 5.0,
+		"loop": true
+	 }
   },
 
   "langs": {
-    "en": "en.json"
+	 "en": "en.json"
   },
 
   "fonts": {
-    "main": "VCR_OSD_MONO_1.001.ttf"
+	 "main": "VCR_OSD_MONO_1.001.ttf"
   }
 }

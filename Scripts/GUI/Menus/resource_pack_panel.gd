@@ -2,11 +2,13 @@ extends PanelContainer
 
 @export var Icon: TextureRect
 @export var Name: Label
+@export var Authors: Label
 @export var Description: Label
 @export var TexturesCount: Label
 @export var AudioCount: Label
 @export var FontsCount: Label
 @export var TranslationsCount: Label
+@export var AreYaSurePopup: PopupMenu
 var Active: bool = false
 
 func update_meta(pack_id: String = name) -> void:
@@ -15,14 +17,22 @@ func update_meta(pack_id: String = name) -> void:
 	var pack_meta: Dictionary = pack_data.get("meta", {})
 	if pack_meta.is_empty():
 		queue_free()
+	
 	Active = NovaResourcePack.ActiveResourcePacks.has(pack_id)
 	Name.text = pack_meta.get("name", "Failed to get name")
 	Description.text = pack_meta.get("description", "Failed to load description")
+	Authors.text = "Authors: "
+	var authors: Array = pack_meta.get("authors", ["Missing"])
+	for author: String in authors:
+		Authors.text += author + ", "
+	Authors.text = Authors.text.erase(Authors.text.length()-2, 2)
+	
 	Icon.texture = (
 		NovaTexture.get_texture_from_file(NovaResourcePack.RESOURCE_PACKS_PATH + "/%s/" % pack_id + pack_meta.get("icon", ""))
 		if pack_id != NovaResourcePack.BASE_PACK_ID else
 		NovaTexture.get_texture_from_file(pack_meta.get("icon", ""))
 	)
+	
 	var audio_data: Dictionary = pack_data.get("audio", {})
 	TexturesCount.text = "Textures: %s" % pack_data.get("textures", {}).size()
 	AudioCount.text = "Audio: %s" % (audio_data.get("sfx", {}).size() + audio_data.get("music", {}).size())
@@ -69,7 +79,7 @@ func move_pack(array: Array, direction: int = -1, value = "") -> Array:
 
 func get_disabled_packs(active_packs: PackedStringArray, disabled_packs: PackedStringArray, packs: PackedStringArray) -> PackedStringArray:
 	for pack_id in packs:
-		if !active_packs.has(pack_id):
+		if !active_packs.has(pack_id) and !disabled_packs.has(pack_id):
 			disabled_packs.append(pack_id)
 	return disabled_packs
 
@@ -97,3 +107,11 @@ func _on_move_down_pressed() -> void:
 		NovaResourcePack.set_active_packs(array)
 	else:
 		NovaResourcePack.set_resource_packs(array)
+
+
+func _on_delete_pressed() -> void:
+	AreYaSurePopup.popup_centered()
+	var selected: int = await AreYaSurePopup.index_pressed
+	if selected == 1:
+		NovaResourcePack.remove_pack(name)
+		queue_free()

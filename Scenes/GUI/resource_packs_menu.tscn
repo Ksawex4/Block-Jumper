@@ -8,7 +8,8 @@
 layer = 2
 follow_viewport_enabled = true
 
-[node name="ResourcePacksMenu" type="PanelContainer" parent="." unique_id=92110985]
+[node name="ResourcePacksMenu" type="PanelContainer" parent="." unique_id=92110985 node_paths=PackedStringArray("TranslationsBut")]
+visible = false
 custom_minimum_size = Vector2(585, 327)
 offset_left = -298.0
 offset_top = -163.0
@@ -17,6 +18,7 @@ offset_bottom = 164.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
 script = ExtResource("1_ilwey")
+TranslationsBut = NodePath("VSplitContainer/Container/OptionButton")
 
 [node name="VSplitContainer" type="VSplitContainer" parent="ResourcePacksMenu" unique_id=1582999145]
 layout_mode = 2
@@ -44,6 +46,17 @@ theme_override_font_sizes/font_size = 12
 text = "Rescan"
 script = ExtResource("3_ilwey")
 
+[node name="OptionButton" type="OptionButton" parent="ResourcePacksMenu/VSplitContainer/Container" unique_id=535052347]
+layout_mode = 0
+offset_left = 208.0
+offset_right = 240.0
+offset_bottom = 20.0
+selected = 0
+item_count = 1
+popup/item_0/text = "en"
+popup/item_0/id = 0
+script = ExtResource("3_ilwey")
+
 [node name="HSplitContainer" type="HSplitContainer" parent="ResourcePacksMenu/VSplitContainer" unique_id=1954231358]
 layout_mode = 2
 dragging_enabled = false
@@ -67,3 +80,4 @@ layout_mode = 2
 
 [connection signal="pressed" from="ResourcePacksMenu/VSplitContainer/Container/Close" to="ResourcePacksMenu" method="_on_close_pressed"]
 [connection signal="pressed" from="ResourcePacksMenu/VSplitContainer/Container/Rescan" to="ResourcePacksMenu" method="rescan"]
+[connection signal="item_selected" from="ResourcePacksMenu/VSplitContainer/Container/OptionButton" to="ResourcePacksMenu" method="_on_option_button_item_selected"]

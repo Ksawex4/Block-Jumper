@@ -18,7 +18,10 @@ font_size = 10
 outline_size = 2
 outline_color = Color(0, 0, 0, 1)
 
-[node name="ResourcePackPanel" type="PanelContainer" unique_id=1274069135 node_paths=PackedStringArray("Icon", "Name", "Description", "TexturesCount", "AudioCount", "FontsCount", "TranslationsCount")]
+[sub_resource type="LabelSettings" id="LabelSettings_1pow3"]
+font_size = 10
+
+[node name="ResourcePackPanel" type="PanelContainer" unique_id=1274069135 node_paths=PackedStringArray("Icon", "Name", "Authors", "Description", "TexturesCount", "AudioCount", "FontsCount", "TranslationsCount", "AreYaSurePopup")]
 z_index = 1
 custom_minimum_size = Vector2(292, 40)
 offset_right = 292.0
@@ -27,11 +30,13 @@ size_flags_vertical = 0
 script = ExtResource("1_1cnco")
 Icon = NodePath("VSplitContainer/HSplitContainer/TextureRect")
 Name = NodePath("VSplitContainer/HSplitContainer/VSplitContainer/Pack Name")
+Authors = NodePath("VSplitContainer/HSplitContainer/VSplitContainer/Authors")
 Description = NodePath("VSplitContainer/HSplitContainer/VSplitContainer/Description")
 TexturesCount = NodePath("VSplitContainer/GridContainer2/TexturesCount")
 AudioCount = NodePath("VSplitContainer/GridContainer2/AudioCount")
 FontsCount = NodePath("VSplitContainer/GridContainer2/FontsCount")
 TranslationsCount = NodePath("VSplitContainer/GridContainer2/TranslationsCount")
+AreYaSurePopup = NodePath("AreYaSure")
 
 [node name="VSplitContainer" type="VSplitContainer" parent="." unique_id=628684550]
 layout_mode = 2
@@ -98,7 +103,8 @@ custom_minimum_size = Vector2(220, 40)
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
-split_offsets = PackedInt32Array(20)
+theme_override_constants/separation = 8
+split_offsets = PackedInt32Array(20, 0)
 dragging_enabled = false
 dragger_visibility = 1
 split_offset = 20
@@ -121,6 +127,14 @@ size_flags_horizontal = 0
 size_flags_vertical = 0
 text = "aaaaaaaaaaaa"
 label_settings = SubResource("LabelSettings_kwvhh")
+autowrap_mode = 3
+script = ExtResource("2_kwvhh")
+
+[node name="Authors" type="Label" parent="VSplitContainer/HSplitContainer/VSplitContainer" unique_id=1500732257]
+custom_minimum_size = Vector2(210, 14)
+layout_mode = 2
+text = "Authors: NovaProot"
+label_settings = SubResource("LabelSettings_1pow3")
 autowrap_mode = 3
 script = ExtResource("2_kwvhh")
 
@@ -147,6 +161,7 @@ script = ExtResource("3_svyjr")
 [node name="Delete" type="Button" parent="VSplitContainer/GridContainer" unique_id=1991375130]
 layout_mode = 2
 size_flags_vertical = 0
+theme_override_colors/font_color = Color(1, 0, 0, 1)
 theme_override_font_sizes/font_size = 12
 text = "DELETE"
 script = ExtResource("3_svyjr")
@@ -165,7 +180,23 @@ theme_override_font_sizes/font_size = 12
 text = "Move Down"
 script = ExtResource("3_svyjr")
 
+[node name="AreYaSure" type="PopupMenu" parent="." unique_id=288298873]
+oversampling_override = 1.0
+initial_position = 1
+size = Vector2i(299, 100)
+item_count = 3
+item_0/text = "Are you sure? It WILL be removed"
+item_0/id = 0
+item_1/text = "Remove"
+item_1/checkable = 2
+item_1/id = 1
+item_2/text = "Keep"
+item_2/checkable = 2
+item_2/checked = true
+item_2/id = 2
+
 [connection signal="pressed" from="VSplitContainer/GridContainer/Toggle" to="." method="_on_toggle_pressed"]
 [connection signal="pressed" from="VSplitContainer/GridContainer/ShowDir" to="." method="_on_show_dir_pressed"]
+[connection signal="pressed" from="VSplitContainer/GridContainer/Delete" to="." method="_on_delete_pressed"]
 [connection signal="pressed" from="VSplitContainer/GridContainer/MoveUp" to="." method="_on_move_up_pressed"]
 [connection signal="pressed" from="VSplitContainer/GridContainer/MoveDown" to="." method="_on_move_down_pressed"]

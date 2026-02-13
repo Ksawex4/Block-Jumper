@@ -1,6 +1,11 @@
 extends PanelContainer
 
+@export var TranslationsBut: OptionButton
+
 func _ready() -> void:
+	var saved_packs: Dictionary = SaveMan.get_data_from_file("ActiveResourcePacks.bj", false)
+	if !saved_packs.is_empty():
+		NovaResourcePack.load_save_data(saved_packs)
 	refresh()
 	NovaResourcePack.UpdateResourcePacks.connect(refresh)
 
@@ -12,6 +17,13 @@ func refresh() -> void:
 	
 	spawn_active(active_packs)
 	spawn_disabled(disabled_packs)
+	
+	if TranslationsBut:
+		TranslationsBut.clear()
+		var translations: PackedStringArray = TranslationServer.get_loaded_locales()
+		for trans: String in translations:
+			TranslationsBut.add_item(trans)
+	print(TranslationServer.get_loaded_locales())
 
 func rescan() -> void:
 	NovaResourcePack.load_resource_pack_ids()
@@ -50,3 +62,8 @@ func spawn_disabled(disabled_packs: PackedStringArray) -> void:
 func _on_close_pressed() -> void:
 	hide()
 	NovaResourcePack.load_active_resource_packs()
+	SaveMan.save_file("ActiveResourcePacks.bj", NovaResourcePack.return_save_data(), false)
+
+
+func _on_option_button_item_selected(index: int) -> void:
+	pass # Replace with function body.
