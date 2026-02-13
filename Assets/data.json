@@ -95,9 +95,10 @@
 	 "gui.title-screen.achievements": "GUI/Buttons/Achievements.png",
 	 "gui.title-screen.file-manager": "GUI/Buttons/FileManager.png",
 	 "gui.title-screen.load": "GUI/Buttons/Load.png",
-	 "gui.title-screen.new": "GUI/Buttons/Quit.png",
+	 "gui.title-screen.new": "GUI/Buttons/New.png",
 	 "gui.title-screen.settings": "GUI/Buttons/Settings.png",
 	 "gui.title-screen.speedrun-mode": "GUI/Buttons/SpeedrunMode.png",
+	 "gui.title-screen.quit": "GUI/Buttons/Quit.png",
 
 	 "gui.mobile.delete-bouncy-onurbs": "GUI/MobileButtons/DeleteAllBouncy_onurBs.png",
 	 "gui.mobile.e": "GUI/MobileButtons/E.png",

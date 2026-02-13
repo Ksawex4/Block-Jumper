@@ -86,6 +86,7 @@ icon = ExtResource("3_h4qv3")
 script = ExtResource("3_2bjg4")
 TargetNode = NodePath("../TitleButtonsTargetPos")
 TimerLenght = 0.0
+TextureId = &"gui.title-screen.load"
 
 [node name="Information" type="Label" parent="LoadGame" unique_id=850266175]
 visible = false
@@ -114,6 +115,7 @@ icon = ExtResource("2_kjbj0")
 script = ExtResource("3_2bjg4")
 TargetNode = NodePath("../TitleButtonsTargetPos")
 TimerLenght = 0.2
+TextureId = &"gui.title-screen.new"
 
 [node name="Achievements" type="Button" parent="." unique_id=1128415139 node_paths=PackedStringArray("TargetNode")]
 offset_left = -541.0
@@ -131,6 +133,7 @@ icon = ExtResource("4_hgm2k")
 script = ExtResource("3_2bjg4")
 TargetNode = NodePath("../TitleButtonsTargetPos")
 TimerLenght = 0.4
+TextureId = &"gui.title-screen.achievements"
 
 [node name="Settings" type="Button" parent="." unique_id=764859277 node_paths=PackedStringArray("TargetNode")]
 offset_left = -540.0
@@ -148,6 +151,7 @@ icon = ExtResource("6_oxd3l")
 script = ExtResource("3_2bjg4")
 TargetNode = NodePath("../TitleButtonsTargetPos")
 TimerLenght = 0.6
+TextureId = &"gui.title-screen.settings"
 
 [node name="Quit" type="Button" parent="." unique_id=233946738 node_paths=PackedStringArray("TargetNode")]
 offset_left = -540.0
@@ -165,6 +169,7 @@ icon = ExtResource("3_sufyd")
 script = ExtResource("3_2bjg4")
 TargetNode = NodePath("../TitleButtonsTargetPos")
 TimerLenght = 0.8
+TextureId = &"gui.title-screen.quit"
 
 [node name="FileManager2" type="Button" parent="." unique_id=1818436630 node_paths=PackedStringArray("TargetNode")]
 offset_left = -544.0
@@ -183,6 +188,7 @@ icon = ExtResource("10_nrs1e")
 script = ExtResource("3_2bjg4")
 TargetNode = NodePath("../TitleButtonsTargetPos")
 TimerLenght = 1.0
+TextureId = &"gui.title-screen.file-manager"
 
 [node name="SpeedrunMode" type="Button" parent="." unique_id=2036212217 node_paths=PackedStringArray("TargetNode")]
 offset_left = -540.0
@@ -200,6 +206,7 @@ icon = ExtResource("8_shcqs")
 script = ExtResource("3_2bjg4")
 TargetNode = NodePath("../TitleButtonsTargetPos")
 TimerLenght = 1.2
+TextureId = &"gui.title-screen.speedrun-mode"
 
 [node name="TitleButtonsTargetPos" type="Control" parent="." unique_id=450983227 node_paths=PackedStringArray("LoadGameInfo", "LoadGameButton", "FileManager")]
 layout_mode = 3

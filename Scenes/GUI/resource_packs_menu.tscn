@@ -10,6 +10,7 @@ follow_viewport_enabled = true
 
 [node name="ResourcePacksMenu" type="PanelContainer" parent="." unique_id=92110985 node_paths=PackedStringArray("TranslationsBut")]
 visible = false
+z_index = 99
 custom_minimum_size = Vector2(585, 327)
 offset_left = -298.0
 offset_top = -163.0
