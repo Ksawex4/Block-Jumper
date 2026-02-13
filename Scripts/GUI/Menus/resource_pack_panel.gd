@@ -15,8 +15,6 @@ func update_meta(pack_id: String = name) -> void:
 	name = pack_id
 	var pack_data: Dictionary = NovaResourcePack.get_pack_data(pack_id)
 	var pack_meta: Dictionary = pack_data.get("meta", {})
-	if pack_meta.is_empty():
-		queue_free()
 	
 	Active = NovaResourcePack.ActiveResourcePacks.has(pack_id)
 	Name.text = pack_meta.get("name", "Failed to get name")
