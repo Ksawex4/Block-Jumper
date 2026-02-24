@@ -2,8 +2,9 @@ extends Node
 
 var Achievements: Array = []
 var Achievements_to_show: Array = []
+const ACHIEVEMENTS_PATH = "res://Scripts/Globals/Managers/achievements.json"
 ## Id of sfx in NovaAudio
-var Achievement_id: StringName = &"sfx-achievement"
+var AchievementSfxId: StringName = &"sfx-achievement"
 var Can_get_achievements: bool = true
 ## achievement_id: texture_id
 var Achievement_sprites: Dictionary[StringName, StringName] = {}
@@ -14,7 +15,7 @@ signal UpdateAchievements()
 
 func _ready() -> void:
 	var get_data := func get_data() -> Dictionary:
-		var data_path: String = "res://Scripts/Globals/Managers/achievements.json"
+		var data_path: String = ACHIEVEMENTS_PATH
 		if !FileAccess.file_exists(data_path):
 			push_warning("achievements.json doesn't exist path: %s " % [data_path])
 			return {}
@@ -51,7 +52,7 @@ func has_achievement(achievement: String) -> bool:
 
 func change_achievement_sound(id: String) -> void:
 	if NovaAudio.Sfx.has(id):
-		Achievement_id = id
+		AchievementSfxId = id
 		DebugMan.dprint("[AchievMan, change_achievement_sound] changed to ", id)
 	else:
 		push_warning("id doesn't exist! ", id)
@@ -77,7 +78,7 @@ func load_achievements() -> void:
 func reset_variables_to_default(reset_achievements: bool =false) -> void:
 	Achievements = [] if reset_achievements else Achievements
 	Achievements_to_show = []
-	Achievement_id = &"sfx-achievement"
+	AchievementSfxId = &"sfx-achievement"
 	Can_get_achievements = true
 	emit_signal("UpdateAchievements")
 	DebugMan.dprint("[AchievMan, reset_variables_to_default] done")

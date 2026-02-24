@@ -1,11 +1,11 @@
 {
-  "assets-path": "res://Assets/",
-  "sfx-path": "Audio/SFX/",
-  "music-path": "Audio/Music/",
-  "textures-path": "Sprites/",
-  "langs-path": "Langs/",
-  "fonts-path": "Fonts/",
-  "meta": {
+	"assets-path": "res://Assets/",
+	"sfx-path": "Audio/SFX/",
+	"music-path": "Audio/Music/",
+	"textures-path": "Sprites/",
+	"langs-path": "Langs/",
+	"fonts-path": "Fonts/",
+	"meta": {
 	 "name": "Zworka Base Pack",
 	 "description": "All resources for Block Jumper",
 	 "icon": "res://Assets/FencyIcon.svg",
@@ -14,9 +14,9 @@
 		"qStarRat",
       "Dżifoto"
 	 ]
-  },
-  
-  "audio": {
+	},
+	
+	"audio": {
 	 "sfx": {
 		"sfx-achievement": "sfxAch.wav",
 		"sfx-big-cheese": "sfxBigCheese.ogg",
@@ -38,9 +38,9 @@
 		"mus-trash": "musTrash.ogg",
 		"mus-zworka-song": "musZworkaSong.ogg"
 	 }
-  },
+	},
 
-  "textures": {
+	"textures": {
 	 "ach-block-killer": "Achievements/BlockKiller.png",
 	 "ach-bob": "Achievements/BOB.png",
 	 "ach-chip": "Achievements/Chip.png",
@@ -132,8 +132,8 @@
 	 "cheese": "Objects/Projectiles/cheese.png",
 
 	 "health-bar.rat-king": "Objects/Others/RatKingHealthBar.png"
-  },
-  "animations": {
+	},
+	"animations": {
 	 "boot-splash-fency": {
 		"type": "sheet",
 		"texture-id": "boot-splash-fency",
@@ -293,13 +293,13 @@
 		"fps": 5.0,
 		"loop": true
 	 }
-  },
+	},
 
-  "langs": {
+	"langs": {
 	 "en": "en.json"
-  },
+	},
 
-  "fonts": {
+	"fonts": {
 	 "main": "VCR_OSD_MONO_1.001.ttf"
-  }
+	}
 }

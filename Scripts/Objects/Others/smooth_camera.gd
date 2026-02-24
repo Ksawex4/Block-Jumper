@@ -5,9 +5,10 @@ var Achievement_start_pos: Vector2
 var Achievement_show_pos := Vector2.ZERO
 var Achievement_show := false
 var Achievement_hidden := true
-var Achievement_template := "[img]res://Assets/Sprites/Achievements/ACHIEVEMENT.png[/img]"
+
 var Beans_start_pos := Vector2.ZERO
 var Beans_second_pos := Vector2(0.0, 32.0)
+
 @export var HealMenu: Window
 @export var AchievementLabel: RichTextLabel
 @export var BeansLabel: Label
@@ -16,8 +17,8 @@ signal ShowHealMenu()
 
 func _ready() -> void:
 	Achievement_start_pos = AchievementLabel.position
-	$AudioStreamPlayer.stream = NovaAudio.get_sfx(AchievMan.Achievement_id)
-	if AchievMan.Achievement_id == &"sfx-toast-achievement":
+	$AudioStreamPlayer.stream = NovaAudio.get_sfx(AchievMan.AchievementSfxId)
+	if AchievMan.AchievementSfxId == &"sfx-toast-achievement":
 		$AudioStreamPlayer.volume_db = 10
 	if GameMan.is_mobile():
 		$CanvasLayer/MobileControls.show()
@@ -88,8 +89,8 @@ func _show_achievement(ach: String) -> void:
 		AchievementLabel.text = "Everything is fucked," + ach
 	Achievement_show = true
 	Achievement_hidden = false
-	$AudioStreamPlayer.stream = NovaAudio.get_sfx(AchievMan.Achievement_id)
-	if AchievMan.Achievement_id == &"sfx-toast-achievement":
+	$AudioStreamPlayer.stream = NovaAudio.get_sfx(AchievMan.AchievementSfxId)
+	if AchievMan.AchievementSfxId == &"sfx-toast-achievement":
 		$AudioStreamPlayer.volume_db = 10
 	$AudioStreamPlayer.play()
 	await get_tree().create_timer(4.0).timeout
@@ -105,3 +106,7 @@ func _on_jump_button_pressed() -> void:
 
 func _on_jump_button_released() -> void:
 	InputMan.Mobile_jump = false
+
+
+func _draw() -> void:
+	draw_circle(position, 4.0, Color.RED)

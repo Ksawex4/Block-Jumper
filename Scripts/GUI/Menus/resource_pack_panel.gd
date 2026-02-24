@@ -10,9 +10,10 @@ extends PanelContainer
 @export var TranslationsCount: Label
 @export var AreYaSurePopup: PopupMenu
 var Active: bool = false
+var PackId: String = ""
 
-func update_meta(pack_id: String = name) -> void:
-	name = pack_id
+func update_meta(pack_id: String = "") -> void:
+	PackId = pack_id
 	var pack_data: Dictionary = NovaResourcePack.get_pack_data(pack_id)
 	var pack_meta: Dictionary = pack_data.get("meta", {})
 	
@@ -25,11 +26,13 @@ func update_meta(pack_id: String = name) -> void:
 		Authors.text += author + ", "
 	Authors.text = Authors.text.erase(Authors.text.length()-2, 2)
 	
-	Icon.texture = (
-		NovaTexture.get_texture_from_file(NovaResourcePack.RESOURCE_PACKS_PATH + "/%s/" % pack_id + pack_meta.get("icon", ""))
-		if pack_id != NovaResourcePack.BASE_PACK_ID else
-		NovaTexture.get_texture_from_file(pack_meta.get("icon", ""))
-	)
+	var icon_filename: String = pack_meta.get("icon", "")
+	if !icon_filename.is_empty():
+		Icon.texture = (
+			NovaTexture.get_texture_from_file(NovaResourcePack.RESOURCE_PACKS_PATH + "/%s/" % pack_id + icon_filename)
+			if pack_id != NovaResourcePack.BASE_PACK_ID else
+			NovaTexture.get_texture_from_file(icon_filename)
+		)
 	
 	var audio_data: Dictionary = pack_data.get("audio", {})
 	TexturesCount.text = "Textures: %s" % pack_data.get("textures", {}).size()
@@ -48,17 +51,16 @@ func update_meta(pack_id: String = name) -> void:
 
 func _on_toggle_pressed() -> void:
 	if Active:
-		NovaResourcePack.disable_resource_pack(name)
+		NovaResourcePack.disable_resource_pack(PackId)
 	else:
-		NovaResourcePack.activate_resource_pack(name)
-	queue_free()
+		NovaResourcePack.activate_resource_pack(PackId)
 
 
 func _on_show_dir_pressed() -> void:
-	if name == NovaResourcePack.BASE_PACK_ID:
+	if PackId == NovaResourcePack.BASE_PACK_ID:
 		return
 	
-	var pack_path: String = NovaResourcePack.RESOURCE_PACKS_PATH + "/%s/" % name
+	var pack_path: String = NovaResourcePack.RESOURCE_PACKS_PATH + "/%s/" % PackId
 	OS.shell_open(ProjectSettings.globalize_path(pack_path))
 
 
@@ -88,7 +90,7 @@ func _on_move_up_pressed() -> void:
 		get_disabled_packs(NovaResourcePack.ActiveResourcePacks, [], NovaResourcePack.ResourcePacks)
 	)
 	
-	array = move_pack(array, -1, name)
+	array = move_pack(array, -1, PackId)
 	if Active:
 		NovaResourcePack.set_active_packs(array)
 	else:
@@ -100,7 +102,7 @@ func _on_move_down_pressed() -> void:
 		NovaResourcePack.ActiveResourcePacks if Active else 
 		get_disabled_packs(NovaResourcePack.ActiveResourcePacks, [], NovaResourcePack.ResourcePacks)
 	)
-	array = move_pack(array, 1, name)
+	array = move_pack(array, 1, PackId)
 	if Active:
 		NovaResourcePack.set_active_packs(array)
 	else:
@@ -111,5 +113,5 @@ func _on_delete_pressed() -> void:
 	AreYaSurePopup.popup_centered()
 	var selected: int = await AreYaSurePopup.index_pressed
 	if selected == 1:
-		NovaResourcePack.remove_pack(name)
+		NovaResourcePack.remove_pack(PackId)
 		queue_free()

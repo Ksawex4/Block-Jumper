@@ -1,6 +1,7 @@
 extends PanelContainer
 
 @export var TranslationsBut: OptionButton
+var Randomize: bool = false
 
 func _ready() -> void:
 	var saved_packs: Dictionary = SaveMan.get_data_from_file("ActiveResourcePacks.bj", false)
@@ -61,9 +62,16 @@ func spawn_disabled(disabled_packs: PackedStringArray) -> void:
 
 func _on_close_pressed() -> void:
 	hide()
-	NovaResourcePack.load_active_resource_packs()
+	NovaResourcePack.load_active_resource_packs(Randomize)
 	SaveMan.save_file("ActiveResourcePacks.bj", NovaResourcePack.return_save_data(), false)
 
 
 func _on_option_button_item_selected(index: int) -> void:
-	pass # Replace with function body.
+	var locale: String = TranslationsBut.get_item_text(index)
+	print("Changed locale to %s" % locale)
+	if TranslationServer.has_translation_for_locale(locale, true):
+		TranslationServer.set_locale(locale)
+
+
+func _on_randomize_toggled(toggled_on: bool) -> void:
+	Randomize = toggled_on

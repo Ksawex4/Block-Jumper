@@ -7,14 +7,14 @@ damping = 1.0
 wet = 1.0
 
 [resource]
-bus/0/volume_db = -0.13049698
+bus/0/volume_db = -4.002995
 bus/0/effect/0/effect = SubResource("AudioEffectReverb_j3pel")
 bus/0/effect/0/enabled = false
 bus/1/name = &"SFX"
 bus/1/solo = false
 bus/1/mute = false
 bus/1/bypass_fx = false
-bus/1/volume_db = -1.1215086
+bus/1/volume_db = 0.06726074
 bus/1/send = &"Master"
 bus/2/name = &"Music"
 bus/2/solo = false

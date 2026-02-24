@@ -109,7 +109,7 @@ func load_save_data(data: Dictionary) -> void:
 	load_active_resource_packs()
 
 
-func load_active_resource_packs() -> void:
+func load_active_resource_packs(randomize: bool = false, rseed: int = -1) -> void:
 	print("======== Loading packs: %s ========" % ActiveResourcePacks)
 	
 	var assets: Dictionary[StringName, Dictionary] = {
@@ -126,6 +126,41 @@ func load_active_resource_packs() -> void:
 		print("======== Merging resource pack %s ========" % id)
 		assets = _merge_data(assets, get_pack_data(id), id)
 	
+	if randomize:
+		var randomizer: RandomNumberGenerator = RandomNumberGenerator.new()
+		if rseed == -1:
+			randomizer.seed = randf_range(
+				-150000.0,
+				150000.0
+			)
+		else:
+			randomizer.seed = rseed
+		print("Randomizer seed: %s" % randomizer.seed)
+		
+		assets[&"textures"] = _randomize_assets(
+			assets[&"textures"].keys(),
+			assets[&"textures"].values(),
+			randomizer
+		)[0]
+		
+		var rand_sfx:  Dictionary[StringName, String]
+		var rand_music: Dictionary[StringName, String]
+		var audio: Array = assets[&"audio"][&"sfx"].values()
+		audio.append_array(assets[&"audio"][&"music"].values())
+		var result: Array = _randomize_assets(assets[&"audio"][&"sfx"].keys(), audio, randomizer)
+		audio = result[1]
+		rand_sfx = result[0]
+		rand_music = _randomize_assets(assets[&"audio"][&"music"].keys(), audio, randomizer)[0]
+		assets[&"audio"][&"sfx"] = rand_sfx
+		assets[&"audio"][&"music"] = rand_music
+		
+		assets[&"fonts"] = _randomize_assets(assets[&"fonts"].keys(), assets[&"fonts"].values(), randomizer)[0]
+		
+		for trans_id in assets[&"langs"].keys():
+			var lang: Dictionary = assets[&"langs"]
+			assets[&"langs"][trans_id] = _randomize_assets(lang.keys(), lang.values(), randomizer)[0]
+	
+	
 	print("======== Loading resource packs ========")
 	NovaTexture.load_textures(assets[&"textures"], "")
 	NovaAnimation.load_animations_data(assets[&"animations"])
@@ -138,8 +173,19 @@ func load_active_resource_packs() -> void:
 	NovaAnimation.ReloadAnimation.emit()
 	NovaAudio.ReloadSfx.emit()
 	NovaAudio.ReloadMusic.emit()
-	NovaFont.ReloadFont.emit()
+	NovaFont.ReloadFont.emit.call_deferred()
 	print("======== Reloaded ========")
+
+
+## First value is the randomized Dictionary, second value is leftover values
+func _randomize_assets(keys: Array, values: PackedStringArray, randomizer: RandomNumberGenerator = RandomNumberGenerator.new()) -> Array:
+	var rand_assets: Dictionary[StringName, String] = {}
+	for id: StringName in keys:
+		var index: int = randomizer.randi_range(0, values.size()-1)
+		var value: String = values[index]
+		values.remove_at(index)
+		rand_assets.set(id, value)
+	return [rand_assets, values]
 
 
 func _get_assets_path(pack_data: Dictionary, pack_id: String) -> String:

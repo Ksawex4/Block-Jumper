@@ -28,7 +28,7 @@ func _process(_delta: float) -> void:
 	match Event:
 		Events.NONE: pass
 		Events.TOAST_ACHIEVEMENT_SOUND:
-			if AchievMan.Achievement_id != &"sfx-toast-achievement":
+			if AchievMan.AchievementSfxId != &"sfx-toast-achievement":
 				AchievMan.change_achievement_sound(&"sfx-toast-achievement")
 		Events.SPAM_QUEEN:
 			Spam_queen = true
