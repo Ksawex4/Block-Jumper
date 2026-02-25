@@ -48,7 +48,7 @@ offset_left = -65.0
 offset_top = -88.0
 offset_right = 64.0
 offset_bottom = -65.0
-text = "Press Z to reload"
+text = "interact-text"
 script = ExtResource("4_ayn6r")
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

@@ -345,7 +345,7 @@ offset_left = -65.0
 offset_top = -26.0
 offset_right = 70.0
 offset_bottom = -13.0
-text = "HOLY SHIT I LEAD TO TRASH?!?!"
+text = "sewers.bob-talk"
 label_settings = SubResource("LabelSettings_e5a16")
 script = ExtResource("14_2d81g")
 

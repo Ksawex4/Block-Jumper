@@ -8,7 +8,8 @@
 layer = 2
 follow_viewport_enabled = true
 
-[node name="ResourcePacksMenu" type="PanelContainer" parent="." unique_id=92110985 node_paths=PackedStringArray("TranslationsBut")]
+[node name="ResourcePacksMenu" type="PanelContainer" parent="." unique_id=92110985 node_paths=PackedStringArray("TranslationsBut", "RandomizerSeed")]
+visible = false
 z_index = 99
 custom_minimum_size = Vector2(585, 327)
 offset_left = -292.0
@@ -18,7 +19,8 @@ offset_bottom = 164.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
 script = ExtResource("1_ilwey")
-TranslationsBut = NodePath("VSplitContainer/Container/OptionButton")
+TranslationsBut = NodePath("VSplitContainer/Container/Lang")
+RandomizerSeed = NodePath("VSplitContainer/Container/RandomizerSeed")
 
 [node name="VSplitContainer" type="VSplitContainer" parent="ResourcePacksMenu" unique_id=1582999145]
 layout_mode = 2
@@ -26,7 +28,7 @@ dragging_enabled = false
 dragger_visibility = 1
 
 [node name="Container" type="Control" parent="ResourcePacksMenu/VSplitContainer" unique_id=1598253953]
-custom_minimum_size = Vector2(0, 20)
+custom_minimum_size = Vector2(0, 60)
 layout_mode = 2
 
 [node name="Close" type="Button" parent="ResourcePacksMenu/VSplitContainer/Container" unique_id=1483233924]
@@ -46,11 +48,12 @@ theme_override_font_sizes/font_size = 12
 text = "Rescan"
 script = ExtResource("3_ilwey")
 
-[node name="OptionButton" type="OptionButton" parent="ResourcePacksMenu/VSplitContainer/Container" unique_id=535052347]
+[node name="Lang" type="OptionButton" parent="ResourcePacksMenu/VSplitContainer/Container" unique_id=535052347]
 layout_mode = 0
-offset_left = 286.0
-offset_right = 338.0
-offset_bottom = 31.0
+offset_left = 1.0
+offset_top = 32.0
+offset_right = 53.0
+offset_bottom = 63.0
 selected = 0
 item_count = 1
 popup/item_0/text = "en"
@@ -63,6 +66,13 @@ offset_left = 57.0
 offset_right = 274.0
 offset_bottom = 31.0
 text = "Randomize all assets?"
+
+[node name="RandomizerSeed" type="LineEdit" parent="ResourcePacksMenu/VSplitContainer/Container" unique_id=425502613]
+layout_mode = 0
+offset_left = 256.0
+offset_right = 556.0
+offset_bottom = 31.0
+placeholder_text = "Randomizer seed (Empty for random)"
 
 [node name="HSplitContainer" type="HSplitContainer" parent="ResourcePacksMenu/VSplitContainer" unique_id=1954231358]
 layout_mode = 2
@@ -87,5 +97,5 @@ layout_mode = 2
 
 [connection signal="pressed" from="ResourcePacksMenu/VSplitContainer/Container/Close" to="ResourcePacksMenu" method="_on_close_pressed"]
 [connection signal="pressed" from="ResourcePacksMenu/VSplitContainer/Container/Rescan" to="ResourcePacksMenu" method="rescan"]
-[connection signal="item_selected" from="ResourcePacksMenu/VSplitContainer/Container/OptionButton" to="ResourcePacksMenu" method="_on_option_button_item_selected"]
+[connection signal="item_selected" from="ResourcePacksMenu/VSplitContainer/Container/Lang" to="ResourcePacksMenu" method="_on_option_button_item_selected"]
 [connection signal="toggled" from="ResourcePacksMenu/VSplitContainer/Container/Randomize" to="ResourcePacksMenu" method="_on_randomize_toggled"]

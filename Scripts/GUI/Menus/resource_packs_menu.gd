@@ -1,6 +1,7 @@
 extends PanelContainer
 
 @export var TranslationsBut: OptionButton
+@export var RandomizerSeed: LineEdit
 var Randomize: bool = false
 
 func _ready() -> void:
@@ -62,7 +63,7 @@ func spawn_disabled(disabled_packs: PackedStringArray) -> void:
 
 func _on_close_pressed() -> void:
 	hide()
-	NovaResourcePack.load_active_resource_packs(Randomize)
+	NovaResourcePack.load_active_resource_packs(Randomize, RandomizerSeed.text)
 	SaveMan.save_file("ActiveResourcePacks.bj", NovaResourcePack.return_save_data(), false)
 
 

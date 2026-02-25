@@ -22,11 +22,12 @@ func load_base_translations(data: Dictionary = {}) -> void:
 
 func load_locales(translations: Dictionary, langs_path: String) -> void:
 	print("Loading translations")
-	for locale: String in translations:
+	for locale: String in translations.keys():
 		var translation = translations[locale]
 		if typeof(translation) == TYPE_STRING:
 			translation = _get_translation_from_file(langs_path + translation)
 		elif typeof(translation) != TYPE_DICTIONARY:
+			print(translation)
 			push_warning("Unsuported type for locale %s, should be String(path) or Dictionary" % locale)
 			continue
 		
@@ -36,6 +37,9 @@ func load_locales(translations: Dictionary, langs_path: String) -> void:
 		)
 		trans.locale = locale
 		
+		print(translation, locale)
+		print(translation.keys())
+		print(translations == translation)
 		for key: String in translation.keys():
 			trans.add_message(key, translation[key])
 		

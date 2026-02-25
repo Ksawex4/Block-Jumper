@@ -109,7 +109,7 @@ func load_save_data(data: Dictionary) -> void:
 	load_active_resource_packs()
 
 
-func load_active_resource_packs(randomize: bool = false, rseed: int = -1) -> void:
+func load_active_resource_packs(randomize: bool = false, rseed: String = "") -> void:
 	print("======== Loading packs: %s ========" % ActiveResourcePacks)
 	
 	var assets: Dictionary[StringName, Dictionary] = {
@@ -127,14 +127,15 @@ func load_active_resource_packs(randomize: bool = false, rseed: int = -1) -> voi
 		assets = _merge_data(assets, get_pack_data(id), id)
 	
 	if randomize:
+		print("rseed: %s" % rseed)
 		var randomizer: RandomNumberGenerator = RandomNumberGenerator.new()
-		if rseed == -1:
+		if rseed == "":
 			randomizer.seed = randf_range(
 				-150000.0,
 				150000.0
 			)
 		else:
-			randomizer.seed = rseed
+			randomizer.seed = rseed.hash()
 		print("Randomizer seed: %s" % randomizer.seed)
 		
 		assets[&"textures"] = _randomize_assets(
@@ -156,9 +157,9 @@ func load_active_resource_packs(randomize: bool = false, rseed: int = -1) -> voi
 		
 		assets[&"fonts"] = _randomize_assets(assets[&"fonts"].keys(), assets[&"fonts"].values(), randomizer)[0]
 		
-		for trans_id in assets[&"langs"].keys():
-			var lang: Dictionary = assets[&"langs"]
-			assets[&"langs"][trans_id] = _randomize_assets(lang.keys(), lang.values(), randomizer)[0]
+		#for trans_id in assets[&"langs"].keys():
+		var lang: Dictionary = assets[&"langs"]
+		assets[&"langs"] = _randomize_langs(lang.keys(), lang.values(), randomizer)[0]
 	
 	
 	print("======== Loading resource packs ========")
@@ -186,6 +187,33 @@ func _randomize_assets(keys: Array, values: PackedStringArray, randomizer: Rando
 		values.remove_at(index)
 		rand_assets.set(id, value)
 	return [rand_assets, values]
+
+
+## First value is the randomized Dictionary, second value is leftover values
+func _randomize_langs(keys: Array, values: Array, randomizer: RandomNumberGenerator = RandomNumberGenerator.new()) -> Array:
+	var rand_langs: Dictionary[StringName, Dictionary] = {}
+	for x in range(keys.size()):
+		var lang_translations: Dictionary
+		var lang_id: StringName = keys[x]
+		var lang_value = values[x]
+		var value_type = typeof(lang_value)
+		
+		if value_type == TYPE_DICTIONARY:
+			lang_translations = lang_value
+		else:
+			lang_translations = NovaTranslation._get_translation_from_file(lang_value)
+		
+		var rand_lang: Dictionary[StringName, String]
+		var trans_values: Array = lang_translations.values()
+		for key: StringName in lang_translations.keys():
+			var index: int = randomizer.randi_range(0, trans_values.size()-1)
+			var value: String = trans_values[index]
+			trans_values.remove_at(index)
+			rand_lang.set(key, value)
+		rand_langs.set(lang_id, rand_lang)
+	
+	print(rand_langs)
+	return [rand_langs, values]
 
 
 func _get_assets_path(pack_data: Dictionary, pack_id: String) -> String:
