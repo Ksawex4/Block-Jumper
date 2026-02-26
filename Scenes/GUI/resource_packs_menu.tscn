@@ -5,17 +5,22 @@
 [ext_resource type="Script" uid="uid://c48wk8hbjm0uu" path="res://Scripts/GUI/button_custom_font.gd" id="3_ilwey"]
 
 [node name="CanvasLayer" type="CanvasLayer" unique_id=1447387507]
-layer = 2
-follow_viewport_enabled = true
 
 [node name="ResourcePacksMenu" type="PanelContainer" parent="." unique_id=92110985 node_paths=PackedStringArray("TranslationsBut", "RandomizerSeed")]
 visible = false
 z_index = 99
 custom_minimum_size = Vector2(585, 327)
-offset_left = -292.0
-offset_top = -163.0
-offset_right = 304.0
-offset_bottom = 164.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -298.0
+offset_top = -163.5
+offset_right = 298.0
+offset_bottom = 163.5
+grow_horizontal = 2
+grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 script = ExtResource("1_ilwey")
