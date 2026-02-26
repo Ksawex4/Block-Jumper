@@ -6,6 +6,7 @@
 [ext_resource type="LabelSettings" uid="uid://covmcdqm70qom" path="res://Resources/Fonts/DefaultFont.tres" id="4_j63ul"]
 [ext_resource type="Script" uid="uid://bs73o2ihu7mo4" path="res://Scripts/GUI/custom_font.gd" id="5_58hl8"]
 [ext_resource type="Texture2D" uid="uid://du54mdekovu47" path="res://Assets/Sprites/GUI/MobileButtons/Pause.png" id="6_4chum"]
+[ext_resource type="Script" uid="uid://c2wf3rk5c454t" path="res://Scripts/GUI/touch-screen-button-custom-texture.gd" id="7_4kj5n"]
 [ext_resource type="Texture2D" uid="uid://cgmam0rrrv7f2" path="res://Assets/Sprites/GUI/MobileButtons/SwitchPlayer.png" id="7_mkhw6"]
 [ext_resource type="Texture2D" uid="uid://g7bsrts3djrh" path="res://Assets/Sprites/GUI/MobileButtons/SpawnBouncy_onurB.png" id="8_b7i7j"]
 [ext_resource type="Texture2D" uid="uid://f47t28vuhy2s" path="res://Assets/Sprites/GUI/MobileButtons/DeleteAllBouncy_onurBs.png" id="9_svihx"]
@@ -74,7 +75,6 @@ autowrap_mode = 0
 metadata/_edit_use_anchors_ = true
 
 [node name="MobileControls" type="Control" parent="CanvasLayer" unique_id=2079373432]
-visible = false
 layout_mode = 3
 anchor_left = 0.033755273
 anchor_top = 0.74
@@ -89,6 +89,8 @@ position = Vector2(584, -265)
 texture_normal = ExtResource("6_4chum")
 action = "Pause"
 visibility_mode = 1
+script = ExtResource("7_4kj5n")
+TextureId = &"gui.mobile.pause"
 
 [node name="SwitchPlayer" type="TouchScreenButton" parent="CanvasLayer/MobileControls" unique_id=1165927187]
 self_modulate = Color(1, 1, 1, 0.7647059)
@@ -96,6 +98,8 @@ position = Vector2(480, -265)
 texture_normal = ExtResource("7_mkhw6")
 action = "SwitchPlayer"
 visibility_mode = 1
+script = ExtResource("7_4kj5n")
+TextureId = &"gui.mobile.switch-player"
 
 [node name="SpawnBouncy" type="TouchScreenButton" parent="CanvasLayer/MobileControls" unique_id=1492441756]
 self_modulate = Color(1, 1, 1, 0.7647059)
@@ -103,6 +107,8 @@ position = Vector2(584, -162)
 texture_normal = ExtResource("8_b7i7j")
 action = "SpawnBouncy_onurB"
 visibility_mode = 1
+script = ExtResource("7_4kj5n")
+TextureId = &"gui.mobile.spawn-bouncy-onurb"
 
 [node name="DeleteBouncy" type="TouchScreenButton" parent="CanvasLayer/MobileControls" unique_id=1242098877]
 self_modulate = Color(1, 1, 1, 0.7647059)
@@ -110,24 +116,32 @@ position = Vector2(584, -74)
 texture_normal = ExtResource("9_svihx")
 action = "DeleteAllBouncy_onurBs"
 visibility_mode = 1
+script = ExtResource("7_4kj5n")
+TextureId = &"gui.mobile.delete-bouncy-onurbs"
 
 [node name="JumpButton" type="TouchScreenButton" parent="CanvasLayer/MobileControls" unique_id=1692201755]
 self_modulate = Color(1, 1, 1, 0.7647059)
 position = Vector2(479.99994, -32)
 scale = Vector2(2.5, 2.5)
 texture_normal = ExtResource("11_osi1y")
+script = ExtResource("7_4kj5n")
+TextureId = &"gui.mobile.jump"
 
 [node name="InteractButton" type="TouchScreenButton" parent="CanvasLayer/MobileControls" unique_id=372078674]
 self_modulate = Color(1, 1, 1, 0.7647059)
 position = Vector2(459, 56)
 texture_normal = ExtResource("12_1uv7s")
 action = "Interact"
+script = ExtResource("7_4kj5n")
+TextureId = &"gui.mobile.z"
 
 [node name="HealMenuButton" type="TouchScreenButton" parent="CanvasLayer/MobileControls" unique_id=35653509]
 self_modulate = Color(1, 1, 1, 0.7647059)
 position = Vector2(555, 56)
 texture_normal = ExtResource("10_y6tnf")
 action = "HealMenu"
+script = ExtResource("7_4kj5n")
+TextureId = &"gui.mobile.e"
 
 [node name="LeftButton" type="TouchScreenButton" parent="CanvasLayer/MobileControls" unique_id=159097863]
 self_modulate = Color(1, 1, 1, 0.7647059)
@@ -136,6 +150,8 @@ scale = Vector2(2.5, 2.5)
 texture_normal = ExtResource("10_osi1y")
 passby_press = true
 action = "ControllerLeft"
+script = ExtResource("7_4kj5n")
+TextureId = &"gui.mobile.left"
 
 [node name="RightButton" type="TouchScreenButton" parent="CanvasLayer/MobileControls" unique_id=1687497094]
 self_modulate = Color(1, 1, 1, 0.7647059)
@@ -144,6 +160,8 @@ scale = Vector2(2.5, 2.5)
 texture_normal = ExtResource("11_1uv7s")
 passby_press = true
 action = "ControllerRight"
+script = ExtResource("7_4kj5n")
+TextureId = &"gui.mobile.right"
 
 [node name="HealMenu" type="Window" parent="." unique_id=993772234]
 oversampling_override = 1.0
