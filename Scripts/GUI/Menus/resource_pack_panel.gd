@@ -60,7 +60,7 @@ func _on_show_dir_pressed() -> void:
 	if PackId == NovaResourcePack.BASE_PACK_ID:
 		return
 	
-	var pack_path: String = NovaResourcePack.RESOURCE_PACKS_PATH + "/%s/" % PackId
+	var pack_path: String = NovaResourcePack.RESOURCE_PACKS_PATH.path_join(PackId)
 	OS.shell_open(ProjectSettings.globalize_path(pack_path))
 
 

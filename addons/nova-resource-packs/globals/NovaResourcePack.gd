@@ -2,6 +2,7 @@ extends Node
 
 var ResourcePacks: PackedStringArray = [BASE_PACK_ID]
 var ActiveResourcePacks: PackedStringArray = [BASE_PACK_ID]
+var CurrentRandomPackSeed: int = 0
 const BASE_PACK_ID = "base"
 const BASE_PACK_DATA_PATH = "res://Assets/data.json" # Path to data.json of the default resource pack
 const RESOURCE_PACKS_PATH = "user://resource-packs"
@@ -127,16 +128,14 @@ func load_active_resource_packs(randomize: bool = false, rseed: String = "") -> 
 		assets = _merge_data(assets, get_pack_data(id), id)
 	
 	if randomize:
-		print("rseed: %s" % rseed)
+
 		var randomizer: RandomNumberGenerator = RandomNumberGenerator.new()
 		if rseed == "":
-			randomizer.seed = randf_range(
-				-150000.0,
-				150000.0
-			)
+			randomizer.randomize()
 		else:
 			randomizer.seed = rseed.hash()
-		print("Randomizer seed: %s" % randomizer.seed)
+		CurrentRandomPackSeed = randomizer.seed
+		print("rseed: \"%s\" Randomizer seed: %s" % [rseed, randomizer.seed])
 		
 		assets[&"textures"] = _randomize_assets(
 			assets[&"textures"].keys(),
@@ -157,7 +156,6 @@ func load_active_resource_packs(randomize: bool = false, rseed: String = "") -> 
 		
 		assets[&"fonts"] = _randomize_assets(assets[&"fonts"].keys(), assets[&"fonts"].values(), randomizer)[0]
 		
-		#for trans_id in assets[&"langs"].keys():
 		var lang: Dictionary = assets[&"langs"]
 		assets[&"langs"] = _randomize_langs(lang.keys(), lang.values(), randomizer)[0]
 	
@@ -212,7 +210,6 @@ func _randomize_langs(keys: Array, values: Array, randomizer: RandomNumberGenera
 			rand_lang.set(key, value)
 		rand_langs.set(lang_id, rand_lang)
 	
-	print(rand_langs)
 	return [rand_langs, values]
 
 
@@ -322,11 +319,18 @@ func _merge_langs(langs: Dictionary, new_langs: Dictionary, langs_path: String, 
 		if typeof(lang_value) == TYPE_STRING:
 			var lang_path: String = langs_path + lang_value
 			if _file_exists(lang_path):
-				langs.set(id, lang_path)
+				var data: Dictionary = NovaTranslation._get_translation_from_file(lang_path)
+				var new_data: Dictionary = langs.get(id, {})
+				for key in data.keys():
+					new_data.set(key, data[key])
+				langs.set(id, new_data)
 			else:
 				push_warning("Pack id: %s, Lang id: %s File doesn't exist at path: %s" % [pack_id, id, lang_path])
 		elif typeof(lang_value) == TYPE_DICTIONARY:
-			langs.set(id, lang_value)
+			var new_data: Dictionary = langs.get(id, {})
+			for key in lang_value.keys():
+				new_data.set(key, lang_value[key])
+			langs.set(id, new_data)
 		else:
 			push_warning("Pack id: %s, Lang id: %s Wrong type, should be String(path) or Dictionary[String, String]" % [pack_id, id])
 	

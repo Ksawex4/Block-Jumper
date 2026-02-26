@@ -48,6 +48,7 @@ ToastEventMan="*res://Scripts/Globals/Managers/ToastEventManager.gd"
 NovaFunc="*res://Scripts/Globals/Other/NovaFunctions.gd"
 BobMan="*res://Scripts/Globals/Managers/BobManager.gd"
 ResourcePacksMenu="*uid://b8i3plisy8crb"
+ZipMan="*uid://cpwewaay60nuh"
 
 [debug]
 
@@ -57,7 +58,6 @@ gdscript/warnings/unused_signal=0
 
 window/size/viewport_width=640
 window/size/viewport_height=360
-window/size/mode=3
 window/stretch/mode="canvas_items"
 window/vsync/vsync_mode=0
 

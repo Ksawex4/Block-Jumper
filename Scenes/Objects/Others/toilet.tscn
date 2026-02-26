@@ -31,6 +31,7 @@ offset_right = 73.0
 offset_bottom = -13.0
 text = "Press z to interact"
 script = ExtResource("4_8mtta")
+FontId = &"interact-text"
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]

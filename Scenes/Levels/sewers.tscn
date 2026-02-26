@@ -35,6 +35,7 @@
 [ext_resource type="PackedScene" uid="uid://khf6venocxir" path="res://Scenes/Characters/Bosses/boss_rat_king.tscn" id="18_j1apm"]
 [ext_resource type="PackedScene" uid="uid://b77gkoqrf2pbp" path="res://Scenes/Objects/Items/rusty_key.tscn" id="19_6df3s"]
 [ext_resource type="Script" uid="uid://cijhsvahup4yt" path="res://Scripts/Objects/Others/boss_room_entry.gd" id="19_claet"]
+[ext_resource type="Script" uid="uid://bbcjmflnvqrwy" path="res://Scripts/Characters/NPCs/call_rat.gd" id="21_ibg02"]
 [ext_resource type="Texture2D" uid="uid://buq2hue05v4d2" path="res://Assets/Sprites/Objects/Blocks/sewerBlock.png" id="22_claet"]
 [ext_resource type="AudioStream" uid="uid://bhrdck8esi86b" path="res://Assets/Audio/Music/musBigcheese.ogg" id="26_tc42j"]
 [ext_resource type="Script" uid="uid://bgqpxwxsj2uve" path="res://Scripts/Objects/Others/player_counter.gd" id="30_e5a16"]
@@ -43,6 +44,9 @@
 
 [sub_resource type="LabelSettings" id="LabelSettings_e5a16"]
 font_size = 9
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k1qq3"]
+size = Vector2(46.5, 22)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p7ck8"]
 size = Vector2(32, 288)
@@ -345,7 +349,7 @@ offset_left = -65.0
 offset_top = -26.0
 offset_right = 70.0
 offset_bottom = -13.0
-text = "sewers.bob-talk"
+text = "sewers.bob.talk"
 label_settings = SubResource("LabelSettings_e5a16")
 script = ExtResource("14_2d81g")
 
@@ -382,9 +386,20 @@ Bobert_idk_too = Array[int]([0, 1])
 [node name="Breabit" parent="NPCs" unique_id=169717246 instance=ExtResource("10_p7ck8")]
 position = Vector2(1566, 1536)
 
-[node name="CallRat" type="Sprite2D" parent="NPCs" unique_id=686575108]
+[node name="CallRat" type="Sprite2D" parent="NPCs" unique_id=796301860]
 position = Vector2(1471, -619)
 texture = ExtResource("11_tc42j")
+script = ExtResource("21_ibg02")
+TextureId = &"npc-call-rat"
+metadata/_custom_type_script = "uid://b4ijjfgwm0d5h"
+
+[node name="Area2D" type="Area2D" parent="NPCs/CallRat" unique_id=124858251]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NPCs/CallRat/Area2D" unique_id=1383819452]
+position = Vector2(1, 0)
+shape = SubResource("RectangleShape2D_k1qq3")
 
 [node name="BitRat" parent="NPCs" unique_id=1091599127 instance=ExtResource("14_0chq0")]
 position = Vector2(-3600, -43)
@@ -770,6 +785,7 @@ script = ExtResource("30_e5a16")
 position = Vector2(-2726, -325)
 shape = SubResource("RectangleShape2D_6df3s")
 
+[connection signal="body_entered" from="NPCs/CallRat/Area2D" to="NPCs/CallRat" method="_on_area_2d_body_entered"]
 [connection signal="body_entered" from="Boss-RatKing/RoomEntry" to="Boss-RatKing/RoomEntry" method="_on_body_entered"]
 [connection signal="body_entered" from="Boss-RatKing/PlayerCounter" to="Boss-RatKing/PlayerCounter" method="_on_body_entered"]
 [connection signal="body_exited" from="Boss-RatKing/PlayerCounter" to="Boss-RatKing/PlayerCounter" method="_on_body_exited"]

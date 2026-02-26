@@ -2,9 +2,13 @@ extends PanelContainer
 
 @export var TranslationsBut: OptionButton
 @export var RandomizerSeed: LineEdit
+@export var SeedLab: Label
+@export var FileSelect: FileDialog
+@export var FileDrop: Window
 var Randomize: bool = false
 
 func _ready() -> void:
+	get_window().files_dropped.connect(_on_files_dropped)
 	var saved_packs: Dictionary = SaveMan.get_data_from_file("ActiveResourcePacks.bj", false)
 	if !saved_packs.is_empty():
 		NovaResourcePack.load_save_data(saved_packs)
@@ -13,6 +17,7 @@ func _ready() -> void:
 
 
 func refresh() -> void:
+	SeedLab.text = "Seed: %s" % NovaResourcePack.CurrentRandomPackSeed
 	var packs: PackedStringArray = NovaResourcePack.ResourcePacks
 	var active_packs: PackedStringArray = NovaResourcePack.ActiveResourcePacks
 	var disabled_packs: PackedStringArray = get_disabled_packs(active_packs, [], packs)
@@ -64,6 +69,7 @@ func spawn_disabled(disabled_packs: PackedStringArray) -> void:
 func _on_close_pressed() -> void:
 	hide()
 	NovaResourcePack.load_active_resource_packs(Randomize, RandomizerSeed.text)
+	SeedLab.text = "Seed: %s" % NovaResourcePack.CurrentRandomPackSeed
 	SaveMan.save_file("ActiveResourcePacks.bj", NovaResourcePack.return_save_data(), false)
 
 
@@ -76,3 +82,23 @@ func _on_option_button_item_selected(index: int) -> void:
 
 func _on_randomize_toggled(toggled_on: bool) -> void:
 	Randomize = toggled_on
+
+
+func _on_files_dropped(files: PackedStringArray) -> void:
+	for file: String in files:
+		_on_file_dialog_file_selected(file)
+
+
+func _on_file_dialog_file_selected(path: String) -> void:
+	var pack_id: String = path.get_file().get_basename()
+	ZipMan.unzip_to_directory(path, "user://resource-packs/".path_join(pack_id) + "/")
+	rescan()
+
+
+func _on_import_pack_pressed() -> void:
+	if OS.get_name() == "Web":
+		$"../WebInfo".show()
+		await get_tree().create_timer(5.0).timeout
+		$"../WebInfo".hide()
+		return
+	FileSelect.show()

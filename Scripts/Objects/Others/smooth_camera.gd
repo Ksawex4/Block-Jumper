@@ -106,7 +106,3 @@ func _on_jump_button_pressed() -> void:
 
 func _on_jump_button_released() -> void:
 	InputMan.Mobile_jump = false
-
-
-func _draw() -> void:
-	draw_circle(position, 4.0, Color.RED)

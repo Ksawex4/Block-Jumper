@@ -21,6 +21,11 @@ func _ready() -> void:
 	Is_web = true if OS.get_name() == "Web" else false
 	if Is_web:
 		Os = "Android" if OS.has_feature("web_android") or OS.has_feature("web_ios") else "Linux"
+		var user_agent: String = JavaScriptBridge.eval("window.navigator.userAgent")
+		print(user_agent)
+		if user_agent:
+			if user_agent.contains("OculusBrowser") or user_agent.contains("Quest"):
+				Os = "Android"
 	process_mode = Node.PROCESS_MODE_ALWAYS
 
 

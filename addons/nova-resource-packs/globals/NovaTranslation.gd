@@ -21,6 +21,7 @@ func load_base_translations(data: Dictionary = {}) -> void:
 
 
 func load_locales(translations: Dictionary, langs_path: String) -> void:
+	TranslationServer.clear()
 	print("Loading translations")
 	for locale: String in translations.keys():
 		var translation = translations[locale]
@@ -37,9 +38,6 @@ func load_locales(translations: Dictionary, langs_path: String) -> void:
 		)
 		trans.locale = locale
 		
-		print(translation, locale)
-		print(translation.keys())
-		print(translations == translation)
 		for key: String in translation.keys():
 			trans.add_message(key, translation[key])
 		
