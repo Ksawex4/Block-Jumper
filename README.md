@@ -5,7 +5,9 @@
 - All textures are made by me and [qStarRat](https://www.youtube.com/@qStarRat).
 - All songs are made by [qStarRat](https://www.youtube.com/@qStarRat).
 - All sound effect are made by me and [qStarRat](https://www.youtube.com/@qStarRat).
-- BootSplash background made by [Gfoto](https://www.facebook.com/share/17cfsackoZ/)
+- BootSplash background made by [Dżifoto](https://www.facebook.com/profile.php?id=61579311627448)
+
+To make your own resource pack download the template from the release of your current version of the game
 
 
 ## Credits
