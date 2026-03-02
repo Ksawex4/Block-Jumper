@@ -7,6 +7,7 @@
 [node name="CanvasLayer" type="CanvasLayer" unique_id=1447387507]
 
 [node name="ResourcePacksMenu" type="PanelContainer" parent="." unique_id=92110985 node_paths=PackedStringArray("TranslationsBut", "RandomizerSeed", "SeedLab", "FileSelect")]
+visible = false
 z_index = 99
 custom_minimum_size = Vector2(585, 327)
 anchors_preset = 8
