@@ -7,7 +7,6 @@
 [node name="CanvasLayer" type="CanvasLayer" unique_id=1447387507]
 
 [node name="ResourcePacksMenu" type="PanelContainer" parent="." unique_id=92110985 node_paths=PackedStringArray("TranslationsBut", "RandomizerSeed", "SeedLab", "FileSelect")]
-visible = false
 z_index = 99
 custom_minimum_size = Vector2(585, 327)
 anchors_preset = 8
@@ -57,9 +56,9 @@ script = ExtResource("3_ilwey")
 
 [node name="Lang" type="OptionButton" parent="ResourcePacksMenu/VSplitContainer/Container" unique_id=535052347]
 layout_mode = 0
-offset_left = 305.0
+offset_left = 361.0
 offset_top = 32.0
-offset_right = 357.0
+offset_right = 413.0
 offset_bottom = 63.0
 selected = 0
 item_count = 1

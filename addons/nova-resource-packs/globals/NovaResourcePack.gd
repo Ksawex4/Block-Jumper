@@ -133,7 +133,11 @@ func load_active_resource_packs(randomize: bool = false, rseed: String = "") -> 
 		if rseed == "":
 			randomizer.randomize()
 		else:
-			randomizer.seed = rseed.hash()
+			if !rseed.is_valid_int():
+				randomizer.seed = rseed.hash()
+			else:
+				randomizer.seed = rseed.to_int()
+			
 		CurrentRandomPackSeed = randomizer.seed
 		print("rseed: \"%s\" Randomizer seed: %s" % [rseed, randomizer.seed])
 		
