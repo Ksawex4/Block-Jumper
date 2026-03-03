@@ -378,7 +378,7 @@ func _sort_by_deepness(array: PackedStringArray) -> PackedStringArray:
 		return a.count("/") > b.count("/")
 	)
 	
-	return PackedStringArray(array)
+	return PackedStringArray(sorted)
 
 
 func get_all_files(path: String, files: PackedStringArray = PackedStringArray([]), get_dirs: bool=false) -> PackedStringArray:
