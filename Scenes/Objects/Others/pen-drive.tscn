@@ -1,0 +1,58 @@
+[gd_scene format=3 uid="uid://dk56k3taxno8h"]
+
+[ext_resource type="Script" uid="uid://biyl7kkexieyx" path="res://Scripts/Objects/Others/pen-drive.gd" id="1_581nb"]
+[ext_resource type="Texture2D" uid="uid://c0tdnnnqvp1ku" path="res://Assets/Sprites/Objects/Others/pencil.png" id="1_dnp00"]
+[ext_resource type="Script" uid="uid://b4ijjfgwm0d5h" path="res://addons/nova-resource-packs/nodes/texture/NovaSprite2D.gd" id="2_581nb"]
+[ext_resource type="FontFile" uid="uid://cfp7imnsoqkrp" path="res://Assets/Fonts/VCR_OSD_MONO_1.001.ttf" id="4_aytg0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_aytg0"]
+size = Vector2(14, 106)
+
+[sub_resource type="LabelSettings" id="LabelSettings_55rxe"]
+font = ExtResource("4_aytg0")
+font_size = 14
+outline_size = 4
+outline_color = Color(0, 0, 0, 1)
+
+[node name="PenDrive" type="CharacterBody2D" unique_id=1258762975 node_paths=PackedStringArray("info_label")]
+collision_layer = 32
+script = ExtResource("1_581nb")
+info_label = NodePath("Info")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=323176114]
+position = Vector2(0, 6)
+texture = ExtResource("1_dnp00")
+script = ExtResource("2_581nb")
+TextureId = &"pencil"
+metadata/_custom_type_script = "uid://b4ijjfgwm0d5h"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=994373915]
+shape = SubResource("RectangleShape2D_aytg0")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=2115544311]
+position = Vector2(0, 65)
+polygon = PackedVector2Array(-7, -12, 7, -12, 1, 0, -1, 0)
+
+[node name="Area2D" type="Area2D" parent="." unique_id=493179372]
+position = Vector2(0, 65)
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=758335685]
+position = Vector2(0, -65)
+shape = SubResource("RectangleShape2D_aytg0")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D" unique_id=1979543085]
+polygon = PackedVector2Array(-7, -12, 7, -12, 1, 0, -1, 0)
+
+[node name="Info" type="Label" parent="." unique_id=1322159060]
+visible = false
+offset_left = -66.0
+offset_top = -44.0
+offset_right = 66.0
+offset_bottom = -31.0
+text = "Press Z to drive"
+label_settings = SubResource("LabelSettings_55rxe")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

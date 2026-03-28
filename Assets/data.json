@@ -132,7 +132,8 @@
 
 	 "cheese": "Objects/Projectiles/cheese.png",
 
-	 "health-bar.rat-king": "Objects/Others/RatKingHealthBar.png"
+	 "health-bar.rat-king": "Objects/Others/RatKingHealthBar.png",
+	 "pencil": "Objects/Others/pencil.png"
 	},
 	"animations": {
 	 "boot-splash-fency": {

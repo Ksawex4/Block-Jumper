@@ -2,5 +2,4 @@
 .godot/
 /android/
 export_presets.cfg
-.idea/
 Resources/testing
