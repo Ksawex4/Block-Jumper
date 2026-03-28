@@ -235,6 +235,7 @@ process_mode = 3
 stream = ExtResource("10_oxd3l")
 autoplay = true
 bus = &"Music"
+playback_type = 1
 script = ExtResource("18_0mgxj")
 AudioType = 1
 AudioId = &"mus-main-menu"

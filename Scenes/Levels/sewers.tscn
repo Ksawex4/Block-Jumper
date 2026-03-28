@@ -581,6 +581,7 @@ process_mode = 3
 stream = ExtResource("10_c3jp4")
 autoplay = true
 bus = &"Music"
+playback_type = 1
 script = ExtResource("33_i472g")
 AudioType = 1
 AudioId = &"mus-sewer-song"
@@ -769,6 +770,7 @@ shape = SubResource("RectangleShape2D_2pliy")
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Boss-RatKing" unique_id=1470260812]
 stream = ExtResource("26_tc42j")
 bus = &"Music"
+playback_type = 1
 script = ExtResource("33_i472g")
 AudioType = 1
 AudioId = &"mus-big-cheese"

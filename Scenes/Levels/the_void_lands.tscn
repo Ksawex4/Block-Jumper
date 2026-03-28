@@ -182,6 +182,7 @@ limit_enabled = false
 stream = ExtResource("12_4a7u7")
 autoplay = true
 bus = &"Music"
+playback_type = 1
 script = ExtResource("23_brd00")
 AudioType = 1
 AudioId = &"mus-new-bob"

@@ -160,6 +160,7 @@ process_mode = 3
 stream = ExtResource("16_gpeh8")
 autoplay = true
 bus = &"Music"
+playback_type = 1
 script = ExtResource("21_qaq2i")
 AudioType = 1
 AudioId = &"mus-zworka-song"

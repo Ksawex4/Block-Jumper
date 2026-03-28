@@ -182,6 +182,7 @@ process_mode = 3
 stream = ExtResource("9_8dmrm")
 autoplay = true
 bus = &"Music"
+playback_type = 1
 script = ExtResource("19_xkjl3")
 AudioType = 1
 AudioId = &"mus-trash"
